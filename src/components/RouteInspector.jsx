@@ -4,7 +4,7 @@ import "../styles/components/RouteInspector.css";
 
 export const RouteInspector = () => {
   const [quantity, setQuantity] = useState(100000);
-  const [rate, setRate] = useState(0.015);
+  const [rate, setRate] = useState(0.029);
   const [currency, setCurrency] = useState("EUR"); // "EUR" | "USDT" | "USD"
 
   const totalCost = quantity * rate;
@@ -33,10 +33,13 @@ export const RouteInspector = () => {
   };
 
   const presetRates = [
-    { label: `High Vol (${formatRate(0.005)})`, value: 0.005 },
-    { label: `Standard API (${formatRate(0.012)})`, value: 0.012 },
-    { label: `Direct Route (${formatRate(0.025)})`, value: 0.025 },
-    { label: `Premium OTP (${formatRate(0.045)})`, value: 0.045 },
+    { label: `Mexico (${formatRate(0.0025)})`, value: 0.0025 },
+    { label: `Brazil (${formatRate(0.0085)})`, value: 0.0085 },
+    { label: `Austria (${formatRate(0.022)})`, value: 0.022 },
+    { label: `Spain (${formatRate(0.029)})`, value: 0.029 },
+    { label: `Italy (${formatRate(0.033)})`, value: 0.033 },
+    { label: `Denmark (${formatRate(0.042)})`, value: 0.042 },
+    { label: `China (${formatRate(0.092)})`, value: 0.092 },
   ];
 
   return (

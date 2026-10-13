@@ -2,18 +2,25 @@ import { useState, useMemo } from "react";
 import "../styles/components/RouteRatesTable.css";
 
 const routesList = [
-  // Europe
+  // Top Featured Wholesale Corridors (Negotiable on Volume)
+  { country: "Spain 🇪🇸", code: "ES", region: "Europe", type: "Tier-1 Direct SS7 MNO", latency: "1.2s", rateEUR: 0.029, tps: "5,000 TPS", status: "Direct Live", topRoute: true },
+  { country: "Italy 🇮🇹", code: "IT", region: "Europe", type: "Direct Operator Link", latency: "1.3s", rateEUR: 0.033, tps: "4,000 TPS", status: "Direct Live", topRoute: true },
+  { country: "Austria 🇦🇹", code: "AT", region: "Europe", type: "Direct MNO Network", latency: "1.1s", rateEUR: 0.022, tps: "3,500 TPS", status: "Direct Live", topRoute: true },
+  { country: "China 🇨🇳", code: "CN", region: "APAC", type: "Premium Direct Gateway", latency: "1.8s", rateEUR: 0.092, tps: "8,000 TPS", status: "Direct Live", topRoute: true },
+  { country: "Denmark 🇩🇰", code: "DK", region: "Europe", type: "Direct Nordic Interconnect", latency: "1.2s", rateEUR: 0.042, tps: "3,000 TPS", status: "Direct Live", topRoute: true },
+  { country: "Mexico 🇲🇽", code: "MX", region: "Americas", type: "Ultra-High Volume Route", latency: "1.5s", rateEUR: 0.0025, tps: "10,000 TPS", status: "Direct Live", topRoute: true },
+  { country: "Slovakia 🇸🇰", code: "SK", region: "Europe", type: "Direct MNO Interconnect", latency: "1.3s", rateEUR: 0.025, tps: "3,000 TPS", status: "Direct Live", topRoute: true },
+  { country: "Brazil 🇧🇷", code: "BR", region: "Americas", type: "Anatel Direct Carrier", latency: "1.7s", rateEUR: 0.0085, tps: "8,000 TPS", status: "Direct Live", topRoute: true },
+
+  // Additional Europe Corridors
   { country: "United Kingdom 🇬🇧", code: "GB", region: "Europe", type: "Direct MNO Interconnect", latency: "1.2s", rateEUR: 0.022, tps: "4,000 TPS", status: "Direct Live" },
   { country: "Germany 🇩🇪", code: "DE", region: "Europe", type: "Direct Telecom Network", latency: "1.3s", rateEUR: 0.058, tps: "2,500 TPS", status: "Direct Live" },
   { country: "France 🇫🇷", code: "FR", region: "Europe", type: "MNO Interconnect", latency: "1.3s", rateEUR: 0.045, tps: "3,000 TPS", status: "Direct Live" },
-  { country: "Italy 🇮🇹", code: "IT", region: "Europe", type: "Direct Operator Link", latency: "1.4s", rateEUR: 0.042, tps: "2,800 TPS", status: "Direct Live" },
-  { country: "Spain 🇪🇸", code: "ES", region: "Europe", type: "Direct MNO Interconnect", latency: "1.3s", rateEUR: 0.039, tps: "3,000 TPS", status: "Direct Live" },
   { country: "Netherlands 🇳🇱", code: "NL", region: "Europe", type: "Direct Telecom Network", latency: "1.2s", rateEUR: 0.048, tps: "3,500 TPS", status: "Direct Live" },
   { country: "Switzerland 🇨🇭", code: "CH", region: "Europe", type: "Direct Premium MNO", latency: "1.1s", rateEUR: 0.062, tps: "2,000 TPS", status: "Direct Live" },
   { country: "Sweden 🇸🇪", code: "SE", region: "Europe", type: "Direct Operator Link", latency: "1.2s", rateEUR: 0.044, tps: "2,500 TPS", status: "Direct Live" },
   { country: "Poland 🇵🇱", code: "PL", region: "Europe", type: "Direct MNO Interconnect", latency: "1.5s", rateEUR: 0.028, tps: "3,000 TPS", status: "Direct Live" },
   { country: "Portugal 🇵🇹", code: "PT", region: "Europe", type: "Direct Carrier Link", latency: "1.4s", rateEUR: 0.036, tps: "2,200 TPS", status: "Direct Live" },
-  { country: "Austria 🇦🇹", code: "AT", region: "Europe", type: "Direct MNO Network", latency: "1.3s", rateEUR: 0.052, tps: "2,400 TPS", status: "Direct Live" },
   { country: "Ireland 🇮🇪", code: "IE", region: "Europe", type: "Direct Operator Link", latency: "1.2s", rateEUR: 0.041, tps: "2,800 TPS", status: "Direct Live" },
 
   // APAC
@@ -33,8 +40,6 @@ const routesList = [
   // Americas & LATAM
   { country: "United States 🇺🇸", code: "US", region: "Americas", type: "10DLC & Toll-Free Direct", latency: "1.1s", rateEUR: 0.0075, tps: "8,000 TPS", status: "Direct Live" },
   { country: "Canada 🇨🇦", code: "CA", region: "Americas", type: "Verified Shortcode / 10DLC", latency: "1.2s", rateEUR: 0.0082, tps: "6,000 TPS", status: "Direct Live" },
-  { country: "Mexico 🇲🇽", code: "MX", region: "Americas", type: "Direct Operator Interconnect", latency: "1.6s", rateEUR: 0.016, tps: "4,000 TPS", status: "Direct Live" },
-  { country: "Brazil 🇧🇷", code: "BR", region: "Americas", type: "Tier-1 Carrier Interconnect", latency: "1.9s", rateEUR: 0.019, tps: "3,000 TPS", status: "Direct Live" },
   { country: "Argentina 🇦🇷", code: "AR", region: "Americas", type: "Direct MNO Network", latency: "2.0s", rateEUR: 0.022, tps: "2,500 TPS", status: "Direct Live" },
   { country: "Colombia 🇨🇴", code: "CO", region: "Americas", type: "Direct Operator Link", latency: "1.8s", rateEUR: 0.018, tps: "3,000 TPS", status: "Direct Live" },
   { country: "Chile 🇨🇱", code: "CL", region: "Americas", type: "Direct Carrier Link", latency: "1.7s", rateEUR: 0.024, tps: "2,200 TPS", status: "Direct Live" },
@@ -184,6 +189,45 @@ export const RouteRatesTable = () => {
             </div>
           </div>
 
+          {/* Negotiable Volume Alert Banner */}
+          <div style={{
+            background: "linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(6, 182, 212, 0.12) 100%)",
+            border: "1px solid rgba(16, 185, 129, 0.35)",
+            borderRadius: "12px",
+            padding: "14px 18px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: "16px",
+            flexWrap: "wrap",
+            fontSize: "13px",
+            color: "#e2e8f0"
+          }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <span style={{ fontSize: "18px" }}>🤝</span>
+              <span>
+                <strong style={{ color: "#34d399" }}>Volume Confirmations:</strong> All wholesale base rates are negotiable for volumes &gt; 250k / 500k+ SMS/month.
+              </span>
+            </div>
+            <a
+              href="https://wa.me/919306529891?text=Hello%20NAMX%20Telecom%2C%20I%20want%20to%20discuss%20volume%20commitments%20and%20negotiate%20wholesale%20rates."
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                background: "#10b981",
+                color: "#060919",
+                fontWeight: 700,
+                fontSize: "12px",
+                padding: "6px 14px",
+                borderRadius: "6px",
+                textDecoration: "none",
+                whiteSpace: "nowrap"
+              }}
+            >
+              Negotiate Rate ➔
+            </a>
+          </div>
+
           {/* Table Container */}
           <div className="table-responsive-wrapper">
             <table className="routes-data-table">
@@ -201,11 +245,25 @@ export const RouteRatesTable = () => {
               <tbody>
                 {displayedRoutes.length > 0 ? (
                   displayedRoutes.map((route, idx) => (
-                    <tr key={route.code + idx}>
+                    <tr key={route.code + idx} className={route.topRoute ? "top-route-row" : ""}>
                       <td>
                         <div className="route-name-cell">
                           <strong>{route.country}</strong>
                           <span className="route-code-tag">{route.code}</span>
+                          {route.topRoute && (
+                            <span style={{
+                              background: "rgba(56, 189, 248, 0.15)",
+                              border: "1px solid rgba(56, 189, 248, 0.4)",
+                              color: "#38bdf8",
+                              fontSize: "10px",
+                              fontWeight: 700,
+                              padding: "2px 6px",
+                              borderRadius: "4px",
+                              marginLeft: "6px"
+                            }}>
+                              ⭐ Top Route
+                            </span>
+                          )}
                         </div>
                       </td>
                       <td>
@@ -224,8 +282,13 @@ export const RouteRatesTable = () => {
                         <span className="status-live-tag">🟢 {route.status}</span>
                       </td>
                       <td>
-                        <a href="#contact" className="btn-table-request">
-                          Get Rate
+                        <a
+                          href={`https://wa.me/919306529891?text=${encodeURIComponent(`Hello NAMX, I am interested in testing or negotiating volume rates for ${route.country} (${route.code}) at ${formatRate(route.rateEUR)}/SMS.`)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-table-request"
+                        >
+                          Negotiate
                         </a>
                       </td>
                     </tr>

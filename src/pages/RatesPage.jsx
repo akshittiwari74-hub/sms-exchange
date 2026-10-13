@@ -1,4 +1,5 @@
 import { useState } from "react";
+import TopRoutesSpotlight from "../components/TopRoutesSpotlight";
 import RouteInspector from "../components/RouteInspector";
 import RouteRatesTable from "../components/RouteRatesTable";
 import CTA from "../components/CTA";
@@ -70,6 +71,9 @@ export const RatesPage = ({ onOpenInquiriesModal }) => {
           </div>
         </div>
       </section>
+
+      {/* Featured Top Wholesale Routes with Euro Pricing */}
+      <TopRoutesSpotlight onOpenInquiriesModal={onOpenInquiriesModal} />
 
       <RouteInspector />
       <RouteRatesTable />

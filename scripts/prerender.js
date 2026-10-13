@@ -472,9 +472,9 @@ const routes = [
   {
     path: "/rates",
     dir: "rates",
-    title: "Wholesale Bulk SMS Rates & P2P Pricing | NAMX Telecom",
-    description: "Explore live wholesale Bulk SMS rates and international P2P hubbing pricing for 195+ corridors. Transparent LCR pricing, zero minimums, instant test binds.",
-    keywords: "Bulk SMS Rates, Wholesale Bulk SMS Pricing, International P2P SMS Rates, SMPP Gateway Rates, SMS Routing Rate Estimator, Bulk SMS Singapore Rates, Global SMS Traffic Rates",
+    title: "Wholesale Bulk SMS Rates & Top Routes in Euro | NAMX Telecom",
+    description: "Live wholesale Bulk SMS Euro rates for top routes: Spain (€0.029), Italy (€0.033), Austria (€0.022), Mexico (€0.0025), Brazil (€0.0085), Slovakia (€0.025), Denmark (€0.042), China (€0.092). Fully negotiable on volume confirmations.",
+    keywords: "Bulk SMS Rates, Wholesale SMS Euro Rates, Spain SMS Route, Italy SMS Route, Austria SMS Route, Mexico SMS Route, Brazil SMS Route, SMPP Gateway Rates",
     canonical: "https://www.namxtelecom.site/rates",
     schema: {
       "@context": "https://schema.org",
@@ -488,17 +488,35 @@ const routes = [
         },
         {
           "@type": "OfferCatalog",
-          "name": "Wholesale Bulk SMS & International P2P Rate Cards",
+          "name": "Wholesale Bulk SMS Top Routes & Euro Rate Cards",
           "url": "https://www.namxtelecom.site/rates",
           "provider": {
             "@type": "Organization",
             "name": "NAMX Telecom",
             "url": "https://www.namxtelecom.site/"
-          }
+          },
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Spain Direct SS7 Route" }, "price": "0.029", "priceCurrency": "EUR" },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Italy Direct Operator Route" }, "price": "0.033", "priceCurrency": "EUR" },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Austria Direct MNO Route" }, "price": "0.022", "priceCurrency": "EUR" },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "China Direct SMS Gateway" }, "price": "0.092", "priceCurrency": "EUR" },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Denmark Direct Nordic Route" }, "price": "0.042", "priceCurrency": "EUR" },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mexico Wholesale SMS Route" }, "price": "0.0025", "priceCurrency": "EUR" },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Slovakia Direct MNO Route" }, "price": "0.025", "priceCurrency": "EUR" },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brazil Anatel Direct Route" }, "price": "0.0085", "priceCurrency": "EUR" }
+          ]
         },
         {
           "@type": "FAQPage",
           "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Are wholesale rates negotiable over volume confirmations?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. All listed wholesale Euro rates (including Spain €0.029, Italy €0.033, Austria €0.022, Mexico €0.0025, Brazil €0.0085) are negotiable based on monthly volume commitments exceeding 250,000 or 1,000,000 SMS per month."
+              }
+            },
             {
               "@type": "Question",
               "name": "What are wholesale Bulk SMS rates based on?",
