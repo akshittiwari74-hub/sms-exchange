@@ -1,0 +1,25 @@
+/* Scroll Progress Styles */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    var(--accent-cyan),
+    var(--accent-blue),
+    var(--accent-purple)
+  );
+  z-index: 999;
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.6);
+  transform-origin: left center;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress {
+    display: none;
+  }
+}

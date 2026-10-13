@@ -1,0 +1,93 @@
+/* Glass Card Component Styles */
+
+.glass-card {
+  padding: 40px;
+  border-radius: var(--border-radius-xl);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(6, 182, 212, 0.15);
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.1);
+  transition: all var(--transition-normal);
+  will-change: transform;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(6, 182, 212, 0.25);
+  box-shadow: 0 0 40px rgba(6, 182, 212, 0.15);
+  transform: translateY(-6px);
+}
+
+.glass-card h2 {
+  color: var(--text-primary);
+  font-size: var(--font-size-4xl);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--spacing-lg);
+}
+
+.glass-card p,
+.glass-card li {
+  color: var(--text-secondary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+}
+
+.glass-card ul {
+  list-style: none;
+  margin: var(--spacing-lg) 0;
+}
+
+.glass-card li {
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.glass-card li::before {
+  content: "✓";
+  color: var(--success-green);
+  font-weight: var(--font-weight-black);
+  font-size: var(--font-size-lg);
+  flex-shrink: 0;
+}
+
+.glass-card a {
+  display: inline-block;
+  margin-top: var(--spacing-lg);
+}
+
+/* Hover Effect */
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .glass-card {
+    padding: 32px;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(15, 23, 42, 0.88);
+  }
+
+  .glass-card h2 {
+    font-size: var(--font-size-3xl);
+  }
+
+  .glass-card p,
+  .glass-card li {
+    font-size: var(--font-size-base);
+  }
+}
+
+@media (max-width: 480px) {
+  .glass-card {
+    padding: 24px;
+  }
+
+  .glass-card h2 {
+    font-size: var(--font-size-2xl);
+  }
+}

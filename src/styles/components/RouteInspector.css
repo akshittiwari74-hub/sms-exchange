@@ -1,0 +1,300 @@
+.route-inspector-section {
+  padding: 100px 0;
+  background: var(--secondary-dark);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.calculator-standalone-card {
+  max-width: 900px;
+  margin: 40px auto 0;
+  background: rgba(10, 14, 39, 0.7);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  border-radius: var(--border-radius-xl);
+  padding: 40px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4), 0 0 35px rgba(6, 182, 212, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.calc-top-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.currency-selector-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.currency-selector-tabs {
+  display: flex;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 4px;
+  border-radius: var(--border-radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.currency-tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: var(--border-radius-full);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.currency-tab-btn:hover {
+  color: var(--text-primary);
+}
+
+.currency-tab-btn.active {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.25) 0%, rgba(59, 130, 246, 0.25) 100%);
+  border: 1px solid rgba(6, 182, 212, 0.4);
+  color: var(--accent-cyan);
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.2);
+}
+
+.calc-sliders-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+}
+
+.calc-control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--border-radius-lg);
+  padding: 24px;
+}
+
+.control-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.control-title-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.control-icon {
+  font-size: 18px;
+}
+
+.input-number-box {
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  border-radius: var(--border-radius-sm);
+  padding: 4px 10px;
+  gap: 4px;
+}
+
+.currency-prefix {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  font-family: var(--font-mono);
+}
+
+.custom-numeric-input {
+  background: transparent;
+  border: none;
+  color: var(--accent-cyan);
+  font-size: 16px;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  outline: none;
+  width: 110px;
+  text-align: right;
+}
+
+.custom-numeric-input.rate-input {
+  width: 70px;
+}
+
+.input-unit {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.volume-range-slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  accent-color: var(--accent-cyan);
+  cursor: pointer;
+}
+
+.volume-range-slider.rate-slider {
+  accent-color: var(--accent-blue);
+}
+
+.range-ticks {
+  display: flex;
+  justify-content: space-between;
+}
+
+.range-ticks button {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.range-ticks button:hover {
+  color: var(--accent-cyan);
+  background: rgba(6, 182, 212, 0.1);
+}
+
+.preset-rates-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.preset-rate-chip {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--border-radius-full);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.preset-rate-chip:hover {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.4);
+  color: var(--text-primary);
+}
+
+.preset-rate-chip.active {
+  background: rgba(59, 130, 246, 0.25);
+  border-color: var(--accent-blue);
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* Banner Summary */
+.calc-summary-banner {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  border-radius: var(--border-radius-lg);
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.3fr;
+  gap: 20px;
+  align-items: center;
+}
+
+.summary-stat-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.summary-stat-box.main-total {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  padding-left: 20px;
+}
+
+.stat-sm-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.stat-lg-val {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+.stat-lg-val.highlight {
+  color: var(--accent-cyan);
+}
+
+.stat-sub-val {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.stat-total-amount {
+  font-size: 32px;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  color: var(--accent-cyan);
+}
+
+.calc-bottom-cta .btn {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .calc-sliders-grid {
+    grid-template-columns: 1fr;
+  }
+  .calc-summary-banner {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .summary-stat-box.main-total {
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-left: 0;
+    padding-top: 16px;
+  }
+  .calculator-standalone-card {
+    padding: 24px 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .route-inspector-section {
+    padding: 40px 16px;
+  }
+  .control-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .stat-total-amount {
+    font-size: 26px;
+  }
+}

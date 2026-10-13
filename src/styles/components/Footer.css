@@ -1,0 +1,142 @@
+/* ==========================================
+   FOOTER - Sleek Enterprise Mobile & Desktop
+========================================== */
+
+.footer {
+  width: 100%;
+  padding: 80px 7% 40px;
+  background: #060919;
+  color: var(--text-primary);
+  border-top: 1px solid rgba(6, 182, 212, 0.15);
+  position: relative;
+  z-index: 2;
+}
+
+.footer-grid {
+  max-width: var(--container-width);
+  margin: 0 auto 60px;
+  display: grid;
+  grid-template-columns: 1.4fr repeat(3, 1fr);
+  gap: 48px;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-column h3:first-child {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+
+.footer-column h3:not(:first-child),
+.footer-column h4 {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-cyan);
+  margin-bottom: 8px;
+}
+
+.footer-column p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.footer-column a {
+  color: var(--text-secondary);
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  width: fit-content;
+}
+
+.footer-column a:hover {
+  color: var(--accent-cyan);
+  transform: translateX(2px);
+}
+
+.portal-highlight-link {
+  color: var(--accent-cyan) !important;
+  font-weight: 700 !important;
+  background: rgba(6, 182, 212, 0.1);
+  padding: 6px 12px;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.portal-highlight-link:hover {
+  background: rgba(6, 182, 212, 0.2) !important;
+  border-color: var(--accent-cyan) !important;
+}
+
+.footer-bottom {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.copyright {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.footer-bottom-location {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN (TABLET & PHONE)
+========================================== */
+
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 40px 16px 24px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-bottom: 32px;
+  }
+  .footer-column h3 {
+    font-size: 18px;
+  }
+  .footer-column h4 {
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+  .footer-column p,
+  .footer-column a {
+    font-size: 13px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+    padding-top: 20px;
+  }
+}

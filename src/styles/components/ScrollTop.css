@@ -1,0 +1,52 @@
+/* Scroll Top Button Styles */
+
+.scroll-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+  color: var(--text-primary);
+  border: none;
+  cursor: pointer;
+  font-weight: var(--font-weight-black);
+  font-size: 24px;
+  z-index: var(--z-floating);
+  box-shadow: var(--shadow-cyan);
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-top:hover {
+  box-shadow: 0 0 40px rgba(6, 182, 212, 0.7);
+  transform: translateY(-4px);
+}
+
+.scroll-top:active {
+  transform: translateY(0);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .scroll-top {
+    width: 44px;
+    height: 44px;
+    bottom: 20px;
+    right: 20px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-top {
+    width: 40px;
+    height: 40px;
+    bottom: 16px;
+    right: 16px;
+    font-size: 18px;
+  }
+}

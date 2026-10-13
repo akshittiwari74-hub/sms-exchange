@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "slug": "what-is-smpp-v34-guide",
+    "title": "What is SMPP v3.4? A Complete Guide for Developers",
+    "date": "2026-09-18",
+    "author": "NAMX Engineering",
+    "category": "Technical",
+    "excerpt": "Dive deep into the Short Message Peer-to-Peer (SMPP) protocol. Learn how SMPP v3.4 binds work, how to handle PDUs, and why it's the industry standard for high-volume SMS routing.",
+    "content": "<h2>Introduction to SMPP</h2><p>The Short Message Peer-to-Peer (SMPP) protocol is the industry standard for sending high-volume A2P (Application-to-Person) SMS messages. While REST APIs are great for simple integrations, SMPP is designed for speed, allowing thousands of transactions per second (TPS) through persistent TCP/IP connections.</p><h2>How an SMPP Bind Works</h2><p>To connect to an SMSC (Short Message Service Center), an ESME (External Short Messaging Entity) like your application establishes a 'bind'. There are three types of binds:</p><ul><li><strong>Transmitter (TX):</strong> Can only send messages.</li><li><strong>Receiver (RX):</strong> Can only receive messages (like DLRs).</li><li><strong>Transceiver (TRX):</strong> Can send messages and receive DLRs over the same connection.</li></ul><p>NAMX Telecom highly recommends using Transceiver binds for optimal performance and resource management.</p><h2>Understanding PDUs</h2><p>Data in SMPP is exchanged via Protocol Data Units (PDUs). The most common PDU is the <code>submit_sm</code>, which contains the destination number, the message text, and routing parameters. When the SMSC accepts it, it returns a <code>submit_sm_resp</code>.</p><h2>Why SMPP v3.4?</h2><p>Although v5.0 exists, v3.4 remains the most widely deployed version globally because it supports Optional Parameters (TLVs), which are essential for advanced routing features like message payload separation and delivery receipts (DLRs).</p>"
+  },
+  {
+    "id": 2,
+    "slug": "a2p-vs-p2p-sms-routing",
+    "title": "A2P vs P2P SMS Routing: What Telecom Aggregators Need to Know",
+    "date": "2026-09-15",
+    "author": "NAMX Routing Team",
+    "category": "Industry",
+    "excerpt": "Understand the critical differences between Application-to-Person (A2P) and Person-to-Person (P2P) SMS traffic, and how intelligent SS7 routing engines differentiate them.",
+    "content": "<h2>The Two Worlds of SMS</h2><p>Not all SMS traffic is treated equally by Mobile Network Operators (MNOs). Understanding the difference between A2P and P2P is crucial for optimizing your wholesale rates and ensuring high deliverability.</p><h2>A2P (Application-to-Person)</h2><p>A2P traffic is enterprise messaging. Think 2FA OTP codes, banking alerts, and marketing broadcasts. Operators heavily monetize A2P routes and employ strict firewalls to block 'grey route' bypasses. A2P requires high-quality, direct interconnects to guarantee sub-second delivery for time-critical PIN codes.</p><h2>P2P (Person-to-Person)</h2><p>P2P traffic is standard text messaging between two humans. It is generally lower priority and cheaper to route via international hubs. However, sending A2P traffic over P2P routes (SIM farming) is highly illegal in many jurisdictions and will result in immediate sender ID blocking.</p><h2>NAMX Telecom's Dynamic Routing</h2><p>At NAMX Telecom, our LCR (Least Cost Routing) engine automatically distinguishes between A2P and P2P payloads. We utilize real-time HLR lookups to dynamically select the correct carrier bind, ensuring 100% compliance and the best possible termination rates.</p>"
+  }
+]

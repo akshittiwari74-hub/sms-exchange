@@ -1,0 +1,197 @@
+import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from "react-router-dom";
+
+import "./styles/variables.css";
+import "./App.css";
+
+import logo from "./assets/namx-logo.png";
+
+import Navbar from "./components/Navbar";
+import InquiryModal from "./components/InquiryModal";
+import Footer from "./components/Footer";
+import FloatingChatWidget from "./components/FloatingChatWidget";
+
+import HomePage from "./pages/HomePage";
+import RatesPage from "./pages/RatesPage";
+import CoveragePage from "./pages/CoveragePage";
+import ServicesPage from "./pages/ServicesPage";
+import IndustriesPage from "./pages/IndustriesPage";
+import ApiPage from "./pages/ApiPage";
+import FaqPage from "./pages/FaqPage";
+import ContactPage from "./pages/ContactPage";
+import GlossaryPage from "./pages/GlossaryPage";
+import BlogPage from "./pages/BlogPage";
+import BlogPostPage from "./pages/BlogPostPage";
+import LocationPage from "./pages/LocationPage";
+import WhatsAppPage from "./pages/WhatsAppPage";
+import RcsPage from "./pages/RcsPage";
+import ItServicesPage from "./pages/ItServicesPage";
+
+const pageMeta = {
+  "/": {
+    title: "NAMX Telecom | Global Wholesale Bulk SMS Provider, SMPP Gateway & International P2P Routing",
+    description: "NAMX Telecom is a global wholesale Bulk SMS provider, SMPP v3.4/v5.0 gateway & international P2P traffic exchange. Send bulk SMS worldwide with direct SS7 carrier interconnects, zero-hop routing & REST APIs.",
+    canonical: "https://www.namxtelecom.site/",
+  },
+  "/whatsapp-business": {
+    title: "WhatsApp Business API & Official Meta Platform | NAMX Telecom",
+    description: "Official WhatsApp Business Platform & Cloud API. Deliver verified 2FA OTPs, interactive broadcast campaigns, 24/7 AI chatbots, and automated fallback to wholesale SMS.",
+    canonical: "https://www.namxtelecom.site/whatsapp-business",
+  },
+  "/rcs-messaging": {
+    title: "RCS Business Messaging Gateway & Google RBM Interconnect | NAMX Telecom",
+    description: "Upgrade Bulk SMS with verified sender branding, rich media carousels, action chips, and automated SMS fallback. Native rich messaging for Android and iOS 18.",
+    canonical: "https://www.namxtelecom.site/rcs-messaging",
+  },
+  "/it-services": {
+    title: "Enterprise IT Services, Telecom Engineering & Cloud Solutions | NAMX Telecom",
+    description: "Full-suite IT services wing: Custom software development, SMPP gateway engineering, cloud DevOps, AI automation, and 24/7 managed NOC services from Singapore.",
+    canonical: "https://www.namxtelecom.site/it-services",
+  },
+  "/rates": {
+    title: "Global Bulk SMS Rates, International P2P Hubbing & Wholesale Pricing | NAMX Telecom",
+    description: "Explore live wholesale Bulk SMS rates and international P2P hubbing pricing for 195+ corridors. Calculate volume routing pricing in EUR, USDT, or USD with zero hidden commitments.",
+    canonical: "https://www.namxtelecom.site/rates",
+  },
+  "/coverage": {
+    title: "195+ Country Telecom Reach, Direct SS7 MNO Interconnects & SMS Routing | NAMX Telecom",
+    description: "Global Bulk SMS & international P2P messaging coverage across 195+ countries. Direct SS7 signaling links, LCR SMS routing engine, and zero-hop carrier termination.",
+    canonical: "https://www.namxtelecom.site/coverage",
+  },
+  "/services": {
+    title: "Carrier SMS Products, SMPP v3.4/v5.0 Binds, International P2P & Bulk SMS Gateway | NAMX Telecom",
+    description: "Enterprise messaging infrastructure: high-speed SMPP v3.4/v5.0 binds, International P2P traffic exchange, A2P Bulk SMS gateway, and dynamic least-cost SMS routing.",
+    canonical: "https://www.namxtelecom.site/services",
+  },
+  "/industries": {
+    title: "Industry Bulk SMS Solutions, Banking 2FA OTP & Telecom P2P SMS Routing | NAMX Telecom",
+    description: "Tailored Bulk SMS & intelligent SMS routing for Banking 2FA OTPs, Telecom Aggregator P2P hubbing, E-Commerce DLR tracking, and Healthcare compliance.",
+    canonical: "https://www.namxtelecom.site/industries",
+  },
+  "/api": {
+    title: "REST SMS API Specs & SMPP v3.4/v5.0 Protocol Documentation | NAMX Telecom",
+    description: "Integrate developer REST SMS APIs and SMPP v3.4/v5.0 transceiver binds in 5 minutes. Code samples for cURL, Node.js, Python with real-time DLR webhooks & PDU payloads.",
+    canonical: "https://www.namxtelecom.site/api",
+  },
+  "/faq": {
+    title: "Technical Telecom FAQ, SMPP Bind Specs, SS7 SMS Routing & Compliance | NAMX Telecom",
+    description: "Technical answers on SMPP v3.4 binds, International P2P clearing, SS7 firewalling, dynamic SMS routing rules, DLR status codes, and 99.99% SLA uptime.",
+    canonical: "https://www.namxtelecom.site/faq",
+  },
+  "/contact": {
+    title: "Carrier Wholesale Consultation, SMPP Onboarding & Singapore NOC | NAMX Telecom",
+    description: "Request custom wholesale Bulk SMS rates, set up live SMPP v3.4 binds, or connect directly with our Singapore 24/7 Global Telecom Network Operations Center (NOC).",
+    canonical: "https://www.namxtelecom.site/contact",
+  },
+  "/glossary": {
+    title: "Telecom Glossary: SS7, SMPP, PDU & SMS Routing Terminology | NAMX Telecom",
+    description: "A comprehensive dictionary of telecommunications acronyms and terms. Understand SS7 signaling, SMPP v3.4 binds, LCR routing, and A2P messaging.",
+    canonical: "https://www.namxtelecom.site/glossary",
+  },
+  "/insights": {
+    title: "Telecom Insights & Blog: Bulk SMS, SS7 Security & SMPP Guides | NAMX Telecom",
+    description: "Read the latest industry insights, technical guides on SMPP configuration, and trends in global A2P SMS routing from NAMX Telecom experts.",
+    canonical: "https://www.namxtelecom.site/insights",
+  }
+};
+
+export function AppContent() {
+  const [isInquiryModalOpen, setIsInquiryModalOpen] = useState(false);
+  
+  const navigate = useNavigate();
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentPath]);
+
+  // Update meta tags dynamically for SEO (Fallback for CSR, SSG will overwrite this at build time)
+  useEffect(() => {
+    // Dynamic Meta matching for blog and programmatic pages
+    let metaInfo = pageMeta[currentPath];
+    
+    if (!metaInfo) {
+      if (currentPath.startsWith('/insights/')) {
+        metaInfo = {
+          title: "Telecom Insights | NAMX Telecom",
+          description: "Read the latest technical guide on Bulk SMS and global routing from NAMX Telecom.",
+          canonical: `https://www.namxtelecom.site${currentPath}`
+        };
+      } else if (currentPath.startsWith('/bulk-sms-')) {
+        const country = currentPath.split('-').pop().toUpperCase();
+        metaInfo = {
+          title: `Bulk SMS Provider in ${country} | Direct Routes & SMPP Gateway`,
+          description: `Send Bulk SMS in ${country} with direct MNO interconnects and zero-hop termination. Connect via REST API or SMPP v3.4.`,
+          canonical: `https://www.namxtelecom.site${currentPath}`
+        };
+      } else {
+         metaInfo = pageMeta["/"];
+      }
+    }
+
+    document.title = metaInfo.title;
+
+    let descMeta = document.querySelector("meta[name='description']");
+    if (descMeta) descMeta.setAttribute("content", metaInfo.description);
+
+    let canonicalLink = document.querySelector("link[rel='canonical']");
+    if (canonicalLink) canonicalLink.setAttribute("href", metaInfo.canonical);
+  }, [currentPath]);
+
+  // To avoid refactoring all components immediately, we pass navigate to them as before.
+  const commonProps = {
+    navigate: (path) => navigate(path),
+    onOpenInquiriesModal: () => setIsInquiryModalOpen(true)
+  };
+
+  return (
+    <main className="app-main">
+      <Navbar logo={logo} currentPath={currentPath} navigate={(path) => navigate(path)} />
+
+      <Routes>
+        <Route path="/" element={<HomePage {...commonProps} />} />
+        <Route path="/rates" element={<RatesPage {...commonProps} />} />
+        <Route path="/coverage" element={<CoveragePage {...commonProps} />} />
+        <Route path="/services" element={<ServicesPage {...commonProps} />} />
+        <Route path="/whatsapp-business" element={<WhatsAppPage {...commonProps} />} />
+        <Route path="/rcs-messaging" element={<RcsPage {...commonProps} />} />
+        <Route path="/it-services" element={<ItServicesPage {...commonProps} />} />
+        <Route path="/industries" element={<IndustriesPage {...commonProps} />} />
+        <Route path="/api" element={<ApiPage {...commonProps} />} />
+        <Route path="/faq" element={<FaqPage {...commonProps} />} />
+        <Route path="/contact" element={<ContactPage {...commonProps} />} />
+        
+        {/* New SEO Pages */}
+        <Route path="/glossary" element={<GlossaryPage {...commonProps} />} />
+        <Route path="/insights" element={<BlogPage {...commonProps} />} />
+        <Route path="/insights/:slug" element={<BlogPostPage {...commonProps} />} />
+        <Route path="/bulk-sms-singapore" element={<LocationPage {...commonProps} forcedLocation="singapore" />} />
+        <Route path="/bulk-sms-uae" element={<LocationPage {...commonProps} forcedLocation="uae" />} />
+        <Route path="/bulk-sms-uk" element={<LocationPage {...commonProps} forcedLocation="uk" />} />
+        <Route path="/bulk-sms-usa" element={<LocationPage {...commonProps} forcedLocation="usa" />} />
+        <Route path="/bulk-sms-india" element={<LocationPage {...commonProps} forcedLocation="india" />} />
+        <Route path="/bulk-sms-malaysia" element={<LocationPage {...commonProps} forcedLocation="malaysia" />} />
+        <Route path="/bulk-sms-:location" element={<LocationPage {...commonProps} />} />
+      </Routes>
+      <Footer navigate={(path) => navigate(path)} />
+
+      <FloatingChatWidget />
+
+      <InquiryModal
+        isOpen={isInquiryModalOpen}
+        onClose={() => setIsInquiryModalOpen(false)}
+      />
+    </main>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
+  );
+}
+
+export default App;

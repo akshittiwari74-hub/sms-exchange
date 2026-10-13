@@ -1,0 +1,68 @@
+import { useState, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
+import "./styles/variables.css";
+import "./App.css";
+import logo from "./assets/namx-logo.png";
+
+// Components
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Services from "./components/Services";
+import Stats from "./components/Stats";
+import Coverage from "./components/Coverage";
+import CTA from "./components/CTA";
+import Footer from "./components/Footer";
+import ScrollProgress from "./components/ScrollProgress";
+import ScrollTop from "./components/ScrollTop";
+import CursorGlow from "./components/CursorGlow";
+import ParticlesBackground from "./components/ParticlesBackground";
+import LoadingScreen from "./components/LoadingScreen";
+
+function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading for 2 seconds
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <>
+      <AnimatePresence>{isLoading && <LoadingScreen isLoading={isLoading} />}</AnimatePresence>
+
+      <ParticlesBackground count={50} />
+      <CursorGlow />
+      <ScrollProgress />
+      <ScrollTop />
+
+      <main className="app-main">
+        {/* Hero Section */}
+        <section className="hero-section">
+          <Navbar logo={logo} />
+          <Hero />
+        </section>
+
+        {/* Services Section */}
+        <Services />
+
+        {/* Stats Section */}
+        <Stats />
+
+        {/* Coverage Section */}
+        <Coverage />
+
+        {/* CTA Section */}
+        <CTA />
+
+        {/* Footer */}
+        <Footer />
+      </main>
+    </>
+  );
+}
+
+export default App;
