@@ -344,6 +344,10 @@
 }
 
 .btn-negotiate-rate {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
   background: rgba(56, 189, 248, 0.15);
   border: 1px solid rgba(56, 189, 248, 0.4);
   color: #ffffff;
@@ -354,14 +358,21 @@
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
+  text-align: center;
 }
 
 .btn-negotiate-rate:hover {
   background: #38bdf8;
   color: #060919;
+  text-decoration: none;
+  transform: translateY(-1px);
 }
 
 .btn-test-route {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
   background: rgba(16, 185, 129, 0.15);
   border: 1px solid rgba(16, 185, 129, 0.4);
   color: #34d399;
@@ -372,11 +383,50 @@
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
+  text-align: center;
 }
 
 .btn-test-route:hover {
   background: #10b981;
   color: #060919;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+/* Quick Channels Strip */
+.top-route-quick-channels {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 11px;
+  margin-top: -6px;
+  padding-top: 4px;
+}
+
+.channels-label {
+  color: #64748b;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+
+.channel-link {
+  color: #94a3b8;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+
+.channel-link:hover {
+  color: #38bdf8;
+  text-decoration: underline;
+}
+
+.channel-sep {
+  color: #475569;
+  font-size: 10px;
 }
 
 /* Volume Tiers Matrix */
@@ -466,6 +516,42 @@
   display: block;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   padding-top: 8px;
+}
+
+.tier-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 14px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: #38bdf8;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.tier-cta-btn:hover {
+  background: #38bdf8;
+  color: #060919;
+  text-decoration: none;
+}
+
+.tier-box.featured .tier-cta-btn {
+  background: #38bdf8;
+  color: #060919;
+  border: none;
+  font-weight: 800;
+}
+
+.tier-box.featured .tier-cta-btn:hover {
+  background: #0ea5e9;
+  color: #ffffff;
 }
 
 /* Mobile Responsive Adjustments */

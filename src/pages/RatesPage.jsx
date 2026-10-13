@@ -73,7 +73,7 @@ export const RatesPage = ({ onOpenInquiriesModal }) => {
       </section>
 
       {/* Featured Top Wholesale Routes with Euro Pricing */}
-      <TopRoutesSpotlight onOpenInquiriesModal={onOpenInquiriesModal} />
+      <TopRoutesSpotlight />
 
       <RouteInspector />
       <RouteRatesTable />

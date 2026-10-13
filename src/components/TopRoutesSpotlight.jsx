@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import Button from "./Button";
+import React from "react";
 import "../styles/components/TopRoutesSpotlight.css";
 
 export const TOP_WHOLESALE_ROUTES = [
@@ -109,31 +108,7 @@ export const TOP_WHOLESALE_ROUTES = [
   },
 ];
 
-export const TopRoutesSpotlight = ({ onOpenInquiriesModal }) => {
-  const [selectedRoute, setSelectedRoute] = useState(null);
-
-  const handleNegotiateClick = (route) => {
-    if (onOpenInquiriesModal) {
-      onOpenInquiriesModal({
-        destination: `${route.country} (${route.code})`,
-        rate: `€${route.rateEUR.toFixed(4)}`,
-        product: "Wholesale SMS Volume Rate Negotiation",
-      });
-    } else {
-      const msg = encodeURIComponent(
-        `Hello NAMX Telecom, I want to discuss volume commitments and negotiate pricing for the ${route.country} (${route.code}) route (Listed: €${route.rateEUR.toFixed(4)}).`
-      );
-      window.open(`https://wa.me/919306529891?text=${msg}`, "_blank");
-    }
-  };
-
-  const handleWhatsAppDirect = (route) => {
-    const msg = encodeURIComponent(
-      `Hello NAMX Telecom, I want to lock in volume pricing and test credentials for ${route.country} (${route.code}) at €${route.rateEUR.toFixed(4)}/SMS.`
-    );
-    window.open(`https://wa.me/919306529891?text=${msg}`, "_blank");
-  };
-
+export const TopRoutesSpotlight = () => {
   return (
     <section className="top-routes-section">
       <div className="container">
@@ -236,21 +211,54 @@ export const TopRoutesSpotlight = ({ onOpenInquiriesModal }) => {
 
               {/* Action Buttons */}
               <div className="top-route-actions">
-                <button
-                  type="button"
+                <a
+                  href={`https://wa.me/919306529891?text=${encodeURIComponent(
+                    `Hello NAMX Telecom, I want to discuss volume commitments and negotiate wholesale pricing for ${route.country} (${route.code}) route (Listed: €${route.rateEUR.toFixed(4)}/SMS). What volume discounts are available for our traffic?`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn-negotiate-rate"
-                  onClick={() => handleNegotiateClick(route)}
+                  title={`Negotiate volume rate for ${route.country}`}
                 >
                   🤝 Negotiate Rate
-                </button>
-                <button
-                  type="button"
+                </a>
+                <a
+                  href={`https://wa.me/919306529891?text=${encodeURIComponent(
+                    `Hello NAMX Telecom, I would like to request test credits and SMPP / API credentials for the ${route.country} (${route.code}) route at €${route.rateEUR.toFixed(4)}/SMS.`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn-test-route"
-                  onClick={() => handleWhatsAppDirect(route)}
-                  title="Direct WhatsApp route inquiry"
+                  title={`Request test credits & credentials for ${route.country}`}
                 >
                   ⚡ Test Route
-                </button>
+                </a>
+              </div>
+
+              {/* Quick Negotiation Channels */}
+              <div className="top-route-quick-channels">
+                <span className="channels-label">Direct Desk:</span>
+                <a
+                  href="https://t.me/namxtelecom"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="channel-link"
+                  title="Negotiate on Telegram"
+                >
+                  ✈️ Telegram
+                </a>
+                <span className="channel-sep">·</span>
+                <a
+                  href={`mailto:admin@namxtelecom.site?subject=${encodeURIComponent(
+                    `Volume Rate Negotiation - ${route.country} (${route.code})`
+                  )}&body=${encodeURIComponent(
+                    `Hello NAMX Telecom Team,\n\nI want to negotiate wholesale pricing for the ${route.country} (${route.code}) corridor (Listed: €${route.rateEUR.toFixed(4)}/SMS).\n\nExpected Volume: [e.g. 500k+ SMS/month]\nProtocol: [SMPP v3.4 / REST API]\nCompany:\nContact Number:\n\nPlease share your volume rate card.`
+                  )}`}
+                  className="channel-link"
+                  title="Send RFP via Email"
+                >
+                  ✉️ Email RFP
+                </a>
               </div>
             </div>
           ))}
@@ -268,6 +276,14 @@ export const TopRoutesSpotlight = ({ onOpenInquiriesModal }) => {
               <h4>10k – 250k SMS/mo</h4>
               <p className="tier-desc">Standard Wholesale Rate</p>
               <span className="tier-highlight">Full API / SMPP v3.4 access</span>
+              <a
+                href="https://wa.me/919306529891?text=Hello%20NAMX%20Telecom%2C%20I%20am%20interested%20in%20Starter%20Tier%20(up%20to%20250k%2Fmo)%20wholesale%20rates."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="tier-cta-btn"
+              >
+                Inquire Starter ➔
+              </a>
             </div>
             <div className="tier-box featured">
               <span className="tier-pill">Most Popular</span>
@@ -275,12 +291,28 @@ export const TopRoutesSpotlight = ({ onOpenInquiriesModal }) => {
               <h4>250k – 1M SMS/mo</h4>
               <p className="tier-desc">Negotiable 5% – 10% Discount</p>
               <span className="tier-highlight">Priority SS7 Queue &amp; Dedicated Bind</span>
+              <a
+                href="https://wa.me/919306529891?text=Hello%20NAMX%20Telecom%2C%20I%20have%20Growth%20Tier%20traffic%20(250k%20-%201M%20SMS%2Fmo)%20and%20want%20to%20lock%20in%20negotiated%20rates."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="tier-cta-btn"
+              >
+                Lock In Growth Discount ➔
+              </a>
             </div>
             <div className="tier-box">
               <span className="tier-range">Carrier Tier</span>
               <h4>1M+ SMS/mo</h4>
               <p className="tier-desc">Custom Bilateral Clearing</p>
               <span className="tier-highlight">Direct Operator Swap + Custom SLA</span>
+              <a
+                href="https://wa.me/919306529891?text=Hello%20NAMX%20Telecom%2C%20I%20represent%20a%20carrier%20with%201M%2B%20monthly%20traffic.%20I%20want%20to%20negotiate%20bilateral%20clearing%20rates."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="tier-cta-btn"
+              >
+                Discuss Carrier Clearing ➔
+              </a>
             </div>
           </div>
         </div>
