@@ -472,72 +472,248 @@ const routes = [
   {
     path: "/rates",
     dir: "rates",
-    title: "Global Bulk SMS Rates, International P2P Hubbing & Wholesale Pricing | NAMX Telecom",
-    description: "Explore live wholesale Bulk SMS rates and international P2P hubbing pricing for 195+ corridors. Calculate volume routing pricing in EUR, USDT, or USD with zero hidden commitments.",
+    title: "Wholesale Bulk SMS Rates & P2P Pricing | NAMX Telecom",
+    description: "Explore live wholesale Bulk SMS rates and international P2P hubbing pricing for 195+ corridors. Transparent LCR pricing, zero minimums, instant test binds.",
     keywords: "Bulk SMS Rates, Wholesale Bulk SMS Pricing, International P2P SMS Rates, SMPP Gateway Rates, SMS Routing Rate Estimator, Bulk SMS Singapore Rates, Global SMS Traffic Rates",
     canonical: "https://www.namxtelecom.site/rates",
     schema: {
       "@context": "https://schema.org",
-      "@type": "OfferCatalog",
-      "name": "Wholesale Bulk SMS & International P2P Rate Cards",
-      "url": "https://www.namxtelecom.site/rates",
-      "provider": {
-        "@type": "Organization",
-        "name": "NAMX Telecom",
-        "url": "https://www.namxtelecom.site/"
-      }
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.namxtelecom.site/" },
+            { "@type": "ListItem", "position": 2, "name": "Wholesale Rates", "item": "https://www.namxtelecom.site/rates" }
+          ]
+        },
+        {
+          "@type": "OfferCatalog",
+          "name": "Wholesale Bulk SMS & International P2P Rate Cards",
+          "url": "https://www.namxtelecom.site/rates",
+          "provider": {
+            "@type": "Organization",
+            "name": "NAMX Telecom",
+            "url": "https://www.namxtelecom.site/"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What are wholesale Bulk SMS rates based on?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Rates are determined by monthly volume commitments, destination country corridors, and routing tier (Tier-1 Direct SS7 routes vs Wholesale Aggregator LCR). We offer volume-tiered rate cards starting with zero monthly commitments."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What settlement currencies and payment terms does NAMX Telecom accept?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We accept settlements in EUR, USD, and USDT (Tether cryptocurrency). Flexible weekly and bi-weekly post-paid credit terms are available for approved carriers and volume aggregators."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I test SMPP v3.4 binds and delivery speed before committing?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, we provide free test credits along with dedicated SMPP v3.4/v5.0 transceiver bind credentials so your engineering team can test latency, DLR delivery receipts, and throughput within 15 minutes."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the difference between Direct SS7 and Wholesale LCR routes?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Tier-1 Direct SS7 routes feature zero-hop MNO interconnects with 100% handset DLR receipts and sub-2-second latency for time-critical 2FA OTP codes. Wholesale LCR routes optimize cost efficiency for high-volume marketing campaigns."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Are there any setup fees or hidden interconnect charges?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. There are zero setup fees, zero monthly port maintenance charges, and no hidden minimum commitments. You only pay for messages successfully processed."
+              }
+            }
+          ]
+        }
+      ]
     }
   },
   {
     path: "/coverage",
     dir: "coverage",
-    title: "195+ Country Telecom Reach, Direct SS7 MNO Interconnects & SMS Routing | NAMX Telecom",
-    description: "Global Bulk SMS & international P2P messaging coverage across 195+ countries. Direct SS7 signaling links, LCR SMS routing engine, and zero-hop carrier termination.",
+    title: "Global SMS Coverage (195+ Countries) | NAMX Telecom",
+    description: "Global wholesale Bulk SMS & international P2P messaging coverage across 195+ countries. Direct SS7 signaling links, LCR engine, and zero-hop termination.",
     keywords: "Global Bulk SMS Coverage, International P2P SMS Interconnects, Direct MNO SS7 Links, SMS Routing Engine, Zero-Hop SMS Termination, Wholesale SMS Aggregator",
     canonical: "https://www.namxtelecom.site/coverage",
     schema: {
       "@context": "https://schema.org",
-      "@type": "Service",
-      "serviceType": "Global Bulk SMS & International P2P Telecommunications Coverage",
-      "provider": {
-        "@type": "Organization",
-        "name": "NAMX Telecom"
-      },
-      "areaServed": "Worldwide"
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.namxtelecom.site/" },
+            { "@type": "ListItem", "position": 2, "name": "Global Coverage", "item": "https://www.namxtelecom.site/coverage" }
+          ]
+        },
+        {
+          "@type": "Service",
+          "serviceType": "Global Bulk SMS & International P2P Telecommunications Coverage",
+          "provider": {
+            "@type": "Organization",
+            "name": "NAMX Telecom"
+          },
+          "areaServed": "Worldwide"
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Which countries have direct Tier-1 SS7 interconnects?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We operate direct MNO interconnects across Singapore, UAE, UK, USA, India, Malaysia, Germany, Saudi Arabia, and over 195+ countries worldwide."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do you support Alphanumeric and Dynamic Sender IDs?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, we support Alphanumeric Sender IDs (up to 11 characters) and local two-way shortcodes/long numbers in full compliance with local regulatory frameworks."
+              }
+            }
+          ]
+        }
+      ]
     }
   },
   {
     path: "/services",
     dir: "services",
-    title: "Carrier SMS Products, SMPP v3.4/v5.0 Binds, International P2P & Bulk SMS Gateway | NAMX Telecom",
-    description: "Enterprise messaging infrastructure: high-speed SMPP v3.4/v5.0 binds, International P2P traffic exchange, A2P Bulk SMS gateway, and dynamic least-cost SMS routing.",
+    title: "Carrier Bulk SMS Gateway & SMPP Binds | NAMX Telecom",
+    description: "Enterprise Bulk SMS gateway, high-speed SMPP v3.4/v5.0 binds (up to 10k TPS), WhatsApp API, RCS messaging, and bilateral P2P traffic hubbing.",
     keywords: "Bulk SMS Gateway, SMPP Gateway, SMPP v3.4 Binds, SMPP v5.0 Gateway, International P2P SMS Hubbing, Dynamic SMS Routing, Least Cost Routing LCR",
     canonical: "https://www.namxtelecom.site/services",
     schema: {
       "@context": "https://schema.org",
-      "@type": "Service",
-      "serviceType": "Wholesale Bulk SMS, SMPP v3.4/v5.0 Gateway & International P2P Hubbing",
-      "provider": {
-        "@type": "Organization",
-        "name": "NAMX Telecom"
-      }
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.namxtelecom.site/" },
+            { "@type": "ListItem", "position": 2, "name": "Telecom Services", "item": "https://www.namxtelecom.site/services" }
+          ]
+        },
+        {
+          "@type": "Service",
+          "serviceType": "Wholesale Bulk SMS, SMPP v3.4/v5.0 Gateway & International P2P Hubbing",
+          "provider": {
+            "@type": "Organization",
+            "name": "NAMX Telecom"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What throughput and TPS can the NAMX SMPP gateway handle?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Our carrier-grade SMPP v3.4 and v5.0 gateway supports up to 10,000 Transactions Per Second (TPS) across multi-session transceiver binds over TLS and IPsec VPN."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do you offer WhatsApp Business API and RCS messaging?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, we provide full omnichannel messaging including official WhatsApp Business Platform (Cloud API) with Green Tick support and Google RCS Business Messaging with zero-drop SMS fallback."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How fast is SMPP bind provisioning?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Standard SMPP binds and developer API tokens are provisioned within 5 to 15 minutes by our 24/7 Singapore NOC team once IP whitelisting is completed."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does the Least Cost Routing (LCR) engine work?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Our routing engine recalculates route quality, DLR latency, and price dynamically every 15 milliseconds, guaranteeing optimal cost efficiency and 99.99% message delivery."
+              }
+            }
+          ]
+        }
+      ]
     }
   },
   {
     path: "/industries",
     dir: "industries",
-    title: "Industry Bulk SMS Solutions, Banking 2FA OTP & Telecom P2P SMS Routing | NAMX Telecom",
-    description: "Tailored Bulk SMS & intelligent SMS routing for Banking 2FA OTPs, Telecom Aggregator P2P hubbing, E-Commerce DLR tracking, and Healthcare compliance.",
+    title: "Enterprise SMS & 2FA Solutions by Industry | NAMX Telecom",
+    description: "Specialized SMS routing for Banking 2FA OTPs, Telecom Aggregator P2P hubbing, E-Commerce, and Healthcare. Priority SS7 queues with sub-2s latency.",
     keywords: "Banking Bulk SMS, 2FA OTP SMS Routing, Telecom Aggregator P2P, E-Commerce Bulk SMS, Healthcare SMS Gateway, Enterprise Bulk SMS",
     canonical: "https://www.namxtelecom.site/industries",
     schema: {
       "@context": "https://schema.org",
-      "@type": "Service",
-      "serviceType": "Enterprise Bulk SMS & Specialized SMS Routing Solutions",
-      "provider": {
-        "@type": "Organization",
-        "name": "NAMX Telecom"
-      }
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.namxtelecom.site/" },
+            { "@type": "ListItem", "position": 2, "name": "Industries", "item": "https://www.namxtelecom.site/industries" }
+          ]
+        },
+        {
+          "@type": "Service",
+          "serviceType": "Enterprise Bulk SMS & Specialized SMS Routing Solutions",
+          "provider": {
+            "@type": "Organization",
+            "name": "NAMX Telecom"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How does NAMX Telecom guarantee banking 2FA OTP delivery?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We utilize dedicated Tier-1 SS7 direct signaling links with priority queuing, sub-2-second global latency, and dynamic failover to secondary routes to guarantee zero OTP drop-offs."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can telecom aggregators exchange bilateral P2P traffic?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, we offer bilateral international P2P swap arrangements with automated Least-Cost Routing (LCR) and transparent CDR reconciliation."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do you ensure data privacy for Healthcare and Fintech clients?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Our infrastructure supports end-to-end TLS encryption, zero data retention (ephemeral message processing), and strict compliance with global privacy regulations."
+              }
+            }
+          ]
+        }
+      ]
     }
   },
   {
@@ -591,23 +767,55 @@ const routes = [
   {
     path: "/contact",
     dir: "contact",
-    title: "Carrier Wholesale Consultation, SMPP Onboarding & Singapore NOC | NAMX Telecom",
-    description: "Request custom wholesale Bulk SMS rates, set up live SMPP v3.4 binds, or connect directly with our Singapore 24/7 Global Telecom Network Operations Center (NOC).",
+    title: "Contact NAMX Telecom | 24/7 Singapore NOC & SMPP Setup",
+    description: "Connect directly with our 24/7 Singapore NOC. Instant SMPP v3.4 bind onboarding, wholesale rate quotes, WhatsApp API, and custom telecom engineering.",
     keywords: "Contact NAMX Telecom, Wholesale Bulk SMS Quote, SMPP Gateway Onboarding, International P2P Interconnect, Singapore Telecom NOC",
     canonical: "https://www.namxtelecom.site/contact",
     schema: {
       "@context": "https://schema.org",
-      "@type": "ContactPage",
-      "url": "https://www.namxtelecom.site/contact",
-      "mainEntity": {
-        "@type": "Organization",
-        "name": "NAMX Telecom",
-        "email": "admin@namxtelecom.site",
-        "address": {
-          "@type": "PostalAddress",
-          "addressCountry": "Singapore"
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.namxtelecom.site/" },
+            { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://www.namxtelecom.site/contact" }
+          ]
+        },
+        {
+          "@type": "ContactPage",
+          "url": "https://www.namxtelecom.site/contact",
+          "mainEntity": {
+            "@type": "Organization",
+            "name": "NAMX Telecom",
+            "email": "admin@namxtelecom.site",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "Singapore"
+            }
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How quickly does the NAMX Telecom NOC respond?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Our Singapore Network Operations Center operates 24/7/365 with an average response time of under 15 minutes via live chat, Telegram (@namxtelecom), WhatsApp (+91 93065 29891), and email."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How can I request live SMPP test credentials?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You can message us directly via WhatsApp (+91 93065 29891), Telegram (@namxtelecom), or submit the inquiry form to receive test IP/port/credentials within minutes."
+              }
+            }
+          ]
         }
-      }
+      ]
     }
   }
 ];

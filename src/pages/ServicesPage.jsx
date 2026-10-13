@@ -1,9 +1,31 @@
+import { useState } from "react";
 import Services from "../components/Services";
 import WhyChooseUs from "../components/WhyChooseUs";
 import CTA from "../components/CTA";
 import "../styles/pages/Subpages.css";
 
 export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
+  const [openFaq, setOpenFaq] = useState(null);
+
+  const serviceFaqs = [
+    {
+      q: "What throughput and TPS can the NAMX SMPP gateway handle?",
+      a: "Our carrier-grade SMPP v3.4 and v5.0 gateway supports up to 10,000 Transactions Per Second (TPS) across multi-session transceiver binds over TLS and IPsec VPN."
+    },
+    {
+      q: "Do you offer WhatsApp Business API and RCS messaging?",
+      a: "Yes, we provide full omnichannel messaging including official WhatsApp Business Platform (Cloud API) with Green Tick support and Google RCS Business Messaging with zero-drop SMS fallback."
+    },
+    {
+      q: "How fast is SMPP bind provisioning?",
+      a: "Standard SMPP binds and developer API tokens are provisioned within 5 to 15 minutes by our 24/7 Singapore NOC team once IP whitelisting is completed."
+    },
+    {
+      q: "How does the Least Cost Routing (LCR) engine work?",
+      a: "Our routing engine recalculates route quality, DLR latency, and price dynamically every 15 milliseconds, guaranteeing optimal cost efficiency and 99.99% message delivery."
+    }
+  ];
+
   const serviceSpecs = [
     {
       title: "Wholesale Bulk SMS & A2P Gateway",
@@ -140,7 +162,45 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
         </div>
       </section>
 
-      <CTA onOpenInquiriesModal={onOpenInquiriesModal} />
+      {/* Frequently Asked Questions */}
+      <section className="faq">
+        <div className="container">
+          <div className="section-heading">
+            <p className="stats-eyebrow">Enterprise Infrastructure</p>
+            <h2>Telecom Services &amp; SMPP Binds FAQs</h2>
+            <p className="faq-subtext">Technical details on SMPP protocols, throughput TPS, omnichannel APIs, and provisioning.</p>
+          </div>
+
+          <div className="faq-list">
+            {serviceFaqs.map((faq, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div key={idx} className={`faq-item ${isOpen ? "open" : ""}`}>
+                  <button
+                    type="button"
+                    className="faq-question"
+                    onClick={() => setOpenFaq(isOpen ? null : idx)}
+                    aria-expanded={isOpen}
+                  >
+                    <div className="faq-q-text">
+                      <span className="faq-badge">Telecom Services</span>
+                      <span>{faq.q}</span>
+                    </div>
+                    <span className="faq-toggle">{isOpen ? "−" : "+"}</span>
+                  </button>
+                  {isOpen && (
+                    <div className="faq-answer">
+                      <p>{faq.a}</p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <CTA onOpenInquiriesModal={onOpenInquiriesModal} defaultProduct="Carrier SMS Gateway" />
     </div>
   );
 };
