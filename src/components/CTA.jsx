@@ -97,16 +97,20 @@ export const CTA = ({ onOpenInquiriesModal, defaultProduct = "Web Messaging Plat
       }
     }
 
-    // 3. Dispatch to FormSubmit API as fallback/instant service
+    // 3. Dispatch to FormSubmit API (Primary verified destination: namxtelecom@gmail.com with CC to admin@namxtelecom.site)
     try {
-      fetch("https://formsubmit.co/ajax/admin@namxtelecom.site", {
+      fetch("https://formsubmit.co/ajax/namxtelecom@gmail.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",
         },
         body: JSON.stringify({
-          _subject: `New Consultation Inquiry [${refId}] - ${formData.company || formData.name}`,
+          _subject: `New Wholesale Consultation [${refId}] - ${formData.company || formData.name}`,
+          _cc: "admin@namxtelecom.site",
+          _replyto: formData.email,
+          _captcha: "false",
+          _template: "table",
           Inquiry_Reference: refId,
           Timestamp: timestamp,
           Full_Name: formData.name,
@@ -120,9 +124,40 @@ export const CTA = ({ onOpenInquiriesModal, defaultProduct = "Web Messaging Plat
           Monthly_Volume: formData.volume,
           Message: formData.message,
         }),
-      }).catch((err) => console.log("FormSubmit email notice:", err));
+      }).catch((err) => console.log("FormSubmit primary notice:", err));
     } catch (err) {
-      console.warn("FormSubmit send notice:", err);
+      console.warn("FormSubmit primary send notice:", err);
+    }
+
+    // Secondary dispatch to admin@namxtelecom.site directly
+    try {
+      fetch("https://formsubmit.co/ajax/admin@namxtelecom.site", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({
+          _subject: `New Wholesale Consultation [${refId}] - ${formData.company || formData.name}`,
+          _replyto: formData.email,
+          _captcha: "false",
+          _template: "table",
+          Inquiry_Reference: refId,
+          Timestamp: timestamp,
+          Full_Name: formData.name,
+          Company: formData.company,
+          Business_Email: formData.email,
+          Phone_Number: fullPhoneFormatted,
+          WhatsApp_Available: formData.isWhatsapp ? "Yes" : "No",
+          Telegram_Available: formData.isTelegram ? "Yes" : "No",
+          Target_Country: formData.country,
+          Interested_Product: formData.product,
+          Monthly_Volume: formData.volume,
+          Message: formData.message,
+        }),
+      }).catch((err) => console.log("FormSubmit admin notice:", err));
+    } catch (err) {
+      console.warn("FormSubmit admin send notice:", err);
     }
 
     // 4. Prepare mailto fallback URL
@@ -139,7 +174,7 @@ export const CTA = ({ onOpenInquiriesModal, defaultProduct = "Web Messaging Plat
       `ESTIMATED MONTHLY VOLUME: ${formData.volume}\n\n` +
       `REQUIREMENTS / MESSAGE:\n${formData.message}\n`
     );
-    const mailtoUrl = `mailto:admin@namxtelecom.site?subject=${mailSubject}&body=${mailBody}`;
+    const mailtoUrl = `mailto:admin@namxtelecom.site?cc=namxtelecom@gmail.com&subject=${mailSubject}&body=${mailBody}`;
 
     record.mailtoUrl = mailtoUrl;
 
@@ -234,7 +269,7 @@ export const CTA = ({ onOpenInquiriesModal, defaultProduct = "Web Messaging Plat
               </div>
 
               <p className="success-text">
-                Your consultation request has been <strong>stored in browser memory</strong> and <strong>automatically dispatched to admin@namxtelecom.site</strong>.
+                Your consultation request has been <strong>stored in browser memory</strong> and <strong>automatically dispatched to our Connectivity Desk (admin@namxtelecom.site &amp; namxtelecom@gmail.com)</strong>.
               </p>
 
               <div className="receipt-summary-box">
@@ -495,7 +530,7 @@ export const CTA = ({ onOpenInquiriesModal, defaultProduct = "Web Messaging Plat
                 <Button type="submit" variant="primary" size="lg" external={false} aria-label="Send inquiry">
                   {isSubmitting ? "Dispatching Email..." : "Submit Inquiry & Send Email"}
                 </Button>
-                <span className="privacy-note">✉️ Direct email delivery to admin@namxtelecom.site</span>
+                <span className="privacy-note">✉️ Direct delivery to admin@namxtelecom.site &amp; namxtelecom@gmail.com</span>
               </div>
             </form>
           )}
