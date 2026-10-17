@@ -97,7 +97,34 @@ export const CTA = ({ onOpenInquiriesModal, defaultProduct = "Web Messaging Plat
       }
     }
 
-    // 3. Dispatch to FormSubmit API (Primary verified destination: namxtelecom@gmail.com with CC to admin@namxtelecom.site)
+    // 2. Direct SMTP Serverless Dispatch (GoDaddy Secureserver: smtpout.secureserver.net:465)
+    try {
+      fetch("/api/send-mail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          refId,
+          timestamp,
+          name: formData.name,
+          company: formData.company,
+          email: formData.email,
+          phone: formData.phone,
+          countryCode: formData.countryCode,
+          isWhatsapp: formData.isWhatsapp,
+          isTelegram: formData.isTelegram,
+          country: formData.country,
+          product: formData.product,
+          volume: formData.volume,
+          message: formData.message,
+        }),
+      }).catch((err) => console.warn("Direct SMTP API notice:", err));
+    } catch (err) {
+      console.warn("Direct SMTP API dispatch error:", err);
+    }
+
+    // 3. Dispatch to FormSubmit API (Secondary verified destination: namxtelecom@gmail.com with CC to admin@namxtelecom.site)
     try {
       fetch("https://formsubmit.co/ajax/namxtelecom@gmail.com", {
         method: "POST",
