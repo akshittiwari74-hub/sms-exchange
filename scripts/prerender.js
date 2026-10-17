@@ -472,9 +472,9 @@ const routes = [
   {
     path: "/rates",
     dir: "rates",
-    title: "Wholesale Bulk SMS Rates & Top Routes in Euro | NAMX Telecom",
-    description: "Live wholesale Bulk SMS Euro rates for top routes: Spain (€0.029), Italy (€0.033), Austria (€0.022), Mexico (€0.0025), Brazil (€0.0085), Slovakia (€0.025), Denmark (€0.042), China (€0.092). Fully negotiable on volume confirmations.",
-    keywords: "Bulk SMS Rates, Wholesale SMS Euro Rates, Spain SMS Route, Italy SMS Route, Austria SMS Route, Mexico SMS Route, Brazil SMS Route, SMPP Gateway Rates",
+    title: "Wholesale Bulk SMS Rates [2026] | Live Euro Rate Cards & Pricing | NAMX Telecom",
+    description: "Explore live wholesale Bulk SMS rates and international P2P hubbing pricing for 195+ corridors. Compare Tier-1 Direct SS7 and wholesale pricing in EUR, USDT, or USD.",
+    keywords: "Wholesale Bulk SMS Rates, International SMS Pricing, Euro SMS Rates, Spain SMS Rate, Mexico Wholesale SMS, Direct SS7 SMS Pricing, SMPP Gateway Rates",
     canonical: "https://www.namxtelecom.site/rates",
     schema: {
       "@context": "https://schema.org",
@@ -565,9 +565,9 @@ const routes = [
   {
     path: "/coverage",
     dir: "coverage",
-    title: "Global SMS Coverage (195+ Countries) | NAMX Telecom",
-    description: "Global wholesale Bulk SMS & international P2P messaging coverage across 195+ countries. Direct SS7 signaling links, LCR engine, and zero-hop termination.",
-    keywords: "Global Bulk SMS Coverage, International P2P SMS Interconnects, Direct MNO SS7 Links, SMS Routing Engine, Zero-Hop SMS Termination, Wholesale SMS Aggregator",
+    title: "Global Bulk SMS Coverage & Direct MNO Route Matrix (195+ Countries) | NAMX Telecom",
+    description: "Global Bulk SMS and international P2P messaging coverage across 195+ countries. Direct SS7 signaling links, LCR SMS routing engine, and zero-hop carrier termination.",
+    keywords: "Global Bulk SMS Coverage, International SMS Routes, Direct SS7 Interconnects, SMS Routing Engine, Zero-Hop Carrier Termination, Wholesale SMS Reach",
     canonical: "https://www.namxtelecom.site/coverage",
     schema: {
       "@context": "https://schema.org",
@@ -615,9 +615,9 @@ const routes = [
   {
     path: "/services",
     dir: "services",
-    title: "Carrier Bulk SMS Gateway & SMPP Binds | NAMX Telecom",
-    description: "Enterprise Bulk SMS gateway, high-speed SMPP v3.4/v5.0 binds (up to 10k TPS), WhatsApp API, RCS messaging, and bilateral P2P traffic hubbing.",
-    keywords: "Bulk SMS Gateway, SMPP Gateway, SMPP v3.4 Binds, SMPP v5.0 Gateway, International P2P SMS Hubbing, Dynamic SMS Routing, Least Cost Routing LCR",
+    title: "Carrier Bulk SMS Gateway, SMPP v3.4 Binds & P2P Hubbing | NAMX Telecom",
+    description: "Carrier-grade messaging suite: dedicated SMPP v3.4/v5.0 binds up to 10,000 TPS, international P2P traffic hubbing, dynamic LCR routing, and REST SMS APIs.",
+    keywords: "Bulk SMS Gateway, SMPP Gateway Provider, SMPP v3.4 Binds, SMPP v5.0 Protocol, International P2P SMS Hubbing, Dynamic SMS Routing, Least Cost Routing LCR",
     canonical: "https://www.namxtelecom.site/services",
     schema: {
       "@context": "https://schema.org",
@@ -755,29 +755,152 @@ const routes = [
   {
     path: "/faq",
     dir: "faq",
-    title: "Technical Telecom FAQ, SMPP Bind Specs, SS7 SMS Routing & Compliance | NAMX Telecom",
-    description: "Technical answers on SMPP v3.4 binds, International P2P clearing, SS7 firewalling, dynamic SMS routing rules, DLR status codes, and 99.99% SLA uptime.",
-    keywords: "Bulk SMS FAQ, SMPP Bind Specs, International P2P Clearing, SS7 SMS Routing, Sender ID Whitelisting, Telecom DLR Error Codes",
+    title: "Wholesale SMS & SMPP v3.4 Technical FAQ | Protocol Binds & Routing | NAMX Telecom",
+    description: "Technical answers on SMPP v3.4/v5.0 binds, TPS windowing limits, dynamic LCR routing, SS7 anti-fraud firewalling, DLR status codes, and 99.99% SLA uptime.",
+    keywords: "Bulk SMS FAQ, SMPP Bind Specs, SMPP Window Size, SS7 SMS Routing, LCR Routing Engine, Sender ID Whitelisting, DLR Delivery Status Codes",
     canonical: "https://www.namxtelecom.site/faq",
     schema: {
       "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
+      "@graph": [
         {
-          "@type": "Question",
-          "name": "What Bulk SMS and SMPP protocols are supported by NAMX Telecom?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "NAMX Telecom supports native SMPP v3.4 and v5.0 protocols over TLS/VPN for high-volume carrier binds (up to 10,000 TPS), developer-friendly HTTP REST APIs, and an online Web Broadcast Campaign Portal."
-          }
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.namxtelecom.site/" },
+            { "@type": "ListItem", "position": 2, "name": "Technical FAQ", "item": "https://www.namxtelecom.site/faq" }
+          ]
         },
         {
-          "@type": "Question",
-          "name": "How does International P2P Traffic Hubbing and Dynamic SMS Routing work?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Our International P2P Hubbing engine manages bilateral clearing between mobile operators and global aggregators, utilizing Least Cost Routing (LCR) algorithms, real-time HLR lookup, and SS7 anti-fraud firewalling."
-          }
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is Wholesale Bulk SMS and how does carrier termination work?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Wholesale Bulk SMS is the enterprise-scale transmission of high-volume text messages directly into mobile network operator (MNO) infrastructure. Messages are transmitted via direct SS7 signaling links or SMPP protocol binds, enabling sub-second delivery for 2FA OTP codes, transactional notifications, and global marketing broadcasts without relying on consumer aggregators."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the difference between A2P SMS and P2P SMS?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A2P (Application-to-Person) SMS refers to automated messages generated by software applications and sent to subscribers (such as bank OTPs, appointment reminders, and order updates). P2P (Person-to-Person) SMS refers to standard mobile messaging sent between two human subscribers over cellular roaming networks. NAMX Telecom operates specialized routing engines for both traffic types."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does Concatenated SMS (GSM 03.38 vs Unicode UTF-16) character encoding work?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A standard single SMS contains up to 160 characters in GSM 7-bit encoding (or 70 characters in Unicode UTF-16 for scripts like Arabic, Chinese, or Cyrillic). When a message exceeds this limit, it is automatically concatenated using a UDH (User Data Header) parameter into multi-part SMS. GSM 7-bit parts allow 153 characters per segment, while Unicode parts allow 67 characters per segment."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is SMPP (Short Message Peer-to-Peer) and why do carriers prefer it over REST API?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "SMPP is an open, industry-standard telecommunications protocol designed for high-concurrency, low-latency SMS transmission directly between SMSCs (Short Message Service Centers) and ESME (External Short Messaging Entity) enterprise servers. Unlike HTTP REST APIs, SMPP maintains persistent TCP/IP socket connections, eliminating HTTP header handshake overhead and achieving throughput rates exceeding 10,000 TPS per bind."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the difference between TRX (Transceiver), TX (Transmitter), and RX (Receiver) binds?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "In SMPP session architecture: TX (Transmitter) binds are strictly dedicated to submitting outbound SMS messages (submit_sm). RX (Receiver) binds are dedicated exclusively to receiving inbound messages and delivery reports (deliver_sm). TRX (Transceiver) binds allow bidirectional transmission—submitting messages and receiving delivery receipts on a single persistent TCP connection."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do SMPP windowing size and TPS (Transactions Per Second) limits operate?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "SMPP windowing allows an ESME client to transmit multiple submit_sm PDUs asynchronously before waiting for an acknowledgement (submit_sm_resp). A larger window size (e.g. window size 50 or 100) maximizes throughput on high-latency WAN links, enabling continuous full-duplex message streaming up to 10,000+ TPS per session."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Which SMPP PDU commands and mandatory parameter fields are supported?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "NAMX Telecom supports all standard SMPP v3.4 and v5.0 PDU primitives including bind_transceiver, bind_transmitter, bind_receiver, submit_sm, deliver_sm, enquire_link (heartbeat ping), unbind, and optional TLV (Tag-Length-Value) parameters for custom routing headers and message payloads."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is International P2P Traffic Hubbing and Bilateral Clearing?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "International P2P Traffic Hubbing is the exchange and settlement of international mobile messaging traffic between mobile network operators (MNOs), MVNOs, and global aggregators. NAMX Telecom manages bilateral clearing agreements, roaming hub interconnects, and itemized CDR (Call Detail Record) financial reconciliation compliant with GSMA AA.19 billing standards."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does Zero-Hop Roaming Interconnect work for international messaging?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Zero-hop interconnect means your SMS traffic bypasses intermediary third-party wholesale brokers and is delivered directly to the destination operator's Home Location Register (HLR) / Short Message Service Center (SMSC) via direct SS7 signaling links. This eliminates delivery hops, minimizes latency, and prevents unauthorized message interception."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How are bilateral swap rates negotiated and cleared between mobile operators?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Bilateral swap agreements allow two telecom network partners to exchange equal volumes of SMS traffic at offset rates, paying only net balance clearing fees. NAMX Telecom acts as a central clearinghouse platform with automated monthly CDR matching, multi-currency invoicing, and real-time rate card updates."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is Dynamic Least-Cost Routing (LCR) and how does algorithmic route switching work?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Dynamic Least-Cost Routing (LCR) is an automated routing engine that continuously evaluates carrier wholesale rates, live delivery rates (ASR/DLR success), and network latency benchmarks in under 15ms per message. If a primary carrier route experiences congestion or failure, the LCR engine instantly reroutes traffic to a secondary direct MNO link."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is HLR (Home Location Register) Lookup and why is MNP portability check essential?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "An HLR Lookup queries the global mobile signaling network to verify a phone number's current active state, IMSI data, roaming country, and ported operator identity (Mobile Number Portability - MNP). Performing HLR lookups prior to dispatch eliminates invalid numbers, prevents routing to disconnected handsets, and optimizes carrier delivery rates."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does your SS7 Firewall protect against SMS fraud, AIT, and Grey Routes?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Our core SS7 signaling firewall utilizes deep packet inspection and heuristic machine learning to identify and block Artificial Traffic Inflation (AIT), SIM farm bypass, grey route spoofing, and unauthorized Sender ID manipulation in real time, protecting enterprise clients and mobile operators from revenue leakage."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What are the Sender ID registration requirements for India (DLT), Singapore (SSIR), and UAE?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Regulated telecom jurisdictions require Sender ID header pre-registration: DLT (Distributed Ledger Technology) in India mandates business entity and template registration; SSIR (SMS SenderID Registry) in Singapore requires Infocomm registration; TRAE in UAE mandates enterprise authorization letters. NAMX Telecom handles end-to-end whitelist registration within 24-48 hours."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What standard Delivery Report (DLR) error codes are returned?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "DLR receipts return mapped GSM status codes: DELIVRD (handset delivery confirmed), UNDELIV (handset unreachable/powered off), EXPIRED (validity period lapsed before delivery), REJECTD (blocked by operator spam filter or unregistered Sender ID), and UNKNOWN (network route error). Itemized error codes are returned via HTTP webhook or SMPP deliver_sm PDUs."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What SLAs and uptime guarantees does NAMX Telecom provide?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We guarantee a 99.99% network availability SLA across our dual-redundant core switching nodes in Singapore and Frankfurt, backed by sub-2.5 second delivery latency for OTP transactions and 24/7 technical NOC assistance."
+              }
+            }
+          ]
         }
       ]
     }
@@ -785,9 +908,9 @@ const routes = [
   {
     path: "/contact",
     dir: "contact",
-    title: "Contact NAMX Telecom | 24/7 Singapore NOC & SMPP Setup",
-    description: "Connect directly with our 24/7 Singapore NOC. Instant SMPP v3.4 bind onboarding, wholesale rate quotes, WhatsApp API, and custom telecom engineering.",
-    keywords: "Contact NAMX Telecom, Wholesale Bulk SMS Quote, SMPP Gateway Onboarding, International P2P Interconnect, Singapore Telecom NOC",
+    title: "Contact Wholesale SMS Desk | Request Rates & SMPP Test Binds | NAMX Telecom",
+    description: "Connect directly with our 24/7 Singapore NOC connectivity desk. Request custom wholesale Bulk SMS rates, SMPP v3.4 test binds, or enterprise API credentials.",
+    keywords: "Contact NAMX Telecom, Wholesale Bulk SMS Quote, SMPP Gateway Onboarding, International P2P Interconnect, Singapore Telecom NOC, Test SMPP Credentials",
     canonical: "https://www.namxtelecom.site/contact",
     schema: {
       "@context": "https://schema.org",
@@ -885,21 +1008,21 @@ routes.forEach((route) => {
 });
 
 
-  const sitemapPath = path.join(distDir, 'sitemap.xml');
-  const publicSitemapPath = path.resolve(__dirname, '../public/sitemap.xml');
-  let sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
-  const today = new Date().toISOString().split('T')[0];
-  routes.forEach(route => {
-    sitemap += '  <url>\n';
-    sitemap += `    <loc>${route.canonical}</loc>\n`;
-    sitemap += `    <lastmod>${today}</lastmod>\n`;
-    sitemap += '    <changefreq>daily</changefreq>\n';
-    sitemap += '    <priority>' + (route.path === '/' ? '1.0' : '0.8') + '</priority>\n';
-    sitemap += '  </url>\n';
-  });
-  sitemap += '</urlset>';
-  fs.writeFileSync(sitemapPath, sitemap, 'utf-8');
-  fs.writeFileSync(publicSitemapPath, sitemap, 'utf-8');
-  console.log('Sitemaps generated in both dist/ and public/.');
+const sitemapPath = path.join(distDir, 'sitemap.xml');
+const publicSitemapPath = path.resolve(__dirname, '../public/sitemap.xml');
+let sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+const today = new Date().toISOString().split('T')[0];
+routes.forEach(route => {
+  sitemap += '  <url>\n';
+  sitemap += `    <loc>${route.canonical}</loc>\n`;
+  sitemap += `    <lastmod>${today}</lastmod>\n`;
+  sitemap += '    <changefreq>daily</changefreq>\n';
+  sitemap += '    <priority>' + (route.path === '/' ? '1.0' : '0.8') + '</priority>\n';
+  sitemap += '  </url>\n';
+});
+sitemap += '</urlset>';
+fs.writeFileSync(sitemapPath, sitemap, 'utf-8');
+fs.writeFileSync(publicSitemapPath, sitemap, 'utf-8');
+console.log('Sitemaps generated in both dist/ and public/.');
 
 console.log("SSG Pre-rendering and Sitemap generation completed!");

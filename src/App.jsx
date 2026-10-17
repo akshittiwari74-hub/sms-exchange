@@ -49,18 +49,18 @@ const pageMeta = {
     canonical: "https://www.namxtelecom.site/it-services",
   },
   "/rates": {
-    title: "Global Bulk SMS Rates, International P2P Hubbing & Wholesale Pricing | NAMX Telecom",
-    description: "Explore live wholesale Bulk SMS rates and international P2P hubbing pricing for 195+ corridors. Calculate volume routing pricing in EUR, USDT, or USD with zero hidden commitments.",
+    title: "Wholesale Bulk SMS Rates [2026] | Live Euro Rate Cards & Pricing | NAMX Telecom",
+    description: "Explore live wholesale Bulk SMS rates and international P2P hubbing pricing for 195+ corridors. Compare Tier-1 Direct SS7 and wholesale pricing in EUR, USDT, or USD.",
     canonical: "https://www.namxtelecom.site/rates",
   },
   "/coverage": {
-    title: "195+ Country Telecom Reach, Direct SS7 MNO Interconnects & SMS Routing | NAMX Telecom",
-    description: "Global Bulk SMS & international P2P messaging coverage across 195+ countries. Direct SS7 signaling links, LCR SMS routing engine, and zero-hop carrier termination.",
+    title: "Global Bulk SMS Coverage & Direct MNO Route Matrix (195+ Countries) | NAMX Telecom",
+    description: "Global Bulk SMS and international P2P messaging coverage across 195+ countries. Direct SS7 signaling links, LCR SMS routing engine, and zero-hop carrier termination.",
     canonical: "https://www.namxtelecom.site/coverage",
   },
   "/services": {
-    title: "Carrier SMS Products, SMPP v3.4/v5.0 Binds, International P2P & Bulk SMS Gateway | NAMX Telecom",
-    description: "Enterprise messaging infrastructure: high-speed SMPP v3.4/v5.0 binds, International P2P traffic exchange, A2P Bulk SMS gateway, and dynamic least-cost SMS routing.",
+    title: "Carrier Bulk SMS Gateway, SMPP v3.4 Binds & P2P Hubbing | NAMX Telecom",
+    description: "Carrier-grade messaging suite: dedicated SMPP v3.4/v5.0 binds up to 10,000 TPS, international P2P traffic hubbing, dynamic LCR routing, and REST SMS APIs.",
     canonical: "https://www.namxtelecom.site/services",
   },
   "/industries": {
@@ -74,13 +74,13 @@ const pageMeta = {
     canonical: "https://www.namxtelecom.site/api",
   },
   "/faq": {
-    title: "Technical Telecom FAQ, SMPP Bind Specs, SS7 SMS Routing & Compliance | NAMX Telecom",
-    description: "Technical answers on SMPP v3.4 binds, International P2P clearing, SS7 firewalling, dynamic SMS routing rules, DLR status codes, and 99.99% SLA uptime.",
+    title: "Wholesale SMS & SMPP v3.4 Technical FAQ | Protocol Binds & Routing | NAMX Telecom",
+    description: "Technical answers on SMPP v3.4/v5.0 binds, TPS windowing limits, dynamic LCR routing, SS7 anti-fraud firewalling, DLR status codes, and 99.99% SLA uptime.",
     canonical: "https://www.namxtelecom.site/faq",
   },
   "/contact": {
-    title: "Carrier Wholesale Consultation, SMPP Onboarding & Singapore NOC | NAMX Telecom",
-    description: "Request custom wholesale Bulk SMS rates, set up live SMPP v3.4 binds, or connect directly with our Singapore 24/7 Global Telecom Network Operations Center (NOC).",
+    title: "Contact Wholesale SMS Desk | Request Rates & SMPP Test Binds | NAMX Telecom",
+    description: "Connect directly with our 24/7 Singapore NOC connectivity desk. Request custom wholesale Bulk SMS rates, SMPP v3.4 test binds, or enterprise API credentials.",
     canonical: "https://www.namxtelecom.site/contact",
   },
   "/glossary": {

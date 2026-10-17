@@ -51,14 +51,21 @@ export const ContactPage = ({ onOpenInquiriesModal }) => {
 
             <div className="info-card contact-detail-card">
               <span className="info-icon">💼</span>
-              <h3>MS Teams / Email</h3>
+              <h3>Email &amp; MS Teams</h3>
               <p>Direct connectivity desk inquiry &amp; enterprise contracts.</p>
+              <a
+                href="mailto:admin@namxtelecom.site"
+                className="contact-link-btn"
+                style={{ borderColor: "#7B83EB", color: "#7B83EB", marginBottom: "8px" }}
+              >
+                admin@namxtelecom.site
+              </a>
               <a
                 href="mailto:namxtelecom@gmail.com"
                 className="contact-link-btn"
-                style={{ borderColor: "#7B83EB", color: "#7B83EB" }}
+                style={{ borderColor: "rgba(123, 131, 235, 0.4)", color: "#a1a1aa", fontSize: "0.82rem" }}
               >
-                namxtelecom@gmail.com
+                MS Teams: namxtelecom@gmail.com
               </a>
             </div>
 

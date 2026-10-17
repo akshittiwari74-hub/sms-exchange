@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 export const AnimatedCounter = ({ end = 100, duration = 2, prefix = "", suffix = "" }) => {
-  const [count, setCount] = React.useState(0);
+  const [count, setCount] = React.useState(end);
 
   React.useEffect(() => {
     let start = 0;
