@@ -24,7 +24,6 @@ const routesList = [
   { country: "Ireland 🇮🇪", code: "IE", region: "Europe", type: "Direct Operator Link", latency: "1.2s", rateEUR: 0.041, tps: "2,800 TPS", status: "Direct Live" },
 
   // APAC
-  { country: "Singapore 🇸🇬", code: "SG", region: "APAC", type: "SSIR Registered Direct", latency: "1.4s", rateEUR: 0.038, tps: "3,000 TPS", status: "Direct Live" },
   { country: "India 🇮🇳", code: "IN", region: "APAC", type: "DLT Approved Direct Route", latency: "1.8s", rateEUR: 0.0032, tps: "10,000 TPS", status: "Direct Live" },
   { country: "Japan 🇯🇵", code: "JP", region: "APAC", type: "Direct Operator Interconnect", latency: "1.3s", rateEUR: 0.054, tps: "3,000 TPS", status: "Direct Live" },
   { country: "South Korea 🇰🇷", code: "KR", region: "APAC", type: "Direct Carrier Link", latency: "1.2s", rateEUR: 0.032, tps: "4,000 TPS", status: "Direct Live" },

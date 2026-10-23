@@ -72,9 +72,9 @@ export const HomePage = ({ navigate }) => {
     },
     {
       icon: "✉️",
-      badge: "Singapore NOC",
+      badge: "Global NOC",
       title: "24/7 Consultation & Support",
-      desc: "Connect directly with our Singapore Connectivity Desk for custom bilateral rate clearing or immediate sandbox provisioning.",
+      desc: "Connect directly with our Global Connectivity Desk for custom bilateral rate clearing or immediate sandbox provisioning.",
       linkText: "Contact Connectivity Desk →",
       path: "/contact",
     },

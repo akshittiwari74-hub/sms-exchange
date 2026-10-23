@@ -120,7 +120,7 @@ export const WhatsAppPage = ({ onOpenInquiriesModal, navigate }) => {
     },
     {
       q: "What throughput (MPS) can the NAMX WhatsApp Cloud API handle?",
-      a: "Our infrastructure supports enterprise-grade throughput scaling from 100 up to 1,000+ messages per second (MPS), backed by direct Meta Cloud server connections and Singapore NOC 99.99% uptime monitoring."
+      a: "Our infrastructure supports enterprise-grade throughput scaling from 100 up to 1,000+ messages per second (MPS), backed by direct Meta Cloud server connections and Global NOC 99.99% uptime monitoring."
     }
   ];
 

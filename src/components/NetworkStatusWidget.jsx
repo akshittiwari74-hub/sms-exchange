@@ -2,7 +2,7 @@ import "../styles/components/NetworkStatusWidget.css";
 
 export const NetworkStatusWidget = () => {
   const nodes = [
-    { city: "Singapore NOC", hub: "Primary SS7 Gateway", ping: "14ms", status: "Operational", uptime: "100%" },
+    { city: "Amsterdam AMS-IX", hub: "Primary SS7 Gateway", ping: "14ms", status: "Operational", uptime: "100%" },
     { city: "Frankfurt Equinix", hub: "EU Interconnect Switch", ping: "28ms", status: "Operational", uptime: "100%" },
     { city: "Dubai DIC Hub", hub: "MENA Regional Gateways", ping: "22ms", status: "Operational", uptime: "100%" },
     { city: "London Equinix LD4", hub: "UK Carrier Exchange", ping: "31ms", status: "Operational", uptime: "99.98%" },

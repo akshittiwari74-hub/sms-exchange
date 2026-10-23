@@ -102,6 +102,27 @@
   font-family: var(--font-mono);
 }
 
+.footer-legal-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-legal-links a {
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-legal-links a:hover {
+  color: var(--accent-cyan);
+}
+
+.footer-legal-separator {
+  color: rgba(255, 255, 255, 0.2);
+}
+
 /* ==========================================
    RESPONSIVE DESIGN (TABLET & PHONE)
 ========================================== */

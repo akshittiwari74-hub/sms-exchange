@@ -249,7 +249,7 @@ export const CTA = ({ onOpenInquiriesModal, defaultProduct = "Web Messaging Plat
           <p className="stats-eyebrow">Enterprise Consultation</p>
           <h2>Start Messaging with NAMX Telecom</h2>
           <p>
-            Connect directly with our global wholesale connectivity team in Singapore to discuss Web messaging platform access, SMPP v3.4/v5.0 binds, API connectivity, or custom pricing.
+            Connect directly with our global wholesale connectivity team to discuss Web messaging platform access, SMPP v3.4/v5.0 binds, API connectivity, or custom pricing.
           </p>
 
           <div className="contact-methods-grid">
@@ -270,8 +270,8 @@ export const CTA = ({ onOpenInquiriesModal, defaultProduct = "Web Messaging Plat
           <div className="cta-address-box">
             <span className="address-icon">📍</span>
             <div>
-              <strong>NAMX Telecom Headquarters</strong>
-              <p>Marina Bay Financial Centre · Singapore</p>
+              <strong>NAMX Telecom Operations</strong>
+              <p>Global Telecom Network Hub · International Carrier Exchange</p>
               <small className="address-sub">24/7/365 Global Network Operations Center (NOC)</small>
             </div>
           </div>
@@ -422,7 +422,6 @@ export const CTA = ({ onOpenInquiriesModal, defaultProduct = "Web Messaging Plat
                     >
                       <option value="+1">🇺🇸 +1 (US / Canada)</option>
                       <option value="+44">🇬🇧 +44 (United Kingdom)</option>
-                      <option value="+65">🇸🇬 +65 (Singapore)</option>
                       <option value="+91">🇮🇳 +91 (India)</option>
                       <option value="+971">🇦🇪 +971 (UAE)</option>
                       <option value="+966">🇸🇦 +966 (Saudi Arabia)</option>

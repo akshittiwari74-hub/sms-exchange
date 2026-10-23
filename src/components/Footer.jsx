@@ -37,6 +37,8 @@ export const Footer = ({ navigate }) => {
           <a href="/faq" onClick={(e) => handleLinkClick(e, "/faq")}>Technical FAQ</a>
           <a href="/insights" onClick={(e) => handleLinkClick(e, "/insights")}>Telecom Insights</a>
           <a href="/glossary" onClick={(e) => handleLinkClick(e, "/glossary")}>Glossary</a>
+          <a href="/terms" onClick={(e) => handleLinkClick(e, "/terms")}>Terms &amp; Conditions</a>
+          <a href="/privacy" onClick={(e) => handleLinkClick(e, "/privacy")}>Privacy Policy</a>
           <a href="/contact" onClick={(e) => handleLinkClick(e, "/contact")}>Enterprise Contact</a>
         </div>
         <div className="footer-column">
@@ -50,7 +52,12 @@ export const Footer = ({ navigate }) => {
 
       <div className="footer-bottom">
         <p className="copyright">© {currentYear} NAMX Telecom. All rights reserved.</p>
-        <span className="footer-bottom-location">HQ: Singapore · Global Telecom Network</span>
+        <div className="footer-legal-links">
+          <a href="/terms" onClick={(e) => handleLinkClick(e, "/terms")}>Terms &amp; Conditions</a>
+          <span className="footer-legal-separator">·</span>
+          <a href="/privacy" onClick={(e) => handleLinkClick(e, "/privacy")}>Privacy Policy</a>
+        </div>
+        <span className="footer-bottom-location">Global Telecom Network &amp; Operations</span>
       </div>
     </footer>
   );

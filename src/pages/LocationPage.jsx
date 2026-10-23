@@ -5,7 +5,7 @@ export const LocationPage = ({ onOpenInquiriesModal, forcedLocation }) => {
   const params = useParams();
   const activeLocation = forcedLocation || params?.location || "";
   
-  // Capitalize location for display (e.g. 'singapore' -> 'Singapore', 'uk' -> 'UK')
+  // Capitalize location for display (e.g. 'uae' -> 'UAE', 'uk' -> 'UK')
   const formatLocation = (loc) => {
     if (!loc) return "";
     if (loc.length <= 3) return loc.toUpperCase();

@@ -131,7 +131,7 @@ export const TopRoutesSpotlight = () => {
             <div className="negotiation-text">
               <strong>All Rates Are Fully Negotiable Over Volume Commitments!</strong>
               <p>
-                Processing 250,000+ or 1,000,000+ SMS/month? Speak directly with our 24/7 Singapore routing desk to lock in custom bilateral clearing discounts.
+                Processing 250,000+ or 1,000,000+ SMS/month? Speak directly with our 24/7 Global routing desk to lock in custom bilateral clearing discounts.
               </p>
             </div>
             <div className="negotiation-cta">

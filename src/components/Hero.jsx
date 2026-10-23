@@ -42,7 +42,7 @@ export const Hero = ({ navigate }) => {
         >
           <motion.div className="hero-noc-status" variants={itemVariants}>
             <span className="status-live-pulse" />
-            <span className="status-text">Singapore Operations Center · 99.98% Network Active</span>
+            <span className="status-text">Global Operations Center · 99.98% Network Active</span>
           </motion.div>
 
           <div className="hero-headlines">

@@ -27,7 +27,7 @@ export const Services = () => {
         throughput: "10,000+ TPS per Session",
         latency: "< 1.5s Direct Hop",
         protocol: "SMPP v3.4 / v5.0 over TLS",
-        sla: "24/7 Singapore NOC Support"
+        sla: "24/7 Global NOC Support"
       },
       features: ["Transceiver / Transmitter Binds", "Dedicated Static IP Whitelisting", "Custom DLR Error Code Mapping", "Sub-second Windowed Acknowledgment", "Active Multi-Bind Load Balancing", "Real-Time Throughput Monitoring"],
     },

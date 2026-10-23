@@ -16,7 +16,7 @@
   ],
   "rewrites": [
     {
-      "source": "/((?!assets|rates|coverage|services|whatsapp-business|rcs-messaging|it-services|industries|api|faq|contact|glossary|insights|bulk-sms-|favicon|icons|robots.txt|sitemap.xml).*)",
+      "source": "/((?!assets|rates|coverage|services|whatsapp-business|rcs-messaging|it-services|industries|api|faq|contact|glossary|insights|terms|privacy|bulk-sms-|favicon|icons|robots.txt|sitemap.xml).*)",
       "destination": "/index.html"
     }
   ],

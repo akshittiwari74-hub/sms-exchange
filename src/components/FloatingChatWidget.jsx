@@ -116,7 +116,7 @@ export const FloatingChatWidget = () => {
           </div>
 
           <div className="flyout-footer">
-            <span>⚡ 24/7 Singapore Connectivity NOC</span>
+            <span>⚡ 24/7 Global Connectivity NOC</span>
           </div>
         </div>
       )}

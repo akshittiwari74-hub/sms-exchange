@@ -34,14 +34,14 @@ export const FaqPage = ({ onOpenInquiriesModal }) => {
               <span className="info-icon">📝</span>
               <h3>Sender ID Whitelisting</h3>
               <p>
-                Full support for Alphanumeric Sender IDs (up to 11 characters) and Numeric Shortcodes across regulatory bodies (DLT India, TRAE UAE, Infocomm Singapore).
+                Full support for Alphanumeric Sender IDs (up to 11 characters) and Numeric Shortcodes across regulatory bodies (DLT India, TRAE UAE, FCC US, Ofcom UK).
               </p>
             </div>
             <div className="info-card">
               <span className="info-icon">⏱️</span>
               <h3>99.99% SLA Uptime</h3>
               <p>
-                Backed by dual-redundant data centers in Singapore and Frankfurt with automatic failover across secondary carrier interconnects.
+                Backed by dual-redundant data centers in Frankfurt and London with automatic failover across secondary carrier interconnects.
               </p>
             </div>
           </div>

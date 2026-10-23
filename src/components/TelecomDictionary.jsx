@@ -78,7 +78,7 @@ export const TelecomDictionary = () => {
     {
       term: "MCC / MNC",
       category: "Network Identification",
-      definition: "Mobile Country Code (3 digits) and Mobile Network Code (2 or 3 digits) used together to uniquely identify a wireless carrier operator globally (e.g. 528-11 for Singtel Singapore).",
+      definition: "Mobile Country Code (3 digits) and Mobile Network Code (2 or 3 digits) used together to uniquely identify a wireless carrier operator globally (e.g. 234-10 for O2 UK or 310-410 for AT&T USA).",
     },
     {
       term: "TPS (Transactions Per Second)",

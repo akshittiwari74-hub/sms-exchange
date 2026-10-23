@@ -26,6 +26,8 @@ import LocationPage from "./pages/LocationPage";
 import WhatsAppPage from "./pages/WhatsAppPage";
 import RcsPage from "./pages/RcsPage";
 import ItServicesPage from "./pages/ItServicesPage";
+import TermsPage from "./pages/TermsPage";
+import PrivacyPage from "./pages/PrivacyPage";
 
 const pageMeta = {
   "/": {
@@ -45,7 +47,7 @@ const pageMeta = {
   },
   "/it-services": {
     title: "Enterprise IT Services, Telecom Engineering & Cloud Solutions | NAMX Telecom",
-    description: "Full-suite IT services wing: Custom software development, SMPP gateway engineering, cloud DevOps, AI automation, and 24/7 managed NOC services from Singapore.",
+    description: "Full-suite IT services wing: Custom software development, SMPP gateway engineering, cloud DevOps, AI automation, and 24/7 managed Global NOC services.",
     canonical: "https://www.namxtelecom.site/it-services",
   },
   "/rates": {
@@ -80,7 +82,7 @@ const pageMeta = {
   },
   "/contact": {
     title: "Contact Wholesale SMS Desk | Request Rates & SMPP Test Binds | NAMX Telecom",
-    description: "Connect directly with our 24/7 Singapore NOC connectivity desk. Request custom wholesale Bulk SMS rates, SMPP v3.4 test binds, or enterprise API credentials.",
+    description: "Connect directly with our 24/7 Global NOC connectivity desk. Request custom wholesale Bulk SMS rates, SMPP v3.4 test binds, or enterprise API credentials.",
     canonical: "https://www.namxtelecom.site/contact",
   },
   "/glossary": {
@@ -92,6 +94,16 @@ const pageMeta = {
     title: "Telecom Insights & Blog: Bulk SMS, SS7 Security & SMPP Guides | NAMX Telecom",
     description: "Read the latest industry insights, technical guides on SMPP configuration, and trends in global A2P SMS routing from NAMX Telecom experts.",
     canonical: "https://www.namxtelecom.site/insights",
+  },
+  "/terms": {
+    title: "Terms and Conditions | Carrier Master Services Agreement (MSA) | NAMX Telecom",
+    description: "Enterprise Terms and Conditions, Master Services Agreement, acceptable messaging policies, SMPP binding SLAs, payment settlement terms, and regulatory compliance guidelines.",
+    canonical: "https://www.namxtelecom.site/terms",
+  },
+  "/privacy": {
+    title: "Privacy Policy | Carrier Data Protection & Zero-Payload Purge | NAMX Telecom",
+    description: "Privacy Policy and Data Protection standards of NAMX Telecom. Learn how we safeguard carrier metadata, PDU payloads, customer credentials, and adhere to global GDPR frameworks.",
+    canonical: "https://www.namxtelecom.site/privacy",
   }
 };
 
@@ -166,7 +178,8 @@ export function AppContent() {
         <Route path="/glossary" element={<GlossaryPage {...commonProps} />} />
         <Route path="/insights" element={<BlogPage {...commonProps} />} />
         <Route path="/insights/:slug" element={<BlogPostPage {...commonProps} />} />
-        <Route path="/bulk-sms-singapore" element={<LocationPage {...commonProps} forcedLocation="singapore" />} />
+        <Route path="/terms" element={<TermsPage {...commonProps} />} />
+        <Route path="/privacy" element={<PrivacyPage {...commonProps} />} />
         <Route path="/bulk-sms-uae" element={<LocationPage {...commonProps} forcedLocation="uae" />} />
         <Route path="/bulk-sms-uk" element={<LocationPage {...commonProps} forcedLocation="uk" />} />
         <Route path="/bulk-sms-usa" element={<LocationPage {...commonProps} forcedLocation="usa" />} />

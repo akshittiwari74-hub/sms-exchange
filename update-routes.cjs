@@ -32,7 +32,7 @@ const additionalRoutes = `
 `;
 
 // Inject locations programmatically
-const locations = ['singapore', 'uae', 'uk', 'usa', 'india', 'malaysia'];
+const locations = ['uae', 'uk', 'usa', 'india', 'malaysia'];
 let locationRoutes = '';
 locations.forEach(loc => {
   const capLoc = loc.length <= 3 ? loc.toUpperCase() : loc.charAt(0).toUpperCase() + loc.slice(1);

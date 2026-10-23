@@ -92,8 +92,8 @@ export const FAQ = () => {
     // Category: Compliance & DLRs
     {
       category: "Compliance & DLRs",
-      question: "What are the Sender ID registration requirements for India (DLT), Singapore (SSIR), and UAE?",
-      answer: "Regulated telecom jurisdictions require Sender ID header pre-registration: DLT (Distributed Ledger Technology) in India mandates business entity and template registration; SSIR (SMS SenderID Registry) in Singapore requires Infocomm registration; TRAE in UAE mandates enterprise authorization letters. NAMX Telecom handles end-to-end whitelist registration within 24-48 hours."
+      question: "What are the Sender ID registration requirements for India (DLT), UAE (TRAE), and international corridors?",
+      answer: "Regulated telecom jurisdictions require Sender ID header pre-registration: DLT (Distributed Ledger Technology) in India mandates business entity and template registration; TRAE in UAE mandates enterprise authorization letters; UK and EU corridors require authorized brand header verification. NAMX Telecom handles end-to-end whitelist registration within 24-48 hours."
     },
     {
       category: "Compliance & DLRs",
@@ -103,7 +103,7 @@ export const FAQ = () => {
     {
       category: "Compliance & DLRs",
       question: "What SLAs and uptime guarantees does NAMX Telecom provide?",
-      answer: "We guarantee a 99.99% network availability SLA across our dual-redundant core switching nodes in Singapore and Frankfurt, backed by sub-2.5 second delivery latency for OTP transactions and 24/7 technical NOC assistance."
+      answer: "We guarantee a 99.99% network availability SLA across our dual-redundant core switching nodes in Frankfurt and London, backed by sub-2.5 second delivery latency for OTP transactions and 24/7 technical NOC assistance."
     },
   ];
 

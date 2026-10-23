@@ -7,10 +7,10 @@ export const ContactPage = ({ onOpenInquiriesModal }) => {
     <div className="page-contact">
       <div className="page-banner">
         <div className="container">
-          <p className="stats-eyebrow">Singapore HQ &amp; Global NOC</p>
+          <p className="stats-eyebrow">Global HQ &amp; Carrier NOC</p>
           <h1>Enterprise Consultation &amp; Carrier Onboarding</h1>
           <p>
-            Connect directly with our Connectivity Desk in Singapore to set up custom wholesale rate cards, SMPP v3.4 binds, API tokens, or campaign portal credentials.
+            Connect directly with our 24/7 Global Connectivity Desk to set up custom wholesale rate cards, SMPP v3.4 binds, API tokens, or campaign portal credentials.
           </p>
         </div>
       </div>
@@ -71,9 +71,9 @@ export const ContactPage = ({ onOpenInquiriesModal }) => {
 
             <div className="info-card contact-detail-card">
               <span className="info-icon">🏢</span>
-              <h3>Singapore Headquarters</h3>
+              <h3>Global Operations Center</h3>
               <p>Network Operations Center (NOC) &amp; Carrier Clearing House.</p>
-              <span className="location-badge">📍 Singapore Telecom Hub</span>
+              <span className="location-badge">📍 International Telecom Hub</span>
             </div>
           </div>
         </div>

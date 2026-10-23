@@ -107,7 +107,7 @@ const routes = [
               'name': 'What throughput (MPS) can the NAMX WhatsApp Cloud API handle?',
               'acceptedAnswer': {
                 '@type': 'Answer',
-                'text': 'Our infrastructure supports enterprise-grade throughput scaling from 100 up to 1,000+ messages per second (MPS), backed by direct Meta Cloud server connections and Singapore NOC 99.99% uptime monitoring.'
+                'text': 'Our infrastructure supports enterprise-grade throughput scaling from 100 up to 1,000+ messages per second (MPS), backed by direct Meta Cloud server connections and Global NOC 99.99% uptime monitoring.'
               }
             }
           ]
@@ -217,7 +217,7 @@ const routes = [
     path: '/it-services',
     dir: 'it-services',
     title: 'Enterprise IT Services, Telecom Engineering & Cloud Solutions | NAMX Telecom',
-    description: 'Full-suite IT services wing: Custom software development, SMPP gateway engineering, cloud DevOps, AI automation, and 24/7 managed NOC services from Singapore.',
+    description: 'Full-suite IT services wing: Custom software development, SMPP gateway engineering, cloud DevOps, AI automation, and 24/7 managed Global NOC services.',
     keywords: 'Enterprise IT Services, Custom Software Development, SMPP Gateway Engineering, Cloud DevOps, AI Automation, Telecom NOC Monitoring',
     canonical: 'https://www.namxtelecom.site/it-services',
     schema: {
@@ -244,7 +244,7 @@ const routes = [
           '@type': 'Service',
           'name': 'Enterprise IT Services & Custom Telecom Software Engineering',
           'serviceType': 'Enterprise IT Software & Telecom Engineering Services',
-          'description': 'Full-suite enterprise IT software engineering, telecom SMPP gateway development, cloud DevOps, AI automation, and 24/7 managed NOC services from Singapore.',
+          'description': 'Full-suite enterprise IT software engineering, telecom SMPP gateway development, cloud DevOps, AI automation, and 24/7 managed Global NOC services.',
           'category': 'Enterprise IT & Telecom Software Engineering',
           'provider': {
             '@type': 'Organization',
@@ -341,17 +341,31 @@ const routes = [
   },
 
   {
-    path: '/bulk-sms-singapore',
-    dir: 'bulk-sms-singapore',
-    title: 'Bulk SMS Provider in Singapore | Direct Routes & SMPP Gateway',
-    description: 'Send Bulk SMS in Singapore with direct MNO interconnects and zero-hop termination. Connect via REST API or SMPP v3.4.',
-    keywords: 'Bulk SMS Singapore, SMS Gateway Singapore, SMPP Singapore',
-    canonical: 'https://www.namxtelecom.site/bulk-sms-singapore',
+    path: '/terms',
+    dir: 'terms',
+    title: 'Terms and Conditions | Carrier Master Services Agreement (MSA) | NAMX Telecom',
+    description: 'Enterprise Terms and Conditions, Master Services Agreement (MSA), acceptable messaging policies, SMPP binding SLAs, payment settlement terms, and regulatory compliance guidelines.',
+    keywords: 'Terms and Conditions, Telecom MSA, Carrier Service Agreement, SMPP SLA, Bulk SMS Compliance',
+    canonical: 'https://www.namxtelecom.site/terms',
     schema: {
       '@context': 'https://schema.org',
-      '@type': 'Service',
-      'serviceType': 'Bulk SMS',
-      'areaServed': 'Singapore'
+      '@type': 'WebPage',
+      'name': 'Terms and Conditions',
+      'provider': { '@type': 'Organization', 'name': 'NAMX Telecom' }
+    }
+  },
+  {
+    path: '/privacy',
+    dir: 'privacy',
+    title: 'Privacy Policy | Carrier Data Protection & Zero-Payload Purge | NAMX Telecom',
+    description: 'Privacy Policy and Data Protection standards of NAMX Telecom. Learn how we safeguard carrier metadata, PDU payloads, customer credentials, and adhere to global GDPR frameworks.',
+    keywords: 'Privacy Policy, Telecom Data Protection, GDPR Compliance, PDU Payload Purge, Carrier Security',
+    canonical: 'https://www.namxtelecom.site/privacy',
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      'name': 'Privacy Policy',
+      'provider': { '@type': 'Organization', 'name': 'NAMX Telecom' }
     }
   },
   {
@@ -596,7 +610,7 @@ const routes = [
               "name": "Which countries have direct Tier-1 SS7 interconnects?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "We operate direct MNO interconnects across Singapore, UAE, UK, USA, India, Malaysia, Germany, Saudi Arabia, and over 195+ countries worldwide."
+                "text": "We operate direct MNO interconnects across UAE, UK, USA, India, Malaysia, Germany, Saudi Arabia, and over 195+ countries worldwide."
               }
             },
             {
@@ -661,7 +675,7 @@ const routes = [
               "name": "How fast is SMPP bind provisioning?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Standard SMPP binds and developer API tokens are provisioned within 5 to 15 minutes by our 24/7 Singapore NOC team once IP whitelisting is completed."
+                "text": "Standard SMPP binds and developer API tokens are provisioned within 5 to 15 minutes by our 24/7 Global NOC team once IP whitelisting is completed."
               }
             },
             {
@@ -878,10 +892,10 @@ const routes = [
             },
             {
               "@type": "Question",
-              "name": "What are the Sender ID registration requirements for India (DLT), Singapore (SSIR), and UAE?",
+              "name": "What are the Sender ID registration requirements for India (DLT), UAE (TRAE), and international corridors?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Regulated telecom jurisdictions require Sender ID header pre-registration: DLT (Distributed Ledger Technology) in India mandates business entity and template registration; SSIR (SMS SenderID Registry) in Singapore requires Infocomm registration; TRAE in UAE mandates enterprise authorization letters. NAMX Telecom handles end-to-end whitelist registration within 24-48 hours."
+                "text": "Regulated telecom jurisdictions require Sender ID header pre-registration: DLT (Distributed Ledger Technology) in India mandates business entity and template registration; TRAE in UAE mandates enterprise authorization letters; UK and EU corridors require authorized brand header verification. NAMX Telecom handles end-to-end whitelist registration within 24-48 hours."
               }
             },
             {
@@ -897,7 +911,7 @@ const routes = [
               "name": "What SLAs and uptime guarantees does NAMX Telecom provide?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "We guarantee a 99.99% network availability SLA across our dual-redundant core switching nodes in Singapore and Frankfurt, backed by sub-2.5 second delivery latency for OTP transactions and 24/7 technical NOC assistance."
+                "text": "We guarantee a 99.99% network availability SLA across our dual-redundant core switching nodes in Frankfurt and London, backed by sub-2.5 second delivery latency for OTP transactions and 24/7 technical NOC assistance."
               }
             }
           ]
@@ -909,8 +923,8 @@ const routes = [
     path: "/contact",
     dir: "contact",
     title: "Contact Wholesale SMS Desk | Request Rates & SMPP Test Binds | NAMX Telecom",
-    description: "Connect directly with our 24/7 Singapore NOC connectivity desk. Request custom wholesale Bulk SMS rates, SMPP v3.4 test binds, or enterprise API credentials.",
-    keywords: "Contact NAMX Telecom, Wholesale Bulk SMS Quote, SMPP Gateway Onboarding, International P2P Interconnect, Singapore Telecom NOC, Test SMPP Credentials",
+    description: "Connect directly with our 24/7 Global NOC connectivity desk. Request custom wholesale Bulk SMS rates, SMPP v3.4 test binds, or enterprise API credentials.",
+    keywords: "Contact NAMX Telecom, Wholesale Bulk SMS Quote, SMPP Gateway Onboarding, International P2P Interconnect, Global Telecom NOC, Test SMPP Credentials",
     canonical: "https://www.namxtelecom.site/contact",
     schema: {
       "@context": "https://schema.org",
@@ -931,7 +945,7 @@ const routes = [
             "email": "admin@namxtelecom.site",
             "address": {
               "@type": "PostalAddress",
-              "addressCountry": "Singapore"
+              "addressCountry": "Global"
             }
           }
         },
@@ -943,7 +957,7 @@ const routes = [
               "name": "How quickly does the NAMX Telecom NOC respond?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Our Singapore Network Operations Center operates 24/7/365 with an average response time of under 15 minutes via live chat, Telegram (@namxtelecom), WhatsApp (+91 93065 29891), and email."
+                "text": "Our Global Network Operations Center operates 24/7/365 with an average response time of under 15 minutes via live chat, Telegram (@namxtelecom), WhatsApp (+91 93065 29891), and email."
               }
             },
             {

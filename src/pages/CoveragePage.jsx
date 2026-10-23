@@ -98,7 +98,6 @@ export const CoveragePage = ({ onOpenInquiriesModal }) => {
             <h2>Regional SMPP Gateways &amp; SMS Connectivity</h2>
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', marginTop: '2rem' }}>
-            <a href="/bulk-sms-singapore" className="btn btn-secondary">🇸🇬 Singapore Gateway</a>
             <a href="/bulk-sms-uae" className="btn btn-secondary">🇦🇪 UAE Gateway</a>
             <a href="/bulk-sms-uk" className="btn btn-secondary">🇬🇧 UK Gateway</a>
             <a href="/bulk-sms-usa" className="btn btn-secondary">🇺🇸 USA Gateway</a>

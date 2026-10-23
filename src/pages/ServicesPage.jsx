@@ -18,7 +18,7 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
     },
     {
       q: "How fast is SMPP bind provisioning?",
-      a: "Standard SMPP binds and developer API tokens are provisioned within 5 to 15 minutes by our 24/7 Singapore NOC team once IP whitelisting is completed."
+      a: "Standard SMPP binds and developer API tokens are provisioned within 5 to 15 minutes by our 24/7 Global NOC team once IP whitelisting is completed."
     },
     {
       q: "How does the Least Cost Routing (LCR) engine work?",
@@ -54,7 +54,7 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
         "Bilateral traffic swap & rate clearing settlement compliant with GSMA AA.19 billing standards",
         "SS7 / SIGTRAN network firewalling & anti-fraud spam filtering to eliminate gray routes",
         "Zero-hop direct route termination for mobile network operators (MNOs) & MVNOs",
-        "Itemized CDR reconciliation, automated invoice clearing & 24/7 Singapore NOC monitoring",
+        "Itemized CDR reconciliation, automated invoice clearing & 24/7 Global NOC monitoring",
       ],
     },
     {

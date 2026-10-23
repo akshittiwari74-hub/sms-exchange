@@ -15,8 +15,8 @@ export const WhyChooseUs = () => {
     },
     { 
       icon: "🖥️",
-      title: "24/7/365 Singapore NOC Monitoring", 
-      description: "Our Global Operations Center in Singapore actively monitors traffic routes, latency spikes, and delivery rates around the clock." 
+      title: "24/7/365 Global NOC Monitoring", 
+      description: "Our Global Operations Center actively monitors traffic routes, latency spikes, and delivery rates around the clock." 
     },
     { 
       icon: "💻",
