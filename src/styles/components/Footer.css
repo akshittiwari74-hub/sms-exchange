@@ -16,8 +16,8 @@
   max-width: var(--container-width);
   margin: 0 auto 60px;
   display: grid;
-  grid-template-columns: 1.4fr repeat(3, 1fr);
-  gap: 48px;
+  grid-template-columns: 1.3fr repeat(4, 1fr);
+  gap: 36px;
 }
 
 .footer-column {
