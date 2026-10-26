@@ -58,20 +58,9 @@ export const Hero = ({ navigate }) => {
 
           <motion.div className="hero-buttons" variants={itemVariants}>
             <Button
-              href="https://customer.namxtelecom.site"
-              variant="primary"
-              size="lg"
-              external={true}
-              target="_blank"
-              aria-label="Launch Messaging Platform"
-            >
-              🚀 Launch Platform
-            </Button>
-
-            <Button
               href="/contact"
               onClick={(e) => handleNav(e, "/contact")}
-              variant="secondary"
+              variant="primary"
               size="lg"
               external={false}
               aria-label="Contact NAMX Telecom sales"

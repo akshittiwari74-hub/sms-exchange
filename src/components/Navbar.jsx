@@ -64,16 +64,6 @@ export const Navbar = ({ logo, currentPath = "/", navigate }) => {
           </div>
 
           <div className="nav-actions-group">
-            <a
-              href="https://customer.namxtelecom.site"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="nav-portal-link-btn"
-              title="Access Messaging Portal"
-            >
-              🚀 Platform Login
-            </a>
-
             <Button
               href="/contact"
               onClick={(e) => handleNavClick(e, "/contact")}
@@ -124,15 +114,6 @@ export const Navbar = ({ logo, currentPath = "/", navigate }) => {
           </div>
 
           <div className="mobile-actions-group">
-            <a
-              href="https://customer.namxtelecom.site"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mobile-portal-btn"
-            >
-              🚀 Platform Login (customer.namxtelecom.site)
-            </a>
-
             <a
               href="/contact"
               onClick={(e) => handleNavClick(e, "/contact")}

@@ -19,9 +19,6 @@ export const Footer = ({ navigate }) => {
         </div>
         <div className="footer-column">
           <h3>Products &amp; Solutions</h3>
-          <a href="https://customer.namxtelecom.site" target="_blank" rel="noopener noreferrer" className="portal-highlight-link">
-            🚀 Platform Login (customer.namxtelecom.site)
-          </a>
           <a href="/services" onClick={(e) => handleLinkClick(e, "/services")}>A2P SMS Gateway &amp; SMPP</a>
           <a href="/whatsapp-business" onClick={(e) => handleLinkClick(e, "/whatsapp-business")}>WhatsApp Business Platform</a>
           <a href="/rcs-messaging" onClick={(e) => handleLinkClick(e, "/rcs-messaging")}>RCS Business Messaging</a>
