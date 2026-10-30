@@ -371,84 +371,89 @@ const routes = [
   {
     path: '/bulk-sms-uae',
     dir: 'bulk-sms-uae',
-    title: 'Bulk SMS Provider in UAE | Direct Routes & SMPP Gateway',
-    description: 'Send Bulk SMS in UAE with direct MNO interconnects and zero-hop termination. Connect via REST API or SMPP v3.4.',
-    keywords: 'Bulk SMS UAE, SMS Gateway UAE, SMPP UAE',
+    title: 'Wholesale Bulk SMS Provider UAE | TDRA Direct Routes & SMPP Gateway | NAMX Telecom',
+    description: 'Wholesale Bulk SMS service provider & SMPP gateway in the UAE. Direct e& (Etisalat) and du SS7 interconnects, TDRA sender ID whitelisting, Arabic UCS-2 Unicode & wholesale rates.',
+    keywords: 'Wholesale Bulk SMS UAE, SMPP Gateway UAE, TDRA SMS Whitelist, Etisalat Bulk SMS, du SMS Gateway, UAE OTP Delivery',
     canonical: 'https://www.namxtelecom.site/bulk-sms-uae',
     schema: {
       '@context': 'https://schema.org',
       '@type': 'Service',
-      'serviceType': 'Bulk SMS',
-      'areaServed': 'UAE'
+      'serviceType': 'Wholesale Bulk SMS & SMPP Gateway',
+      'provider': { '@id': 'https://www.namxtelecom.site/#organization' },
+      'areaServed': 'United Arab Emirates'
     }
   },
   {
     path: '/bulk-sms-uk',
     dir: 'bulk-sms-uk',
-    title: 'Bulk SMS Provider in UK | Direct Routes & SMPP Gateway',
-    description: 'Send Bulk SMS in UK with direct MNO interconnects and zero-hop termination. Connect via REST API or SMPP v3.4.',
-    keywords: 'Bulk SMS UK, SMS Gateway UK, SMPP UK',
+    title: 'Wholesale Bulk SMS Provider UK & Europe | Direct MNO Interconnects | NAMX Telecom',
+    description: 'Wholesale Bulk SMS provider & SMPP gateway in the UK. Direct EE, Vodafone, O2, Three zero-hop SS7 routes, alphanumeric sender IDs, GDPR compliant A2P SMS hubbing.',
+    keywords: 'Wholesale Bulk SMS UK, UK SMPP Gateway, EE Direct SMS, Vodafone Wholesale SMS, O2 SMS Gateway, UK Alphanumeric Sender ID',
     canonical: 'https://www.namxtelecom.site/bulk-sms-uk',
     schema: {
       '@context': 'https://schema.org',
       '@type': 'Service',
-      'serviceType': 'Bulk SMS',
-      'areaServed': 'UK'
+      'serviceType': 'Wholesale Bulk SMS & SMPP Gateway',
+      'provider': { '@id': 'https://www.namxtelecom.site/#organization' },
+      'areaServed': 'United Kingdom'
     }
   },
   {
     path: '/bulk-sms-usa',
     dir: 'bulk-sms-usa',
-    title: 'Bulk SMS Provider in USA | Direct Routes & SMPP Gateway',
-    description: 'Send Bulk SMS in USA with direct MNO interconnects and zero-hop termination. Connect via REST API or SMPP v3.4.',
-    keywords: 'Bulk SMS USA, SMS Gateway USA, SMPP USA',
+    title: 'Wholesale Bulk SMS Provider USA | Direct 10DLC & SMPP Gateway | NAMX Telecom',
+    description: 'Wholesale Bulk SMS provider & SMPP v3.4 gateway in the USA. Direct AT&T, Verizon, T-Mobile 10DLC termination, TCR brand vetting, sub-second OTP delivery & live EUR/USD rate cards.',
+    keywords: 'Wholesale Bulk SMS USA, 10DLC SMS Gateway, US SMPP Provider, AT&T Direct SMS, Verizon SMS Termination, T-Mobile TCR Vetting',
     canonical: 'https://www.namxtelecom.site/bulk-sms-usa',
     schema: {
       '@context': 'https://schema.org',
       '@type': 'Service',
-      'serviceType': 'Bulk SMS',
-      'areaServed': 'USA'
+      'serviceType': 'Wholesale Bulk SMS & SMPP Gateway',
+      'provider': { '@id': 'https://www.namxtelecom.site/#organization' },
+      'areaServed': 'United States'
     }
   },
   {
     path: '/bulk-sms-india',
     dir: 'bulk-sms-india',
-    title: 'Bulk SMS Provider in India | Direct Routes & SMPP Gateway',
-    description: 'Send Bulk SMS in India with direct MNO interconnects and zero-hop termination. Connect via REST API or SMPP v3.4.',
-    keywords: 'Bulk SMS India, SMS Gateway India, SMPP India',
+    title: 'Wholesale Bulk SMS Provider India | DLT Compliant SMPP Gateway | NAMX Telecom',
+    description: 'Wholesale Bulk SMS provider in India. Direct Jio, Airtel, Vi, BSNL interconnects, TRAI DLT compliance (PE & Template IDs), sub-2s OTP latency & wholesale pricing.',
+    keywords: 'Wholesale Bulk SMS India, DLT SMS Gateway, TRAI DLT Compliant SMS, Jio Direct Route, Airtel Bulk SMS, India OTP SMS',
     canonical: 'https://www.namxtelecom.site/bulk-sms-india',
     schema: {
       '@context': 'https://schema.org',
       '@type': 'Service',
-      'serviceType': 'Bulk SMS',
+      'serviceType': 'Wholesale Bulk SMS & SMPP Gateway',
+      'provider': { '@id': 'https://www.namxtelecom.site/#organization' },
       'areaServed': 'India'
     }
   },
   {
     path: '/bulk-sms-malaysia',
     dir: 'bulk-sms-malaysia',
-    title: 'Bulk SMS Provider in Malaysia | Direct Routes & SMPP Gateway',
-    description: 'Send Bulk SMS in Malaysia with direct MNO interconnects and zero-hop termination. Connect via REST API or SMPP v3.4.',
-    keywords: 'Bulk SMS Malaysia, SMS Gateway Malaysia, SMPP Malaysia',
+    title: 'Wholesale Bulk SMS Provider Malaysia | Direct MCMC Routes & SMPP Gateway | NAMX Telecom',
+    description: 'Wholesale Bulk SMS provider in Malaysia. Direct CelcomDigi, Maxis, U Mobile SMS gateway, MCMC anti-scam compliance, sub-2s delivery & wholesale rate cards.',
+    keywords: 'Wholesale Bulk SMS Malaysia, CelcomDigi SMS Route, Maxis Wholesale SMS, MCMC Compliant SMS, Malaysia SMPP Gateway',
     canonical: 'https://www.namxtelecom.site/bulk-sms-malaysia',
     schema: {
       '@context': 'https://schema.org',
       '@type': 'Service',
-      'serviceType': 'Bulk SMS',
+      'serviceType': 'Wholesale Bulk SMS & SMPP Gateway',
+      'provider': { '@id': 'https://www.namxtelecom.site/#organization' },
       'areaServed': 'Malaysia'
     }
   },
   {
     path: '/insights/what-is-smpp-v34-guide',
     dir: 'insights/what-is-smpp-v34-guide',
-    title: 'What is SMPP v3.4? A Complete Guide for Developers | NAMX Telecom Insights',
-    description: 'Dive deep into the Short Message Peer-to-Peer (SMPP) protocol. Learn how SMPP v3.4 binds work, how to handle PDUs, and why it\'s the industry standard for high-volume SMS routing.',
-    keywords: 'Technical, Telecom, SMS',
+    title: 'What is SMPP v3.4? Complete Carrier Architecture & PDU Guide for Telecom Developers | NAMX Telecom',
+    description: 'A deep architectural guide to the Short Message Peer-to-Peer (SMPP v3.4) protocol. Learn transceiver binds, sliding-window flow control, PDU commands, DCS character encoding, and DLR mapping.',
+    keywords: 'SMPP v3.4 Guide, Protocol Data Unit PDU, SMPP Transceiver Bind, DCS GSM 7-bit, UDH Concatenation, submit_sm deliver_sm',
     canonical: 'https://www.namxtelecom.site/insights/what-is-smpp-v34-guide',
     schema: {
       '@context': 'https://schema.org',
       '@type': 'Article',
-      'headline': 'What is SMPP v3.4? A Complete Guide for Developers',
+      'headline': 'What is SMPP v3.4? Complete Carrier Architecture & PDU Guide for Telecom Developers',
       'publisher': { '@id': 'https://www.namxtelecom.site/#organization' },
       'author': { '@id': 'https://www.namxtelecom.site/#organization' }
     }
@@ -456,14 +461,59 @@ const routes = [
   {
     path: '/insights/a2p-vs-p2p-sms-routing',
     dir: 'insights/a2p-vs-p2p-sms-routing',
-    title: 'A2P vs P2P SMS Routing: What Telecom Aggregators Need to Know | NAMX Telecom Insights',
-    description: 'Understand the critical differences between Application-to-Person (A2P) and Person-to-Person (P2P) SMS traffic, and how intelligent SS7 routing engines differentiate them.',
-    keywords: 'Industry, Telecom, SMS',
+    title: 'A2P vs P2P SMS Routing: Global Telecom Wholesale Aggregator Guide | NAMX Telecom',
+    description: 'A master guide analyzing the architectural, commercial, and regulatory differences between Application-to-Person (A2P) and Person-to-Person (P2P) messaging, SS7 carrier firewalls, and GSMA AA.19 standards.',
+    keywords: 'A2P vs P2P SMS, Wholesale SMS Hubbing, SS7 Carrier Firewalls, GSMA AA.19, SIM Box Fraud Prevention, Direct MNO Interconnect',
     canonical: 'https://www.namxtelecom.site/insights/a2p-vs-p2p-sms-routing',
     schema: {
       '@context': 'https://schema.org',
       '@type': 'Article',
-      'headline': 'A2P vs P2P SMS Routing: What Telecom Aggregators Need to Know',
+      'headline': 'A2P vs P2P SMS Routing: Global Telecom Wholesale Aggregator Guide',
+      'publisher': { '@id': 'https://www.namxtelecom.site/#organization' },
+      'author': { '@id': 'https://www.namxtelecom.site/#organization' }
+    }
+  },
+  {
+    path: '/insights/how-to-configure-smpp-v34-bind-guide',
+    dir: 'insights/how-to-configure-smpp-v34-bind-guide',
+    title: 'How to Configure an Enterprise SMPP v3.4 Bind: Step-by-Step NOC Engineering Handbook | NAMX Telecom',
+    description: 'A technical step-by-step tutorial for DevOps and NOC engineers on establishing, securing, and tuning a high-TPS SMPP v3.4 transceiver bind with code examples in Node.js, Python, and C++.',
+    keywords: 'Configure SMPP Bind, SMPP Node.js Example, bind_transceiver, enquire_link heartbeat, TLS SMPP Port, High TPS SMS Gateway',
+    canonical: 'https://www.namxtelecom.site/insights/how-to-configure-smpp-v34-bind-guide',
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      'headline': 'How to Configure an Enterprise SMPP v3.4 Bind: Step-by-Step NOC Engineering Handbook',
+      'publisher': { '@id': 'https://www.namxtelecom.site/#organization' },
+      'author': { '@id': 'https://www.namxtelecom.site/#organization' }
+    }
+  },
+  {
+    path: '/insights/preventing-artificial-traffic-inflation-ait-sms',
+    dir: 'insights/preventing-artificial-traffic-inflation-ait-sms',
+    title: 'Defeating Artificial Traffic Inflation (AIT) & SMS Pumping: Enterprise Carrier Guide | NAMX Telecom',
+    description: 'Learn how fraudsters inflate enterprise 2FA verification costs through International Revenue Share Fraud (IRSF) bot attacks and how NAMX Telecom SS7 firewalls eliminate AIT traffic.',
+    keywords: 'Artificial Traffic Inflation AIT, SMS Pumping Fraud, International Revenue Share Fraud IRSF, 2FA Toll Fraud, SS7 Firewall Protection',
+    canonical: 'https://www.namxtelecom.site/insights/preventing-artificial-traffic-inflation-ait-sms',
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      'headline': 'Defeating Artificial Traffic Inflation (AIT) & SMS Pumping: Enterprise Carrier Guide',
+      'publisher': { '@id': 'https://www.namxtelecom.site/#organization' },
+      'author': { '@id': 'https://www.namxtelecom.site/#organization' }
+    }
+  },
+  {
+    path: '/insights/10dlc-sms-compliance-usa-guide',
+    dir: 'insights/10dlc-sms-compliance-usa-guide',
+    title: 'The Definitive 10DLC Guide for Wholesale SMS Aggregators & Enterprises in North America | NAMX Telecom',
+    description: 'Everything wholesale SMS aggregators must know about 10DLC compliance in the USA: The Campaign Registry (TCR) vetting, Trust Scores, carrier surcharges for AT&T/Verizon/T-Mobile, and throughput limits.',
+    keywords: '10DLC Compliance Guide, The Campaign Registry TCR, 10DLC Carrier Surcharges, Trust Score Vetting, A2P Long Code USA',
+    canonical: 'https://www.namxtelecom.site/insights/10dlc-sms-compliance-usa-guide',
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      'headline': 'The Definitive 10DLC Guide for Wholesale SMS Aggregators & Enterprises in North America',
       'publisher': { '@id': 'https://www.namxtelecom.site/#organization' },
       'author': { '@id': 'https://www.namxtelecom.site/#organization' }
     }

@@ -1,0 +1,179 @@
+{
+  "usa": {
+    "country": "United States",
+    "flag": "🇺🇸",
+    "iso": "US",
+    "dialCode": "+1",
+    "title": "Wholesale Bulk SMS Provider & SMPP Gateway in USA",
+    "subtitle": "Direct 10DLC, Toll-Free, and Short Code SS7 SMS termination across AT&T, Verizon, and T-Mobile networks with sub-second delivery SLAs.",
+    "regulatoryBody": "FCC & CTIA / The Campaign Registry (TCR)",
+    "senderIdType": "10DLC Standard, Verified Toll-Free, or Dedicated Short Code (Alphanumeric prohibited)",
+    "avgLatency": "1.1 seconds",
+    "dlrRate": "99.94%",
+    "supportedProtocols": "SMPP v3.4 / v5.0 (TLS 1.3), REST JSON API, HTTP Webhook",
+    "defaultEncoding": "GSM 7-bit (160 chars) & UCS-2 Unicode (70 chars)",
+    "complianceNotes": "Strict CTIA guidelines require opt-in verification and opt-out processing (STOP keywords). A2P 10DLC registration via The Campaign Registry (TCR) is mandatory to bypass carrier spam firewalls and avoid per-message penalty surcharges.",
+    "networks": [
+      { "name": "AT&T Mobility", "mcc": "310", "mnc": "410", "marketShare": "44%", "routeType": "Direct Tier-1 10DLC Interconnect", "tps": "10,000 TPS", "latency": "1.0s", "rateEUR": "0.0078" },
+      { "name": "Verizon Wireless", "mcc": "310", "mnc": "012", "marketShare": "36%", "routeType": "Direct Tier-1 Carrier Peering", "tps": "8,000 TPS", "latency": "1.1s", "rateEUR": "0.0075" },
+      { "name": "T-Mobile USA", "mcc": "310", "mnc": "260", "marketShare": "19%", "routeType": "Direct Tier-1 SMPP Interconnect", "tps": "8,000 TPS", "latency": "1.2s", "rateEUR": "0.0072" },
+      { "name": "US Cellular", "mcc": "311", "mnc": "580", "marketShare": "1%", "routeType": "Regional Direct Route", "tps": "2,500 TPS", "latency": "1.4s", "rateEUR": "0.0082" }
+    ],
+    "pricingTiers": [
+      { "volume": "Up to 100k / mo", "rateEUR": "€0.0085", "rateUSD": "$0.0092", "features": "Dedicated SMPP bind, TCR 10DLC vetting support, 24/7 NOC monitoring" },
+      { "volume": "100k – 1M / mo", "rateEUR": "€0.0075", "rateUSD": "$0.0081", "features": "Multi-session transceiver binds, custom TPS tuning, automated failover" },
+      { "volume": "1M+ / mo (Wholesale)", "rateEUR": "€0.0062", "rateUSD": "$0.0067", "features": "Zero-hop bilateral clearing, custom carrier window sizing, dedicated SLA manager" }
+    ],
+    "faqs": [
+      {
+        "q": "What is 10DLC and is it mandatory for sending wholesale SMS to the USA?",
+        "a": "Yes. 10DLC (10-Digit Long Code) is the cellular standard regulated by the CTIA and mobile operators (AT&T, Verizon, T-Mobile). Any application sending A2P messages over local US long codes must be registered with The Campaign Registry (TCR). NAMX Telecom handles brand and campaign vetting to assign legitimate campaign IDs and avoid carrier blocking."
+      },
+      {
+        "q": "Can I use alphanumeric Sender IDs (like 'MYCOMPANY') in the USA?",
+        "a": "No. Mobile networks in the United States and Canada do not support alphanumeric sender headers. All SMS messages must originate from a verified 10DLC number, a Toll-Free number (8XX), or a 5-6 digit Short Code."
+      },
+      {
+        "q": "What are the carrier pass-through surcharges for US SMS traffic?",
+        "a": "US carriers charge pass-through fees (typically $0.002 to $0.004 per SMS segment) depending on whether the campaign is registered under 10DLC. NAMX Telecom offers all-inclusive billing rate cards or separated wholesale rate models for transparent accounting."
+      }
+    ]
+  },
+  "uk": {
+    "country": "United Kingdom",
+    "flag": "🇬🇧",
+    "iso": "GB",
+    "dialCode": "+44",
+    "title": "Wholesale Bulk SMS Provider & SMPP Gateway in the UK",
+    "subtitle": "Direct zero-hop SS7 termination across EE, Vodafone, O2, and Three UK with dynamic alphanumeric sender ID support and full GDPR compliance.",
+    "regulatoryBody": "Ofcom & Mobile Ecosystem Forum (MEF)",
+    "senderIdType": "Dynamic Alphanumeric (up to 11 chars) & UK Virtual Mobile Numbers (Long Codes)",
+    "avgLatency": "1.2 seconds",
+    "dlrRate": "99.91%",
+    "supportedProtocols": "SMPP v3.4 / v5.0 (TLS 1.3), REST API, HTTP Callback",
+    "defaultEncoding": "GSM 7-bit & UCS-2 Unicode",
+    "complianceNotes": "Governed by Ofcom regulations and UK GDPR / Data Protection Act 2018. Sender IDs must accurately reflect the sending brand. Marketing messages require explicit prior consent and must include an opt-out mechanism (e.g., 'Reply STOP').",
+    "networks": [
+      { "name": "EE (BT Group)", "mcc": "234", "mnc": "30", "marketShare": "31%", "routeType": "Direct SS7 MNO Interconnect", "tps": "6,000 TPS", "latency": "1.1s", "rateEUR": "0.0210" },
+      { "name": "O2 UK (Virgin Media O2)", "mcc": "234", "mnc": "10", "marketShare": "28%", "routeType": "Direct SS7 Signaling Interconnect", "tps": "5,500 TPS", "latency": "1.2s", "rateEUR": "0.0220" },
+      { "name": "Vodafone UK", "mcc": "234", "mnc": "15", "marketShare": "23%", "routeType": "Direct MNO Interconnect", "tps": "5,000 TPS", "latency": "1.2s", "rateEUR": "0.0215" },
+      { "name": "Three UK (Hutchison 3G)", "mcc": "234", "mnc": "20", "marketShare": "18%", "routeType": "Direct Carrier Link", "tps": "4,000 TPS", "latency": "1.3s", "rateEUR": "0.0230" }
+    ],
+    "pricingTiers": [
+      { "volume": "Up to 100k / mo", "rateEUR": "€0.0240", "rateUSD": "$0.0259", "features": "Dynamic Sender ID, instant webhooks, 24/7 NOC support" },
+      { "volume": "100k – 1M / mo", "rateEUR": "€0.0215", "rateUSD": "$0.0232", "features": "Sub-2s OTP SLA, dedicated SMPP binds, volume rebates" },
+      { "volume": "1M+ / mo (Wholesale)", "rateEUR": "€0.0185", "rateUSD": "$0.0200", "features": "Bilateral clearing, zero-hop routing, itemized CDR auditing" }
+    ],
+    "faqs": [
+      {
+        "q": "Are dynamic alphanumeric sender IDs allowed in the UK?",
+        "a": "Yes. The UK fully supports dynamic alphanumeric sender IDs up to 11 characters (e.g. 'YOURBRAND'). However, sender IDs must not be misleading or impersonate financial institutions without prior authorization."
+      },
+      {
+        "q": "How does NAMX handle UK Mobile Number Portability (MNP)?",
+        "a": "Our routing platform executes real-time HLR queries against the UK centralized porting database before message dispatch, ensuring zero routing delays when a subscriber has moved between EE, Vodafone, O2, or Three."
+      }
+    ]
+  },
+  "uae": {
+    "country": "United Arab Emirates",
+    "flag": "🇦🇪",
+    "iso": "AE",
+    "dialCode": "+971",
+    "title": "Wholesale Bulk SMS Provider & SMPP Gateway in UAE",
+    "subtitle": "TDRA-compliant Tier-1 direct signaling links with e& (Etisalat) and du. High-speed 2FA OTP delivery with Arabic Unicode and English SMS routes.",
+    "regulatoryBody": "TDRA (Telecommunications and Digital Government Regulatory Authority)",
+    "senderIdType": "Pre-registered Alphanumeric Sender ID (Mandatory TDRA Whitelisting)",
+    "avgLatency": "1.3 seconds",
+    "dlrRate": "99.88%",
+    "supportedProtocols": "SMPP v3.4 / v5.0 over TLS, REST JSON API",
+    "defaultEncoding": "GSM 7-bit (English) & UCS-2 Unicode (Arabic up to 70 chars)",
+    "complianceNotes": "All commercial and transactional SMS messages must be sent through pre-registered Sender IDs approved by TDRA. Commercial marketing messages can only be delivered between 7:00 AM and 9:00 PM local UAE time (GST) and must provide an opt-out mechanism.",
+    "networks": [
+      { "name": "e& (Etisalat UAE)", "mcc": "424", "mnc": "02", "marketShare": "58%", "routeType": "Direct Tier-1 SS7 MNO Interconnect", "tps": "5,000 TPS", "latency": "1.2s", "rateEUR": "0.0410" },
+      { "name": "du (Emirates Integrated Telecom)", "mcc": "424", "mnc": "03", "marketShare": "42%", "routeType": "Direct Tier-1 Carrier Route", "tps": "4,500 TPS", "latency": "1.3s", "rateEUR": "0.0425" }
+    ],
+    "pricingTiers": [
+      { "volume": "Up to 50k / mo", "rateEUR": "€0.0460", "rateUSD": "$0.0497", "features": "TDRA Sender ID registration guidance, sub-2s OTP latency" },
+      { "volume": "50k – 500k / mo", "rateEUR": "€0.0420", "rateUSD": "$0.0454", "features": "Dedicated SMPP transceiver bind, Arabic UCS-2 concatenation" },
+      { "volume": "500k+ / mo (Wholesale)", "rateEUR": "€0.0385", "rateUSD": "$0.0416", "features": "Direct carrier clearing, post-paid terms, 24/7 dedicated account engineer" }
+    ],
+    "faqs": [
+      {
+        "q": "How long does TDRA Sender ID registration take in the UAE?",
+        "a": "Standard TDRA registration takes 3 to 5 business days. Our regulatory desk assists enterprise clients with Trade License and authorization letter paperwork to expedite approval."
+      },
+      {
+        "q": "Does NAMX support Arabic language SMS concatenation in the UAE?",
+        "a": "Yes. We support 16-bit UCS-2 Unicode encoding with UDH concatenation for multi-part Arabic messages up to 1,000 characters without corruption."
+      }
+    ]
+  },
+  "india": {
+    "country": "India",
+    "flag": "🇮🇳",
+    "iso": "IN",
+    "dialCode": "+91",
+    "title": "Wholesale Bulk SMS Provider & DLT Compliant Gateway in India",
+    "subtitle": "TRAI DLT compliant Tier-1 interconnects across Jio, Airtel, Vodafone Idea (Vi), and BSNL. High-TPS transactional 2FA OTP and promotional routes.",
+    "regulatoryBody": "TRAI (Telecom Regulatory Authority of India) - TCCCPR 2018",
+    "senderIdType": "Registered 6-Character Alphanumeric Header (PE ID + Header ID + Content Template ID)",
+    "avgLatency": "1.5 seconds",
+    "dlrRate": "99.85%",
+    "supportedProtocols": "SMPP v3.4 over TLS, REST API, DLR Webhooks",
+    "defaultEncoding": "GSM 7-bit & Unicode (Hindi, Tamil, Telugu, etc.)",
+    "complianceNotes": "Under TRAI TCCCPR regulations, all enterprise SMS traffic terminating in India requires Principal Entity (PE) registration, registered Alphanumeric Sender IDs (Headers), and pre-approved Content Templates linked to a registered Telemarketer ID.",
+    "networks": [
+      { "name": "Reliance Jio", "mcc": "405", "mnc": "840", "marketShare": "41%", "routeType": "Direct Tier-1 DLT Interconnect", "tps": "10,000 TPS", "latency": "1.3s", "rateEUR": "0.0031" },
+      { "name": "Bharti Airtel", "mcc": "404", "mnc": "45", "marketShare": "33%", "routeType": "Direct Tier-1 MNO Interconnect", "tps": "10,000 TPS", "latency": "1.4s", "rateEUR": "0.0033" },
+      { "name": "Vodafone Idea (Vi)", "mcc": "404", "mnc": "20", "marketShare": "19%", "routeType": "Direct DLT Route", "tps": "6,000 TPS", "latency": "1.6s", "rateEUR": "0.0032" },
+      { "name": "BSNL / MTNL", "mcc": "404", "mnc": "51", "marketShare": "7%", "routeType": "Direct Government Route", "tps": "3,000 TPS", "latency": "2.0s", "rateEUR": "0.0030" }
+    ],
+    "pricingTiers": [
+      { "volume": "Up to 250k / mo", "rateEUR": "€0.0035", "rateUSD": "$0.0038", "features": "Full DLT telemetry matching, sub-2s OTP latency, webhooks" },
+      { "volume": "250k – 2M / mo", "rateEUR": "€0.0030", "rateUSD": "$0.0032", "features": "Multi-session SMPP TRX binds, automated scrubbers" },
+      { "volume": "2M+ / mo (Wholesale)", "rateEUR": "€0.0025", "rateUSD": "$0.0027", "features": "Direct telemarketer peering, custom TPS, dedicated technical NOC" }
+    ],
+    "faqs": [
+      {
+        "q": "What DLT parameters must be submitted via SMPP in India?",
+        "a": "When binding via SMPP to NAMX Telecom for Indian termination, each submit_sm PDU must include TLV parameters for Principal Entity ID (PE_ID) and Content Template ID (Template_ID) to ensure seamless carrier DLT verification."
+      },
+      {
+        "q": "What is the difference between Service Implicit, Service Explicit, and Promotional routes?",
+        "a": "Service Implicit is for transactional OTPs and alerts delivered 24/7 with zero promotional restriction. Service Explicit is for marketing with customer opt-in. Promotional routes are for bulk marketing sent only between 10:00 AM and 9:00 PM local time."
+      }
+    ]
+  },
+  "malaysia": {
+    "country": "Malaysia",
+    "flag": "🇲🇾",
+    "iso": "MY",
+    "dialCode": "+60",
+    "title": "Wholesale Bulk SMS Provider & SMPP Gateway in Malaysia",
+    "subtitle": "Direct carrier interconnects across CelcomDigi, Maxis, and U Mobile. High deliverability for 2FA OTP codes and enterprise broadcasts.",
+    "regulatoryBody": "MCMC (Malaysian Communications and Multimedia Commission)",
+    "senderIdType": "Pre-registered Alphanumeric Header (RM0.00 format for commercial broadcasts)",
+    "avgLatency": "1.4 seconds",
+    "dlrRate": "99.89%",
+    "supportedProtocols": "SMPP v3.4 over TLS, REST JSON API",
+    "defaultEncoding": "GSM 7-bit & UCS-2 Unicode (Bahasa Melayu & Chinese)",
+    "complianceNotes": "Regulated by MCMC. Under local telecom anti-scam regulations, URL links and phone numbers within SMS bodies require verified sender registration to prevent gray-route phishing.",
+    "networks": [
+      { "name": "CelcomDigi", "mcc": "502", "mnc": "19", "marketShare": "45%", "routeType": "Direct Tier-1 MNO Interconnect", "tps": "6,000 TPS", "latency": "1.3s", "rateEUR": "0.0260" },
+      { "name": "Maxis", "mcc": "502", "mnc": "12", "marketShare": "35%", "routeType": "Direct SS7 Carrier Link", "tps": "5,000 TPS", "latency": "1.4s", "rateEUR": "0.0270" },
+      { "name": "U Mobile", "mcc": "502", "mnc": "18", "marketShare": "20%", "routeType": "Direct Operator Link", "tps": "3,500 TPS", "latency": "1.5s", "rateEUR": "0.0255" }
+    ],
+    "pricingTiers": [
+      { "volume": "Up to 100k / mo", "rateEUR": "€0.0290", "rateUSD": "$0.0313", "features": "MCMC sender registration guidance, sub-2s OTP latency" },
+      { "volume": "100k – 1M / mo", "rateEUR": "€0.0265", "rateUSD": "$0.0286", "features": "Dedicated SMPP TRX bind, full DLR callbacks" },
+      { "volume": "1M+ / mo (Wholesale)", "rateEUR": "€0.0235", "rateUSD": "$0.0254", "features": "Wholesale bilateral clearing, priority queueing, dedicated SLA" }
+    ],
+    "faqs": [
+      {
+        "q": "What is the 'RM0.00' prefix requirement in Malaysia?",
+        "a": "MCMC regulations mandate that unsolicited promotional text messages include the prefix 'RM0.00' in the message text so recipients know they are not being charged for receiving the SMS."
+      }
+    ]
+  }
+}

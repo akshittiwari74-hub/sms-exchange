@@ -162,28 +162,69 @@ export const RouteRatesTable = () => {
               ))}
             </div>
 
-            {/* Currency Selector */}
-            <div className="table-currency-toggle">
+            {/* Currency Selector & CSV Export */}
+            <div style={{ display: "flex", gap: "8px", alignItems: "center", flexWrap: "wrap" }}>
+              <div className="table-currency-toggle">
+                <button
+                  type="button"
+                  className={`curr-btn ${currency === "EUR" ? "active" : ""}`}
+                  onClick={() => setCurrency("EUR")}
+                >
+                  💶 EUR (€)
+                </button>
+                <button
+                  type="button"
+                  className={`curr-btn ${currency === "USDT" ? "active" : ""}`}
+                  onClick={() => setCurrency("USDT")}
+                >
+                  ₮ USDT
+                </button>
+                <button
+                  type="button"
+                  className={`curr-btn ${currency === "USD" ? "active" : ""}`}
+                  onClick={() => setCurrency("USD")}
+                >
+                  💵 USD ($)
+                </button>
+              </div>
+
               <button
                 type="button"
-                className={`curr-btn ${currency === "EUR" ? "active" : ""}`}
-                onClick={() => setCurrency("EUR")}
+                onClick={() => {
+                  const headers = ["Country", "ISO Code", "Region", "Route Type", "Latency SLA", "Throughput (TPS)", `Base Rate (${currency})`, `Per 1k Rate (${currency})`];
+                  const rows = filteredRoutes.map((r) => [
+                    `"${r.country.replace(/[^\w\s-]/g, '').trim()}"`,
+                    `"${r.code}"`,
+                    `"${r.region}"`,
+                    `"${r.type}"`,
+                    `"${r.latency}"`,
+                    `"${r.tps}"`,
+                    `"${formatRate(r.rateEUR)}"`,
+                    `"${formatPerThousand(r.rateEUR)}"`
+                  ]);
+                  const csvData = [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
+                  const blob = new Blob([csvData], { type: "text/csv;charset=utf-8;" });
+                  const url = URL.createObjectURL(blob);
+                  const a = document.createElement("a");
+                  a.href = url;
+                  a.download = `NAMX_Wholesale_SMS_Rate_Sheet_${currency}_2026.csv`;
+                  document.body.appendChild(a);
+                  a.click();
+                  document.body.removeChild(a);
+                }}
+                className="curr-btn"
+                style={{
+                  background: "rgba(16, 185, 129, 0.15)",
+                  border: "1px solid rgba(16, 185, 129, 0.4)",
+                  color: "#34d399",
+                  fontWeight: 700,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "6px"
+                }}
+                title="Download full rate card in CSV format"
               >
-                💶 EUR (€)
-              </button>
-              <button
-                type="button"
-                className={`curr-btn ${currency === "USDT" ? "active" : ""}`}
-                onClick={() => setCurrency("USDT")}
-              >
-                ₮ USDT
-              </button>
-              <button
-                type="button"
-                className={`curr-btn ${currency === "USD" ? "active" : ""}`}
-                onClick={() => setCurrency("USD")}
-              >
-                💵 USD ($)
+                📥 Download Rate Sheet (CSV)
               </button>
             </div>
           </div>
