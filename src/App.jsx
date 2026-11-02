@@ -28,11 +28,12 @@ import RcsPage from "./pages/RcsPage";
 import ItServicesPage from "./pages/ItServicesPage";
 import TermsPage from "./pages/TermsPage";
 import PrivacyPage from "./pages/PrivacyPage";
+import posts from "./data/posts.json";
 
 const pageMeta = {
   "/": {
-    title: "NAMX Telecom | Global Wholesale Bulk SMS Provider, SMPP Gateway & International P2P Routing",
-    description: "NAMX Telecom is a global wholesale Bulk SMS provider, SMPP v3.4/v5.0 gateway & international P2P traffic exchange. Send bulk SMS worldwide with direct SS7 carrier interconnects, zero-hop routing & REST APIs.",
+    title: "NAMX Telecom | Wholesale Bulk SMS Exchange, Direct SS7 & SMPP Gateway [2026]",
+    description: "Direct SS7 MNO bulk SMS interconnects, dedicated SMPP v3.4/v5.0 transceiver binds up to 10,000 TPS, live EUR rate cards & developer REST API across 195+ countries.",
     canonical: "https://www.namxtelecom.site/",
   },
   "/whatsapp-business": {
@@ -125,11 +126,21 @@ export function AppContent() {
     
     if (!metaInfo) {
       if (currentPath.startsWith('/insights/')) {
-        metaInfo = {
-          title: "Telecom Insights | NAMX Telecom",
-          description: "Read the latest technical guide on Bulk SMS and global routing from NAMX Telecom.",
-          canonical: `https://www.namxtelecom.site${currentPath}`
-        };
+        const slug = currentPath.replace('/insights/', '');
+        const post = posts.find((p) => p.slug === slug);
+        if (post) {
+          metaInfo = {
+            title: `${post.title} | NAMX Telecom`,
+            description: post.excerpt || "Technical telecom and wholesale SMPP routing guide from NAMX Telecom.",
+            canonical: `https://www.namxtelecom.site${currentPath}`
+          };
+        } else {
+          metaInfo = {
+            title: "Telecom Insights & Technical Articles | NAMX Telecom",
+            description: "Read the latest technical guide on Bulk SMS, SMPP protocol, and global routing from NAMX Telecom.",
+            canonical: `https://www.namxtelecom.site${currentPath}`
+          };
+        }
       } else if (currentPath.startsWith('/bulk-sms-')) {
         const country = currentPath.split('-').pop().toUpperCase();
         metaInfo = {

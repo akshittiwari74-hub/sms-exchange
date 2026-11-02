@@ -519,11 +519,56 @@ const routes = [
     }
   },
   {
+    path: '/insights/smpp-error-codes-dlr-troubleshooting-guide',
+    dir: 'insights/smpp-error-codes-dlr-troubleshooting-guide',
+    title: 'Complete SMPP Command Status & DLR Error Code Reference (ESME_ROK to ESME_RSUBMITFAIL) | NAMX Telecom',
+    description: 'A comprehensive developer troubleshooting manual for SMPP v3.4 command_status hex error codes, ESME bind failure states, and mobile handset DLR status codes with proven recovery steps.',
+    keywords: 'SMPP Error Codes, ESME_ROK, ESME_RTHROTTLED, ESME_RSUBMITFAIL, SMPP Status 0x00000058, DLR Error Codes, deliver_sm status',
+    canonical: 'https://www.namxtelecom.site/insights/smpp-error-codes-dlr-troubleshooting-guide',
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      'headline': 'Complete SMPP Command Status & DLR Error Code Reference (ESME_ROK to ESME_RSUBMITFAIL)',
+      'publisher': { '@id': 'https://www.namxtelecom.site/#organization' },
+      'author': { '@id': 'https://www.namxtelecom.site/#organization' }
+    }
+  },
+  {
+    path: '/insights/telecom-lcr-least-cost-routing-algorithms-explained',
+    dir: 'insights/telecom-lcr-least-cost-routing-algorithms-explained',
+    title: 'Least-Cost Routing (LCR) in Telecom SMS: Dynamic Margin & Quality Architecture | NAMX Telecom',
+    description: 'How wholesale SMS exchanges and aggregators design dynamic Least-Cost Routing (LCR) engines balancing carrier cost, DLR latency, delivery ratios, and SS7 redundancy.',
+    keywords: 'Telecom LCR Routing, Wholesale SMS Routing Engine, Dynamic Least Cost Routing, Quality LCR SMS, SS7 Carrier Redundancy, A2P Routing Algorithms',
+    canonical: 'https://www.namxtelecom.site/insights/telecom-lcr-least-cost-routing-algorithms-explained',
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      'headline': 'Least-Cost Routing (LCR) in Telecom SMS: Dynamic Margin & Quality Architecture',
+      'publisher': { '@id': 'https://www.namxtelecom.site/#organization' },
+      'author': { '@id': 'https://www.namxtelecom.site/#organization' }
+    }
+  },
+  {
+    path: '/insights/india-dlt-sms-compliance-registration-guide',
+    dir: 'insights/india-dlt-sms-compliance-registration-guide',
+    title: 'India Bulk SMS DLT Registration & Scrubbing Guide: Principal Entity, Header & Template Rules | NAMX Telecom',
+    description: 'Step-by-step regulatory handbook for passing TRAI DLT validation in India. Learn Principal Entity (PE) registration, header binding, consent scrubbing, and PE-TM chain validation.',
+    keywords: 'TRAI DLT Registration India, Bulk SMS DLT Scrubbing, Principal Entity PE Registration, DLT Template Approval, PE-TM Chain Validation, India Bulk SMS Compliance',
+    canonical: 'https://www.namxtelecom.site/insights/india-dlt-sms-compliance-registration-guide',
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      'headline': 'India Bulk SMS DLT Registration & Scrubbing Guide: Principal Entity, Header & Template Rules',
+      'publisher': { '@id': 'https://www.namxtelecom.site/#organization' },
+      'author': { '@id': 'https://www.namxtelecom.site/#organization' }
+    }
+  },
+  {
     path: "/",
     dir: "",
-    title: "NAMX Telecom | Global Wholesale Bulk SMS Provider, SMPP Gateway & International P2P Routing",
-    description: "NAMX Telecom is a global wholesale Bulk SMS provider, SMPP v3.4/v5.0 gateway & international P2P traffic exchange.",
-    keywords: "Bulk SMS, Global Bulk SMS, Wholesale Bulk SMS, Worldwide Bulk SMS Provider, Direct MNO Interconnect SMS",
+    title: "NAMX Telecom | Wholesale Bulk SMS Exchange, Direct SS7 & SMPP Gateway [2026]",
+    description: "Direct SS7 MNO bulk SMS interconnects, dedicated SMPP v3.4/v5.0 transceiver binds up to 10,000 TPS, live EUR rate cards & developer REST API across 195+ countries.",
+    keywords: "Wholesale Bulk SMS, SMPP v3.4 Gateway, Direct SS7 Interconnect, A2P SMS Routes, SMS Traffic Exchange",
     canonical: "https://www.namxtelecom.site/",
     schema: {
       "@context": "https://schema.org",
