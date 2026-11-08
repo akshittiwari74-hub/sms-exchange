@@ -108,7 +108,7 @@ export const TelecomDictionary = () => {
     <div className="telecom-dict-card">
       <div className="dict-header">
         <div>
-          <span className="dict-badge">📖 Telecom Glossary</span>
+          <span className="dict-badge">Telecom Glossary</span>
           <h2>Interactive Industry Dictionary &amp; Acronyms</h2>
           <p>Search key telecommunications terms, protocols, and regulatory acronyms.</p>
         </div>

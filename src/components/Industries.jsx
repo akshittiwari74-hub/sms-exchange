@@ -1,12 +1,13 @@
 import GlassCard from "./GlassCard";
 import "../styles/components/Industries.css";
+import EmojiIcon from "./EmojiIcon";
 
 export const Industries = () => {
   const industries = [
     { 
       icon: "🏦", 
       title: "Banking & Financial Services", 
-      badge: "PCI-DSS / ISO 27001",
+      badge: "Encrypted TLS Binds",
       description: "Ultra-low latency delivery for 2FA OTPs, fraud alerts, card transaction receipts, and wire transfer authorizations." 
     },
     { 
@@ -24,7 +25,7 @@ export const Industries = () => {
     { 
       icon: "🏥", 
       title: "Healthcare & Pharmaceuticals", 
-      badge: "HIPAA / GDPR Ready",
+      badge: "Privacy-First Data Handling",
       description: "Patient appointment reminders, prescription fulfillment alerts, and emergency care notification dispatches." 
     },
     { 
@@ -53,7 +54,7 @@ export const Industries = () => {
         {industries.map((item) => (
           <GlassCard key={item.title} className="industry-card" isHoverable>
             <div className="industry-top-row">
-              <span className="industry-icon">{item.icon}</span>
+              <span className="industry-icon"><EmojiIcon char={item.icon} /></span>
               <span className="industry-compliance-badge">{item.badge}</span>
             </div>
             <h3>{item.title}</h3>

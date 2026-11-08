@@ -37,8 +37,8 @@ export const NetworkStatusWidget = () => {
             </div>
             <p className="node-hub">{node.hub}</p>
             <div className="node-metrics">
-              <span>⚡ Latency: <strong>{node.ping}</strong></span>
-              <span>🔒 Uptime: <strong>{node.uptime}</strong></span>
+              <span>Latency: <strong>{node.ping}</strong></span>
+              <span>Uptime: <strong>{node.uptime}</strong></span>
             </div>
           </div>
         ))}

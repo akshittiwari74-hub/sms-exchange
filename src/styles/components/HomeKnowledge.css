@@ -1,0 +1,206 @@
+/* Homepage knowledge sections */
+
+.kb-section {
+  padding: 96px 7%;
+  border-bottom: 1px solid var(--border);
+}
+
+.kb-alt {
+  background: #0d0f14;
+}
+
+.kb-section a:not(.kb-guide) {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.kb-footnote {
+  margin-top: 24px;
+  font-size: 14.5px;
+  color: var(--text-secondary);
+}
+
+/* Heading on the left, content on the right */
+.kb-split {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 56px;
+  align-items: start;
+}
+
+.kb-split .home-section-head {
+  margin-bottom: 0;
+  position: sticky;
+  top: 112px;
+}
+
+/* ---------- Steps ---------- */
+.kb-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px 32px;
+}
+
+.kb-step {
+  border-top: 1px solid var(--border-strong);
+  padding-top: 20px;
+}
+
+.kb-step-num {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.kb-step h3 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.kb-step p {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+.kb-step-link {
+  margin-top: 10px;
+}
+
+/* ---------- Definition list ---------- */
+.kb-list {
+  margin: 0;
+  border-top: 1px solid var(--border);
+}
+
+.kb-list-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.kb-list-row dt {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 15px;
+}
+
+.kb-list-row dd {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* ---------- FAQ ---------- */
+.kb-faq {
+  border-top: 1px solid var(--border);
+}
+
+.kb-faq-item {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.kb-faq-item h3 {
+  font-size: 16.5px;
+  margin-bottom: 8px;
+}
+
+.kb-faq-item p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+/* ---------- Guides ---------- */
+.kb-guides {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--border);
+}
+
+.kb-guide {
+  display: grid;
+  grid-template-columns: 200px 1fr auto;
+  align-items: center;
+  gap: 24px;
+  padding: 18px 4px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s ease;
+}
+
+.kb-guide:hover {
+  background: var(--surface);
+}
+
+.kb-guide-cat {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.kb-guide-title {
+  font-size: 15.5px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.kb-guide-arrow {
+  color: var(--text-muted);
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.kb-guide:hover .kb-guide-arrow {
+  color: var(--accent);
+  transform: translateX(3px);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .kb-split {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .kb-split .home-section-head {
+    position: static;
+  }
+
+  .kb-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .kb-section {
+    padding: 64px 20px;
+  }
+
+  .kb-steps {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .kb-list-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .kb-guide {
+    grid-template-columns: 1fr auto;
+    gap: 4px 16px;
+  }
+
+  .kb-guide-cat {
+    grid-column: 1 / -1;
+  }
+}

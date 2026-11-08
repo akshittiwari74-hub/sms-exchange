@@ -1,5 +1,6 @@
 import posts from "../data/posts.json";
 import "../styles/pages/Subpages.css";
+import "../styles/components/HomeKnowledge.css";
 
 /*
  * Evergreen, crawlable reference content for the homepage.
@@ -116,43 +117,44 @@ export const HomeKnowledge = ({ navigate }) => {
 
   return (
     <>
-      <section className="subpage-info-section" aria-labelledby="how-sms-works">
-        <div className="container">
-          <div className="section-heading">
-            <p className="stats-eyebrow">How Wholesale SMS Works</p>
-            <h2 id="how-sms-works">How an A2P SMS Travels From Your Application to a Handset</h2>
+      <section className="kb-section" aria-labelledby="how-sms-works">
+        <div className="home-wrap">
+          <div className="home-section-head">
+            <p className="stats-eyebrow">How wholesale SMS works</p>
+            <h2 id="how-sms-works">How an A2P SMS travels from your application to a handset</h2>
             <p>
               Wholesale bulk SMS is the business of carrying application-to-person (A2P) messages — OTP codes,
               alerts and notifications — from businesses and CPaaS platforms to mobile operators worldwide.
               Every message passes through the same six stages.
             </p>
           </div>
-          <div className="info-grid-3">
-            {deliverySteps.map((s) => (
-              <div key={s.title} className="info-card">
-                <h3>{s.title}</h3>
+          <ol className="kb-steps">
+            {deliverySteps.map((s, i) => (
+              <li key={s.title} className="kb-step">
+                <span className="kb-step-num">{String(i + 1).padStart(2, "0")}</span>
+                <h3>{s.title.replace(/^\d+\.\s*/, "")}</h3>
                 <p>{s.text}</p>
                 {s.link && (
-                  <p style={{ marginTop: "8px" }}>
+                  <p className="kb-step-link">
                     <a href={s.link.path} onClick={(e) => go(e, s.link.path)}>{s.link.label} →</a>
                   </p>
                 )}
-              </div>
+              </li>
             ))}
-          </div>
-          <p style={{ textAlign: "center", marginTop: "24px" }}>
+          </ol>
+          <p className="kb-footnote">
             Protocol details: <a href="/insights/what-is-smpp-v34-guide" onClick={(e) => go(e, "/insights/what-is-smpp-v34-guide")}>SMPP v3.4 guide</a> ·{" "}
             <a href="/insights/telecom-lcr-least-cost-routing-algorithms-explained" onClick={(e) => go(e, "/insights/telecom-lcr-least-cost-routing-algorithms-explained")}>how least-cost routing works</a> ·{" "}
-            <a href="/insights/smpp-error-codes-dlr-troubleshooting-guide" onClick={(e) => go(e, "/insights/smpp-error-codes-dlr-troubleshooting-guide")}>DLR & error code reference</a>
+            <a href="/insights/smpp-error-codes-dlr-troubleshooting-guide" onClick={(e) => go(e, "/insights/smpp-error-codes-dlr-troubleshooting-guide")}>DLR &amp; error code reference</a>
           </p>
         </div>
       </section>
 
-      <section className="subpage-info-section" style={{ background: "rgba(255, 255, 255, 0.02)" }} aria-labelledby="route-types">
-        <div className="container">
-          <div className="section-heading">
-            <p className="stats-eyebrow">Route Quality</p>
-            <h2 id="route-types">Direct vs Aggregator vs Grey SMS Routes Compared</h2>
+      <section className="kb-section kb-alt" aria-labelledby="route-types">
+        <div className="home-wrap">
+          <div className="home-section-head">
+            <p className="stats-eyebrow">Route quality</p>
+            <h2 id="route-types">Direct vs aggregator vs grey SMS routes compared</h2>
             <p>
               Two providers can quote very different prices for the same country because they use different routes.
               This is what the route type changes for your traffic.
@@ -184,17 +186,17 @@ export const HomeKnowledge = ({ navigate }) => {
               </tbody>
             </table>
           </div>
-          <p style={{ textAlign: "center", marginTop: "24px" }}>
+          <p className="kb-footnote">
             Read more: <a href="/insights/a2p-vs-p2p-sms-routing" onClick={(e) => go(e, "/insights/a2p-vs-p2p-sms-routing")}>A2P vs P2P routing and how to spot a grey route</a>
           </p>
         </div>
       </section>
 
-      <section className="subpage-info-section" aria-labelledby="sms-length">
-        <div className="container">
-          <div className="section-heading">
-            <p className="stats-eyebrow">Encoding &amp; Billing</p>
-            <h2 id="sms-length">SMS Character Limits, Encoding and Segments</h2>
+      <section className="kb-section" aria-labelledby="sms-length">
+        <div className="home-wrap">
+          <div className="home-section-head">
+            <p className="stats-eyebrow">Encoding &amp; billing</p>
+            <h2 id="sms-length">SMS character limits, encoding and segments</h2>
             <p>
               SMS is billed per segment. Messages longer than one segment are split and reassembled on the handset
               using a User Data Header (UDH), which uses 6–7 bytes of each segment — that is why the per-segment limit drops.
@@ -205,9 +207,9 @@ export const HomeKnowledge = ({ navigate }) => {
               <thead>
                 <tr>
                   <th>Encoding</th>
-                  <th>SMPP data_coding</th>
-                  <th>Single SMS</th>
-                  <th>Per segment (multipart)</th>
+                  <th>data_coding</th>
+                  <th>Single</th>
+                  <th>Per segment</th>
                   <th>Notes</th>
                 </tr>
               </thead>
@@ -227,31 +229,31 @@ export const HomeKnowledge = ({ navigate }) => {
         </div>
       </section>
 
-      <section className="subpage-info-section" style={{ background: "rgba(255, 255, 255, 0.02)" }} aria-labelledby="sms-pricing">
-        <div className="container">
-          <div className="section-heading">
-            <p className="stats-eyebrow">Pricing Explained</p>
-            <h2 id="sms-pricing">What Determines the Price of Wholesale SMS?</h2>
+      <section className="kb-section kb-alt" aria-labelledby="sms-pricing">
+        <div className="home-wrap kb-split">
+          <div className="home-section-head">
+            <p className="stats-eyebrow">Pricing explained</p>
+            <h2 id="sms-pricing">What determines the price of wholesale SMS?</h2>
+            <p>
+              See current per-country prices on the <a href="/rates" onClick={(e) => go(e, "/rates")}>wholesale SMS rate cards</a>.
+            </p>
           </div>
-          <div className="info-grid-3">
+          <dl className="kb-list">
             {priceFactors.map((f) => (
-              <div key={f.title} className="info-card">
-                <h3>{f.title}</h3>
-                <p>{f.text}</p>
+              <div key={f.title} className="kb-list-row">
+                <dt>{f.title}</dt>
+                <dd>{f.text}</dd>
               </div>
             ))}
-          </div>
-          <p style={{ textAlign: "center", marginTop: "24px" }}>
-            See current per-country prices on the <a href="/rates" onClick={(e) => go(e, "/rates")}>wholesale SMS rate cards</a>.
-          </p>
+          </dl>
         </div>
       </section>
 
-      <section className="subpage-info-section" aria-labelledby="sms-compliance">
-        <div className="container">
-          <div className="section-heading">
+      <section className="kb-section" aria-labelledby="sms-compliance">
+        <div className="home-wrap">
+          <div className="home-section-head">
             <p className="stats-eyebrow">Regulation</p>
-            <h2 id="sms-compliance">A2P SMS Compliance Rules by Country</h2>
+            <h2 id="sms-compliance">A2P SMS compliance rules by country</h2>
             <p>Sender ID and registration rules decide whether your messages are delivered at all. Key markets at a glance:</p>
           </div>
           <div className="dlr-table-wrapper">
@@ -281,41 +283,43 @@ export const HomeKnowledge = ({ navigate }) => {
         </div>
       </section>
 
-      <section className="subpage-info-section" style={{ background: "rgba(255, 255, 255, 0.02)" }} aria-labelledby="home-faq">
-        <div className="container" style={{ maxWidth: "900px" }}>
-          <div className="section-heading">
+      <section className="kb-section kb-alt" aria-labelledby="home-faq">
+        <div className="home-wrap kb-split">
+          <div className="home-section-head">
             <p className="stats-eyebrow">FAQ</p>
-            <h2 id="home-faq">Frequently Asked Questions</h2>
+            <h2 id="home-faq">Frequently asked questions</h2>
+            <p>
+              More answers on the <a href="/faq" onClick={(e) => go(e, "/faq")}>full FAQ page</a>.
+            </p>
           </div>
-          {homeFaqs.map((f) => (
-            <div key={f.q} style={{ marginBottom: "24px" }}>
-              <h3 style={{ marginBottom: "8px" }}>{f.q}</h3>
-              <p style={{ lineHeight: 1.7 }}>{f.a}</p>
-            </div>
-          ))}
-          <p style={{ textAlign: "center" }}>
-            More answers on the <a href="/faq" onClick={(e) => go(e, "/faq")}>full FAQ page</a>.
-          </p>
+          <div className="kb-faq">
+            {homeFaqs.map((f) => (
+              <div key={f.q} className="kb-faq-item">
+                <h3>{f.q}</h3>
+                <p>{f.a}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="subpage-info-section" style={{ background: "rgba(6, 182, 212, 0.02)" }} aria-labelledby="latest-guides">
-        <div className="container">
-          <div className="section-heading">
-            <p className="stats-eyebrow">Engineering &amp; Compliance Guides</p>
-            <h2 id="latest-guides">Telecom Guides From the NAMX Engineering Team</h2>
+      <section className="kb-section" aria-labelledby="latest-guides">
+        <div className="home-wrap">
+          <div className="home-section-head">
+            <p className="stats-eyebrow">Guides</p>
+            <h2 id="latest-guides">Engineering and compliance guides</h2>
           </div>
-          <div className="info-grid-3">
+          <ul className="kb-guides">
             {latestPosts.map((p) => (
-              <article key={p.slug} className="info-card">
-                <p className="stats-eyebrow" style={{ marginBottom: "8px" }}>{p.category}</p>
-                <h3>
-                  <a href={`/insights/${p.slug}`} onClick={(e) => go(e, `/insights/${p.slug}`)}>{p.title}</a>
-                </h3>
-                <p>{p.excerpt}</p>
-              </article>
+              <li key={p.slug}>
+                <a href={`/insights/${p.slug}`} onClick={(e) => go(e, `/insights/${p.slug}`)} className="kb-guide">
+                  <span className="kb-guide-cat">{p.category}</span>
+                  <span className="kb-guide-title">{p.title}</span>
+                  <span className="kb-guide-arrow" aria-hidden="true">→</span>
+                </a>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
     </>

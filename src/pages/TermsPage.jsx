@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import CTA from "../components/CTA";
 import "../styles/pages/Subpages.css";
 import "../styles/pages/LegalPage.css";
+import EmojiIcon from "../components/EmojiIcon";
 
 export const TermsPage = ({ onOpenInquiriesModal, navigate }) => {
   useEffect(() => {
@@ -34,17 +35,17 @@ export const TermsPage = ({ onOpenInquiriesModal, navigate }) => {
       {/* Dedicated Legal Header Banner */}
       <div className="page-banner">
         <div className="container">
-          <span className="legal-badge-tag">⚖️ Master Services Agreement</span>
+          <span className="legal-badge-tag">Master Services Agreement</span>
           <h1>Terms and Conditions</h1>
           <p>
             Governing the carrier interconnection, SMPP v3.4/v5.0 bindings, REST API access, and wholesale SMS traffic exchange provided by NAMX Telecom.
           </p>
           <div className="legal-meta-bar">
-            <span className="legal-meta-item">📅 Effective Date: October 2026</span>
+            <span className="legal-meta-item">Effective Date: October 2026</span>
             <span className="legal-meta-dot"></span>
-            <span className="legal-meta-item">🌐 Version 4.2</span>
+            <span className="legal-meta-item">Version 4.2</span>
             <span className="legal-meta-dot"></span>
-            <span className="legal-meta-item">🛡️ Enterprise Telecom Standard</span>
+            <span className="legal-meta-item">Enterprise Telecom Standard</span>
           </div>
         </div>
       </div>
@@ -65,13 +66,13 @@ export const TermsPage = ({ onOpenInquiriesModal, navigate }) => {
 
             <div className="legal-quick-actions">
               <a href="/privacy" onClick={(e) => handleNav(e, "/privacy")} className="legal-quick-link">
-                🔒 View Privacy Policy &rarr;
+                View Privacy Policy &rarr;
               </a>
               <a href="/faq" onClick={(e) => handleNav(e, "/faq")} className="legal-quick-link">
-                ❓ Technical Routing FAQ &rarr;
+                Technical Routing FAQ &rarr;
               </a>
               <a href="/contact" onClick={(e) => handleNav(e, "/contact")} className="legal-quick-link">
-                ✉️ Contact NOC Desk &rarr;
+                Contact NOC Desk &rarr;
               </a>
             </div>
           </aside>
@@ -91,7 +92,7 @@ export const TermsPage = ({ onOpenInquiriesModal, navigate }) => {
                 By establishing an SMPP bind (transceiver, transmitter, or receiver session), issuing API queries via REST endpoints, logging into the web broadcast portal, or transmitting Short Message Peer-to-Peer Protocol (SMPP) Packet Data Units (PDUs) to our switching gateway, you acknowledge that you have read, understood, and agree to be bound by these Terms in full.
               </p>
               <div className="legal-callout info">
-                <span className="callout-icon">ℹ️</span>
+                <span className="callout-icon"><EmojiIcon char="ℹ️" /></span>
                 <div className="callout-body">
                   <strong>Carrier-Grade Wholesale Interconnect</strong>
                   <p>
@@ -128,7 +129,7 @@ export const TermsPage = ({ onOpenInquiriesModal, navigate }) => {
               </p>
               
               <div className="legal-callout warning">
-                <span className="callout-icon">⚠️</span>
+                <span className="callout-icon"><EmojiIcon char="⚠️" /></span>
                 <div className="callout-body">
                   <strong>Strictly Prohibited Messaging Categories</strong>
                   <p>
@@ -254,7 +255,7 @@ export const TermsPage = ({ onOpenInquiriesModal, navigate }) => {
               </ul>
               
               <div className="legal-callout success">
-                <span className="callout-icon">⚡</span>
+                <span className="callout-icon"><EmojiIcon char="⚡" /></span>
                 <div className="callout-body">
                   <strong>24/7/365 Global NOC Monitoring</strong>
                   <p>
@@ -345,7 +346,7 @@ export const TermsPage = ({ onOpenInquiriesModal, navigate }) => {
                   <p>Inquiries regarding MSAs, DLT onboarding, compliance audits &amp; regulatory verification.</p>
                 </div>
                 <a href="mailto:admin@namxtelecom.site?subject=Enterprise%20Legal%20%26%20MSA%20Inquiry" className="legal-contact-btn">
-                  ✉️ Contact Legal Team
+                  Contact Legal Team
                 </a>
               </div>
             </section>

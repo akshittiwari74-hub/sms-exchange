@@ -1,5 +1,6 @@
 import GlassCard from "./GlassCard";
 import "../styles/components/WhyChooseUs.css";
+import EmojiIcon from "./EmojiIcon";
 
 export const WhyChooseUs = () => {
   const reasons = [
@@ -46,7 +47,7 @@ export const WhyChooseUs = () => {
       <div className="why-grid">
         {reasons.map((item) => (
           <GlassCard key={item.title} className="why-card" isHoverable>
-            <div className="why-icon-box">{item.icon}</div>
+            <div className="why-icon-box"><EmojiIcon char={item.icon} /></div>
             <h3>{item.title}</h3>
             <p>{item.description}</p>
           </GlassCard>

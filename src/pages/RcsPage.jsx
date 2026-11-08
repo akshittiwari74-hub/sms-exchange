@@ -4,6 +4,7 @@ import CTA from "../components/CTA";
 import "../styles/pages/Subpages.css";
 import "../styles/pages/ServicesWings.css";
 import "../styles/components/FAQ.css";
+import EmojiIcon from "../components/EmojiIcon";
 
 export const RcsPage = ({ onOpenInquiriesModal, navigate }) => {
   const [activeTab, setActiveTab] = useState("ecommerce");
@@ -22,7 +23,7 @@ export const RcsPage = ({ onOpenInquiriesModal, navigate }) => {
       icon: "🛍️",
       cardTitle: "Summer Flash Collection 2026",
       cardDesc: "Your exclusive 30% discount voucher is now available. Free express delivery on orders placed today.",
-      chips: ["🛍️ Shop Now", "📦 Track Shipment", "💬 Chat Support"]
+      chips: ["Shop Now", "Track Shipment", "Chat Support"]
     },
     banking: {
       title: "Banking Security Alert",
@@ -31,7 +32,7 @@ export const RcsPage = ({ onOpenInquiriesModal, navigate }) => {
       icon: "🛡️",
       cardTitle: "Transaction Security Notice",
       cardDesc: "A card payment of $420.00 was authorized at London Duty Free. If this was not you, tap below immediately.",
-      chips: ["✓ It Was Me", "🚫 Block Card Now", "📞 Call Anti-Fraud Desk"]
+      chips: ["✓ It Was Me", "Block Card Now", "Call Anti-Fraud Desk"]
     },
     airline: {
       title: "Flight Check-In & Boarding",
@@ -40,7 +41,7 @@ export const RcsPage = ({ onOpenInquiriesModal, navigate }) => {
       icon: "✈️",
       cardTitle: "Flight SG-402 · Gate B18",
       cardDesc: "Boarding starts at 14:15. Your digital boarding pass has been generated. Please proceed to Security Terminal 3.",
-      chips: ["🎟️ View Boarding Pass", "💺 Change Seat", "📍 Terminal Map"]
+      chips: ["View Boarding Pass", "Change Seat", "Terminal Map"]
     },
     appointment: {
       title: "Healthcare & Service Booking",
@@ -49,7 +50,7 @@ export const RcsPage = ({ onOpenInquiriesModal, navigate }) => {
       icon: "🩺",
       cardTitle: "Consultation Appointment",
       cardDesc: "Your consultation with Dr. Aris is scheduled for tomorrow at 10:30 AM at Clinic Suite 4B.",
-      chips: ["✓ Confirm Booking", "🗓️ Add to Calendar", "🔄 Reschedule Time"]
+      chips: ["✓ Confirm Booking", "Add to Calendar", "Reschedule Time"]
     }
   };
 
@@ -57,10 +58,10 @@ export const RcsPage = ({ onOpenInquiriesModal, navigate }) => {
 
   const rcsSpecs = [
     {
-      title: "Direct Google RBM Partner Interconnect",
+      title: "Google RBM Interconnect",
       tag: "Carrier-Grade Gateway",
       details: [
-        "Certified Google Rich Business Messaging (RBM) Partner infrastructure",
+        "Connectivity to Google Rich Business Messaging (RBM) for verified brand messaging",
         "Direct routing across global Tier-1 Mobile Network Operators (MNOs)",
         "Sustained 5,000+ MPS processing throughput with sub-second delivery latency",
         "High-performance REST API and carrier-grade SMPP v3.4 TLV protocol support"
@@ -126,7 +127,7 @@ export const RcsPage = ({ onOpenInquiriesModal, navigate }) => {
       {/* Hero Banner */}
       <div className="page-banner">
         <div className="container">
-          <span className="wing-hero-badge rcs">📲 Next-Gen GSMA Universal Profile 2.4</span>
+          <span className="wing-hero-badge rcs">Next-Gen GSMA Universal Profile 2.4</span>
           <h1>RCS Business Messaging Gateway (Rich Communication Services)</h1>
           <p>
             Upgrade traditional Bulk SMS into rich, verified, interactive experiences. Delivered natively inside Android Google Messages and iOS 18 native messaging with zero app installation required.
@@ -169,7 +170,7 @@ export const RcsPage = ({ onOpenInquiriesModal, navigate }) => {
                   className={`sim-tab-btn ${activeTab === "ecommerce" ? "active rcs-active" : ""}`}
                   onClick={() => setActiveTab("ecommerce")}
                 >
-                  <span className="sim-tab-icon">🛍️</span>
+                  <span className="sim-tab-icon"><EmojiIcon char="🛍️" /></span>
                   <div>
                     <span className="sim-tab-title">E-Commerce Rich Carousel</span>
                     <p className="sim-tab-desc">Rich product hero imagery with single-tap purchase &amp; track chips.</p>
@@ -181,7 +182,7 @@ export const RcsPage = ({ onOpenInquiriesModal, navigate }) => {
                   className={`sim-tab-btn ${activeTab === "banking" ? "active rcs-active" : ""}`}
                   onClick={() => setActiveTab("banking")}
                 >
-                  <span className="sim-tab-icon">🛡️</span>
+                  <span className="sim-tab-icon"><EmojiIcon char="🛡️" /></span>
                   <div>
                     <span className="sim-tab-title">Verified Bank Security Notice</span>
                     <p className="sim-tab-desc">Fraud alerts with verified badge and emergency anti-fraud dialer.</p>
@@ -193,7 +194,7 @@ export const RcsPage = ({ onOpenInquiriesModal, navigate }) => {
                   className={`sim-tab-btn ${activeTab === "airline" ? "active rcs-active" : ""}`}
                   onClick={() => setActiveTab("airline")}
                 >
-                  <span className="sim-tab-icon">✈️</span>
+                  <span className="sim-tab-icon"><EmojiIcon char="✈️" /></span>
                   <div>
                     <span className="sim-tab-title">Airline Boarding Pass &amp; Gates</span>
                     <p className="sim-tab-desc">Interactive boarding pass, terminal navigation, and seat updates.</p>
@@ -205,7 +206,7 @@ export const RcsPage = ({ onOpenInquiriesModal, navigate }) => {
                   className={`sim-tab-btn ${activeTab === "appointment" ? "active rcs-active" : ""}`}
                   onClick={() => setActiveTab("appointment")}
                 >
-                  <span className="sim-tab-icon">🩺</span>
+                  <span className="sim-tab-icon"><EmojiIcon char="🩺" /></span>
                   <div>
                     <span className="sim-tab-title">Healthcare &amp; Calendar Booking</span>
                     <p className="sim-tab-desc">Single-tap appointment confirmation and native calendar sync.</p>
@@ -238,7 +239,7 @@ export const RcsPage = ({ onOpenInquiriesModal, navigate }) => {
                   <div className="rcs-chat-body">
                     <div className="rcs-card-bubble">
                       <div className="rcs-card-media">
-                        <span className="rcs-card-media-icon">{currentSim.icon}</span>
+                        <span className="rcs-card-media-icon"><EmojiIcon char={currentSim.icon} /></span>
                         <span style={{ fontSize: "11px", opacity: 0.9 }}>VERIFIED RICH MESSAGE</span>
                       </div>
 

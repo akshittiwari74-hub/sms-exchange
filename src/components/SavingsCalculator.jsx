@@ -32,7 +32,7 @@ export const SavingsCalculator = () => {
     <div className="savings-calculator-card">
       <div className="savings-calc-header">
         <div>
-          <span className="calc-badge">⚡ Interactive Savings Estimator</span>
+          <span className="calc-badge">Interactive Savings Estimator</span>
           <h2>Calculate Your Wholesale SMS Savings</h2>
           <p>Adjust your monthly volume and region to estimate cost efficiency with NAMX Telecom.</p>
         </div>
@@ -65,7 +65,7 @@ export const SavingsCalculator = () => {
         <div className="calc-control-group">
           <div className="slider-label-row">
             <label>Monthly Message Volume:</label>
-            <span className="volume-val">{volume.toLocaleString()} SMS</span>
+            <span className="volume-val">{volume.toLocaleString("en-US")} SMS</span>
           </div>
           <input
             type="range"
@@ -84,7 +84,7 @@ export const SavingsCalculator = () => {
           <span className="box-label">NAMX Wholesale Total</span>
           <span className="box-amount">
             {activeCurr.symbol}
-            {namxTotal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            {namxTotal.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </span>
           <span className="box-rate">
             Rate: {activeCurr.symbol}{(activeRegion.namxRate * activeCurr.factor).toFixed(4)} / SMS
@@ -95,7 +95,7 @@ export const SavingsCalculator = () => {
           <span className="box-label">Standard Aggregator Avg</span>
           <span className="box-amount">
             {activeCurr.symbol}
-            {competitorTotal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            {competitorTotal.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </span>
           <span className="box-rate">
             Rate: {activeCurr.symbol}{(activeRegion.competitorRate * activeCurr.factor).toFixed(4)} / SMS
@@ -106,7 +106,7 @@ export const SavingsCalculator = () => {
           <span className="box-label">Estimated Monthly Savings</span>
           <span className="box-amount savings-highlight">
             {activeCurr.symbol}
-            {monthlySavings.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            {monthlySavings.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </span>
           <span className="box-rate badge-green">Save ~{savingsPercent}% per month</span>
         </div>

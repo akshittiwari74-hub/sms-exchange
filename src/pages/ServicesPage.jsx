@@ -106,11 +106,11 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", justifyContent: "center", marginBottom: "36px" }}>
             {[
-              { id: "smpp", label: "⚡ SMPP v3.4 / v5.0 Protocol Suite" },
-              { id: "a2p", label: "📨 Wholesale A2P SMS & LCR Engine" },
-              { id: "wa", label: "💬 WhatsApp Business API (Meta)" },
-              { id: "rcs", label: "📲 Google RCS Business Messaging" },
-              { id: "cloud", label: "💻 Cloud DevOps & Telecom Engineering" },
+              { id: "smpp", label: "SMPP v3.4 / v5.0 Protocol Suite" },
+              { id: "a2p", label: "Wholesale A2P SMS & LCR Engine" },
+              { id: "wa", label: "WhatsApp Business API (Meta)" },
+              { id: "rcs", label: "Google RCS Business Messaging" },
+              { id: "cloud", label: "Cloud DevOps & Telecom Engineering" },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -134,7 +134,7 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
 
           <div className="info-grid-2" hidden={activeTab !== "smpp"}>
               <div className="info-card">
-                <h3>⚡ SMPP Protocol Engine Specifications</h3>
+                <h3>SMPP Protocol Engine Specifications</h3>
                 <p>Designed for tier-1 mobile operators and enterprise messaging aggregators needing high-throughput, low-latency persistent sockets.</p>
                 <ul className="spec-list" style={{ marginTop: "16px" }}>
                   <li>✓ <strong>Protocol Versions:</strong> SMPP v3.4 (industry standard) and SMPP v5.0 (advanced session control).</li>
@@ -146,7 +146,7 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
               </div>
 
               <div className="info-card">
-                <h3>📊 Message Encoding &amp; Payload Handling</h3>
+                <h3>Message Encoding &amp; Payload Handling</h3>
                 <p>Full support for global multilingual messaging, concatenation, and binary payloads across all destination handsets.</p>
                 <ul className="spec-list" style={{ marginTop: "16px" }}>
                   <li>✓ <strong>GSM 7-bit Default Alphabet:</strong> Up to 160 characters for single SMS; 153 characters per segment concatenated.</li>
@@ -159,7 +159,7 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
 
           <div className="info-grid-2" hidden={activeTab !== "a2p"}>
               <div className="info-card">
-                <h3>🌐 Wholesale A2P SMS Hubbing &amp; MNO Termination</h3>
+                <h3>Wholesale A2P SMS Hubbing &amp; MNO Termination</h3>
                 <p>Direct zero-hop signaling links with 250+ Mobile Network Operators across Asia, Europe, Middle East, and the Americas.</p>
                 <ul className="spec-list" style={{ marginTop: "16px" }}>
                   <li>✓ <strong>Express OTP Priority Route:</strong> Sub-1.8 second delivery latency with 99.98% delivery rate for 2FA verification codes.</li>
@@ -170,7 +170,7 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
               </div>
 
               <div className="info-card">
-                <h3>🛡️ SS7 Anti-Fraud &amp; Firewall Protection</h3>
+                <h3>SS7 Anti-Fraud &amp; Firewall Protection</h3>
                 <p>Enterprise firewall heuristics protect your brand reputation and eliminate gray route interception.</p>
                 <ul className="spec-list" style={{ marginTop: "16px" }}>
                   <li>✓ <strong>Anti-AIT (Artificial Traffic Inflation):</strong> Heuristic filters stop automated bot OTP generation and credit drainage.</li>
@@ -183,7 +183,7 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
 
           <div className="info-grid-2" hidden={activeTab !== "wa"}>
               <div className="info-card">
-                <h3>💬 Meta Cloud API &amp; WhatsApp Business Platform</h3>
+                <h3>Meta Cloud API &amp; WhatsApp Business Platform</h3>
                 <p>Enterprise-grade WhatsApp messaging integrated alongside your bulk SMS infrastructure for unified communications.</p>
                 <ul className="spec-list" style={{ marginTop: "16px" }}>
                   <li>✓ <strong>Official Green Tick Verification:</strong> End-to-end guidance to obtain Meta's verified business badge.</li>
@@ -194,7 +194,7 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
               </div>
 
               <div className="info-card">
-                <h3>🔄 Smart Fallback: WhatsApp to SMS</h3>
+                <h3>Smart Fallback: WhatsApp to SMS</h3>
                 <p>Never lose a high-value customer notification when a recipient is outside cellular data coverage or offline.</p>
                 <ul className="spec-list" style={{ marginTop: "16px" }}>
                   <li>✓ <strong>Automatic Delivery Detection:</strong> If a WhatsApp template remains undelivered after 60 seconds, failover triggers.</li>
@@ -207,7 +207,7 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
 
           <div className="info-grid-2" hidden={activeTab !== "rcs"}>
               <div className="info-card">
-                <h3>📲 Google RCS Business Messaging (RBM)</h3>
+                <h3>Google RCS Business Messaging (RBM)</h3>
                 <p>Transform standard text notifications into modern rich app-like experiences natively in Android and iOS 18 Messages.</p>
                 <ul className="spec-list" style={{ marginTop: "16px" }}>
                   <li>✓ <strong>Verified Sender Avatar:</strong> Displays your brand logo, verified checkmark, and custom color scheme in the native inbox.</li>
@@ -218,7 +218,7 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
               </div>
 
               <div className="info-card">
-                <h3>⚡ Cascading RCS-to-SMS Fallback</h3>
+                <h3>Cascading RCS-to-SMS Fallback</h3>
                 <p>Seamless coverage guarantee across devices without RCS or when carrier signaling is unavailable.</p>
                 <ul className="spec-list" style={{ marginTop: "16px" }}>
                   <li>✓ <strong>Capability Discovery:</strong> Real-time query determines if the recipient handset supports RCS protocol.</li>
@@ -231,7 +231,7 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
 
           <div className="info-grid-2" hidden={activeTab !== "cloud"}>
               <div className="info-card">
-                <h3>💻 Enterprise Telecom IT &amp; DevOps Engineering</h3>
+                <h3>Enterprise Telecom IT &amp; DevOps Engineering</h3>
                 <p>Custom engineering services for telecom operators, fintechs, and aggregators scaling messaging infrastructure.</p>
                 <ul className="spec-list" style={{ marginTop: "16px" }}>
                   <li>✓ <strong>Custom SMPP Gateway Development:</strong> High-concurrency C++ / Go / Node.js gateways built for 50,000+ TPS.</li>
@@ -242,7 +242,7 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
               </div>
 
               <div className="info-card">
-                <h3>🛡️ 24/7/365 Global Network Operations Center (NOC)</h3>
+                <h3>24/7/365 Global Network Operations Center (NOC)</h3>
                 <p>Round-the-clock pro-active monitoring and carrier escalation desk.</p>
                 <ul className="spec-list" style={{ marginTop: "16px" }}>
                   <li>✓ <strong>Proactive Quality Monitoring:</strong> Real-time monitoring of route DLR ratios, ASR, and latency alerts.</li>

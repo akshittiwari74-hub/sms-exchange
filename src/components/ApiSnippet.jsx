@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../styles/components/ApiSnippet.css";
+import EmojiIcon from "./EmojiIcon";
 
 export const ApiSnippet = () => {
   const [activeTab, setActiveTab] = useState("curl");
@@ -105,7 +106,7 @@ Body:
 
             <div className="api-features-list">
               <div className="api-feat-item">
-                <span className="api-feat-icon">⚡</span>
+                <span className="api-feat-icon"><EmojiIcon char="⚡" /></span>
                 <div>
                   <h3>Sub-150ms Response</h3>
                   <p>Ultra-low overhead API endpoints with automated load balancing.</p>
@@ -113,7 +114,7 @@ Body:
               </div>
 
               <div className="api-feat-item">
-                <span className="api-feat-icon">🔔</span>
+                <span className="api-feat-icon"><EmojiIcon char="🔔" /></span>
                 <div>
                   <h3>Real-Time DLR Webhooks</h3>
                   <p>Instant HTTP POST callbacks for handset receipt confirmations.</p>
@@ -121,7 +122,7 @@ Body:
               </div>
 
               <div className="api-feat-item">
-                <span className="api-feat-icon">🛡️</span>
+                <span className="api-feat-icon"><EmojiIcon char="🛡️" /></span>
                 <div>
                   <h3>Idempotency &amp; Token Auth</h3>
                   <p>Secure request signing, rate limiting, and sandbox key provisioning.</p>

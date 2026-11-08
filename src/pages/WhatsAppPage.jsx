@@ -4,6 +4,7 @@ import CTA from "../components/CTA";
 import "../styles/pages/Subpages.css";
 import "../styles/pages/ServicesWings.css";
 import "../styles/components/FAQ.css";
+import EmojiIcon from "../components/EmojiIcon";
 
 export const WhatsAppPage = ({ onOpenInquiriesModal, navigate }) => {
   const [activeTab, setActiveTab] = useState("otp");
@@ -22,7 +23,7 @@ export const WhatsAppPage = ({ onOpenInquiriesModal, navigate }) => {
       time: "10:42 AM",
       text: "Your NAMX 2-Factor Authentication code is below. For your security, never share this code with anyone.",
       code: "894 201",
-      actionText: "📋 Copy Code",
+      actionText: "Copy Code",
       subText: "Valid for 5 minutes. If you didn't request this, contact support immediately."
     },
     order: {
@@ -33,7 +34,7 @@ export const WhatsAppPage = ({ onOpenInquiriesModal, navigate }) => {
       icon: "📦",
       text: "Great news! Your international consignment #NX-88291 has been cleared and is out for final delivery.",
       subText: "Estimated delivery: Today before 4:00 PM.",
-      actionText: "🚚 Track Live Courier"
+      actionText: "Track Live Courier"
     },
     support: {
       type: "support",
@@ -42,7 +43,7 @@ export const WhatsAppPage = ({ onOpenInquiriesModal, navigate }) => {
       time: "02:30 PM",
       text: "Hello! Welcome to 24/7 Enterprise Support. Please choose how we can assist you today:",
       options: ["1. Check Wholesale Route Status", "2. Top-Up Account Balance", "3. Connect to NOC Engineer"],
-      actionText: "💬 Chat with Live NOC"
+      actionText: "Chat with Live NOC"
     },
     promo: {
       type: "promo",
@@ -52,7 +53,7 @@ export const WhatsAppPage = ({ onOpenInquiriesModal, navigate }) => {
       icon: "⚡",
       text: "Exclusive Flash Discount: Enjoy up to 25% lower rates on direct tier-1 routing routes across APAC & Europe this month!",
       code: "CODE: ROUTE25",
-      actionText: "🚀 Claim Route Discount"
+      actionText: "Claim Route Discount"
     }
   };
 
@@ -129,7 +130,7 @@ export const WhatsAppPage = ({ onOpenInquiriesModal, navigate }) => {
       {/* Hero Banner */}
       <div className="page-banner">
         <div className="container">
-          <span className="wing-hero-badge whatsapp">💬 Official Meta Cloud API Partner</span>
+          <span className="wing-hero-badge whatsapp">Official Meta Cloud API Partner</span>
           <h1>Enterprise WhatsApp Business Platform &amp; API Gateway</h1>
           <p>
             Connect directly to the world's most popular messaging app. Deliver verified 2FA OTPs, rich interactive marketing broadcasts, automated AI customer care, and automated fallback to wholesale Bulk SMS.
@@ -172,7 +173,7 @@ export const WhatsAppPage = ({ onOpenInquiriesModal, navigate }) => {
                   className={`sim-tab-btn ${activeTab === "otp" ? "active wa-active" : ""}`}
                   onClick={() => setActiveTab("otp")}
                 >
-                  <span className="sim-tab-icon">🔐</span>
+                  <span className="sim-tab-icon"><EmojiIcon char="🔐" /></span>
                   <div>
                     <span className="sim-tab-title">Authentication 2FA OTP</span>
                     <p className="sim-tab-desc">Time-sensitive login security codes with single-tap copy button.</p>
@@ -184,7 +185,7 @@ export const WhatsAppPage = ({ onOpenInquiriesModal, navigate }) => {
                   className={`sim-tab-btn ${activeTab === "order" ? "active wa-active" : ""}`}
                   onClick={() => setActiveTab("order")}
                 >
-                  <span className="sim-tab-icon">📦</span>
+                  <span className="sim-tab-icon"><EmojiIcon char="📦" /></span>
                   <div>
                     <span className="sim-tab-title">Order &amp; Logistics Tracking</span>
                     <p className="sim-tab-desc">Real-time parcel delivery notifications with live tracking links.</p>
@@ -196,7 +197,7 @@ export const WhatsAppPage = ({ onOpenInquiriesModal, navigate }) => {
                   className={`sim-tab-btn ${activeTab === "support" ? "active wa-active" : ""}`}
                   onClick={() => setActiveTab("support")}
                 >
-                  <span className="sim-tab-icon">🤖</span>
+                  <span className="sim-tab-icon"><EmojiIcon char="🤖" /></span>
                   <div>
                     <span className="sim-tab-title">Interactive AI Care &amp; Menus</span>
                     <p className="sim-tab-desc">Structured list pickers and quick reply buttons for self-service.</p>
@@ -208,7 +209,7 @@ export const WhatsAppPage = ({ onOpenInquiriesModal, navigate }) => {
                   className={`sim-tab-btn ${activeTab === "promo" ? "active wa-active" : ""}`}
                   onClick={() => setActiveTab("promo")}
                 >
-                  <span className="sim-tab-icon">📢</span>
+                  <span className="sim-tab-icon"><EmojiIcon char="📢" /></span>
                   <div>
                     <span className="sim-tab-title">Rich Promotional Broadcast</span>
                     <p className="sim-tab-desc">High-converting multimedia campaigns with coupons and CTA buttons.</p>

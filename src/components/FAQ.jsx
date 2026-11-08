@@ -129,7 +129,7 @@ export const FAQ = () => {
       <div className="faq-controls">
         <input
           type="text"
-          placeholder="🔍 Search questions, protocols (e.g. SMPP, LCR, SS7, DLR, HLR, P2P)..."
+          placeholder="Search questions, protocols (e.g. SMPP, LCR, SS7, DLR, HLR, P2P)..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="faq-search-input"

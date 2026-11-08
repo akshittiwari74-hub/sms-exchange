@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import CTA from "../components/CTA";
 import "../styles/pages/Subpages.css";
 import "../styles/pages/LegalPage.css";
+import EmojiIcon from "../components/EmojiIcon";
 
 export const PrivacyPage = ({ onOpenInquiriesModal, navigate }) => {
   useEffect(() => {
@@ -33,17 +34,17 @@ export const PrivacyPage = ({ onOpenInquiriesModal, navigate }) => {
       {/* Dedicated Legal Header Banner */}
       <div className="page-banner">
         <div className="container">
-          <span className="legal-badge-tag">🔒 Global Data Protection</span>
+          <span className="legal-badge-tag">Global Data Protection</span>
           <h1>Privacy Policy</h1>
           <p>
             How NAMX Telecom collects, processes, encrypts, and retains enterprise messaging data, CDR metadata, and PDU payloads in accordance with international data protection frameworks.
           </p>
           <div className="legal-meta-bar">
-            <span className="legal-meta-item">📅 Effective Date: October 2026</span>
+            <span className="legal-meta-item">Effective Date: October 2026</span>
             <span className="legal-meta-dot"></span>
-            <span className="legal-meta-item">🛡️ GDPR, CCPA &amp; Telecom Compliant</span>
+            <span className="legal-meta-item">GDPR, CCPA &amp; Telecom Compliant</span>
             <span className="legal-meta-dot"></span>
-            <span className="legal-meta-item">🔐 Zero-Payload Storage Architecture</span>
+            <span className="legal-meta-item">Zero-Payload Storage Architecture</span>
           </div>
         </div>
       </div>
@@ -64,13 +65,13 @@ export const PrivacyPage = ({ onOpenInquiriesModal, navigate }) => {
 
             <div className="legal-quick-actions">
               <a href="/terms" onClick={(e) => handleNav(e, "/terms")} className="legal-quick-link">
-                ⚖️ View Terms &amp; Conditions &rarr;
+                View Terms &amp; Conditions &rarr;
               </a>
               <a href="/faq" onClick={(e) => handleNav(e, "/faq")} className="legal-quick-link">
-                ❓ Security &amp; SLA FAQ &rarr;
+                Security &amp; SLA FAQ &rarr;
               </a>
               <a href="/contact" onClick={(e) => handleNav(e, "/contact")} className="legal-quick-link">
-                ✉️ Contact Security NOC &rarr;
+                Contact Security NOC &rarr;
               </a>
             </div>
           </aside>
@@ -107,25 +108,25 @@ export const PrivacyPage = ({ onOpenInquiriesModal, navigate }) => {
 
               <div className="compliance-badges-grid">
                 <div className="compliance-badge-card">
-                  <span className="compliance-badge-name">👤 Account &amp; KYC Data</span>
+                  <span className="compliance-badge-name">Account &amp; KYC Data</span>
                   <span className="compliance-badge-desc">
                     Corporate entity name, registered office address, tax/VAT identifiers, authorized billing emails, and authorized operator representative contacts.
                   </span>
                 </div>
                 <div className="compliance-badge-card">
-                  <span className="compliance-badge-name">🌐 Network &amp; Security Data</span>
+                  <span className="compliance-badge-name">Network &amp; Security Data</span>
                   <span className="compliance-badge-desc">
                     Customer-provided static IPv4/IPv6 addresses, CIDR whitelists, TLS handshake certificates, SMPP session logs, and enquire_link timestamps.
                   </span>
                 </div>
                 <div className="compliance-badge-card">
-                  <span className="compliance-badge-name">📊 Call Detail Records (CDR)</span>
+                  <span className="compliance-badge-name">Call Detail Records (CDR)</span>
                   <span className="compliance-badge-desc">
                     Carrier interconnect routing metadata including message ID, destination country code (MCC/MNC), submission timestamp, delivery status (DELIVRD/UNDELIV), and latency metrics.
                   </span>
                 </div>
                 <div className="compliance-badge-card">
-                  <span className="compliance-badge-name">✉️ Transient PDU Payloads</span>
+                  <span className="compliance-badge-name">Transient PDU Payloads</span>
                   <span className="compliance-badge-desc">
                     Short message text and user data headers (UDH) submitted via submit_sm or REST payload for immediate transmission to terminating MNO networks.
                   </span>
@@ -158,7 +159,7 @@ export const PrivacyPage = ({ onOpenInquiriesModal, navigate }) => {
               </p>
 
               <div className="legal-callout success">
-                <span className="callout-icon">⏱️</span>
+                <span className="callout-icon"><EmojiIcon char="⏱️" /></span>
                 <div className="callout-body">
                   <strong>72-Hour Automated Payload Erasure</strong>
                   <p>
@@ -214,7 +215,7 @@ export const PrivacyPage = ({ onOpenInquiriesModal, navigate }) => {
                 Data Security, Encryption &amp; Infrastructure Safeguards
               </h2>
               <p>
-                We implement multi-layered physical, technical, and administrative security measures aligned with ISO/IEC 27001 standards to prevent unauthorized access, alteration, disclosure, or destruction of communications:
+                We implement multi-layered physical, technical, and administrative security measures based on recognised information-security practices to prevent unauthorized access, alteration, disclosure, or destruction of communications:
               </p>
               <ul>
                 <li><strong>Transport Layer Security:</strong> All SMPP binds support TLS 1.3 protocol encapsulation. All REST APIs enforce mandatory HTTPS with modern cipher suites and HSTS preloading.</li>
@@ -301,7 +302,7 @@ export const PrivacyPage = ({ onOpenInquiriesModal, navigate }) => {
                   <p>Inquiries regarding GDPR compliance, DPA execution, CDR redaction &amp; security audits.</p>
                 </div>
                 <a href="mailto:admin@namxtelecom.site?subject=Data%20Protection%20%26%20Privacy%20Inquiry" className="legal-contact-btn">
-                  🛡️ Contact DPO Team
+                  Contact DPO Team
                 </a>
               </div>
             </section>

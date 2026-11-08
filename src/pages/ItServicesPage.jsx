@@ -4,6 +4,7 @@ import CTA from "../components/CTA";
 import "../styles/pages/Subpages.css";
 import "../styles/pages/ServicesWings.css";
 import "../styles/components/FAQ.css";
+import EmojiIcon from "../components/EmojiIcon";
 
 export const ItServicesPage = ({ onOpenInquiriesModal, navigate }) => {
   const [activeStackTab, setActiveStackTab] = useState("fullstack");
@@ -116,7 +117,7 @@ export const ItServicesPage = ({ onOpenInquiriesModal, navigate }) => {
       {/* Hero Banner */}
       <div className="page-banner">
         <div className="container">
-          <span className="wing-hero-badge it">💻 NAMX Enterprise Technology Wing</span>
+          <span className="wing-hero-badge it">NAMX Enterprise Technology Wing</span>
           <h1>Full-Suite IT Services, Telecom Engineering &amp; Cloud Solutions</h1>
           <p>
             Beyond wholesale messaging: Partner with our seasoned engineering team for custom software development, carrier-grade SMPP gateway engineering, cloud DevOps, AI automation, and 24/7 managed NOC services.
@@ -186,7 +187,7 @@ export const ItServicesPage = ({ onOpenInquiriesModal, navigate }) => {
               }}
               onClick={() => setActiveStackTab("fullstack")}
             >
-              ⚡ Full-Stack &amp; Web
+              Full-Stack &amp; Web
             </button>
             <button
               type="button"
@@ -197,7 +198,7 @@ export const ItServicesPage = ({ onOpenInquiriesModal, navigate }) => {
               }}
               onClick={() => setActiveStackTab("telecom")}
             >
-              📡 Telecom &amp; SMPP Gateways
+              Telecom &amp; SMPP Gateways
             </button>
             <button
               type="button"
@@ -208,7 +209,7 @@ export const ItServicesPage = ({ onOpenInquiriesModal, navigate }) => {
               }}
               onClick={() => setActiveStackTab("cloud")}
             >
-              ☁️ Cloud &amp; DevOps
+              Cloud &amp; DevOps
             </button>
             <button
               type="button"
@@ -219,14 +220,14 @@ export const ItServicesPage = ({ onOpenInquiriesModal, navigate }) => {
               }}
               onClick={() => setActiveStackTab("database")}
             >
-              🗄️ Databases &amp; Queues
+              Databases &amp; Queues
             </button>
           </div>
 
           <div className="info-grid-2">
             {techStacks[activeStackTab].map((item, idx) => (
               <div key={idx} className="info-card">
-                <span className="info-icon">⚙️</span>
+                <span className="info-icon"><EmojiIcon char="⚙️" /></span>
                 <h3>{item.name}</h3>
                 <p>{item.role}</p>
               </div>

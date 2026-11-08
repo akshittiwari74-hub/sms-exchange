@@ -1,6 +1,7 @@
 import CTA from "../components/CTA";
 import Coverage from "../components/Coverage";
 import "../styles/pages/Subpages.css";
+import EmojiIcon from "../components/EmojiIcon";
 
 export const ContactPage = ({ onOpenInquiriesModal }) => {
   return (
@@ -20,7 +21,7 @@ export const ContactPage = ({ onOpenInquiriesModal }) => {
         <div className="container">
           <div className="info-grid-3" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}>
             <div className="info-card contact-detail-card">
-              <span className="info-icon">📱</span>
+              <span className="info-icon"><EmojiIcon char="📱" /></span>
               <h3>WhatsApp Direct</h3>
               <p>Instant quotes, route testing &amp; 2FA onboarding.</p>
               <a
@@ -35,7 +36,7 @@ export const ContactPage = ({ onOpenInquiriesModal }) => {
             </div>
 
             <div className="info-card contact-detail-card">
-              <span className="info-icon">✈️</span>
+              <span className="info-icon"><EmojiIcon char="✈️" /></span>
               <h3>Telegram NOC Desk</h3>
               <p>Instant wholesale route clearing &amp; technical NOC updates.</p>
               <a
@@ -50,7 +51,7 @@ export const ContactPage = ({ onOpenInquiriesModal }) => {
             </div>
 
             <div className="info-card contact-detail-card">
-              <span className="info-icon">💼</span>
+              <span className="info-icon"><EmojiIcon char="💼" /></span>
               <h3>Email &amp; MS Teams</h3>
               <p>Direct connectivity desk inquiry &amp; enterprise contracts.</p>
               <a
@@ -70,10 +71,10 @@ export const ContactPage = ({ onOpenInquiriesModal }) => {
             </div>
 
             <div className="info-card contact-detail-card">
-              <span className="info-icon">🏢</span>
+              <span className="info-icon"><EmojiIcon char="🏢" /></span>
               <h3>Global Operations Center</h3>
               <p>Network Operations Center (NOC) &amp; Carrier Clearing House.</p>
-              <span className="location-badge">📍 International Telecom Hub</span>
+              <span className="location-badge">International Telecom Hub</span>
             </div>
           </div>
         </div>

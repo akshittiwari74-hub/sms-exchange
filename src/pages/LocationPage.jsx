@@ -4,6 +4,7 @@ import corridors from "../data/corridors.json";
 import posts from "../data/posts.json";
 import CTA from "../components/CTA";
 import "../styles/pages/Subpages.css";
+import EmojiIcon from "../components/EmojiIcon";
 
 export const LocationPage = ({ onOpenInquiriesModal, forcedLocation, navigate }) => {
   const params = useParams();
@@ -91,21 +92,21 @@ export const LocationPage = ({ onOpenInquiriesModal, forcedLocation, navigate })
 
           <div className="info-grid-3">
             <div className="info-card">
-              <span className="info-icon">🏛️</span>
+              <span className="info-icon"><EmojiIcon char="🏛️" /></span>
               <h3>Regulatory Authority</h3>
               <p><strong>Governing Body:</strong> {data.regulatoryBody}</p>
               <p style={{ marginTop: "8px", fontSize: "13px" }}>{data.complianceNotes}</p>
             </div>
 
             <div className="info-card">
-              <span className="info-icon">🏷️</span>
+              <span className="info-icon"><EmojiIcon char="🏷️" /></span>
               <h3>Sender ID Regulations</h3>
               <p><strong>Supported Format:</strong> {data.senderIdType}</p>
               <p style={{ marginTop: "8px", fontSize: "13px" }}>Supported encodings include standard GSM 03.38 7-bit and UCS-2 16-bit Unicode.</p>
             </div>
 
             <div className="info-card">
-              <span className="info-icon">⚡</span>
+              <span className="info-icon"><EmojiIcon char="⚡" /></span>
               <h3>Network Benchmark SLA</h3>
               <p><strong>Average Delivery Latency:</strong> {data.avgLatency}</p>
               <p><strong>Handset DLR Rate:</strong> {data.dlrRate}</p>
@@ -223,7 +224,7 @@ export const LocationPage = ({ onOpenInquiriesModal, forcedLocation, navigate })
           <div className="info-grid-3">
             {data.pricingTiers.map((tier, idx) => (
               <div key={idx} className="info-card">
-                <span className="info-icon">💎</span>
+                <span className="info-icon"><EmojiIcon char="💎" /></span>
                 <h3>{tier.volume}</h3>
                 <div style={{ margin: "16px 0", fontSize: "28px", fontWeight: 800, color: "var(--accent-cyan)" }}>
                   {tier.rateEUR} <span style={{ fontSize: "14px", color: "var(--text-secondary)" }}>/ SMS</span>
@@ -280,9 +281,9 @@ export const LocationPage = ({ onOpenInquiriesModal, forcedLocation, navigate })
               { path: "/bulk-sms-uae", name: "🇦🇪 Bulk SMS UAE & Middle East" },
               { path: "/bulk-sms-india", name: "🇮🇳 Bulk SMS India & DLT" },
               { path: "/bulk-sms-malaysia", name: "🇲🇾 Bulk SMS Malaysia & APAC" },
-              { path: "/otp-sms", name: "🔐 OTP SMS & 2FA Delivery" },
-              { path: "/rates", name: "📊 195+ Country Rate Cards" },
-              { path: "/coverage", name: "🌐 Global Carrier Network Map" },
+              { path: "/otp-sms", name: "OTP SMS & 2FA Delivery" },
+              { path: "/rates", name: "195+ Country Rate Cards" },
+              { path: "/coverage", name: "Global Carrier Network Map" },
             ].map((link, idx) => (
               <a
                 key={idx}

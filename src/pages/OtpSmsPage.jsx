@@ -3,6 +3,7 @@ import otpFaqs from "../data/otpFaqs.json";
 import posts from "../data/posts.json";
 import CTA from "../components/CTA";
 import "../styles/pages/Subpages.css";
+import EmojiIcon from "../components/EmojiIcon";
 
 const useCases = [
   { icon: "🔐", title: "Login two-factor authentication", text: "A second factor at sign-in that confirms the user still holds their registered phone." },
@@ -90,7 +91,7 @@ export const OtpSmsPage = ({ onOpenInquiriesModal, navigate }) => {
     <div className="page-wrapper page-services">
       <div className="page-banner">
         <div className="container">
-          <p className="stats-eyebrow">🔐 OTP SMS · 2FA Verification · Global Delivery</p>
+          <p className="stats-eyebrow">OTP SMS · 2FA Verification · Global Delivery</p>
           <h1>OTP SMS Service &amp; 2FA Verification API</h1>
           <p>
             Deliver one-time passwords in seconds across 195+ countries over direct operator routes, with
@@ -142,7 +143,7 @@ export const OtpSmsPage = ({ onOpenInquiriesModal, navigate }) => {
           <div className="info-grid-3">
             {useCases.map((u) => (
               <div key={u.title} className="info-card">
-                <span className="info-icon">{u.icon}</span>
+                <span className="info-icon"><EmojiIcon char={u.icon} /></span>
                 <h3>{u.title}</h3>
                 <p>{u.text}</p>
               </div>

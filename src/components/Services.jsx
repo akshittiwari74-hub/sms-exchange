@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import GlassCard from "./GlassCard";
 import Button from "./Button";
 import "../styles/components/Services.css";
+import EmojiIcon from "./EmojiIcon";
 
 export const Services = () => {
   const products = [
@@ -127,7 +128,7 @@ export const Services = () => {
         {products.map((item, index) => (
           <GlassCard key={item.title} delay={index * 0.06} className="service-card" isHoverable>
             <div className="service-top-row">
-              <div className="service-icon">{item.icon}</div>
+              <div className="service-icon"><EmojiIcon char={item.icon} /></div>
               <span className="service-tagline">{item.tagline}</span>
             </div>
 

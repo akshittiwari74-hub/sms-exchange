@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import "../styles/components/RouteRatesTable.css";
+import EmojiIcon from "./EmojiIcon";
 
 const routesList = [
   // Top Featured Wholesale Corridors (Negotiable on Volume)
@@ -133,7 +134,7 @@ export const RouteRatesTable = () => {
           <div className="table-controls-bar">
             {/* Search Input */}
             <div className="table-search-box">
-              <span className="search-icon">🔍</span>
+              <span className="search-icon"><EmojiIcon char="🔍" /></span>
               <input
                 type="text"
                 placeholder="Search 40+ countries or codes (e.g. UK, SG, France, DE)..."
@@ -170,7 +171,7 @@ export const RouteRatesTable = () => {
                   className={`curr-btn ${currency === "EUR" ? "active" : ""}`}
                   onClick={() => setCurrency("EUR")}
                 >
-                  💶 EUR (€)
+                  EUR (€)
                 </button>
                 <button
                   type="button"
@@ -184,7 +185,7 @@ export const RouteRatesTable = () => {
                   className={`curr-btn ${currency === "USD" ? "active" : ""}`}
                   onClick={() => setCurrency("USD")}
                 >
-                  💵 USD ($)
+                  USD ($)
                 </button>
               </div>
 
@@ -224,7 +225,7 @@ export const RouteRatesTable = () => {
                 }}
                 title="Download full rate card in CSV format"
               >
-                📥 Download Rate Sheet (CSV)
+                Download Rate Sheet (CSV)
               </button>
             </div>
           </div>
@@ -301,7 +302,7 @@ export const RouteRatesTable = () => {
                               borderRadius: "4px",
                               marginLeft: "6px"
                             }}>
-                              ⭐ Top Route
+                              Top Route
                             </span>
                           )}
                         </div>
@@ -319,7 +320,7 @@ export const RouteRatesTable = () => {
                         <span className="rate-thousand-val">{formatPerThousand(route.rateEUR)}</span>
                       </td>
                       <td>
-                        <span className="status-live-tag">🟢 {route.status}</span>
+                        <span className="status-live-tag">{route.status}</span>
                       </td>
                       <td>
                         <a
@@ -361,7 +362,7 @@ export const RouteRatesTable = () => {
 
           {/* Table Footer */}
           <div className="table-footer-note">
-            <span>💡 Indicative wholesale rates. Contact sales for custom high-volume route cards and SLAs.</span>
+            <span>Indicative wholesale rates. Contact sales for custom high-volume route cards and SLAs.</span>
           </div>
         </div>
       </div>

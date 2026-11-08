@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "../styles/components/InquiryModal.css";
+import EmojiIcon from "./EmojiIcon";
 
 export const InquiryModal = ({ isOpen, onClose }) => {
   const [inquiries, setInquiries] = useState([]);
@@ -117,7 +118,7 @@ export const InquiryModal = ({ isOpen, onClose }) => {
           <div className="modal-body-list">
             {inquiries.length === 0 ? (
               <div className="empty-inquiries">
-                <span className="empty-icon">📂</span>
+                <span className="empty-icon"><EmojiIcon char="📂" /></span>
                 <h4>No Inquiries Stored Yet</h4>
                 <p>Submit the consultation form on the website to see saved records here.</p>
               </div>

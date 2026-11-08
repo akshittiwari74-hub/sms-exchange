@@ -57,16 +57,16 @@ export const Footer = ({ navigate }) => {
         <div className="footer-column">
           <h4>Support &amp; NOC</h4>
           <a href="/contact" onClick={(e) => handleLinkClick(e, "/contact")}>Enterprise Sales &amp; Custom Binds</a>
-          <a href="https://wa.me/919306529891?text=Hello%20NAMX%20Telecom" target="_blank" rel="noopener noreferrer">💬 WhatsApp: +91 93065 29891</a>
-          <a href="https://t.me/namxtelecom" target="_blank" rel="noopener noreferrer">✈️ Telegram: @namxtelecom</a>
-          <a href="mailto:admin@namxtelecom.site">✉️ admin@namxtelecom.site</a>
+          <a href="https://wa.me/919306529891?text=Hello%20NAMX%20Telecom" target="_blank" rel="noopener noreferrer">WhatsApp: +91 93065 29891</a>
+          <a href="https://t.me/namxtelecom" target="_blank" rel="noopener noreferrer">Telegram: @namxtelecom</a>
+          <a href="mailto:admin@namxtelecom.site">admin@namxtelecom.site</a>
           <a href="/terms" onClick={(e) => handleLinkClick(e, "/terms")}>Terms &amp; Conditions</a>
           <a href="/privacy" onClick={(e) => handleLinkClick(e, "/privacy")}>Privacy Policy</a>
         </div>
       </div>
 
       <div className="footer-bottom">
-        <p className="copyright">© {currentYear} NAMX Telecom. All rights reserved.</p>
+        <p className="copyright">{currentYear} NAMX Telecom. All rights reserved.</p>
         <div className="footer-legal-links">
           <a href="/terms" onClick={(e) => handleLinkClick(e, "/terms")}>Terms &amp; Conditions</a>
           <span className="footer-legal-separator">·</span>

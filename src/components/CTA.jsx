@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "./Button";
 import "../styles/components/CTA.css";
+import EmojiIcon from "./EmojiIcon";
 
 export const CTA = ({ onOpenInquiriesModal, defaultProduct = "Web Messaging Platform" }) => {
   const [formData, setFormData] = useState({
@@ -268,7 +269,7 @@ export const CTA = ({ onOpenInquiriesModal, defaultProduct = "Web Messaging Plat
           </div>
 
           <div className="cta-address-box">
-            <span className="address-icon">📍</span>
+            <span className="address-icon"><EmojiIcon char="📍" /></span>
             <div>
               <strong>NAMX Telecom Operations</strong>
               <p>Global Telecom Network Hub · International Carrier Exchange</p>
@@ -322,7 +323,7 @@ export const CTA = ({ onOpenInquiriesModal, defaultProduct = "Web Messaging Plat
 
               <div className="success-actions">
                 <a href={submittedData.mailtoUrl} className="btn-email-dispatch">
-                  ✉️ Open in Desktop Email App
+                  Open in Desktop Email App
                 </a>
 
                 <div className="secondary-success-btns">
@@ -459,7 +460,7 @@ export const CTA = ({ onOpenInquiriesModal, defaultProduct = "Web Messaging Plat
                       <option value="+27">🇿🇦 +27 (South Africa)</option>
                       <option value="+254">🇰🇪 +254 (Kenya)</option>
                       <option value="+233">🇬🇭 +233 (Ghana)</option>
-                      <option value="other">🌐 Other Country Code</option>
+                      <option value="other">Other Country Code</option>
                     </select>
 
                     <span className="phone-split-divider">|</span>
@@ -490,7 +491,7 @@ export const CTA = ({ onOpenInquiriesModal, defaultProduct = "Web Messaging Plat
                         onChange={handleChange}
                         aria-label="Available on WhatsApp"
                       />
-                      <span>💬 WhatsApp</span>
+                      <span>WhatsApp</span>
                     </label>
                     <label className="checkbox-app-item" htmlFor="form-is-telegram">
                       <input
@@ -501,7 +502,7 @@ export const CTA = ({ onOpenInquiriesModal, defaultProduct = "Web Messaging Plat
                         onChange={handleChange}
                         aria-label="Available on Telegram"
                       />
-                      <span>✈️ Telegram</span>
+                      <span>Telegram</span>
                     </label>
                   </div>
                 </div>
@@ -556,7 +557,7 @@ export const CTA = ({ onOpenInquiriesModal, defaultProduct = "Web Messaging Plat
                 <Button type="submit" variant="primary" size="lg" external={false} aria-label="Send inquiry">
                   {isSubmitting ? "Dispatching Email..." : "Submit Inquiry & Send Email"}
                 </Button>
-                <span className="privacy-note">✉️ Direct delivery to admin@namxtelecom.site &amp; namxtelecom@gmail.com</span>
+                <span className="privacy-note">Direct delivery to admin@namxtelecom.site &amp; namxtelecom@gmail.com</span>
               </div>
             </form>
           )}

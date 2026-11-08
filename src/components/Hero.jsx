@@ -1,113 +1,89 @@
-import { motion } from "framer-motion";
 import Button from "./Button";
-import AnimatedGlobe from "./AnimatedGlobe";
 import "../styles/components/Hero.css";
 
+const stats = [
+  { value: "195+", label: "Countries" },
+  { value: "250+", label: "Mobile operators" },
+  { value: "v3.4 / v5.0", label: "SMPP binds" },
+  { value: "24/7", label: "NOC support" },
+];
+
 export const Hero = ({ navigate }) => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 24 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
-
   const handleNav = (e, path) => {
     e.preventDefault();
-    if (navigate) {
-      navigate(path);
-    }
+    if (navigate) navigate(path);
   };
 
   return (
     <section className="hero" id="home" aria-labelledby="hero-title">
       <div className="hero-container">
-        <motion.div
-          className="hero-content"
-          initial={false}
-          animate="show"
-          variants={containerVariants}
-        >
-          <motion.div className="hero-noc-status" variants={itemVariants}>
-            <span className="status-live-pulse" />
-            <span className="status-text">Global Operations Center · 99.98% Network Active</span>
-          </motion.div>
+        <div className="hero-content">
+          <p className="hero-kicker">Wholesale SMS · OTP · SMPP gateway</p>
 
-          <div className="hero-headlines">
-            <h1 id="hero-title">
-              Global Wholesale Bulk SMS, <br />
-              <span className="hero-gradient-text">SMPP Gateway &amp; International P2P Routing</span>
-            </h1>
+          <h1 id="hero-title">
+            Wholesale bulk SMS and OTP delivery on <span className="hero-accent">direct carrier routes</span>
+          </h1>
+
+          <p className="hero-subtitle">
+            Send A2P traffic to 195+ countries through dedicated SMPP v3.4/v5.0 binds or a REST API —
+            with live number-portability lookups, quality-weighted least-cost routing and real handset
+            delivery receipts.
+          </p>
+
+          <div className="hero-buttons">
+            <Button href="/contact" onClick={(e) => handleNav(e, "/contact")} variant="primary" size="lg" external={false}>
+              Request a test route
+            </Button>
+            <Button href="/rates" onClick={(e) => handleNav(e, "/rates")} variant="secondary" size="lg" external={false}>
+              View SMS rates
+            </Button>
           </div>
 
-          <motion.p className="hero-subtitle" variants={itemVariants}>
-            Premier global Bulk SMS service provider &amp; international P2P traffic exchange. Dedicated SMPP v3.4/v5.0 binds over TLS, dynamic least-cost SMS routing (LCR), direct SS7 carrier interconnects, and developer REST APIs across 195+ countries.
-          </motion.p>
+          <dl className="hero-stats">
+            {stats.map((s) => (
+              <div key={s.label} className="hero-stat">
+                <dt>{s.label}</dt>
+                <dd>{s.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
 
-          <motion.div className="hero-buttons" variants={itemVariants}>
-            <Button
-              href="/contact"
-              onClick={(e) => handleNav(e, "/contact")}
-              variant="primary"
-              size="lg"
-              external={false}
-              aria-label="Contact NAMX Telecom sales"
-            >
-              Contact Sales
-            </Button>
-
-            <Button
-              href="/rates"
-              onClick={(e) => handleNav(e, "/rates")}
-              variant="secondary"
-              size="lg"
-              external={false}
-              aria-label="Inspect Live Rates & Calculator"
-            >
-              SMS Rate Estimator
-            </Button>
-          </motion.div>
-
-          <motion.div className="hero-trust" variants={itemVariants}>
-            <div className="trust-item">
-              <span className="trust-icon">✓</span>
-              <span>195+ Countries Bulk SMS</span>
-            </div>
-            <div className="trust-item">
-              <span className="trust-icon">✓</span>
-              <span>SMPP v3.4/v5.0 &amp; REST API</span>
-            </div>
-            <div className="trust-item">
-              <span className="trust-icon">✓</span>
-              <span>International P2P Hubbing</span>
-            </div>
-            <div className="trust-item">
-              <span className="trust-icon">✓</span>
-              <span>LCR Dynamic SMS Routing</span>
-            </div>
-          </motion.div>
-        </motion.div>
-
-        <motion.div
-          className="hero-globe"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <AnimatedGlobe />
-        </motion.div>
+        <div className="hero-console" aria-label="Example: sending an OTP SMS through the NAMX API">
+          <div className="console-bar">
+            <span className="console-dots" aria-hidden="true"><i /><i /><i /></span>
+            <span className="console-title">POST /v1/sms/send</span>
+            <span className="console-tag">Example</span>
+          </div>
+          <pre className="console-body">
+            <code>
+              <span className="c-punc">{"{"}</span>{"\n"}
+              {"  "}<span className="c-key">"to"</span>: <span className="c-str">"+447700900077"</span>,{"\n"}
+              {"  "}<span className="c-key">"sender_id"</span>: <span className="c-str">"MYAPP"</span>,{"\n"}
+              {"  "}<span className="c-key">"type"</span>: <span className="c-str">"otp"</span>,{"\n"}
+              {"  "}<span className="c-key">"text"</span>: <span className="c-str">"849201 is your MyApp code"</span>,{"\n"}
+              {"  "}<span className="c-key">"dlr_url"</span>: <span className="c-str">"https://you.com/dlr"</span>{"\n"}
+              <span className="c-punc">{"}"}</span>
+            </code>
+          </pre>
+          <ol className="console-events">
+            <li>
+              <span className="ev-dot" />
+              <span className="ev-name">Number lookup</span>
+              <span className="ev-detail">GB · ported network resolved</span>
+            </li>
+            <li>
+              <span className="ev-dot" />
+              <span className="ev-name">Routed</span>
+              <span className="ev-detail">Direct operator route · OTP priority</span>
+            </li>
+            <li className="is-final">
+              <span className="ev-dot" />
+              <span className="ev-name">DELIVRD</span>
+              <span className="ev-detail">Handset receipt posted to webhook</span>
+            </li>
+          </ol>
+        </div>
       </div>
     </section>
   );

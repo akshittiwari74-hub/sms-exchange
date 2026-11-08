@@ -3,6 +3,7 @@ import Industries from "../components/Industries";
 import WhyChooseUs from "../components/WhyChooseUs";
 import CTA from "../components/CTA";
 import "../styles/pages/Subpages.css";
+import EmojiIcon from "../components/EmojiIcon";
 
 export const IndustriesPage = ({ onOpenInquiriesModal }) => {
   const [openFaq, setOpenFaq] = useState(null);
@@ -32,7 +33,7 @@ export const IndustriesPage = ({ onOpenInquiriesModal }) => {
       sector: "Banking & Financial Services (BFSI)",
       icon: "🏦",
       useCases: "2FA Authentication, Transaction Alerts, Fraud Prevention, Account Balance Statements",
-      compliance: "PCI-DSS Compliant, Encrypted TLS Binds, Sub-2.0s Latency SLA, Zero Data Retention Options",
+      compliance: "Encrypted TLS Binds, Sub-2.0s Latency SLA, Zero Data Retention Options",
     },
     {
       sector: "E-Commerce & Digital Retail",
@@ -50,7 +51,7 @@ export const IndustriesPage = ({ onOpenInquiriesModal }) => {
       sector: "Healthcare & Telemedicine",
       icon: "🏥",
       useCases: "Appointment Reminders, Prescription Alerts, Lab Test Result Notifications",
-      compliance: "HIPAA Compliant Data Handling, Secure Token API, Priority Delivery Queue",
+      compliance: "Minimal-Retention Data Handling, Secure Token API, Priority Delivery Queue",
     },
   ];
 
@@ -77,7 +78,7 @@ export const IndustriesPage = ({ onOpenInquiriesModal }) => {
             {industryDeepDives.map((item) => (
               <div key={item.sector} className="info-card vertical-card">
                 <div className="vertical-header">
-                  <span className="info-icon">{item.icon}</span>
+                  <span className="info-icon"><EmojiIcon char={item.icon} /></span>
                   <h3>{item.sector}</h3>
                 </div>
                 <div className="vertical-content">

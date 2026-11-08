@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "./Button";
 import "../styles/components/Navbar.css";
+import EmojiIcon from "./EmojiIcon";
 
 export const Navbar = ({ logo, currentPath = "/", navigate }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -104,7 +105,7 @@ export const Navbar = ({ logo, currentPath = "/", navigate }) => {
                   onClick={(e) => handleNavClick(e, item.path)}
                   className={`mobile-nav-item ${isActive ? "active" : ""}`}
                 >
-                  <span className="mobile-nav-icon">{item.icon}</span>
+                  <span className="mobile-nav-icon"><EmojiIcon char={item.icon} /></span>
                   <span className="mobile-nav-text">
                     {item.label}
                     {item.badge && <span className="nav-badge-pill">{item.badge}</span>}
@@ -120,7 +121,7 @@ export const Navbar = ({ logo, currentPath = "/", navigate }) => {
               onClick={(e) => handleNavClick(e, "/contact")}
               className="mobile-contact-btn"
             >
-              ✉️ Contact Enterprise Sales
+              Contact Enterprise Sales
             </a>
           </div>
         </div>

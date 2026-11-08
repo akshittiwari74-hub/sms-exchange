@@ -126,7 +126,7 @@ export const TopRoutesSpotlight = () => {
           {/* Negotiable Volume Banner */}
           <div className="volume-negotiation-banner">
             <div className="negotiation-badge">
-              <span>🤝 VOLUME CONFIRMATIONS</span>
+              <span>VOLUME CONFIRMATIONS</span>
             </div>
             <div className="negotiation-text">
               <strong>All Rates Are Fully Negotiable Over Volume Commitments!</strong>
@@ -141,7 +141,7 @@ export const TopRoutesSpotlight = () => {
                 rel="noopener noreferrer"
                 className="negotiate-btn-accent"
               >
-                💬 Negotiate Volume Rate ➔
+                Negotiate Volume Rate ➔
               </a>
             </div>
           </div>
@@ -175,7 +175,7 @@ export const TopRoutesSpotlight = () => {
                   <span className="rate-per-1k-label">per 1,000 SMS</span>
                 </div>
                 <div className="volume-discount-notice">
-                  ✨ Negotiable for volume &gt; 250k
+                  Negotiable for volume &gt; 250k
                 </div>
               </div>
 
@@ -220,7 +220,7 @@ export const TopRoutesSpotlight = () => {
                   className="btn-negotiate-rate"
                   title={`Negotiate volume rate for ${route.country}`}
                 >
-                  🤝 Negotiate Rate
+                  Negotiate Rate
                 </a>
                 <a
                   href={`https://wa.me/919306529891?text=${encodeURIComponent(
@@ -231,7 +231,7 @@ export const TopRoutesSpotlight = () => {
                   className="btn-test-route"
                   title={`Request test credits & credentials for ${route.country}`}
                 >
-                  ⚡ Test Route
+                  Test Route
                 </a>
               </div>
 
@@ -245,7 +245,7 @@ export const TopRoutesSpotlight = () => {
                   className="channel-link"
                   title="Negotiate on Telegram"
                 >
-                  ✈️ Telegram
+                  Telegram
                 </a>
                 <span className="channel-sep">·</span>
                 <a
@@ -257,7 +257,7 @@ export const TopRoutesSpotlight = () => {
                   className="channel-link"
                   title="Send RFP via Email"
                 >
-                  ✉️ Email RFP
+                  Email RFP
                 </a>
               </div>
             </div>
@@ -267,7 +267,7 @@ export const TopRoutesSpotlight = () => {
         {/* Volume Commitment Tiers Guidance */}
         <div className="volume-tiers-card">
           <div className="volume-tiers-header">
-            <h3>📊 Volume Commitment Discount Matrix</h3>
+            <h3>Volume Commitment Discount Matrix</h3>
             <p>Higher volume commits unlock automated Least-Cost Routing (LCR) upgrades and dedicated SS7 carrier sessions.</p>
           </div>
           <div className="volume-tiers-grid">

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "./Button";
 import "../styles/components/RouteInspector.css";
+import EmojiIcon from "./EmojiIcon";
 
 export const RouteInspector = () => {
   const [quantity, setQuantity] = useState(100000);
@@ -61,7 +62,7 @@ export const RouteInspector = () => {
                 className={`currency-tab-btn ${currency === "EUR" ? "active" : ""}`}
                 onClick={() => setCurrency("EUR")}
               >
-                💶 EUR (€)
+                EUR (€)
               </button>
               <button
                 type="button"
@@ -75,7 +76,7 @@ export const RouteInspector = () => {
                 className={`currency-tab-btn ${currency === "USD" ? "active" : ""}`}
                 onClick={() => setCurrency("USD")}
               >
-                💵 USD ($)
+                USD ($)
               </button>
             </div>
           </div>
@@ -85,7 +86,7 @@ export const RouteInspector = () => {
             <div className="calc-control-group">
               <div className="control-header-row">
                 <label className="control-title-text">
-                  <span className="control-icon">📦</span> SMS Quantity (Messages)
+                  <span className="control-icon"><EmojiIcon char="📦" /></span> SMS Quantity (Messages)
                 </label>
                 <div className="input-number-box">
                   <input
@@ -128,7 +129,7 @@ export const RouteInspector = () => {
             <div className="calc-control-group">
               <div className="control-header-row">
                 <label className="control-title-text" htmlFor="calc-rate-input">
-                  <span className="control-icon">💰</span> Rate per SMS ({currency})
+                  <span className="control-icon"><EmojiIcon char="💰" /></span> Rate per SMS ({currency})
                 </label>
                 <div className="input-number-box">
                   <span className="currency-prefix">{getSymbol()}</span>
@@ -177,7 +178,7 @@ export const RouteInspector = () => {
           <div className="calc-summary-banner">
             <div className="summary-stat-box">
               <span className="stat-sm-label">Total Messages</span>
-              <strong className="stat-lg-val">{quantity.toLocaleString()} SMS</strong>
+              <strong className="stat-lg-val">{quantity.toLocaleString("en-US")} SMS</strong>
             </div>
 
             <div className="summary-stat-box">
@@ -195,7 +196,7 @@ export const RouteInspector = () => {
 
           <div className="calc-bottom-cta">
             <Button href="#contact" variant="primary" size="lg" external={false}>
-              Request Official Proposal for {quantity.toLocaleString()} SMS @ {formatRate(rate)}/SMS ({currency})
+              Request Official Proposal for {quantity.toLocaleString("en-US")} SMS @ {formatRate(rate)}/SMS ({currency})
             </Button>
           </div>
         </div>

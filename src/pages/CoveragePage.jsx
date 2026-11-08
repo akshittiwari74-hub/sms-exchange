@@ -3,6 +3,7 @@ import WhyChooseUs from "../components/WhyChooseUs";
 import NetworkStatusWidget from "../components/NetworkStatusWidget";
 import CTA from "../components/CTA";
 import "../styles/pages/Subpages.css";
+import EmojiIcon from "../components/EmojiIcon";
 
 export const CoveragePage = ({ onOpenInquiriesModal }) => {
   const regionBreakdown = [
@@ -74,13 +75,13 @@ export const CoveragePage = ({ onOpenInquiriesModal }) => {
             {regionBreakdown.map((r) => (
               <div key={r.region} className="info-card regional-card">
                 <div className="regional-header">
-                  <span className="info-icon">{r.flag}</span>
+                  <span className="info-icon"><EmojiIcon char={r.flag} /></span>
                   <span className="regional-count">{r.count}</span>
                 </div>
                 <h3>{r.region}</h3>
                 <p><strong>Major Partners:</strong> {r.operators}</p>
                 <div className="regional-latency-badge">
-                  <span>⚡ SLA Latency:</span> {r.latency}
+                  <span>SLA Latency:</span> {r.latency}
                 </div>
               </div>
             ))}
