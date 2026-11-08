@@ -28,6 +28,7 @@ import RcsPage from "./pages/RcsPage";
 import ItServicesPage from "./pages/ItServicesPage";
 import TermsPage from "./pages/TermsPage";
 import PrivacyPage from "./pages/PrivacyPage";
+import OtpSmsPage from "./pages/OtpSmsPage";
 import posts from "./data/posts.json";
 
 const pageMeta = {
@@ -35,6 +36,11 @@ const pageMeta = {
     title: "NAMX Telecom | Wholesale Bulk SMS Exchange, Direct SS7 & SMPP Gateway [2026]",
     description: "Direct SS7 MNO bulk SMS interconnects, dedicated SMPP v3.4/v5.0 transceiver binds up to 10,000 TPS, live EUR rate cards & developer REST API across 195+ countries.",
     canonical: "https://www.namxtelecom.site/",
+  },
+  "/otp-sms": {
+    title: "OTP SMS Service & 2FA Verification API | Fast Global OTP Delivery | NAMX Telecom",
+    description: "Send OTP and 2FA verification SMS to 195+ countries over direct operator routes. Number-portability lookup, automatic failover, SMS pumping protection, and WhatsApp/RCS fallback via REST API or SMPP.",
+    canonical: "https://www.namxtelecom.site/otp-sms",
   },
   "/whatsapp-business": {
     title: "WhatsApp Business API & Official Meta Platform | NAMX Telecom",
@@ -177,6 +183,7 @@ export function AppContent() {
         <Route path="/rates" element={<RatesPage {...commonProps} />} />
         <Route path="/coverage" element={<CoveragePage {...commonProps} />} />
         <Route path="/services" element={<ServicesPage {...commonProps} />} />
+        <Route path="/otp-sms" element={<OtpSmsPage {...commonProps} />} />
         <Route path="/whatsapp-business" element={<WhatsAppPage {...commonProps} />} />
         <Route path="/rcs-messaging" element={<RcsPage {...commonProps} />} />
         <Route path="/it-services" element={<ItServicesPage {...commonProps} />} />

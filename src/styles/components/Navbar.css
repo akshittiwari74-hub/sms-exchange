@@ -272,7 +272,7 @@
 }
 
 /* Responsive Media Queries */
-@media (max-width: 950px) {
+@media (max-width: 1180px) {
   .navbar-links-desktop {
     display: none;
   }

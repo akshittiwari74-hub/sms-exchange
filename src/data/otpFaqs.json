@@ -1,0 +1,34 @@
+[
+  {
+    "q": "What is an OTP SMS?",
+    "a": "An OTP (one-time password) SMS is a text message containing a short, single-use code — usually 4 to 8 digits — that a user enters to prove they own a phone number. It is used for sign-up verification, login two-factor authentication (2FA), password resets and payment confirmation. Each code is valid for one use and expires after a few minutes."
+  },
+  {
+    "q": "How fast should an OTP SMS be delivered?",
+    "a": "Most users expect the code within 5 to 10 seconds and many give up after 30 seconds. On direct operator routes, OTP messages typically arrive in 1 to 3 seconds. Measure the time from your API request to the delivery receipt per country, and alert when it rises."
+  },
+  {
+    "q": "Why is my OTP SMS not received?",
+    "a": "The most common causes are: the sender ID or template isn't registered for that country (for example India DLT or a US 10DLC campaign), the route is a low-quality grey route that drops or delays messages, the number has been ported to another network and was routed by prefix, the handset is off or out of coverage, or the message was filtered as spam because of its content or a link. The delivery receipt error code usually tells you which one."
+  },
+  {
+    "q": "How long should an OTP code be valid?",
+    "a": "Five to ten minutes is the common range. Set the same value as the SMS validity period so the network stops retrying once the code has expired — a code that arrives after it expires only frustrates the user."
+  },
+  {
+    "q": "How do I stop SMS pumping fraud on my OTP form?",
+    "a": "Only send to countries where you have users, rate-limit OTP requests per phone number, IP address and device, add a bot challenge before sending, set daily spend caps per country, and monitor the OTP conversion rate (codes entered divided by codes sent). A sharp drop in conversion for one country is the clearest sign of an attack."
+  },
+  {
+    "q": "Can OTP codes be auto-filled on Android and iPhone?",
+    "a": "Yes. iOS and Safari suggest the code automatically when the input field uses autocomplete=\"one-time-code\". For web apps, ending the message with a domain-bound line such as \"@example.com #123456\" lets supporting browsers fill the code securely. On Android, the SMS Retriever API reads the code without any permission prompt if the message ends with your app's 11-character hash."
+  },
+  {
+    "q": "Is SMS OTP secure enough for 2FA?",
+    "a": "SMS OTP is far more secure than a password alone and works on every phone, which is why banks and most consumer apps still use it. Its known weaknesses are SIM-swap attacks and phishing, so high-risk actions should add checks such as SIM-swap detection, device binding, or an alternative factor like passkeys or authenticator apps."
+  },
+  {
+    "q": "What happens if the OTP SMS fails — is there a fallback?",
+    "a": "Yes. If no delivery receipt arrives within a few seconds, the code can be resent through another channel such as a WhatsApp authentication template or RCS. Fallback rules can be set per country so users still get their code when an SMS route is degraded."
+  }
+]

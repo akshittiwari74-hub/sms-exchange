@@ -280,6 +280,7 @@ export const LocationPage = ({ onOpenInquiriesModal, forcedLocation, navigate })
               { path: "/bulk-sms-uae", name: "🇦🇪 Bulk SMS UAE & Middle East" },
               { path: "/bulk-sms-india", name: "🇮🇳 Bulk SMS India & DLT" },
               { path: "/bulk-sms-malaysia", name: "🇲🇾 Bulk SMS Malaysia & APAC" },
+              { path: "/otp-sms", name: "🔐 OTP SMS & 2FA Delivery" },
               { path: "/rates", name: "📊 195+ Country Rate Cards" },
               { path: "/coverage", name: "🌐 Global Carrier Network Map" },
             ].map((link, idx) => (

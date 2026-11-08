@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { execFileSync } from "child_process";
+import otpFaqs from "../src/data/otpFaqs.json" with { type: "json" };
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -565,6 +566,48 @@ const routes = [
     }
   },
   {
+    path: "/otp-sms",
+    dir: "otp-sms",
+    title: "OTP SMS Service & 2FA Verification API | Fast Global OTP Delivery | NAMX Telecom",
+    description: "Send OTP and 2FA verification SMS to 195+ countries over direct operator routes. Number-portability lookup, automatic failover, SMS pumping protection, and WhatsApp/RCS fallback via REST API or SMPP.",
+    keywords: "OTP SMS, OTP SMS API, 2FA SMS, SMS verification API, one-time password SMS, OTP SMS provider",
+    canonical: "https://www.namxtelecom.site/otp-sms",
+    schema: {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.namxtelecom.site/" },
+            { "@type": "ListItem", "position": 2, "name": "OTP SMS", "item": "https://www.namxtelecom.site/otp-sms" }
+          ]
+        },
+        {
+          "@type": "Service",
+          "name": "OTP SMS & 2FA Verification API",
+          "serviceType": "OTP SMS / Two-Factor Authentication Messaging",
+          "description": "Send OTP and 2FA verification SMS to 195+ countries over direct operator routes. Number-portability lookup, automatic failover, SMS pumping protection, and WhatsApp/RCS fallback via REST API or SMPP.",
+          "provider": { "@id": "https://www.namxtelecom.site/#organization" },
+          "areaServed": "Worldwide",
+          "url": "https://www.namxtelecom.site/otp-sms"
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": otpFaqs.map((f) => ({ "@type": "Question", "name": f.q, "acceptedAnswer": { "@type": "Answer", "text": f.a } }))
+        }
+      ]
+    }
+  },
+  {
+    path: "/insights/otp-sms-not-received-delivery-troubleshooting-guide",
+    dir: "insights/otp-sms-not-received-delivery-troubleshooting-guide",
+    title: "OTP SMS Not Received? Delivery Troubleshooting Guide for 2FA Codes | NAMX Telecom",
+    description: "Why OTP and 2FA SMS codes don't arrive and how to fix it: delivery receipt statuses, sender ID and template registration, grey routes, ported numbers, spam filtering and fallback setup.",
+    keywords: "OTP not received, OTP SMS not delivered, 2FA SMS troubleshooting, OTP delivery rate, SMS DLR status",
+    canonical: "https://www.namxtelecom.site/insights/otp-sms-not-received-delivery-troubleshooting-guide",
+    schema: { "@type": "Article" }
+  },
+  {
     path: "/",
     dir: "",
     title: "NAMX Telecom | Wholesale Bulk SMS Exchange, Direct SS7 & SMPP Gateway [2026]",
@@ -1111,6 +1154,7 @@ const pageSources = {
   "/rates": ["src/pages/RatesPage.jsx", "src/components/RouteRatesTable.jsx", "src/components/TopRoutesSpotlight.jsx"],
   "/coverage": ["src/pages/CoveragePage.jsx", "src/components/Coverage.jsx"],
   "/services": ["src/pages/ServicesPage.jsx"],
+  "/otp-sms": ["src/pages/OtpSmsPage.jsx", "src/data/otpFaqs.json"],
   "/whatsapp-business": ["src/pages/WhatsAppPage.jsx"],
   "/rcs-messaging": ["src/pages/RcsPage.jsx"],
   "/it-services": ["src/pages/ItServicesPage.jsx"],

@@ -9,6 +9,7 @@ export const Navbar = ({ logo, currentPath = "/", navigate }) => {
     { label: "Rates", path: "/rates", icon: "📊" },
     { label: "Coverage", path: "/coverage", icon: "🌐" },
     { label: "Services", path: "/services", icon: "⚡" },
+    { label: "OTP SMS", path: "/otp-sms", icon: "🔐" },
     { label: "WhatsApp", path: "/whatsapp-business", icon: "💬" },
     { label: "RCS", path: "/rcs-messaging", icon: "📲" },
     { label: "IT Services", path: "/it-services", icon: "💻", badge: "NEW" },

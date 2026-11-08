@@ -25,6 +25,7 @@ export const Footer = ({ navigate }) => {
         <div className="footer-column">
           <h4>Messaging &amp; APIs</h4>
           <a href="/services" onClick={(e) => handleLinkClick(e, "/services")}>A2P SMS Gateway &amp; SMPP</a>
+          <a href="/otp-sms" onClick={(e) => handleLinkClick(e, "/otp-sms")}>OTP SMS &amp; 2FA Verification API</a>
           <a href="/whatsapp-business" onClick={(e) => handleLinkClick(e, "/whatsapp-business")}>WhatsApp Business API</a>
           <a href="/rcs-messaging" onClick={(e) => handleLinkClick(e, "/rcs-messaging")}>RCS Business Messaging</a>
           <a href="/it-services" onClick={(e) => handleLinkClick(e, "/it-services")}>Enterprise IT &amp; Cloud DevOps</a>
@@ -47,6 +48,7 @@ export const Footer = ({ navigate }) => {
           <h4>Technical Telecom Guides</h4>
           <a href="/insights/what-is-smpp-v34-guide" onClick={(e) => handleLinkClick(e, "/insights/what-is-smpp-v34-guide")}>What is SMPP v3.4? Complete Guide</a>
           <a href="/insights/a2p-vs-p2p-sms-routing" onClick={(e) => handleLinkClick(e, "/insights/a2p-vs-p2p-sms-routing")}>A2P vs P2P Routing Explained</a>
+          <a href="/insights/otp-sms-not-received-delivery-troubleshooting-guide" onClick={(e) => handleLinkClick(e, "/insights/otp-sms-not-received-delivery-troubleshooting-guide")}>OTP SMS Not Received? Fix Guide</a>
           <a href="/industries" onClick={(e) => handleLinkClick(e, "/industries")}>Industry Solutions &amp; Compliance</a>
           <a href="/faq" onClick={(e) => handleLinkClick(e, "/faq")}>Telecom Engineering FAQ</a>
           <a href="/insights" onClick={(e) => handleLinkClick(e, "/insights")}>Telecom Insights &amp; Articles</a>

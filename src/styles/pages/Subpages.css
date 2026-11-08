@@ -263,3 +263,14 @@
   background: rgba(6, 182, 212, 0.08);
   font-weight: 700;
 }
+
+/* Make in-text links visibly clickable */
+.subpage-info-section p a,
+.subpage-info-section li a,
+.subpage-info-section h3 a,
+.dlr-table td a,
+.blog-content a {
+  color: var(--accent-cyan, #06b6d4);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

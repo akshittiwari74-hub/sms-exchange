@@ -8,6 +8,14 @@ import "../styles/pages/HomePage.css";
 export const HomePage = ({ navigate }) => {
   const portalCards = [
     {
+      icon: "🔐",
+      badge: "OTP & 2FA",
+      title: "OTP SMS & Verification API",
+      desc: "Deliver one-time passwords in seconds over direct operator routes, with number-portability lookup, SMS pumping protection, and WhatsApp/RCS fallback.",
+      linkText: "Explore OTP SMS →",
+      path: "/otp-sms",
+    },
+    {
       icon: "📊",
       badge: "Real-Time Rates",
       title: "Wholesale Rate Cards & Estimator",

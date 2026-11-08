@@ -23,6 +23,7 @@ const deliverySteps = [
   {
     title: "4. Route selection (LCR)",
     text: "The least-cost routing engine picks a route for the destination MCC-MNC using delivery ratio, latency and cost — not price alone. OTP traffic is weighted toward the fastest direct route; marketing traffic can tolerate a cheaper tier.",
+    link: { path: "/otp-sms", label: "How OTP SMS delivery works" },
   },
   {
     title: "5. Operator SMSC & handset delivery",
@@ -131,6 +132,11 @@ export const HomeKnowledge = ({ navigate }) => {
               <div key={s.title} className="info-card">
                 <h3>{s.title}</h3>
                 <p>{s.text}</p>
+                {s.link && (
+                  <p style={{ marginTop: "8px" }}>
+                    <a href={s.link.path} onClick={(e) => go(e, s.link.path)}>{s.link.label} →</a>
+                  </p>
+                )}
               </div>
             ))}
           </div>
