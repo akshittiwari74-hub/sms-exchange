@@ -34,7 +34,7 @@ export const FaqPage = ({ onOpenInquiriesModal }) => {
               <span className="info-icon">📝</span>
               <h3>Sender ID Whitelisting</h3>
               <p>
-                Full support for Alphanumeric Sender IDs (up to 11 characters) and Numeric Shortcodes across regulatory bodies (DLT India, TRAE UAE, FCC US, Ofcom UK).
+                Full support for Alphanumeric Sender IDs (up to 11 characters) and Numeric Shortcodes across regulatory bodies (DLT India, TDRA UAE, FCC US, Ofcom UK).
               </p>
             </div>
             <div className="info-card">

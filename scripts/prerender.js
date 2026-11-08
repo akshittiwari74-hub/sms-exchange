@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { execFileSync } from "child_process";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -987,10 +988,10 @@ const routes = [
             },
             {
               "@type": "Question",
-              "name": "What are the Sender ID registration requirements for India (DLT), UAE (TRAE), and international corridors?",
+              "name": "What are the Sender ID registration requirements for India (DLT), UAE (TDRA), and international corridors?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Regulated telecom jurisdictions require Sender ID header pre-registration: DLT (Distributed Ledger Technology) in India mandates business entity and template registration; TRAE in UAE mandates enterprise authorization letters; UK and EU corridors require authorized brand header verification. NAMX Telecom handles end-to-end whitelist registration within 24-48 hours."
+                "text": "Regulated telecom jurisdictions require Sender ID header pre-registration: DLT (Distributed Ledger Technology) in India mandates business entity and template registration; TDRA in UAE mandates enterprise authorization letters; UK and EU corridors require authorized brand header verification. NAMX Telecom handles end-to-end whitelist registration within 24-48 hours."
               }
             },
             {
@@ -1034,15 +1035,7 @@ const routes = [
         {
           "@type": "ContactPage",
           "url": "https://www.namxtelecom.site/contact",
-          "mainEntity": {
-            "@type": "Organization",
-            "name": "NAMX Telecom",
-            "email": "admin@namxtelecom.site",
-            "address": {
-              "@type": "PostalAddress",
-              "addressCountry": "Global"
-            }
-          }
+          "mainEntity": { "@id": "https://www.namxtelecom.site/#organization" }
         },
         {
           "@type": "FAQPage",
@@ -1069,6 +1062,97 @@ const routes = [
     }
   }
 ];
+
+// ---------------------------------------------------------------------------
+// Article schema for guides, built from posts.json so dates stay accurate.
+// ---------------------------------------------------------------------------
+const posts = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../src/data/posts.json"), "utf-8"));
+const SITE = "https://www.namxtelecom.site";
+
+routes.forEach((route) => {
+  if (!route.path.startsWith("/insights/")) return;
+  const post = posts.find((p) => "/insights/" + p.slug === route.path);
+  if (!post) return;
+  route.lastmod = post.updated || post.date;
+  route.schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/" },
+          { "@type": "ListItem", "position": 2, "name": "Insights", "item": SITE + "/insights" },
+          { "@type": "ListItem", "position": 3, "name": post.title, "item": route.canonical }
+        ]
+      },
+      {
+        "@type": route.schema && route.schema["@type"] === "TechArticle" ? "TechArticle" : "Article",
+        "headline": post.title.slice(0, 110),
+        "description": post.excerpt,
+        "datePublished": post.date,
+        "dateModified": post.updated || post.date,
+        "articleSection": post.category,
+        "image": SITE + "/og-image.png",
+        "mainEntityOfPage": { "@type": "WebPage", "@id": route.canonical },
+        "author": { "@type": "Organization", "name": post.author, "url": SITE + "/" },
+        "publisher": { "@id": SITE + "/#organization" }
+      }
+    ]
+  };
+});
+
+// ---------------------------------------------------------------------------
+// Real <lastmod> dates: last git commit touching the files behind each page.
+// Falls back to the date already committed in public/sitemap.xml (for builds
+// without git history, e.g. some CI environments), else omits <lastmod>.
+// ---------------------------------------------------------------------------
+const pageSources = {
+  "/": ["src/pages/HomePage.jsx", "src/components/HomeKnowledge.jsx", "src/components/Hero.jsx", "src/data/posts.json"],
+  "/rates": ["src/pages/RatesPage.jsx", "src/components/RouteRatesTable.jsx", "src/components/TopRoutesSpotlight.jsx"],
+  "/coverage": ["src/pages/CoveragePage.jsx", "src/components/Coverage.jsx"],
+  "/services": ["src/pages/ServicesPage.jsx"],
+  "/whatsapp-business": ["src/pages/WhatsAppPage.jsx"],
+  "/rcs-messaging": ["src/pages/RcsPage.jsx"],
+  "/it-services": ["src/pages/ItServicesPage.jsx"],
+  "/industries": ["src/pages/IndustriesPage.jsx"],
+  "/api": ["src/pages/ApiPage.jsx", "src/components/ApiSnippet.jsx"],
+  "/faq": ["src/pages/FaqPage.jsx", "src/components/FAQ.jsx"],
+  "/contact": ["src/pages/ContactPage.jsx"],
+  "/glossary": ["src/pages/GlossaryPage.jsx", "src/components/TelecomDictionary.jsx"],
+  "/insights": ["src/pages/BlogPage.jsx", "src/data/posts.json"],
+  "/terms": ["src/pages/TermsPage.jsx"],
+  "/privacy": ["src/pages/PrivacyPage.jsx"],
+};
+const locationSources = ["src/pages/LocationPage.jsx", "src/data/corridors.json"];
+const repoRoot = path.resolve(__dirname, "..");
+
+function gitDate(files) {
+  try {
+    const existing = files.filter((f) => fs.existsSync(path.join(repoRoot, f)));
+    if (!existing.length) return null;
+    // Uncommitted edits to these files mean the page changed today
+    const dirty = execFileSync("git", ["status", "--porcelain", "--", ...existing], { cwd: repoRoot, encoding: "utf-8" }).trim();
+    if (dirty) return new Date().toISOString().split("T")[0];
+    const d = execFileSync("git", ["log", "-1", "--format=%cs", "--", ...existing], { cwd: repoRoot, encoding: "utf-8" }).trim();
+    return d || null;
+  } catch {
+    return null;
+  }
+}
+
+const previousLastmod = {};
+try {
+  const prev = fs.readFileSync(path.resolve(__dirname, "../public/sitemap.xml"), "utf-8");
+  for (const m of prev.matchAll(/<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>/g)) previousLastmod[m[1]] = m[2];
+} catch {
+  /* no previous sitemap */
+}
+
+routes.forEach((route) => {
+  if (route.lastmod) return;
+  const files = route.path.startsWith("/bulk-sms-") ? locationSources : pageSources[route.path];
+  route.lastmod = (files && gitDate(files)) || previousLastmod[route.canonical] || null;
+});
 
 routes.forEach((route) => {
   let html = templateHtml;
@@ -1120,13 +1204,10 @@ routes.forEach((route) => {
 const sitemapPath = path.join(distDir, 'sitemap.xml');
 const publicSitemapPath = path.resolve(__dirname, '../public/sitemap.xml');
 let sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
-const today = new Date().toISOString().split('T')[0];
 routes.forEach(route => {
   sitemap += '  <url>\n';
   sitemap += `    <loc>${route.canonical}</loc>\n`;
-  sitemap += `    <lastmod>${today}</lastmod>\n`;
-  sitemap += '    <changefreq>daily</changefreq>\n';
-  sitemap += '    <priority>' + (route.path === '/' ? '1.0' : '0.8') + '</priority>\n';
+  if (route.lastmod) sitemap += `    <lastmod>${route.lastmod}</lastmod>\n`;
   sitemap += '  </url>\n';
 });
 sitemap += '</urlset>';

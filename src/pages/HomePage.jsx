@@ -2,6 +2,7 @@ import Hero from "../components/Hero";
 import TrustBar from "../components/TrustBar";
 import Stats from "../components/Stats";
 import Button from "../components/Button";
+import HomeKnowledge from "../components/HomeKnowledge";
 import "../styles/pages/HomePage.css";
 
 export const HomePage = ({ navigate }) => {
@@ -125,6 +126,8 @@ export const HomePage = ({ navigate }) => {
       </section>
 
       <Stats />
+
+      <HomeKnowledge navigate={navigate} />
 
       <section className="home-quick-cta">
         <div className="container">

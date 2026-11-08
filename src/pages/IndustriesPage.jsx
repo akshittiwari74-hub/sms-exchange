@@ -119,11 +119,9 @@ export const IndustriesPage = ({ onOpenInquiriesModal }) => {
                     </div>
                     <span className="faq-toggle">{isOpen ? "−" : "+"}</span>
                   </button>
-                  {isOpen && (
-                    <div className="faq-answer">
+                  <div className="faq-answer" hidden={!isOpen}>
                       <p>{faq.a}</p>
                     </div>
-                  )}
                 </div>
               );
             })}

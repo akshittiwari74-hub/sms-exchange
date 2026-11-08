@@ -132,8 +132,7 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
             ))}
           </div>
 
-          {activeTab === "smpp" && (
-            <div className="info-grid-2">
+          <div className="info-grid-2" hidden={activeTab !== "smpp"}>
               <div className="info-card">
                 <h3>⚡ SMPP Protocol Engine Specifications</h3>
                 <p>Designed for tier-1 mobile operators and enterprise messaging aggregators needing high-throughput, low-latency persistent sockets.</p>
@@ -157,10 +156,8 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
                 </ul>
               </div>
             </div>
-          )}
 
-          {activeTab === "a2p" && (
-            <div className="info-grid-2">
+          <div className="info-grid-2" hidden={activeTab !== "a2p"}>
               <div className="info-card">
                 <h3>🌐 Wholesale A2P SMS Hubbing &amp; MNO Termination</h3>
                 <p>Direct zero-hop signaling links with 250+ Mobile Network Operators across Asia, Europe, Middle East, and the Americas.</p>
@@ -183,10 +180,8 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
                 </ul>
               </div>
             </div>
-          )}
 
-          {activeTab === "wa" && (
-            <div className="info-grid-2">
+          <div className="info-grid-2" hidden={activeTab !== "wa"}>
               <div className="info-card">
                 <h3>💬 Meta Cloud API &amp; WhatsApp Business Platform</h3>
                 <p>Enterprise-grade WhatsApp messaging integrated alongside your bulk SMS infrastructure for unified communications.</p>
@@ -209,10 +204,8 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
                 </ul>
               </div>
             </div>
-          )}
 
-          {activeTab === "rcs" && (
-            <div className="info-grid-2">
+          <div className="info-grid-2" hidden={activeTab !== "rcs"}>
               <div className="info-card">
                 <h3>📲 Google RCS Business Messaging (RBM)</h3>
                 <p>Transform standard text notifications into modern rich app-like experiences natively in Android and iOS 18 Messages.</p>
@@ -235,10 +228,8 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
                 </ul>
               </div>
             </div>
-          )}
 
-          {activeTab === "cloud" && (
-            <div className="info-grid-2">
+          <div className="info-grid-2" hidden={activeTab !== "cloud"}>
               <div className="info-card">
                 <h3>💻 Enterprise Telecom IT &amp; DevOps Engineering</h3>
                 <p>Custom engineering services for telecom operators, fintechs, and aggregators scaling messaging infrastructure.</p>
@@ -261,7 +252,6 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
                 </ul>
               </div>
             </div>
-          )}
         </div>
       </section>
 
@@ -362,11 +352,9 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
                     </div>
                     <span className="faq-toggle">{isOpen ? "−" : "+"}</span>
                   </button>
-                  {isOpen && (
-                    <div className="faq-answer">
+                  <div className="faq-answer" hidden={!isOpen}>
                       <p>{faq.a}</p>
                     </div>
-                  )}
                 </div>
               );
             })}

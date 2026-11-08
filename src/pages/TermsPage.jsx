@@ -163,7 +163,7 @@ export const TermsPage = ({ onOpenInquiriesModal, navigate }) => {
                   </span>
                 </div>
                 <div className="compliance-badge-card">
-                  <span className="compliance-badge-name">🇦🇪 UAE TRAE Compliance</span>
+                  <span className="compliance-badge-name">🇦🇪 UAE TDRA Compliance</span>
                   <span className="compliance-badge-desc">
                     Formal enterprise authorization documentation and Brand NOC registration prior to commercial traffic submission.
                   </span>

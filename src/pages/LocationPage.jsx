@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import corridors from "../data/corridors.json";
+import posts from "../data/posts.json";
 import CTA from "../components/CTA";
 import "../styles/pages/Subpages.css";
 
@@ -39,6 +40,10 @@ export const LocationPage = ({ onOpenInquiriesModal, forcedLocation, navigate })
       }
     ]
   };
+
+  const relatedPosts = (data.relatedGuides || [])
+    .map((slug) => posts.find((p) => p.slug === slug))
+    .filter(Boolean);
 
   const handleNav = (e, path) => {
     e.preventDefault();
@@ -109,6 +114,60 @@ export const LocationPage = ({ onOpenInquiriesModal, forcedLocation, navigate })
           </div>
         </div>
       </section>
+
+      {/* Country-specific guide: unique, crawlable content per corridor */}
+      {data.guideIntro && (
+        <section className="subpage-info-section" aria-labelledby="country-guide">
+          <div className="container" style={{ maxWidth: "900px" }}>
+            <div className="section-heading">
+              <p className="stats-eyebrow">{data.country} A2P SMS Guide</p>
+              <h2 id="country-guide">Sending Business SMS to {data.country}: What You Need to Know</h2>
+            </div>
+            {data.guideIntro.map((para, i) => (
+              <p key={i} style={{ marginBottom: "16px", lineHeight: 1.7 }}>{para}</p>
+            ))}
+
+            {data.checklist && (
+              <>
+                <h3 style={{ marginTop: "32px", marginBottom: "12px" }}>{data.country} SMS Compliance Checklist</h3>
+                <ol className="spec-list" style={{ lineHeight: 1.7, paddingLeft: "20px" }}>
+                  {data.checklist.map((item, i) => (
+                    <li key={i} style={{ marginBottom: "8px" }}>{item}</li>
+                  ))}
+                </ol>
+              </>
+            )}
+          </div>
+
+          {data.numberTypes && (
+            <div className="container" style={{ marginTop: "32px" }}>
+              <h3 style={{ textAlign: "center", marginBottom: "16px" }}>Sender Types in {data.country} Compared</h3>
+              <div className="dlr-table-wrapper">
+                <table className="dlr-table">
+                  <thead>
+                    <tr>
+                      <th>Sender type</th>
+                      <th>Throughput</th>
+                      <th>Setup time</th>
+                      <th>Best for</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data.numberTypes.map((t) => (
+                      <tr key={t.type}>
+                        <td><strong>{t.type}</strong></td>
+                        <td>{t.throughput}</td>
+                        <td>{t.setup}</td>
+                        <td>{t.bestFor}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+        </section>
+      )}
 
       {/* MNO Mobile Network Operator Routing Matrix Table */}
       <section className="subpage-info-section" style={{ background: "rgba(255, 255, 255, 0.02)" }}>
@@ -184,6 +243,28 @@ export const LocationPage = ({ onOpenInquiriesModal, forcedLocation, navigate })
         </div>
       </section>
 
+      {/* Related engineering & compliance guides */}
+      {relatedPosts.length > 0 && (
+        <section className="subpage-info-section" aria-labelledby="related-guides">
+          <div className="container">
+            <div className="section-heading">
+              <p className="stats-eyebrow">Further Reading</p>
+              <h2 id="related-guides">Guides for {data.country} SMS Senders</h2>
+            </div>
+            <div className="info-grid-3">
+              {relatedPosts.map((p) => (
+                <article key={p.slug} className="info-card">
+                  <h3>
+                    <a href={`/insights/${p.slug}`} onClick={(e) => handleNav(e, `/insights/${p.slug}`)}>{p.title}</a>
+                  </h3>
+                  <p>{p.excerpt}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Country Corridor Cross-Linking (Internal Page Authority Mesh) */}
       <section className="subpage-info-section" style={{ background: "rgba(6, 182, 212, 0.02)" }}>
         <div className="container">
@@ -241,11 +322,9 @@ export const LocationPage = ({ onOpenInquiriesModal, forcedLocation, navigate })
                     </div>
                     <span className="faq-toggle">{isOpen ? "−" : "+"}</span>
                   </button>
-                  {isOpen && (
-                    <div className="faq-answer">
+                  <div className="faq-answer" hidden={!isOpen}>
                       <p>{faq.a}</p>
                     </div>
-                  )}
                 </div>
               );
             })}
