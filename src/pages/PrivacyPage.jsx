@@ -3,6 +3,7 @@ import CTA from "../components/CTA";
 import "../styles/pages/Subpages.css";
 import "../styles/pages/LegalPage.css";
 import EmojiIcon from "../components/EmojiIcon";
+import { PageHeader } from "../components/ui";
 
 export const PrivacyPage = ({ onOpenInquiriesModal, navigate }) => {
   useEffect(() => {
@@ -32,22 +33,15 @@ export const PrivacyPage = ({ onOpenInquiriesModal, navigate }) => {
   return (
     <div className="page-legal">
       {/* Dedicated Legal Header Banner */}
-      <div className="page-banner">
-        <div className="container">
-          <span className="legal-badge-tag">Global Data Protection</span>
-          <h1>Privacy Policy</h1>
-          <p>
-            How NAMX Telecom collects, processes, encrypts, and retains enterprise messaging data, CDR metadata, and PDU payloads in accordance with international data protection frameworks.
-          </p>
-          <div className="legal-meta-bar">
-            <span className="legal-meta-item">Effective Date: October 2026</span>
-            <span className="legal-meta-dot"></span>
-            <span className="legal-meta-item">GDPR, CCPA &amp; Telecom Compliant</span>
-            <span className="legal-meta-dot"></span>
-            <span className="legal-meta-item">Zero-Payload Storage Architecture</span>
-          </div>
+      <PageHeader path="/privacy" eyebrow={<>Global Data Protection</>} title={<>Privacy Policy</>} intro={<>How NAMX Telecom collects, processes, encrypts, and retains enterprise messaging data, CDR metadata, and PDU payloads in accordance with international data protection frameworks.</>}>
+        <div className="legal-meta-bar">
+        <span className="legal-meta-item">Effective Date: October 2026</span>
+        <span className="legal-meta-dot"></span>
+        <span className="legal-meta-item">GDPR, CCPA &amp; Telecom Compliant</span>
+        <span className="legal-meta-dot"></span>
+        <span className="legal-meta-item">Zero-Payload Storage Architecture</span>
         </div>
-      </div>
+      </PageHeader>
 
       {/* Main Content Area */}
       <section className="legal-layout-section">

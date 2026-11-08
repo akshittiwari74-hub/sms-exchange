@@ -5,10 +5,10 @@ import "../styles/pages/Subpages.css";
 import "../styles/pages/ServicesWings.css";
 import "../styles/components/FAQ.css";
 import EmojiIcon from "../components/EmojiIcon";
+import { PageHeader, FaqSection } from "../components/ui";
 
 export const RcsPage = ({ onOpenInquiriesModal, navigate }) => {
   const [activeTab, setActiveTab] = useState("ecommerce");
-  const [openFaq, setOpenFaq] = useState(0);
 
   const handleNavClick = (e, path) => {
     e.preventDefault();
@@ -125,32 +125,23 @@ export const RcsPage = ({ onOpenInquiriesModal, navigate }) => {
   return (
     <div className="page-rcs">
       {/* Hero Banner */}
-      <div className="page-banner">
-        <div className="container">
-          <span className="wing-hero-badge rcs">Next-Gen GSMA Universal Profile 2.4</span>
-          <h1>RCS Business Messaging Gateway (Rich Communication Services)</h1>
-          <p>
-            Upgrade traditional Bulk SMS into rich, verified, interactive experiences. Delivered natively inside Android Google Messages and iOS 18 native messaging with zero app installation required.
-          </p>
-          <div className="wing-hero-actions">
-            <Button
-              href="/contact"
-              onClick={(e) => handleNavClick(e, "/contact")}
-              variant="primary"
-              size="lg"
-            >
-              Connect to RCS Gateway
-            </Button>
-            <a
-              href="/whatsapp-business"
-              onClick={(e) => handleNavClick(e, "/whatsapp-business")}
-              className="wing-btn-secondary"
-            >
-              Explore WhatsApp Platform ➔
-            </a>
-          </div>
-        </div>
-      </div>
+      <PageHeader path="/rcs-messaging" eyebrow={<>Next-Gen GSMA Universal Profile 2.4</>} title={<>RCS Business Messaging Gateway (Rich Communication Services)</>} intro={<>Upgrade traditional Bulk SMS into rich, verified, interactive experiences. Delivered natively inside Android Google Messages and iOS 18 native messaging with zero app installation required.</>}>
+        <Button
+          href="/contact"
+          onClick={(e) => handleNavClick(e, "/contact")}
+          variant="primary"
+          size="lg"
+        >
+          Connect to RCS Gateway
+        </Button>
+        <a
+          href="/whatsapp-business"
+          onClick={(e) => handleNavClick(e, "/whatsapp-business")}
+          className="wing-btn-secondary"
+        >
+          Explore WhatsApp Platform ➔
+        </a>
+      </PageHeader>
 
       {/* Interactive RCS Simulator Section */}
       <section className="simulator-section">
@@ -240,7 +231,7 @@ export const RcsPage = ({ onOpenInquiriesModal, navigate }) => {
                     <div className="rcs-card-bubble">
                       <div className="rcs-card-media">
                         <span className="rcs-card-media-icon"><EmojiIcon char={currentSim.icon} /></span>
-                        <span style={{ fontSize: "11px", opacity: 0.9 }}>VERIFIED RICH MESSAGE</span>
+                        <span className="sim-label">VERIFIED RICH MESSAGE</span>
                       </div>
 
                       <div className="rcs-card-content">
@@ -361,40 +352,7 @@ export const RcsPage = ({ onOpenInquiriesModal, navigate }) => {
       </section>
 
       {/* Frequently Asked Questions (SEO Optimized) */}
-      <section className="faq">
-        <div className="container">
-          <div className="section-heading">
-            <p className="stats-eyebrow">Frequently Asked Questions</p>
-            <h2>RCS Business Messaging Gateway FAQs</h2>
-            <p className="faq-subtext">Everything you need to know about Google RBM, rich carousels, Apple iOS 18 compatibility, and SMS fallback.</p>
-          </div>
-
-          <div className="faq-list">
-            {rcsFaqs.map((faq, idx) => {
-              const isOpen = openFaq === idx;
-              return (
-                <div key={idx} className={`faq-item ${isOpen ? "open" : ""}`}>
-                  <button
-                    type="button"
-                    className="faq-question"
-                    onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    aria-expanded={isOpen}
-                  >
-                    <div className="faq-q-text">
-                      <span className="faq-badge">RCS Gateway</span>
-                      <span>{faq.q}</span>
-                    </div>
-                    <span className="faq-toggle">{isOpen ? "−" : "+"}</span>
-                  </button>
-                  <div className="faq-answer" hidden={!isOpen}>
-                      <p>{faq.a}</p>
-                    </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <FaqSection eyebrow={<>Frequently Asked Questions</>} title={<>RCS Business Messaging Gateway FAQs</>} intro={<>Everything you need to know about Google RBM, rich carousels, Apple iOS 18 compatibility, and SMS fallback.</>} items={rcsFaqs} badge={<>RCS Gateway</>} />
 
       {/* CTA Section */}
       <CTA onOpenInquiriesModal={onOpenInquiriesModal} defaultProduct="RCS Business Messaging" />

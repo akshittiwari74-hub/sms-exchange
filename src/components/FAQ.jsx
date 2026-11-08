@@ -151,7 +151,7 @@ export const FAQ = () => {
 
       <div className="faq-list">
         {filteredFaqs.length === 0 ? (
-          <div className="faq-item" style={{ padding: "30px", textStyle: "center", opacity: 0.7 }}>
+          <div className="faq-item faq-empty">
             <p>No matching questions found for "{searchTerm}". Try searching another keyword like "SMPP", "SS7", "OTP", or "P2P".</p>
           </div>
         ) : (

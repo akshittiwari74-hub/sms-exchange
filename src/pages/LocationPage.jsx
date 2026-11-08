@@ -1,15 +1,14 @@
-import { useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import corridors from "../data/corridors.json";
 import posts from "../data/posts.json";
 import CTA from "../components/CTA";
 import "../styles/pages/Subpages.css";
 import EmojiIcon from "../components/EmojiIcon";
+import { PageHeader, Section, FaqSection } from "../components/ui";
 
 export const LocationPage = ({ onOpenInquiriesModal, forcedLocation, navigate }) => {
   const params = useParams();
   const rawKey = (forcedLocation || params?.location || "").toLowerCase().replace("bulk-sms-", "");
-  const [openFaq, setOpenFaq] = useState(null);
 
   // Fallback if not directly matched in corridors.json
   const data = corridors[rawKey] || {
@@ -53,286 +52,173 @@ export const LocationPage = ({ onOpenInquiriesModal, forcedLocation, navigate })
     }
   };
 
+  const corridorLinks = [
+    { path: "/bulk-sms-usa", name: "🇺🇸 USA & 10DLC" },
+    { path: "/bulk-sms-uk", name: "🇬🇧 United Kingdom" },
+    { path: "/bulk-sms-uae", name: "🇦🇪 UAE & Middle East" },
+    { path: "/bulk-sms-india", name: "🇮🇳 India & DLT" },
+    { path: "/bulk-sms-malaysia", name: "🇲🇾 Malaysia & APAC" },
+    { path: "/otp-sms", name: "OTP SMS & 2FA delivery" },
+    { path: "/rates", name: "195+ country rate cards" },
+    { path: "/coverage", name: "Global coverage" },
+  ].filter((l) => l.path !== `/bulk-sms-${rawKey}`);
+
   return (
-    <div className="page-wrapper page-services">
-      {/* Dynamic SEO Hero Banner */}
-      <div className="page-banner">
-        <div className="container">
-          <p className="stats-eyebrow">
-            {data.flag} {data.country} · Direct MNO Interconnects &amp; SMPP Hubbing
-          </p>
-          <h1>{data.title}</h1>
-          <p>{data.subtitle}</p>
-          <div style={{ display: "flex", gap: "12px", justifyContent: "center", marginTop: "24px", flexWrap: "wrap" }}>
-            <button
-              className="btn btn--primary btn--lg"
-              onClick={onOpenInquiriesModal}
-              style={{ cursor: "pointer" }}
-            >
-              Request {data.country} Rate Quote
-            </button>
-            <a
-              href="/rates"
-              onClick={(e) => handleNav(e, "/rates")}
-              className="btn btn--secondary btn--lg"
-            >
-              View Global Rate Cards
-            </a>
+    <div className="page-location">
+      <PageHeader
+        path={`/bulk-sms-${rawKey}`}
+        eyebrow={<>{data.flag} {data.country} · Direct operator routes &amp; SMPP</>}
+        title={data.title}
+        intro={data.subtitle}
+      >
+        <button type="button" className="btn btn--primary btn--lg" onClick={onOpenInquiriesModal}>
+          Request {data.country} rate quote
+        </button>
+        <a href="/rates" onClick={(e) => handleNav(e, "/rates")} className="btn btn--secondary btn--lg">
+          View global rate cards
+        </a>
+      </PageHeader>
+
+      <Section id="specs" eyebrow="Regulation & protocol specs" title={`${data.country} telecom interconnect specifications`}>
+        <div className="info-grid-3">
+          <div className="info-card ui-kv">
+            <span className="info-icon"><EmojiIcon char="🏛️" /></span>
+            <h3>Regulatory authority</h3>
+            <p><strong>Governing body:</strong> {data.regulatoryBody}</p>
+            <p>{data.complianceNotes}</p>
+          </div>
+          <div className="info-card ui-kv">
+            <span className="info-icon"><EmojiIcon char="🏷️" /></span>
+            <h3>Sender ID regulations</h3>
+            <p><strong>Supported format:</strong> {data.senderIdType}</p>
+            <p>Supported encodings include standard GSM 03.38 7-bit and UCS-2 16-bit Unicode.</p>
+          </div>
+          <div className="info-card ui-kv">
+            <span className="info-icon"><EmojiIcon char="⚡" /></span>
+            <h3>Network benchmarks</h3>
+            <p><strong>Average delivery latency:</strong> {data.avgLatency}</p>
+            <p><strong>Handset DLR rate:</strong> {data.dlrRate}</p>
+            <p><strong>Protocols:</strong> {data.supportedProtocols}</p>
           </div>
         </div>
-      </div>
+      </Section>
 
-      {/* Regulatory & Performance Metadata Matrix */}
-      <section className="subpage-info-section">
-        <div className="container">
-          <div className="section-heading">
-            <p className="stats-eyebrow">Regulatory Compliance &amp; Protocol Specs</p>
-            <h2>{data.country} Telecom Peering &amp; Interconnect Specifications</h2>
-          </div>
-
-          <div className="info-grid-3">
-            <div className="info-card">
-              <span className="info-icon"><EmojiIcon char="🏛️" /></span>
-              <h3>Regulatory Authority</h3>
-              <p><strong>Governing Body:</strong> {data.regulatoryBody}</p>
-              <p style={{ marginTop: "8px", fontSize: "13px" }}>{data.complianceNotes}</p>
-            </div>
-
-            <div className="info-card">
-              <span className="info-icon"><EmojiIcon char="🏷️" /></span>
-              <h3>Sender ID Regulations</h3>
-              <p><strong>Supported Format:</strong> {data.senderIdType}</p>
-              <p style={{ marginTop: "8px", fontSize: "13px" }}>Supported encodings include standard GSM 03.38 7-bit and UCS-2 16-bit Unicode.</p>
-            </div>
-
-            <div className="info-card">
-              <span className="info-icon"><EmojiIcon char="⚡" /></span>
-              <h3>Network Benchmark SLA</h3>
-              <p><strong>Average Delivery Latency:</strong> {data.avgLatency}</p>
-              <p><strong>Handset DLR Rate:</strong> {data.dlrRate}</p>
-              <p><strong>Protocols:</strong> {data.supportedProtocols}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Country-specific guide: unique, crawlable content per corridor */}
       {data.guideIntro && (
-        <section className="subpage-info-section" aria-labelledby="country-guide">
-          <div className="container" style={{ maxWidth: "900px" }}>
-            <div className="section-heading">
-              <p className="stats-eyebrow">{data.country} A2P SMS Guide</p>
-              <h2 id="country-guide">Sending Business SMS to {data.country}: What You Need to Know</h2>
-            </div>
-            {data.guideIntro.map((para, i) => (
-              <p key={i} style={{ marginBottom: "16px", lineHeight: 1.7 }}>{para}</p>
-            ))}
-
+        <Section id="country-guide" eyebrow={`${data.country} A2P SMS guide`} title={`Sending business SMS to ${data.country}: what you need to know`} alt narrow>
+          <div className="prose">
+            {data.guideIntro.map((para, i) => <p key={i}>{para}</p>)}
             {data.checklist && (
               <>
-                <h3 style={{ marginTop: "32px", marginBottom: "12px" }}>{data.country} SMS Compliance Checklist</h3>
-                <ol className="spec-list" style={{ lineHeight: 1.7, paddingLeft: "20px" }}>
-                  {data.checklist.map((item, i) => (
-                    <li key={i} style={{ marginBottom: "8px" }}>{item}</li>
-                  ))}
+                <h3>{data.country} SMS compliance checklist</h3>
+                <ol>
+                  {data.checklist.map((item, i) => <li key={i}>{item}</li>)}
                 </ol>
               </>
             )}
           </div>
-
           {data.numberTypes && (
-            <div className="container" style={{ marginTop: "32px" }}>
-              <h3 style={{ textAlign: "center", marginBottom: "16px" }}>Sender Types in {data.country} Compared</h3>
+            <>
+              <h3 className="ui-subhead">Sender types in {data.country} compared</h3>
               <div className="dlr-table-wrapper">
                 <table className="dlr-table">
                   <thead>
-                    <tr>
-                      <th>Sender type</th>
-                      <th>Throughput</th>
-                      <th>Setup time</th>
-                      <th>Best for</th>
-                    </tr>
+                    <tr><th>Sender type</th><th>Throughput</th><th>Setup time</th><th>Best for</th></tr>
                   </thead>
                   <tbody>
                     {data.numberTypes.map((t) => (
                       <tr key={t.type}>
-                        <td><strong>{t.type}</strong></td>
-                        <td>{t.throughput}</td>
-                        <td>{t.setup}</td>
-                        <td>{t.bestFor}</td>
+                        <td><strong>{t.type}</strong></td><td>{t.throughput}</td><td>{t.setup}</td><td>{t.bestFor}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
-            </div>
+            </>
           )}
-        </section>
+        </Section>
       )}
 
-      {/* MNO Mobile Network Operator Routing Matrix Table */}
-      <section className="subpage-info-section" style={{ background: "rgba(255, 255, 255, 0.02)" }}>
-        <div className="container">
-          <div className="section-heading">
-            <p className="stats-eyebrow">Carrier Signaling Matrix</p>
-            <h2>{data.country} Mobile Network Operator (MNO) Interconnects</h2>
-            <p>Direct mobile network operator routes with MCC-MNC mapping, throughput benchmarks, and live termination pricing.</p>
-          </div>
-
-          <div className="dlr-table-wrapper">
-            <table className="dlr-table">
-              <thead>
-                <tr>
-                  <th>Mobile Operator</th>
-                  <th>MCC / MNC</th>
-                  <th>Market Share</th>
-                  <th>Route Quality Tier</th>
-                  <th>Throughput</th>
-                  <th>SLA Latency</th>
-                  <th>Wholesale Rate (EUR)</th>
+      <Section
+        id="operators"
+        eyebrow="Operator routes"
+        title={`${data.country} mobile network operator routes`}
+        intro="Direct mobile network operator routes with MCC-MNC mapping, throughput benchmarks and termination pricing."
+      >
+        <div className="dlr-table-wrapper">
+          <table className="dlr-table">
+            <thead>
+              <tr>
+                <th>Mobile operator</th><th>MCC / MNC</th><th>Market share</th><th>Route tier</th>
+                <th>Throughput</th><th>Latency</th><th>Rate (EUR)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.networks.map((net) => (
+                <tr key={net.name}>
+                  <td><strong>{net.name}</strong></td>
+                  <td><code>{net.mcc}-{net.mnc}</code></td>
+                  <td>{net.marketShare}</td>
+                  <td>{net.routeType}</td>
+                  <td>{net.tps}</td>
+                  <td><span className="text-success">{net.latency}</span></td>
+                  <td><strong>€{net.rateEUR}</strong> / SMS</td>
                 </tr>
-              </thead>
-              <tbody>
-                {data.networks.map((net, i) => (
-                  <tr key={i}>
-                    <td><strong>{net.name}</strong></td>
-                    <td>
-                      <span className="dlr-code-badge">{net.mcc}-{net.mnc}</span>
-                    </td>
-                    <td>{net.marketShare}</td>
-                    <td><span className="dlr-state-badge success">{net.routeType}</span></td>
-                    <td><code>{net.tps}</code></td>
-                    <td><span style={{ color: "#34d399", fontWeight: 700 }}>{net.latency}</span></td>
-                    <td><strong>€{net.rateEUR}</strong> / SMS</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+              ))}
+            </tbody>
+          </table>
         </div>
-      </section>
+      </Section>
 
-      {/* Volume Tiering Cards */}
-      <section className="subpage-info-section">
-        <div className="container">
-          <div className="section-heading">
-            <p className="stats-eyebrow">Tiered Wholesale Rates</p>
-            <h2>Volume Pricing for {data.country} SMS Termination</h2>
-            <p>Predictable cost scaling for high-concurrency enterprise applications, aggregators, and fintechs.</p>
-          </div>
+      <Section
+        id="pricing"
+        eyebrow="Volume pricing"
+        title={`Volume pricing for ${data.country} SMS termination`}
+        intro="Predictable cost scaling for enterprise applications, aggregators and fintechs."
+        alt
+      >
+        <div className="info-grid-3">
+          {data.pricingTiers.map((tier) => (
+            <div key={tier.volume} className="info-card">
+              <h3>{tier.volume}</h3>
+              <p className="ui-stat">{tier.rateEUR} <small>/ SMS</small></p>
+              <p>{tier.features}</p>
+              <button type="button" className="btn btn--secondary btn--md ui-card-btn" onClick={onOpenInquiriesModal}>
+                Request this tier
+              </button>
+            </div>
+          ))}
+        </div>
+      </Section>
 
+      {relatedPosts.length > 0 && (
+        <Section id="related-guides" eyebrow="Further reading" title={`Guides for ${data.country} SMS senders`}>
           <div className="info-grid-3">
-            {data.pricingTiers.map((tier, idx) => (
-              <div key={idx} className="info-card">
-                <span className="info-icon"><EmojiIcon char="💎" /></span>
-                <h3>{tier.volume}</h3>
-                <div style={{ margin: "16px 0", fontSize: "28px", fontWeight: 800, color: "var(--accent-cyan)" }}>
-                  {tier.rateEUR} <span style={{ fontSize: "14px", color: "var(--text-secondary)" }}>/ SMS</span>
-                </div>
-                <p>{tier.features}</p>
-                <button
-                  type="button"
-                  className="contact-link-btn"
-                  onClick={onOpenInquiriesModal}
-                  style={{ border: "none", cursor: "pointer", marginTop: "16px" }}
-                >
-                  Activate Bind ➔
-                </button>
-              </div>
+            {relatedPosts.map((p) => (
+              <article key={p.slug} className="info-card">
+                <h3><a href={`/insights/${p.slug}`} onClick={(e) => handleNav(e, `/insights/${p.slug}`)}>{p.title}</a></h3>
+                <p>{p.excerpt}</p>
+              </article>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Related engineering & compliance guides */}
-      {relatedPosts.length > 0 && (
-        <section className="subpage-info-section" aria-labelledby="related-guides">
-          <div className="container">
-            <div className="section-heading">
-              <p className="stats-eyebrow">Further Reading</p>
-              <h2 id="related-guides">Guides for {data.country} SMS Senders</h2>
-            </div>
-            <div className="info-grid-3">
-              {relatedPosts.map((p) => (
-                <article key={p.slug} className="info-card">
-                  <h3>
-                    <a href={`/insights/${p.slug}`} onClick={(e) => handleNav(e, `/insights/${p.slug}`)}>{p.title}</a>
-                  </h3>
-                  <p>{p.excerpt}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
+        </Section>
       )}
 
-      {/* Country Corridor Cross-Linking (Internal Page Authority Mesh) */}
-      <section className="subpage-info-section" style={{ background: "rgba(6, 182, 212, 0.02)" }}>
-        <div className="container">
-          <div className="section-heading">
-            <p className="stats-eyebrow">Global Corridors</p>
-            <h2>Explore Additional Regional Wholesale SMS Hubs</h2>
-          </div>
-
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center" }}>
-            {[
-              { path: "/bulk-sms-usa", name: "🇺🇸 Bulk SMS USA & 10DLC" },
-              { path: "/bulk-sms-uk", name: "🇬🇧 Bulk SMS UK & Europe" },
-              { path: "/bulk-sms-uae", name: "🇦🇪 Bulk SMS UAE & Middle East" },
-              { path: "/bulk-sms-india", name: "🇮🇳 Bulk SMS India & DLT" },
-              { path: "/bulk-sms-malaysia", name: "🇲🇾 Bulk SMS Malaysia & APAC" },
-              { path: "/otp-sms", name: "OTP SMS & 2FA Delivery" },
-              { path: "/rates", name: "195+ Country Rate Cards" },
-              { path: "/coverage", name: "Global Carrier Network Map" },
-            ].map((link, idx) => (
-              <a
-                key={idx}
-                href={link.path}
-                onClick={(e) => handleNav(e, link.path)}
-                className="contact-link-btn"
-                style={{ padding: "10px 20px" }}
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
+      <Section id="corridors" eyebrow="More destinations" title="Explore other SMS corridors" alt>
+        <div className="ui-chip-row">
+          {corridorLinks.map((link) => (
+            <a key={link.path} href={link.path} onClick={(e) => handleNav(e, link.path)} className="ui-chip">
+              {link.name}
+            </a>
+          ))}
         </div>
-      </section>
+      </Section>
 
-      {/* Corridor Specific FAQs */}
-      <section className="faq">
-        <div className="container">
-          <div className="section-heading">
-            <p className="stats-eyebrow">Technical &amp; Regulatory Guidance</p>
-            <h2>Frequently Asked Questions: {data.country} SMS Routing</h2>
-          </div>
-
-          <div className="faq-list">
-            {data.faqs.map((faq, idx) => {
-              const isOpen = openFaq === idx;
-              return (
-                <div key={idx} className={`faq-item ${isOpen ? "open" : ""}`}>
-                  <button
-                    type="button"
-                    className="faq-question"
-                    onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    aria-expanded={isOpen}
-                  >
-                    <div className="faq-q-text">
-                      <span className="faq-badge">{data.country} Compliance</span>
-                      <span>{faq.q}</span>
-                    </div>
-                    <span className="faq-toggle">{isOpen ? "−" : "+"}</span>
-                  </button>
-                  <div className="faq-answer" hidden={!isOpen}>
-                      <p>{faq.a}</p>
-                    </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <FaqSection
+        eyebrow="Technical & regulatory guidance"
+        title={`Frequently asked questions: ${data.country} SMS routing`}
+        items={data.faqs}
+        badge={data.country}
+      />
 
       <CTA onOpenInquiriesModal={onOpenInquiriesModal} defaultProduct={`Wholesale SMS Route - ${data.country}`} />
     </div>

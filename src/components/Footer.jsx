@@ -16,10 +16,7 @@ export const Footer = ({ navigate }) => {
         <div className="footer-column">
           <h3>NAMX Telecom</h3>
           <p>Global wholesale SMS connectivity, carrier-grade SMPP v3.4/v5.0 binds, Meta Cloud WhatsApp API, Google RCS messaging, and enterprise cloud engineering.</p>
-          <div className="footer-status-pill" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '12px', fontSize: '13px', color: '#10b981' }}>
-            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981', display: 'inline-block' }} />
-            <span>Global NOC Active · 99.99% Uptime SLA</span>
-          </div>
+          <p className="footer-note">24/7 NOC support · SMPP v3.4/v5.0 · REST API</p>
         </div>
 
         <div className="footer-column">

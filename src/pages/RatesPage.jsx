@@ -1,13 +1,12 @@
-import { useState } from "react";
 import TopRoutesSpotlight from "../components/TopRoutesSpotlight";
 import RouteInspector from "../components/RouteInspector";
 import RouteRatesTable from "../components/RouteRatesTable";
 import CTA from "../components/CTA";
 import "../styles/pages/Subpages.css";
 import EmojiIcon from "../components/EmojiIcon";
+import { PageHeader, FaqSection } from "../components/ui";
 
-export const RatesPage = ({ onOpenInquiriesModal }) => {
-  const [openFaq, setOpenFaq] = useState(null);
+export const RatesPage = ({ onOpenInquiriesModal }) => {
 
   const rateFaqs = [
     {
@@ -34,15 +33,7 @@ export const RatesPage = ({ onOpenInquiriesModal }) => {
 
   return (
     <div className="page-rates">
-      <div className="page-banner">
-        <div className="container">
-          <p className="stats-eyebrow">Wholesale Rate Transparency &amp; P2P Clearing</p>
-          <h1>Global Wholesale Bulk SMS Rates &amp; International P2P Rate Cards</h1>
-          <p>
-            Explore live wholesale rate cards for 195+ destination corridors. Inspect Least-Cost Routing (LCR) engine pricing, compare Direct MNO vs Wholesale Aggregator tiers, and calculate volume pricing with zero hidden commitments.
-          </p>
-        </div>
-      </div>
+      <PageHeader path="/rates" eyebrow={<>Wholesale Rate Transparency &amp; P2P Clearing</>} title={<>Global Wholesale Bulk SMS Rates &amp; International P2P Rate Cards</>} intro={<>Explore live wholesale rate cards for 195+ destination corridors. Inspect Least-Cost Routing (LCR) engine pricing, compare Direct MNO vs Wholesale Aggregator tiers, and calculate volume pricing with zero hidden commitments.</>} />
 
       {/* Informative Guidance Section */}
       <section className="subpage-info-section">
@@ -80,40 +71,7 @@ export const RatesPage = ({ onOpenInquiriesModal }) => {
       <RouteRatesTable />
 
       {/* Frequently Asked Questions */}
-      <section className="faq">
-        <div className="container">
-          <div className="section-heading">
-            <p className="stats-eyebrow">Rate Transparency &amp; Billing</p>
-            <h2>Wholesale SMS Rates &amp; Pricing FAQs</h2>
-            <p className="faq-subtext">Clear answers on corridor pricing, currencies, SMPP test credentials, and volume tiering.</p>
-          </div>
-
-          <div className="faq-list">
-            {rateFaqs.map((faq, idx) => {
-              const isOpen = openFaq === idx;
-              return (
-                <div key={idx} className={`faq-item ${isOpen ? "open" : ""}`}>
-                  <button
-                    type="button"
-                    className="faq-question"
-                    onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    aria-expanded={isOpen}
-                  >
-                    <div className="faq-q-text">
-                      <span className="faq-badge">Rates &amp; Billing</span>
-                      <span>{faq.q}</span>
-                    </div>
-                    <span className="faq-toggle">{isOpen ? "−" : "+"}</span>
-                  </button>
-                  <div className="faq-answer" hidden={!isOpen}>
-                      <p>{faq.a}</p>
-                    </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <FaqSection eyebrow={<>Rate Transparency &amp; Billing</>} title={<>Wholesale SMS Rates &amp; Pricing FAQs</>} intro={<>Clear answers on corridor pricing, currencies, SMPP test credentials, and volume tiering.</>} items={rateFaqs} badge={<>Rates &amp; Billing</>} />
 
       <CTA onOpenInquiriesModal={onOpenInquiriesModal} defaultProduct="Wholesale SMS Rates" />
     </div>

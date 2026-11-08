@@ -1,4 +1,3 @@
-import React from "react";
 import "../styles/components/TopRoutesSpotlight.css";
 
 export const TOP_WHOLESALE_ROUTES = [

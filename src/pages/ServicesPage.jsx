@@ -3,10 +3,10 @@ import Services from "../components/Services";
 import WhyChooseUs from "../components/WhyChooseUs";
 import CTA from "../components/CTA";
 import "../styles/pages/Subpages.css";
+import { PageHeader, FaqSection } from "../components/ui";
 
-export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
+export const ServicesPage = ({ onOpenInquiriesModal }) => {
   const [activeTab, setActiveTab] = useState("smpp");
-  const [openFaq, setOpenFaq] = useState(null);
 
   const smppPdus = [
     {
@@ -85,18 +85,10 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
 
   return (
     <div className="page-services">
-      <div className="page-banner">
-        <div className="container">
-          <p className="stats-eyebrow">360° Carrier-Grade Enterprise Telecom Infrastructure</p>
-          <h1>Wholesale Bulk SMS Gateway, SMPP Binds &amp; Omnichannel Routing</h1>
-          <p>
-            The global telecommunications backbone for high-concurrency enterprise applications, SMS aggregators, and CPaaS platforms. Direct SS7 MNO interconnects, SMPP v3.4/v5.0 high-TPS binds, Meta WhatsApp API, Google RCS, and 24/7 Global NOC operations.
-          </p>
-        </div>
-      </div>
+      <PageHeader path="/services" eyebrow={<>360° Carrier-Grade Enterprise Telecom Infrastructure</>} title={<>Wholesale Bulk SMS Gateway, SMPP Binds &amp; Omnichannel Routing</>} intro={<>The global telecommunications backbone for high-concurrency enterprise applications, SMS aggregators, and CPaaS platforms. Direct SS7 MNO interconnects, SMPP v3.4/v5.0 high-TPS binds, Meta WhatsApp API, Google RCS, and 24/7 Global NOC operations.</>} />
 
       {/* 360 Architecture Interactive Domain Tabs */}
-      <section className="subpage-info-section" style={{ background: "rgba(6, 182, 212, 0.02)" }}>
+      <section className="subpage-info-section ui-section--alt">
         <div className="container">
           <div className="section-heading">
             <p className="stats-eyebrow">Architectural Domains</p>
@@ -104,7 +96,7 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
             <p>Select a core technology domain below to inspect technical specifications, protocol behaviors, and routing architecture.</p>
           </div>
 
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", justifyContent: "center", marginBottom: "36px" }}>
+          <div className="ui-tabs" role="tablist" aria-label="Capability domains">
             {[
               { id: "smpp", label: "SMPP v3.4 / v5.0 Protocol Suite" },
               { id: "a2p", label: "Wholesale A2P SMS & LCR Engine" },
@@ -114,18 +106,11 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
             ].map((tab) => (
               <button
                 key={tab.id}
+                type="button"
+                role="tab"
+                aria-selected={activeTab === tab.id}
+                className={`ui-tab${activeTab === tab.id ? " is-active" : ""}`}
                 onClick={() => setActiveTab(tab.id)}
-                style={{
-                  padding: "12px 20px",
-                  fontSize: "14px",
-                  fontWeight: 700,
-                  borderRadius: "24px",
-                  border: activeTab === tab.id ? "1px solid #06b6d4" : "1px solid rgba(255, 255, 255, 0.1)",
-                  background: activeTab === tab.id ? "rgba(6, 182, 212, 0.2)" : "rgba(255, 255, 255, 0.03)",
-                  color: activeTab === tab.id ? "#06b6d4" : "#ffffff",
-                  cursor: "pointer",
-                  transition: "all 0.2s ease",
-                }}
               >
                 {tab.label}
               </button>
@@ -136,7 +121,7 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
               <div className="info-card">
                 <h3>SMPP Protocol Engine Specifications</h3>
                 <p>Designed for tier-1 mobile operators and enterprise messaging aggregators needing high-throughput, low-latency persistent sockets.</p>
-                <ul className="spec-list" style={{ marginTop: "16px" }}>
+                <ul className="spec-list">
                   <li>✓ <strong>Protocol Versions:</strong> SMPP v3.4 (industry standard) and SMPP v5.0 (advanced session control).</li>
                   <li>✓ <strong>Throughput TPS:</strong> Up to 10,000 TPS sustained per transceiver bind with configurable sliding window buffers.</li>
                   <li>✓ <strong>Connection Modes:</strong> Dedicated TRX (Transceiver), TX (Transmitter), and RX (Receiver) session configurations.</li>
@@ -148,7 +133,7 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
               <div className="info-card">
                 <h3>Message Encoding &amp; Payload Handling</h3>
                 <p>Full support for global multilingual messaging, concatenation, and binary payloads across all destination handsets.</p>
-                <ul className="spec-list" style={{ marginTop: "16px" }}>
+                <ul className="spec-list">
                   <li>✓ <strong>GSM 7-bit Default Alphabet:</strong> Up to 160 characters for single SMS; 153 characters per segment concatenated.</li>
                   <li>✓ <strong>UCS-2 16-bit Unicode:</strong> Up to 70 characters for single SMS; 67 characters per segment for Arabic, Chinese, Cyrillic, Hindi, and Emojis.</li>
                   <li>✓ <strong>User Data Header (UDH):</strong> Standard 0x05 (8-bit ref) and 0x06 (16-bit ref) concatenation for seamless multi-part reassembly.</li>
@@ -161,7 +146,7 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
               <div className="info-card">
                 <h3>Wholesale A2P SMS Hubbing &amp; MNO Termination</h3>
                 <p>Direct zero-hop signaling links with 250+ Mobile Network Operators across Asia, Europe, Middle East, and the Americas.</p>
-                <ul className="spec-list" style={{ marginTop: "16px" }}>
+                <ul className="spec-list">
                   <li>✓ <strong>Express OTP Priority Route:</strong> Sub-1.8 second delivery latency with 99.98% delivery rate for 2FA verification codes.</li>
                   <li>✓ <strong>Dynamic Least Cost Routing (LCR):</strong> Algorithm evaluates real-time latency, delivery rate, and cost every 15ms.</li>
                   <li>✓ <strong>Sender ID Whitelist Engine:</strong> Dynamic alphanumeric (e.g., 'YOURBANK'), shortcode, and 10DLC registration support.</li>
@@ -172,7 +157,7 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
               <div className="info-card">
                 <h3>SS7 Anti-Fraud &amp; Firewall Protection</h3>
                 <p>Enterprise firewall heuristics protect your brand reputation and eliminate gray route interception.</p>
-                <ul className="spec-list" style={{ marginTop: "16px" }}>
+                <ul className="spec-list">
                   <li>✓ <strong>Anti-AIT (Artificial Traffic Inflation):</strong> Heuristic filters stop automated bot OTP generation and credit drainage.</li>
                   <li>✓ <strong>Zero Gray Routes:</strong> 100% white-route legitimate termination with cryptographic end-to-end audit trails.</li>
                   <li>✓ <strong>DND &amp; Opt-Out Scrubbing:</strong> Automatic National Do Not Disturb (DND) checking across regulated corridors.</li>
@@ -185,7 +170,7 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
               <div className="info-card">
                 <h3>Meta Cloud API &amp; WhatsApp Business Platform</h3>
                 <p>Enterprise-grade WhatsApp messaging integrated alongside your bulk SMS infrastructure for unified communications.</p>
-                <ul className="spec-list" style={{ marginTop: "16px" }}>
+                <ul className="spec-list">
                   <li>✓ <strong>Official Green Tick Verification:</strong> End-to-end guidance to obtain Meta's verified business badge.</li>
                   <li>✓ <strong>Authentication 2FA Templates:</strong> One-tap copy-code buttons with sub-second delivery for login security.</li>
                   <li>✓ <strong>Interactive Messages:</strong> Rich buttons, list pickers, multi-product catalogs, and carousel cards.</li>
@@ -196,7 +181,7 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
               <div className="info-card">
                 <h3>Smart Fallback: WhatsApp to SMS</h3>
                 <p>Never lose a high-value customer notification when a recipient is outside cellular data coverage or offline.</p>
-                <ul className="spec-list" style={{ marginTop: "16px" }}>
+                <ul className="spec-list">
                   <li>✓ <strong>Automatic Delivery Detection:</strong> If a WhatsApp template remains undelivered after 60 seconds, failover triggers.</li>
                   <li>✓ <strong>Direct SS7 SMS Conversion:</strong> Payload is instantly reformatted and delivered via priority SMS route.</li>
                   <li>✓ <strong>Unified Webhooks:</strong> Single unified DLR webhook callback reporting message lifecycle regardless of channel.</li>
@@ -209,7 +194,7 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
               <div className="info-card">
                 <h3>Google RCS Business Messaging (RBM)</h3>
                 <p>Transform standard text notifications into modern rich app-like experiences natively in Android and iOS 18 Messages.</p>
-                <ul className="spec-list" style={{ marginTop: "16px" }}>
+                <ul className="spec-list">
                   <li>✓ <strong>Verified Sender Avatar:</strong> Displays your brand logo, verified checkmark, and custom color scheme in the native inbox.</li>
                   <li>✓ <strong>Rich Media Carousels:</strong> High-resolution product images, horizontal swipe cards, and dynamic action buttons.</li>
                   <li>✓ <strong>Suggested Action Chips:</strong> Open URL, dial phone number, view map location, or create calendar event in 1-tap.</li>
@@ -220,7 +205,7 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
               <div className="info-card">
                 <h3>Cascading RCS-to-SMS Fallback</h3>
                 <p>Seamless coverage guarantee across devices without RCS or when carrier signaling is unavailable.</p>
-                <ul className="spec-list" style={{ marginTop: "16px" }}>
+                <ul className="spec-list">
                   <li>✓ <strong>Capability Discovery:</strong> Real-time query determines if the recipient handset supports RCS protocol.</li>
                   <li>✓ <strong>Zero-Packet Loss:</strong> If RCS capability fails, our gateway immediately fires the plain text SMS payload.</li>
                   <li>✓ <strong>Universal Reach:</strong> Guarantees 100% reachability across both smart and feature phones worldwide.</li>
@@ -233,7 +218,7 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
               <div className="info-card">
                 <h3>Enterprise Telecom IT &amp; DevOps Engineering</h3>
                 <p>Custom engineering services for telecom operators, fintechs, and aggregators scaling messaging infrastructure.</p>
-                <ul className="spec-list" style={{ marginTop: "16px" }}>
+                <ul className="spec-list">
                   <li>✓ <strong>Custom SMPP Gateway Development:</strong> High-concurrency C++ / Go / Node.js gateways built for 50,000+ TPS.</li>
                   <li>✓ <strong>Telecom Billing &amp; CDR Engines:</strong> Real-time rating engines calculating bilateral clearing and invoicing.</li>
                   <li>✓ <strong>Cloud Architecture &amp; Kubernetes:</strong> Multi-region active-active deployments on AWS, GCP, and bare-metal nodes.</li>
@@ -244,7 +229,7 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
               <div className="info-card">
                 <h3>24/7/365 Global Network Operations Center (NOC)</h3>
                 <p>Round-the-clock pro-active monitoring and carrier escalation desk.</p>
-                <ul className="spec-list" style={{ marginTop: "16px" }}>
+                <ul className="spec-list">
                   <li>✓ <strong>Proactive Quality Monitoring:</strong> Real-time monitoring of route DLR ratios, ASR, and latency alerts.</li>
                   <li>✓ <strong>Sub-15 Minute SLA:</strong> Direct engineer-to-engineer support via Telegram, WhatsApp, MS Teams, and ticketing.</li>
                   <li>✓ <strong>Immediate Route Re-routing:</strong> Automated traffic shifting around carrier maintenance and undersea cable cuts.</li>
@@ -278,8 +263,8 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
                 {smppPdus.map((pdu) => (
                   <tr key={pdu.command}>
                     <td><span className="dlr-code-badge">{pdu.command}</span></td>
-                    <td><code style={{ color: "#34d399", fontWeight: 700 }}>{pdu.id}</code></td>
-                    <td><span style={{ fontSize: "13px", color: "var(--accent-cyan)" }}>{pdu.direction}</span></td>
+                    <td><code className="text-success">{pdu.id}</code></td>
+                    <td><span className="pdu-direction">{pdu.direction}</span></td>
                     <td>{pdu.purpose}</td>
                   </tr>
                 ))}
@@ -290,7 +275,7 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
       </section>
 
       {/* Delivery Receipt (DLR) State Matrix */}
-      <section className="subpage-info-section" style={{ background: "rgba(255, 255, 255, 0.02)" }}>
+      <section className="subpage-info-section ui-section--alt">
         <div className="container">
           <div className="section-heading">
             <p className="stats-eyebrow">Delivery Reporting</p>
@@ -327,40 +312,7 @@ export const ServicesPage = ({ onOpenInquiriesModal, navigate }) => {
       <WhyChooseUs />
 
       {/* Frequently Asked Questions */}
-      <section className="faq">
-        <div className="container">
-          <div className="section-heading">
-            <p className="stats-eyebrow">Enterprise Telecommunications</p>
-            <h2>Telecom Infrastructure &amp; SMPP Protocol FAQs</h2>
-            <p className="faq-subtext">Detailed engineering answers regarding SMPP protocols, TPS throughput, failover logic, and fraud security.</p>
-          </div>
-
-          <div className="faq-list">
-            {serviceFaqs.map((faq, idx) => {
-              const isOpen = openFaq === idx;
-              return (
-                <div key={idx} className={`faq-item ${isOpen ? "open" : ""}`}>
-                  <button
-                    type="button"
-                    className="faq-question"
-                    onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    aria-expanded={isOpen}
-                  >
-                    <div className="faq-q-text">
-                      <span className="faq-badge">Telecom Infrastructure</span>
-                      <span>{faq.q}</span>
-                    </div>
-                    <span className="faq-toggle">{isOpen ? "−" : "+"}</span>
-                  </button>
-                  <div className="faq-answer" hidden={!isOpen}>
-                      <p>{faq.a}</p>
-                    </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <FaqSection eyebrow={<>Enterprise Telecommunications</>} title={<>Telecom Infrastructure &amp; SMPP Protocol FAQs</>} intro={<>Detailed engineering answers regarding SMPP protocols, TPS throughput, failover logic, and fraud security.</>} items={serviceFaqs} badge={<>Telecom Infrastructure</>} />
 
       <CTA onOpenInquiriesModal={onOpenInquiriesModal} defaultProduct="Carrier SMPP Bind" />
     </div>

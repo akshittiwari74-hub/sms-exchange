@@ -1,19 +1,40 @@
-import { useParams, Navigate, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import { ArrowRight, Clock } from "lucide-react";
 import posts from "../data/posts.json";
 import CTA from "../components/CTA";
+import NotFoundPage from "./NotFoundPage";
+import { Breadcrumbs } from "../components/ui";
 import "../styles/pages/Subpages.css";
+import "../styles/pages/Article.css";
+
+const slugify = (s) =>
+  s.replace(/<[^>]+>/g, "").replace(/&amp;/g, "and").replace(/&[a-z]+;/g, "")
+    .toLowerCase().replace(/^\d+\.\s*/, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
+// Give every <h2> a stable id and collect a table of contents (deterministic, so SSR == client).
+function withAnchors(html) {
+  const toc = [];
+  const seen = new Set();
+  const out = html.replace(/<h2>([\s\S]*?)<\/h2>/g, (m, inner) => {
+    let id = slugify(inner) || `section-${toc.length + 1}`;
+    while (seen.has(id)) id += "-2";
+    seen.add(id);
+    toc.push({ id, label: inner.replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/^\d+\.\s*/, "") });
+    return `<h2 id="${id}">${inner}</h2>`;
+  });
+  return { html: out, toc };
+}
+
+const readingTime = (html) => Math.max(1, Math.round(html.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length / 220));
 
 export const BlogPostPage = ({ onOpenInquiriesModal }) => {
   const { slug } = useParams();
-  const post = posts.find(p => p.slug === slug);
+  const post = posts.find((p) => p.slug === slug);
+  if (!post) return <NotFoundPage />;
 
-  if (!post) {
-    return <Navigate to="/insights" />;
-  }
-
-  // Same-category posts first, then the most recent others
+  const { html, toc } = withAnchors(post.content);
   const related = posts
-    .filter(p => p.slug !== post.slug)
+    .filter((p) => p.slug !== post.slug)
     .sort((a, b) => {
       const sameA = a.category === post.category ? 1 : 0;
       const sameB = b.category === post.category ? 1 : 0;
@@ -23,44 +44,58 @@ export const BlogPostPage = ({ onOpenInquiriesModal }) => {
     .slice(0, 3);
 
   return (
-    <div className="page-wrapper">
-      <div className="hero-section" style={{ minHeight: '30vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div className="hero-content" style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <Link to="/insights" style={{ color: 'var(--primary-color, #00f0ff)', marginBottom: '1rem', display: 'inline-block' }}>&larr; Back to Insights</Link>
-          <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>{post.title}</h1>
-          <p style={{ color: 'var(--text-secondary, #aaa)' }}>
-            By {post.author} · {post.category} · Published <time dateTime={post.date}>{post.date}</time>
+    <div className="page-article">
+      <header className="page-header article-header">
+        <div className="ui-wrap">
+          <Breadcrumbs path={`/insights/${post.slug}`} current={post.title} />
+          <p className="stats-eyebrow">{post.category}</p>
+          <h1>{post.title}</h1>
+          <p className="page-header-intro">{post.excerpt}</p>
+          <p className="article-meta">
+            <span>{post.author}</span>
+            <span aria-hidden="true">·</span>
+            <span>Published <time dateTime={post.date}>{post.date}</time></span>
             {post.updated && post.updated !== post.date && (
-              <> · Updated <time dateTime={post.updated}>{post.updated}</time></>
+              <>
+                <span aria-hidden="true">·</span>
+                <span>Updated <time dateTime={post.updated}>{post.updated}</time></span>
+              </>
             )}
+            <span aria-hidden="true">·</span>
+            <span className="article-meta-time"><Clock size={14} aria-hidden="true" /> {readingTime(post.content)} min read</span>
           </p>
         </div>
+      </header>
+
+      <div className="article-layout ui-wrap">
+        {toc.length > 2 && (
+          <aside className="article-toc" aria-label="On this page">
+            <p className="article-toc-title">On this page</p>
+            <ol>
+              {toc.map((t) => (
+                <li key={t.id}><a href={`#${t.id}`}>{t.label}</a></li>
+              ))}
+            </ol>
+          </aside>
+        )}
+        <article className="blog-content" dangerouslySetInnerHTML={{ __html: html }} />
       </div>
 
-      <section className="section-padding">
-        <div className="container" style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <article
-            className="blog-content"
-            style={{ fontSize: '1.125rem', lineHeight: '1.8' }}
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
-        </div>
-      </section>
-
       {related.length > 0 && (
-        <section className="subpage-info-section" aria-labelledby="related-posts">
-          <div className="container">
-            <div className="section-heading">
-              <p className="stats-eyebrow">Keep Reading</p>
-              <h2 id="related-posts">Related Telecom Guides</h2>
+        <section className="ui-section ui-section--alt" aria-labelledby="related-posts">
+          <div className="ui-wrap">
+            <div className="ui-heading">
+              <p className="stats-eyebrow">Keep reading</p>
+              <h2 id="related-posts">Related telecom guides</h2>
             </div>
             <div className="info-grid-3">
-              {related.map(p => (
-                <article key={p.slug} className="info-card">
-                  <p className="stats-eyebrow" style={{ marginBottom: '8px' }}>{p.category}</p>
-                  <h3><Link to={`/insights/${p.slug}`}>{p.title}</Link></h3>
+              {related.map((p) => (
+                <Link key={p.slug} to={`/insights/${p.slug}`} className="info-card article-card">
+                  <p className="article-card-cat">{p.category}</p>
+                  <h3>{p.title}</h3>
                   <p>{p.excerpt}</p>
-                </article>
+                  <span className="article-card-link">Read guide <ArrowRight size={15} aria-hidden="true" /></span>
+                </Link>
               ))}
             </div>
           </div>

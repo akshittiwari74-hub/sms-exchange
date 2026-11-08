@@ -4,7 +4,7 @@ export const GlassCard = ({
   children,
   className = "",
   isHoverable = true,
-  delay = 0,
+  delay: _delay = 0, // eslint-disable-line no-unused-vars -- kept so it is not forwarded to the DOM
   ...props
 }) => {
   return (

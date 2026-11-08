@@ -2,24 +2,17 @@ import CTA from "../components/CTA";
 import Coverage from "../components/Coverage";
 import "../styles/pages/Subpages.css";
 import EmojiIcon from "../components/EmojiIcon";
+import { PageHeader } from "../components/ui";
 
 export const ContactPage = ({ onOpenInquiriesModal }) => {
   return (
     <div className="page-contact">
-      <div className="page-banner">
-        <div className="container">
-          <p className="stats-eyebrow">Global HQ &amp; Carrier NOC</p>
-          <h1>Enterprise Consultation &amp; Carrier Onboarding</h1>
-          <p>
-            Connect directly with our 24/7 Global Connectivity Desk to set up custom wholesale rate cards, SMPP v3.4 binds, API tokens, or campaign portal credentials.
-          </p>
-        </div>
-      </div>
+      <PageHeader path="/contact" eyebrow={<>Global HQ &amp; Carrier NOC</>} title={<>Enterprise Consultation &amp; Carrier Onboarding</>} intro={<>Connect directly with our 24/7 Global Connectivity Desk to set up custom wholesale rate cards, SMPP v3.4 binds, API tokens, or campaign portal credentials.</>} />
 
       {/* Direct NOC Contact Cards */}
       <section className="subpage-info-section">
         <div className="container">
-          <div className="info-grid-3" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}>
+          <div className="info-grid-4">
             <div className="info-card contact-detail-card">
               <span className="info-icon"><EmojiIcon char="📱" /></span>
               <h3>WhatsApp Direct</h3>
@@ -29,7 +22,7 @@ export const ContactPage = ({ onOpenInquiriesModal }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="contact-link-btn"
-                style={{ borderColor: "#25D366", color: "#25D366" }}
+                data-brand="whatsapp"
               >
                 +91 93065 29891
               </a>
@@ -44,7 +37,7 @@ export const ContactPage = ({ onOpenInquiriesModal }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="contact-link-btn"
-                style={{ borderColor: "#229ED9", color: "#229ED9" }}
+                data-brand="telegram"
               >
                 @namxtelecom
               </a>
@@ -57,14 +50,14 @@ export const ContactPage = ({ onOpenInquiriesModal }) => {
               <a
                 href="mailto:admin@namxtelecom.site"
                 className="contact-link-btn"
-                style={{ borderColor: "#7B83EB", color: "#7B83EB", marginBottom: "8px" }}
+                data-brand="teams"
               >
                 admin@namxtelecom.site
               </a>
               <a
                 href="mailto:namxtelecom@gmail.com"
                 className="contact-link-btn"
-                style={{ borderColor: "rgba(123, 131, 235, 0.4)", color: "#a1a1aa", fontSize: "0.82rem" }}
+                data-brand="teams-alt"
               >
                 MS Teams: namxtelecom@gmail.com
               </a>

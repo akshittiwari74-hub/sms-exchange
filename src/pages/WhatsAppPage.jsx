@@ -5,10 +5,10 @@ import "../styles/pages/Subpages.css";
 import "../styles/pages/ServicesWings.css";
 import "../styles/components/FAQ.css";
 import EmojiIcon from "../components/EmojiIcon";
+import { PageHeader, FaqSection } from "../components/ui";
 
 export const WhatsAppPage = ({ onOpenInquiriesModal, navigate }) => {
   const [activeTab, setActiveTab] = useState("otp");
-  const [openFaq, setOpenFaq] = useState(0);
 
   const handleNavClick = (e, path) => {
     e.preventDefault();
@@ -128,32 +128,23 @@ export const WhatsAppPage = ({ onOpenInquiriesModal, navigate }) => {
   return (
     <div className="page-whatsapp">
       {/* Hero Banner */}
-      <div className="page-banner">
-        <div className="container">
-          <span className="wing-hero-badge whatsapp">Official Meta Cloud API Partner</span>
-          <h1>Enterprise WhatsApp Business Platform &amp; API Gateway</h1>
-          <p>
-            Connect directly to the world's most popular messaging app. Deliver verified 2FA OTPs, rich interactive marketing broadcasts, automated AI customer care, and automated fallback to wholesale Bulk SMS.
-          </p>
-          <div className="wing-hero-actions">
-            <Button
-              href="/contact"
-              onClick={(e) => handleNavClick(e, "/contact")}
-              variant="primary"
-              size="lg"
-            >
-              Get WhatsApp API Access
-            </Button>
-            <a
-              href="/rcs-messaging"
-              onClick={(e) => handleNavClick(e, "/rcs-messaging")}
-              className="wing-btn-secondary"
-            >
-              Explore RCS Gateway ➔
-            </a>
-          </div>
-        </div>
-      </div>
+      <PageHeader path="/whatsapp-business" eyebrow={<>Official Meta Cloud API Partner</>} title={<>Enterprise WhatsApp Business Platform &amp; API Gateway</>} intro={<>Connect directly to the world's most popular messaging app. Deliver verified 2FA OTPs, rich interactive marketing broadcasts, automated AI customer care, and automated fallback to wholesale Bulk SMS.</>}>
+        <Button
+          href="/contact"
+          onClick={(e) => handleNavClick(e, "/contact")}
+          variant="primary"
+          size="lg"
+        >
+          Get WhatsApp API Access
+        </Button>
+        <a
+          href="/rcs-messaging"
+          onClick={(e) => handleNavClick(e, "/rcs-messaging")}
+          className="wing-btn-secondary"
+        >
+          Explore RCS Gateway ➔
+        </a>
+      </PageHeader>
 
       {/* Interactive Live Simulator Section */}
       <section className="simulator-section">
@@ -247,22 +238,22 @@ export const WhatsAppPage = ({ onOpenInquiriesModal, navigate }) => {
                         <div className="wa-bubble-img">{currentSim.icon}</div>
                       )}
 
-                      <p style={{ margin: "0 0 6px 0" }}>{currentSim.text}</p>
+                      <p className="sim-text">{currentSim.text}</p>
 
                       {currentSim.code && (
                         <div className="wa-code-highlight">{currentSim.code}</div>
                       )}
 
                       {currentSim.options && (
-                        <div style={{ margin: "8px 0", fontSize: "12px", opacity: 0.9 }}>
+                        <div className="sim-options">
                           {currentSim.options.map((opt, i) => (
-                            <div key={i} style={{ padding: "3px 0" }}>{opt}</div>
+                            <div key={i} className="sim-option">{opt}</div>
                           ))}
                         </div>
                       )}
 
                       {currentSim.subText && (
-                        <p style={{ fontSize: "11px", opacity: 0.8, margin: "6px 0 0 0" }}>
+                        <p className="sim-subtext">
                           {currentSim.subText}
                         </p>
                       )}
@@ -385,40 +376,7 @@ export const WhatsAppPage = ({ onOpenInquiriesModal, navigate }) => {
       </section>
 
       {/* Frequently Asked Questions (SEO Optimized) */}
-      <section className="faq">
-        <div className="container">
-          <div className="section-heading">
-            <p className="stats-eyebrow">Frequently Asked Questions</p>
-            <h2>WhatsApp Business API &amp; Cloud Platform FAQs</h2>
-            <p className="faq-subtext">Find answers to common questions about onboarding, verification, pricing, and technical API integrations.</p>
-          </div>
-
-          <div className="faq-list">
-            {waFaqs.map((faq, idx) => {
-              const isOpen = openFaq === idx;
-              return (
-                <div key={idx} className={`faq-item ${isOpen ? "open" : ""}`}>
-                  <button
-                    type="button"
-                    className="faq-question"
-                    onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    aria-expanded={isOpen}
-                  >
-                    <div className="faq-q-text">
-                      <span className="faq-badge">WhatsApp API</span>
-                      <span>{faq.q}</span>
-                    </div>
-                    <span className="faq-toggle">{isOpen ? "−" : "+"}</span>
-                  </button>
-                  <div className="faq-answer" hidden={!isOpen}>
-                      <p>{faq.a}</p>
-                    </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <FaqSection eyebrow={<>Frequently Asked Questions</>} title={<>WhatsApp Business API &amp; Cloud Platform FAQs</>} intro={<>Find answers to common questions about onboarding, verification, pricing, and technical API integrations.</>} items={waFaqs} badge={<>WhatsApp API</>} />
 
       {/* CTA Section */}
       <CTA onOpenInquiriesModal={onOpenInquiriesModal} defaultProduct="WhatsApp Business API" />

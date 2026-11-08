@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 import "../styles/components/InquiryModal.css";
 import EmojiIcon from "./EmojiIcon";
 
@@ -78,15 +77,12 @@ export const InquiryModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <AnimatePresence>
       <div className="inquiry-modal-backdrop" onClick={onClose}>
-        <motion.div
+        <div
           className="inquiry-modal-content"
           onClick={(e) => e.stopPropagation()}
-          initial={{ opacity: 0, scale: 0.9, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.9, y: 20 }}
-          transition={{ duration: 0.3 }}
+          role="dialog"
+          aria-modal="true"
         >
           <div className="modal-header">
             <div>
@@ -175,9 +171,8 @@ export const InquiryModal = ({ isOpen, onClose }) => {
               Close Inspector
             </button>
           </div>
-        </motion.div>
+        </div>
       </div>
-    </AnimatePresence>
   );
 };
 

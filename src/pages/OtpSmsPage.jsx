@@ -1,9 +1,9 @@
-import { useState } from "react";
 import otpFaqs from "../data/otpFaqs.json";
 import posts from "../data/posts.json";
 import CTA from "../components/CTA";
 import "../styles/pages/Subpages.css";
 import EmojiIcon from "../components/EmojiIcon";
+import { PageHeader, Section, FaqSection } from "../components/ui";
 
 const useCases = [
   { icon: "🔐", title: "Login two-factor authentication", text: "A second factor at sign-in that confirms the user still holds their registered phone." },
@@ -76,8 +76,6 @@ const curlExample = `curl -X POST "https://api.namxtelecom.com/v1/sms/send" \\
   }'`;
 
 export const OtpSmsPage = ({ onOpenInquiriesModal, navigate }) => {
-  const [openFaq, setOpenFaq] = useState(null);
-
   const go = (e, path) => {
     e.preventDefault();
     if (navigate) navigate(path);
@@ -88,262 +86,183 @@ export const OtpSmsPage = ({ onOpenInquiriesModal, navigate }) => {
     .filter(Boolean);
 
   return (
-    <div className="page-wrapper page-services">
-      <div className="page-banner">
-        <div className="container">
-          <p className="stats-eyebrow">OTP SMS · 2FA Verification · Global Delivery</p>
-          <h1>OTP SMS Service &amp; 2FA Verification API</h1>
-          <p>
-            Deliver one-time passwords in seconds across 195+ countries over direct operator routes, with
-            number-portability lookups, automatic failover, SMS pumping protection and WhatsApp or RCS fallback.
-            Connect by REST API or SMPP v3.4.
-          </p>
-          <div style={{ display: "flex", gap: "12px", justifyContent: "center", marginTop: "24px", flexWrap: "wrap" }}>
-            <button className="btn btn--primary btn--lg" onClick={onOpenInquiriesModal} style={{ cursor: "pointer" }}>
-              Request OTP Test Credits
-            </button>
-            <a href="/rates" onClick={(e) => go(e, "/rates")} className="btn btn--secondary btn--lg">
-              View OTP SMS Rates
-            </a>
-          </div>
-        </div>
-      </div>
+    <div className="page-otp">
+      <PageHeader
+        path="/otp-sms"
+        eyebrow="OTP SMS · 2FA verification · Global delivery"
+        title="OTP SMS Service & 2FA Verification API"
+        intro="Deliver one-time passwords in seconds across 195+ countries over direct operator routes, with number-portability lookups, automatic failover, SMS pumping protection and WhatsApp or RCS fallback. Connect by REST API or SMPP v3.4."
+      >
+        <button type="button" className="btn btn--primary btn--lg" onClick={onOpenInquiriesModal}>
+          Request OTP test credits
+        </button>
+        <a href="/rates" onClick={(e) => go(e, "/rates")} className="btn btn--secondary btn--lg">
+          View OTP SMS rates
+        </a>
+      </PageHeader>
 
-      <section className="subpage-info-section" aria-labelledby="what-is-otp">
-        <div className="container" style={{ maxWidth: "900px" }}>
-          <div className="section-heading">
-            <p className="stats-eyebrow">The Basics</p>
-            <h2 id="what-is-otp">What Is OTP SMS and Why Delivery Speed Matters</h2>
-          </div>
-          <p style={{ marginBottom: "16px", lineHeight: 1.7 }}>
+      <Section id="what-is-otp" eyebrow="The basics" title="What is OTP SMS and why delivery speed matters" narrow>
+        <div className="prose">
+          <p>
             An OTP SMS is a text message carrying a short, single-use code that proves a user controls a phone number.
             It is the most widely used form of two-factor authentication because it works on every mobile phone without
             an app, and it protects sign-ups, logins, password resets and payments.
           </p>
-          <p style={{ marginBottom: "16px", lineHeight: 1.7 }}>
+          <p>
             OTP is the most time-sensitive traffic in messaging. A marketing message that arrives a minute late still
             works; an OTP that arrives a minute late usually means an abandoned sign-up or a support ticket. That is why
             OTP delivery depends less on price and more on route quality: direct operator connections, correct routing of
             ported numbers, and fast failover when a route degrades.
           </p>
-          <p style={{ lineHeight: 1.7 }}>
+          <p>
             OTP flows are also the main target of SMS pumping fraud, where bots request codes to premium number ranges so
             that someone else collects part of the termination fee. A good OTP setup has to be fast for real users and
             expensive for attackers.
           </p>
         </div>
-      </section>
+      </Section>
 
-      <section className="subpage-info-section" style={{ background: "rgba(255, 255, 255, 0.02)" }} aria-labelledby="otp-use-cases">
-        <div className="container">
-          <div className="section-heading">
-            <p className="stats-eyebrow">Use Cases</p>
-            <h2 id="otp-use-cases">Where OTP SMS Is Used</h2>
-          </div>
-          <div className="info-grid-3">
-            {useCases.map((u) => (
-              <div key={u.title} className="info-card">
-                <span className="info-icon"><EmojiIcon char={u.icon} /></span>
-                <h3>{u.title}</h3>
-                <p>{u.text}</p>
-              </div>
-            ))}
-          </div>
-          <p style={{ textAlign: "center", marginTop: "24px" }}>
-            Industry-specific setups for banking, fintech and e-commerce: <a href="/industries" onClick={(e) => go(e, "/industries")}>industry solutions</a>.
-          </p>
+      <Section id="otp-use-cases" eyebrow="Use cases" title="Where OTP SMS is used" alt>
+        <div className="info-grid-3">
+          {useCases.map((u) => (
+            <div key={u.title} className="info-card">
+              <span className="info-icon"><EmojiIcon char={u.icon} /></span>
+              <h3>{u.title}</h3>
+              <p>{u.text}</p>
+            </div>
+          ))}
         </div>
-      </section>
+        <p className="ui-note">
+          Industry-specific setups for banking, fintech and e-commerce: <a href="/industries" onClick={(e) => go(e, "/industries")}>industry solutions</a>.
+        </p>
+      </Section>
 
-      <section className="subpage-info-section" aria-labelledby="otp-delivery">
-        <div className="container">
-          <div className="section-heading">
-            <p className="stats-eyebrow">How We Deliver OTPs</p>
-            <h2 id="otp-delivery">Built for Fast, Reliable OTP Delivery</h2>
-          </div>
-          <div className="info-grid-3">
-            {deliveryPillars.map((p) => (
-              <div key={p.title} className="info-card">
-                <h3>{p.title}</h3>
-                <p>{p.text}</p>
-              </div>
-            ))}
-          </div>
+      <Section id="otp-delivery" eyebrow="How we deliver OTPs" title="Built for fast, reliable OTP delivery">
+        <div className="info-grid-3">
+          {deliveryPillars.map((p) => (
+            <div key={p.title} className="info-card">
+              <h3>{p.title}</h3>
+              <p>{p.text}</p>
+            </div>
+          ))}
         </div>
-      </section>
+      </Section>
 
-      <section className="subpage-info-section" style={{ background: "rgba(255, 255, 255, 0.02)" }} aria-labelledby="otp-api">
-        <div className="container" style={{ maxWidth: "900px" }}>
-          <div className="section-heading">
-            <p className="stats-eyebrow">Developer Integration</p>
-            <h2 id="otp-api">Send an OTP SMS With One API Call</h2>
-            <p>Set <code>type</code> to <code>otp</code> to route the message on OTP-priority routes. Delivery receipts are posted to your <code>dlr_url</code>.</p>
-          </div>
-          <pre style={{ overflowX: "auto", padding: "16px", borderRadius: "8px", background: "rgba(0,0,0,0.35)", border: "1px solid rgba(255,255,255,0.08)", fontSize: "13px", lineHeight: 1.5 }}>
-            <code>{curlExample}</code>
-          </pre>
-          <p style={{ marginTop: "16px", lineHeight: 1.7 }}>
-            High-volume senders can use a dedicated SMPP v3.4 transceiver bind instead. See the{" "}
-            <a href="/api" onClick={(e) => go(e, "/api")}>API documentation</a> and the{" "}
-            <a href="/insights/how-to-configure-smpp-v34-bind-guide" onClick={(e) => go(e, "/insights/how-to-configure-smpp-v34-bind-guide")}>SMPP bind configuration guide</a>.
-          </p>
-        </div>
-      </section>
+      <Section
+        id="otp-api"
+        eyebrow="Developer integration"
+        title="Send an OTP SMS with one API call"
+        intro={<>Set <code>type</code> to <code>otp</code> to route the message on OTP-priority routes. Delivery receipts are posted to your <code>dlr_url</code>.</>}
+        alt
+        narrow
+      >
+        <pre className="ui-code"><code>{curlExample}</code></pre>
+        <p className="ui-note">
+          High-volume senders can use a dedicated SMPP v3.4 transceiver bind instead. See the{" "}
+          <a href="/api" onClick={(e) => go(e, "/api")}>API documentation</a> and the{" "}
+          <a href="/insights/how-to-configure-smpp-v34-bind-guide" onClick={(e) => go(e, "/insights/how-to-configure-smpp-v34-bind-guide")}>SMPP bind configuration guide</a>.
+        </p>
+      </Section>
 
-      <section className="subpage-info-section" aria-labelledby="otp-best-practice">
-        <div className="container" style={{ maxWidth: "900px" }}>
-          <div className="section-heading">
-            <p className="stats-eyebrow">Best Practices</p>
-            <h2 id="otp-best-practice">How to Write and Configure an OTP SMS</h2>
-          </div>
-          <h3 style={{ marginBottom: "12px" }}>Message content</h3>
-          <ul className="spec-list" style={{ lineHeight: 1.7, paddingLeft: "20px", marginBottom: "24px" }}>
+      <Section id="otp-best-practice" eyebrow="Best practices" title="How to write and configure an OTP SMS" narrow>
+        <div className="prose">
+          <h3>Message content</h3>
+          <ul>
             <li><strong>Put the code first</strong> so it is visible in the notification preview: "849201 is your MyApp code".</li>
             <li><strong>Name your app or brand</strong> so users can tell a real code from a phishing attempt.</li>
             <li><strong>State the expiry</strong> ("expires in 5 minutes") and add "never share this code".</li>
             <li><strong>Keep it to one segment</strong>: under 160 GSM characters, or 70 if the text needs Unicode. Avoid emoji in OTPs — one emoji switches the whole message to Unicode.</li>
             <li><strong>Don't include links</strong>. Links raise spam filtering and look like phishing.</li>
           </ul>
-          <h3 style={{ marginBottom: "12px" }}>Code settings</h3>
-          <ul className="spec-list" style={{ lineHeight: 1.7, paddingLeft: "20px", marginBottom: "24px" }}>
+          <h3>Code settings</h3>
+          <ul>
             <li><strong>6 digits</strong> is the usual balance between security and ease of typing.</li>
             <li><strong>Expire codes after 5–10 minutes</strong> and set the same SMS validity period so late retries stop.</li>
             <li><strong>Limit attempts</strong>: lock the code after 3–5 wrong entries and limit resends per number per hour.</li>
             <li><strong>Generate codes securely</strong> with a cryptographic random generator and store only a hash.</li>
           </ul>
-          <h3 style={{ marginBottom: "12px" }}>Auto-fill on phones and browsers</h3>
-          <ul className="spec-list" style={{ lineHeight: 1.7, paddingLeft: "20px" }}>
+          <h3>Auto-fill on phones and browsers</h3>
+          <ul>
             <li><strong>iOS and Safari:</strong> add <code>autocomplete="one-time-code"</code> to the code input field.</li>
             <li><strong>Web (domain-bound codes):</strong> end the SMS with <code>@yourdomain.com #849201</code> so supporting browsers fill the code only on your site.</li>
             <li><strong>Android apps:</strong> end the SMS with your app's 11-character hash to use the SMS Retriever API, which reads the code with no permission prompt.</li>
           </ul>
         </div>
-      </section>
+      </Section>
 
-      <section className="subpage-info-section" style={{ background: "rgba(255, 255, 255, 0.02)" }} aria-labelledby="otp-metrics">
-        <div className="container">
-          <div className="section-heading">
-            <p className="stats-eyebrow">Measure What Matters</p>
-            <h2 id="otp-metrics">OTP Delivery Metrics to Track</h2>
-          </div>
-          <div className="dlr-table-wrapper">
-            <table className="dlr-table">
-              <thead>
-                <tr><th>Metric</th><th>Definition</th><th>What to look for</th></tr>
-              </thead>
-              <tbody>
-                {metrics.map((m) => (
-                  <tr key={m.name}><td><strong>{m.name}</strong></td><td>{m.def}</td><td>{m.target}</td></tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+      <Section id="otp-metrics" eyebrow="Measure what matters" title="OTP delivery metrics to track" alt>
+        <div className="dlr-table-wrapper">
+          <table className="dlr-table">
+            <thead>
+              <tr><th>Metric</th><th>Definition</th><th>What to look for</th></tr>
+            </thead>
+            <tbody>
+              {metrics.map((m) => (
+                <tr key={m.name}><td><strong>{m.name}</strong></td><td>{m.def}</td><td>{m.target}</td></tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-      </section>
+      </Section>
 
-      <section className="subpage-info-section" aria-labelledby="otp-countries">
-        <div className="container">
-          <div className="section-heading">
-            <p className="stats-eyebrow">Regulation</p>
-            <h2 id="otp-countries">OTP SMS Rules by Country</h2>
-            <p>OTPs are transactional messages, but many countries still require a registered sender or template before they are delivered.</p>
-          </div>
-          <div className="dlr-table-wrapper">
-            <table className="dlr-table">
-              <thead>
-                <tr><th>Country</th><th>What OTP senders need</th></tr>
-              </thead>
-              <tbody>
-                {countryRules.map((r) => (
-                  <tr key={r.country}>
-                    <td><a href={r.path} onClick={(e) => go(e, r.path)}><strong>{r.country}</strong></a></td>
-                    <td>{r.rule}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+      <Section
+        id="otp-countries"
+        eyebrow="Regulation"
+        title="OTP SMS rules by country"
+        intro="OTPs are transactional messages, but many countries still require a registered sender or template before they are delivered."
+      >
+        <div className="dlr-table-wrapper">
+          <table className="dlr-table">
+            <thead>
+              <tr><th>Country</th><th>What OTP senders need</th></tr>
+            </thead>
+            <tbody>
+              {countryRules.map((r) => (
+                <tr key={r.country}>
+                  <td><a href={r.path} onClick={(e) => go(e, r.path)}><strong>{r.country}</strong></a></td>
+                  <td>{r.rule}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-      </section>
+      </Section>
 
-      <section className="subpage-info-section" style={{ background: "rgba(255, 255, 255, 0.02)" }} aria-labelledby="otp-channels">
-        <div className="container">
-          <div className="section-heading">
-            <p className="stats-eyebrow">Channels</p>
-            <h2 id="otp-channels">SMS OTP vs WhatsApp vs RCS vs Authenticator Apps</h2>
-          </div>
-          <div className="dlr-table-wrapper">
-            <table className="dlr-table">
-              <thead>
-                <tr><th>Channel</th><th>Reach</th><th>Speed</th><th>Cost</th><th>Notes</th></tr>
-              </thead>
-              <tbody>
-                {channels.map((c) => (
-                  <tr key={c.channel}>
-                    <td><strong>{c.channel}</strong></td><td>{c.reach}</td><td>{c.speed}</td><td>{c.cost}</td><td>{c.note}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p style={{ textAlign: "center", marginTop: "24px" }}>
-            Set up fallback channels: <a href="/whatsapp-business" onClick={(e) => go(e, "/whatsapp-business")}>WhatsApp Business API</a> ·{" "}
-            <a href="/rcs-messaging" onClick={(e) => go(e, "/rcs-messaging")}>RCS Business Messaging</a>
-          </p>
+      <Section id="otp-channels" eyebrow="Channels" title="SMS OTP vs WhatsApp vs RCS vs authenticator apps" alt>
+        <div className="dlr-table-wrapper">
+          <table className="dlr-table">
+            <thead>
+              <tr><th>Channel</th><th>Reach</th><th>Speed</th><th>Cost</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              {channels.map((c) => (
+                <tr key={c.channel}>
+                  <td><strong>{c.channel}</strong></td><td>{c.reach}</td><td>{c.speed}</td><td>{c.cost}</td><td>{c.note}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-      </section>
+        <p className="ui-note">
+          Set up fallback channels: <a href="/whatsapp-business" onClick={(e) => go(e, "/whatsapp-business")}>WhatsApp Business API</a> ·{" "}
+          <a href="/rcs-messaging" onClick={(e) => go(e, "/rcs-messaging")}>RCS Business Messaging</a>
+        </p>
+      </Section>
 
       {guides.length > 0 && (
-        <section className="subpage-info-section" aria-labelledby="otp-guides">
-          <div className="container">
-            <div className="section-heading">
-              <p className="stats-eyebrow">Further Reading</p>
-              <h2 id="otp-guides">OTP Guides</h2>
-            </div>
-            <div className="info-grid-3">
-              {guides.map((p) => (
-                <article key={p.slug} className="info-card">
-                  <h3><a href={`/insights/${p.slug}`} onClick={(e) => go(e, `/insights/${p.slug}`)}>{p.title}</a></h3>
-                  <p>{p.excerpt}</p>
-                </article>
-              ))}
-            </div>
+        <Section id="otp-guides" eyebrow="Further reading" title="OTP guides">
+          <div className="info-grid-3">
+            {guides.map((p) => (
+              <article key={p.slug} className="info-card">
+                <h3><a href={`/insights/${p.slug}`} onClick={(e) => go(e, `/insights/${p.slug}`)}>{p.title}</a></h3>
+                <p>{p.excerpt}</p>
+              </article>
+            ))}
           </div>
-        </section>
+        </Section>
       )}
 
-      <section className="faq">
-        <div className="container">
-          <div className="section-heading">
-            <p className="stats-eyebrow">OTP SMS FAQ</p>
-            <h2>Frequently Asked Questions About OTP SMS</h2>
-          </div>
-          <div className="faq-list">
-            {otpFaqs.map((faq, idx) => {
-              const isOpen = openFaq === idx;
-              return (
-                <div key={faq.q} className={`faq-item ${isOpen ? "open" : ""}`}>
-                  <button
-                    type="button"
-                    className="faq-question"
-                    onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    aria-expanded={isOpen}
-                  >
-                    <div className="faq-q-text">
-                      <span className="faq-badge">OTP</span>
-                      <span>{faq.q}</span>
-                    </div>
-                    <span className="faq-toggle">{isOpen ? "−" : "+"}</span>
-                  </button>
-                  <div className="faq-answer" hidden={!isOpen}>
-                    <p>{faq.a}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <FaqSection eyebrow="OTP SMS FAQ" title="Frequently asked questions about OTP SMS" items={otpFaqs} badge="OTP" />
 
       <CTA onOpenInquiriesModal={onOpenInquiriesModal} defaultProduct="OTP SMS / 2FA Verification" />
     </div>

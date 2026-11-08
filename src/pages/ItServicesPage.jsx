@@ -5,10 +5,10 @@ import "../styles/pages/Subpages.css";
 import "../styles/pages/ServicesWings.css";
 import "../styles/components/FAQ.css";
 import EmojiIcon from "../components/EmojiIcon";
+import { PageHeader, FaqSection } from "../components/ui";
 
 export const ItServicesPage = ({ onOpenInquiriesModal, navigate }) => {
-  const [activeStackTab, setActiveStackTab] = useState("fullstack");
-  const [openFaq, setOpenFaq] = useState(null);
+  const [activeStackTab, setActiveStackTab] = useState("fullstack");
 
   const handleNavClick = (e, path) => {
     e.preventDefault();
@@ -115,32 +115,23 @@ export const ItServicesPage = ({ onOpenInquiriesModal, navigate }) => {
   return (
     <div className="page-it-services">
       {/* Hero Banner */}
-      <div className="page-banner">
-        <div className="container">
-          <span className="wing-hero-badge it">NAMX Enterprise Technology Wing</span>
-          <h1>Full-Suite IT Services, Telecom Engineering &amp; Cloud Solutions</h1>
-          <p>
-            Beyond wholesale messaging: Partner with our seasoned engineering team for custom software development, carrier-grade SMPP gateway engineering, cloud DevOps, AI automation, and 24/7 managed NOC services.
-          </p>
-          <div className="wing-hero-actions">
-            <Button
-              href="/contact"
-              onClick={(e) => handleNavClick(e, "/contact")}
-              variant="primary"
-              size="lg"
-            >
-              Consult With Our Lead Architect
-            </Button>
-            <a
-              href="/services"
-              onClick={(e) => handleNavClick(e, "/services")}
-              className="wing-btn-secondary"
-            >
-              View Telecom Services ➔
-            </a>
-          </div>
-        </div>
-      </div>
+      <PageHeader path="/it-services" eyebrow={<>NAMX Enterprise Technology Wing</>} title={<>Full-Suite IT Services, Telecom Engineering &amp; Cloud Solutions</>} intro={<>Beyond wholesale messaging: Partner with our seasoned engineering team for custom software development, carrier-grade SMPP gateway engineering, cloud DevOps, AI automation, and 24/7 managed NOC services.</>}>
+        <Button
+          href="/contact"
+          onClick={(e) => handleNavClick(e, "/contact")}
+          variant="primary"
+          size="lg"
+        >
+          Consult With Our Lead Architect
+        </Button>
+        <a
+          href="/services"
+          onClick={(e) => handleNavClick(e, "/services")}
+          className="wing-btn-secondary"
+        >
+          View Telecom Services ➔
+        </a>
+      </PageHeader>
 
       {/* 6 Key IT Service Wings */}
       <section className="subpage-info-section">
@@ -177,55 +168,29 @@ export const ItServicesPage = ({ onOpenInquiriesModal, navigate }) => {
             <p>We choose high-performance frameworks and rock-solid tools designed for 99.99% uptime.</p>
           </div>
 
-          <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "32px" }}>
-            <button
-              type="button"
-              className={`wing-btn-secondary ${activeStackTab === "fullstack" ? "active" : ""}`}
-              style={{
-                borderColor: activeStackTab === "fullstack" ? "var(--accent-cyan)" : undefined,
-                background: activeStackTab === "fullstack" ? "rgba(6, 182, 212, 0.15)" : undefined
-              }}
-              onClick={() => setActiveStackTab("fullstack")}
-            >
-              Full-Stack &amp; Web
-            </button>
-            <button
-              type="button"
-              className={`wing-btn-secondary ${activeStackTab === "telecom" ? "active" : ""}`}
-              style={{
-                borderColor: activeStackTab === "telecom" ? "var(--accent-cyan)" : undefined,
-                background: activeStackTab === "telecom" ? "rgba(6, 182, 212, 0.15)" : undefined
-              }}
-              onClick={() => setActiveStackTab("telecom")}
-            >
-              Telecom &amp; SMPP Gateways
-            </button>
-            <button
-              type="button"
-              className={`wing-btn-secondary ${activeStackTab === "cloud" ? "active" : ""}`}
-              style={{
-                borderColor: activeStackTab === "cloud" ? "var(--accent-cyan)" : undefined,
-                background: activeStackTab === "cloud" ? "rgba(6, 182, 212, 0.15)" : undefined
-              }}
-              onClick={() => setActiveStackTab("cloud")}
-            >
-              Cloud &amp; DevOps
-            </button>
-            <button
-              type="button"
-              className={`wing-btn-secondary ${activeStackTab === "database" ? "active" : ""}`}
-              style={{
-                borderColor: activeStackTab === "database" ? "var(--accent-cyan)" : undefined,
-                background: activeStackTab === "database" ? "rgba(6, 182, 212, 0.15)" : undefined
-              }}
-              onClick={() => setActiveStackTab("database")}
-            >
-              Databases &amp; Queues
-            </button>
+          <div className="ui-tabs" role="tablist" aria-label="Technology stacks">
+            {[
+              { id: "fullstack", label: "Full-Stack & Web" },
+              { id: "telecom", label: "Telecom & SMPP Gateways" },
+              { id: "cloud", label: "Cloud & DevOps" },
+              { id: "database", label: "Databases & Queues" },
+            ].map((t) => (
+              <button
+                key={t.id}
+                type="button"
+                role="tab"
+                aria-selected={activeStackTab === t.id}
+                className={`ui-tab${activeStackTab === t.id ? " is-active" : ""}`}
+                onClick={() => setActiveStackTab(t.id)}
+              >
+                {t.label}
+              </button>
+            ))}
           </div>
 
-          <div className="info-grid-2">
-            {techStacks[activeStackTab].map((item, idx) => (
+          {Object.entries(techStacks).map(([stackId, stack]) => (
+          <div key={stackId} className="info-grid-2" hidden={activeStackTab !== stackId}>
+            {stack.map((item, idx) => (
               <div key={idx} className="info-card">
                 <span className="info-icon"><EmojiIcon char="⚙️" /></span>
                 <h3>{item.name}</h3>
@@ -233,6 +198,7 @@ export const ItServicesPage = ({ onOpenInquiriesModal, navigate }) => {
               </div>
             ))}
           </div>
+        ))}
         </div>
       </section>
 
@@ -261,7 +227,7 @@ export const ItServicesPage = ({ onOpenInquiriesModal, navigate }) => {
               <h4>Need Omnichannel Telecom Messaging Infrastructure?</h4>
               <p>Combine your custom software with our WhatsApp Business API and RCS Messaging Gateways for unified customer engagement.</p>
             </div>
-            <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+            <div className="ui-chip-row ui-chip-row--sm">
               <Button
                 href="/whatsapp-business"
                 onClick={(e) => handleNavClick(e, "/whatsapp-business")}
@@ -284,40 +250,7 @@ export const ItServicesPage = ({ onOpenInquiriesModal, navigate }) => {
       </section>
 
       {/* Frequently Asked Questions (SEO Optimized) */}
-      <section className="faq">
-        <div className="container">
-          <div className="section-heading">
-            <p className="stats-eyebrow">Frequently Asked Questions</p>
-            <h2>Enterprise IT &amp; Telecom Engineering FAQs</h2>
-            <p className="faq-subtext">Common questions regarding software architecture, custom SMPP gateways, cloud security, and SLA contracts.</p>
-          </div>
-
-          <div className="faq-list">
-            {itFaqs.map((faq, idx) => {
-              const isOpen = openFaq === idx;
-              return (
-                <div key={idx} className={`faq-item ${isOpen ? "open" : ""}`}>
-                  <button
-                    type="button"
-                    className="faq-question"
-                    onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    aria-expanded={isOpen}
-                  >
-                    <div className="faq-q-text">
-                      <span className="faq-badge">IT Services</span>
-                      <span>{faq.q}</span>
-                    </div>
-                    <span className="faq-toggle">{isOpen ? "−" : "+"}</span>
-                  </button>
-                  <div className="faq-answer" hidden={!isOpen}>
-                      <p>{faq.a}</p>
-                    </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <FaqSection eyebrow={<>Frequently Asked Questions</>} title={<>Enterprise IT &amp; Telecom Engineering FAQs</>} intro={<>Common questions regarding software architecture, custom SMPP gateways, cloud security, and SLA contracts.</>} items={itFaqs} badge={<>IT Services</>} />
 
       {/* CTA Section */}
       <CTA onOpenInquiriesModal={onOpenInquiriesModal} defaultProduct="IT Services & Software Dev" />

@@ -1,32 +1,49 @@
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import posts from "../data/posts.json";
 import CTA from "../components/CTA";
+import { PageHeader, Section } from "../components/ui";
+import "../styles/pages/Subpages.css";
+import "../styles/pages/Article.css";
 
 export const BlogPage = ({ onOpenInquiriesModal }) => {
+  const sorted = [...posts].sort((a, b) => ((a.updated || a.date) < (b.updated || b.date) ? 1 : -1));
+  const [featured, ...rest] = sorted;
+  const categories = [...new Set(sorted.map((p) => p.category))];
+
   return (
-    <div className="page-wrapper">
-      <div className="hero-section" style={{ minHeight: '40vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div className="hero-content">
-          <h1>Telecom Insights & Engineering Blog</h1>
-          <p>Deep dives into SMPP protocols, global SMS routing strategies, and technical tutorials.</p>
-        </div>
-      </div>
-      
-      <section className="section-padding">
-        <div className="container">
-          <div className="blog-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-            {posts.map(post => (
-              <div key={post.id} className="blog-card" style={{ background: 'var(--surface-color, #111)', padding: '2rem', borderRadius: '12px', border: '1px solid var(--border-color, #333)' }}>
-                <span style={{ color: 'var(--primary-color, #00f0ff)', fontSize: '0.875rem', fontWeight: 'bold' }}>{post.category}</span>
-                <h3 style={{ marginTop: '0.5rem', marginBottom: '1rem' }}>{post.title}</h3>
-                <p style={{ color: 'var(--text-secondary, #aaa)', marginBottom: '1.5rem' }}>{post.excerpt}</p>
-                <Link to={`/insights/${post.slug}`} className="btn-secondary" style={{ display: 'inline-block' }}>Read Article</Link>
-              </div>
-            ))}
+    <div className="page-insights">
+      <PageHeader
+        path="/insights"
+        eyebrow="Insights"
+        title="Telecom engineering & compliance guides"
+        intro="Practical, in-depth guides on SMPP, OTP delivery, SMS routing, fraud prevention and country regulations — written for engineers and messaging teams."
+      />
+
+      <Section id="latest" eyebrow="Latest" title="Featured guide">
+        <Link to={`/insights/${featured.slug}`} className="featured-post">
+          <div>
+            <p className="article-card-cat">{featured.category}</p>
+            <h3>{featured.title}</h3>
+            <p>{featured.excerpt}</p>
           </div>
+          <span className="article-card-link">Read guide <ArrowRight size={16} aria-hidden="true" /></span>
+        </Link>
+      </Section>
+
+      <Section id="all-guides" eyebrow="Library" title="All guides" intro={`Topics: ${categories.join(" · ")}`} alt>
+        <div className="info-grid-3">
+          {rest.map((post) => (
+            <Link key={post.slug} to={`/insights/${post.slug}`} className="info-card article-card">
+              <p className="article-card-cat">{post.category}</p>
+              <h3>{post.title}</h3>
+              <p>{post.excerpt}</p>
+              <span className="article-card-link">Read guide <ArrowRight size={15} aria-hidden="true" /></span>
+            </Link>
+          ))}
         </div>
-      </section>
-      
+      </Section>
+
       <CTA onOpenInquiriesModal={onOpenInquiriesModal} />
     </div>
   );

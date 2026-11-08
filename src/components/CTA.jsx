@@ -237,11 +237,6 @@ export const CTA = ({ onOpenInquiriesModal, defaultProduct = "Web Messaging Plat
     });
   };
 
-  const fadeUp = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
-  };
-
   return (
     <section id="contact" className="cta">
       <div className="cta-container">
@@ -554,7 +549,7 @@ export const CTA = ({ onOpenInquiriesModal, defaultProduct = "Web Messaging Plat
               </label>
 
               <div className="form-submit-row">
-                <Button type="submit" variant="primary" size="lg" external={false} aria-label="Send inquiry">
+                <Button type="submit" variant="primary" size="lg" external={false}>
                   {isSubmitting ? "Dispatching Email..." : "Submit Inquiry & Send Email"}
                 </Button>
                 <span className="privacy-note">Direct delivery to admin@namxtelecom.site &amp; namxtelecom@gmail.com</span>

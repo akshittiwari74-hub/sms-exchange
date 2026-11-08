@@ -14,12 +14,6 @@
       "permanent": true
     }
   ],
-  "rewrites": [
-    {
-      "source": "/((?!assets|otp-sms|rates|coverage|services|whatsapp-business|rcs-messaging|it-services|industries|api|faq|contact|glossary|insights|terms|privacy|bulk-sms-|favicon|icons|robots.txt|sitemap.xml).*)",
-      "destination": "/index.html"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",

@@ -4,19 +4,12 @@ import TelecomDictionary from "../components/TelecomDictionary";
 import CTA from "../components/CTA";
 import "../styles/pages/Subpages.css";
 import EmojiIcon from "../components/EmojiIcon";
+import { PageHeader } from "../components/ui";
 
 export const FaqPage = ({ onOpenInquiriesModal }) => {
   return (
     <div className="page-faq">
-      <div className="page-banner">
-        <div className="container">
-          <p className="stats-eyebrow">Technical Knowledgebase</p>
-          <h1>Telecom Compliance &amp; Support Knowledgebase</h1>
-          <p>
-            Find detailed technical documentation regarding Sender ID regulations, SS7 anti-fraud firewalling, DLR error codes, SLA uptime guarantees, and onboarding procedures.
-          </p>
-        </div>
-      </div>
+      <PageHeader path="/faq" eyebrow={<>Technical Knowledgebase</>} title={<>Telecom Compliance &amp; Support Knowledgebase</>} intro={<>Find detailed technical documentation regarding Sender ID regulations, SS7 anti-fraud firewalling, DLR error codes, SLA uptime guarantees, and onboarding procedures.</>} />
 
       <FAQ />
 

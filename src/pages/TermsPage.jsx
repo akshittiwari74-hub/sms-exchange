@@ -3,6 +3,7 @@ import CTA from "../components/CTA";
 import "../styles/pages/Subpages.css";
 import "../styles/pages/LegalPage.css";
 import EmojiIcon from "../components/EmojiIcon";
+import { PageHeader } from "../components/ui";
 
 export const TermsPage = ({ onOpenInquiriesModal, navigate }) => {
   useEffect(() => {
@@ -33,22 +34,15 @@ export const TermsPage = ({ onOpenInquiriesModal, navigate }) => {
   return (
     <div className="page-legal">
       {/* Dedicated Legal Header Banner */}
-      <div className="page-banner">
-        <div className="container">
-          <span className="legal-badge-tag">Master Services Agreement</span>
-          <h1>Terms and Conditions</h1>
-          <p>
-            Governing the carrier interconnection, SMPP v3.4/v5.0 bindings, REST API access, and wholesale SMS traffic exchange provided by NAMX Telecom.
-          </p>
-          <div className="legal-meta-bar">
-            <span className="legal-meta-item">Effective Date: October 2026</span>
-            <span className="legal-meta-dot"></span>
-            <span className="legal-meta-item">Version 4.2</span>
-            <span className="legal-meta-dot"></span>
-            <span className="legal-meta-item">Enterprise Telecom Standard</span>
-          </div>
+      <PageHeader path="/terms" eyebrow={<>Master Services Agreement</>} title={<>Terms and Conditions</>} intro={<>Governing the carrier interconnection, SMPP v3.4/v5.0 bindings, REST API access, and wholesale SMS traffic exchange provided by NAMX Telecom.</>}>
+        <div className="legal-meta-bar">
+        <span className="legal-meta-item">Effective Date: October 2026</span>
+        <span className="legal-meta-dot"></span>
+        <span className="legal-meta-item">Version 4.2</span>
+        <span className="legal-meta-dot"></span>
+        <span className="legal-meta-item">Enterprise Telecom Standard</span>
         </div>
-      </div>
+      </PageHeader>
 
       {/* Main Content Area */}
       <section className="legal-layout-section">

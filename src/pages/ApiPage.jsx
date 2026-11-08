@@ -2,6 +2,7 @@ import ApiSnippet from "../components/ApiSnippet";
 import Services from "../components/Services";
 import CTA from "../components/CTA";
 import "../styles/pages/Subpages.css";
+import { PageHeader } from "../components/ui";
 
 export const ApiPage = ({ onOpenInquiriesModal }) => {
   const dlrCodes = [
@@ -13,15 +14,7 @@ export const ApiPage = ({ onOpenInquiriesModal }) => {
 
   return (
     <div className="page-api">
-      <div className="page-banner">
-        <div className="container">
-          <p className="stats-eyebrow">Developer &amp; Carrier Portal</p>
-          <h1>REST SMS API &amp; SMPP Specifications</h1>
-          <p>
-            Integrate global SMS delivery in minutes with cURL, Node.js, Python SDKs, or establish high-volume SMPP binds with sub-second DLR webhooks.
-          </p>
-        </div>
-      </div>
+      <PageHeader path="/api" eyebrow={<>Developer &amp; Carrier Portal</>} title={<>REST SMS API &amp; SMPP Specifications</>} intro={<>Integrate global SMS delivery in minutes with cURL, Node.js, Python SDKs, or establish high-volume SMPP binds with sub-second DLR webhooks.</>} />
 
       <ApiSnippet />
 

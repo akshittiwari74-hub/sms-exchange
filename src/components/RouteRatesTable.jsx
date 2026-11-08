@@ -164,7 +164,7 @@ export const RouteRatesTable = () => {
             </div>
 
             {/* Currency Selector & CSV Export */}
-            <div style={{ display: "flex", gap: "8px", alignItems: "center", flexWrap: "wrap" }}>
+            <div className="rates-toolbar-actions">
               <div className="table-currency-toggle">
                 <button
                   type="button"
@@ -213,16 +213,7 @@ export const RouteRatesTable = () => {
                   a.click();
                   document.body.removeChild(a);
                 }}
-                className="curr-btn"
-                style={{
-                  background: "rgba(16, 185, 129, 0.15)",
-                  border: "1px solid rgba(16, 185, 129, 0.4)",
-                  color: "#34d399",
-                  fontWeight: 700,
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "6px"
-                }}
+                className="curr-btn curr-btn--download"
                 title="Download full rate card in CSV format"
               >
                 Download Rate Sheet (CSV)
@@ -231,41 +222,19 @@ export const RouteRatesTable = () => {
           </div>
 
           {/* Negotiable Volume Alert Banner */}
-          <div style={{
-            background: "linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(6, 182, 212, 0.12) 100%)",
-            border: "1px solid rgba(16, 185, 129, 0.35)",
-            borderRadius: "12px",
-            padding: "14px 18px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: "16px",
-            flexWrap: "wrap",
-            fontSize: "13px",
-            color: "#e2e8f0"
-          }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <span style={{ fontSize: "18px" }}>🤝</span>
+          <div className="rates-volume-note">
+            <div className="rates-volume-text">
               <span>
-                <strong style={{ color: "#34d399" }}>Volume Confirmations:</strong> All wholesale base rates are negotiable for volumes &gt; 250k / 500k+ SMS/month.
+                <strong>Volume Confirmations:</strong> All wholesale base rates are negotiable for volumes &gt; 250k / 500k+ SMS/month.
               </span>
             </div>
             <a
               href="https://wa.me/919306529891?text=Hello%20NAMX%20Telecom%2C%20I%20want%20to%20discuss%20volume%20commitments%20and%20negotiate%20wholesale%20rates."
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                background: "#10b981",
-                color: "#060919",
-                fontWeight: 700,
-                fontSize: "12px",
-                padding: "6px 14px",
-                borderRadius: "6px",
-                textDecoration: "none",
-                whiteSpace: "nowrap"
-              }}
+              className="btn btn--primary btn--sm"
             >
-              Negotiate Rate ➔
+              Negotiate rate
             </a>
           </div>
 
@@ -292,16 +261,7 @@ export const RouteRatesTable = () => {
                           <strong>{route.country}</strong>
                           <span className="route-code-tag">{route.code}</span>
                           {route.topRoute && (
-                            <span style={{
-                              background: "rgba(56, 189, 248, 0.15)",
-                              border: "1px solid rgba(56, 189, 248, 0.4)",
-                              color: "#38bdf8",
-                              fontSize: "10px",
-                              fontWeight: 700,
-                              padding: "2px 6px",
-                              borderRadius: "4px",
-                              marginLeft: "6px"
-                            }}>
+                            <span className="route-top-tag">
                               Top Route
                             </span>
                           )}

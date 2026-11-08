@@ -1,12 +1,11 @@
-import { useState } from "react";
 import Industries from "../components/Industries";
 import WhyChooseUs from "../components/WhyChooseUs";
 import CTA from "../components/CTA";
 import "../styles/pages/Subpages.css";
 import EmojiIcon from "../components/EmojiIcon";
+import { PageHeader, FaqSection } from "../components/ui";
 
-export const IndustriesPage = ({ onOpenInquiriesModal }) => {
-  const [openFaq, setOpenFaq] = useState(null);
+export const IndustriesPage = ({ onOpenInquiriesModal }) => {
 
   const industryFaqs = [
     {
@@ -57,15 +56,7 @@ export const IndustriesPage = ({ onOpenInquiriesModal }) => {
 
   return (
     <div className="page-industries">
-      <div className="page-banner">
-        <div className="container">
-          <p className="stats-eyebrow">Industry Specific Solutions</p>
-          <h1>Industry Bulk SMS Solutions &amp; Telecom P2P SMS Routing</h1>
-          <p>
-            Tailored delivery parameters, security protocols, and compliance configurations built for telecom aggregators, banking, e-commerce, and healthcare enterprise platforms.
-          </p>
-        </div>
-      </div>
+      <PageHeader path="/industries" eyebrow={<>Industry Specific Solutions</>} title={<>Industry Bulk SMS Solutions &amp; Telecom P2P SMS Routing</>} intro={<>Tailored delivery parameters, security protocols, and compliance configurations built for telecom aggregators, banking, e-commerce, and healthcare enterprise platforms.</>} />
 
       <section className="subpage-info-section">
         <div className="container">
@@ -95,40 +86,7 @@ export const IndustriesPage = ({ onOpenInquiriesModal }) => {
       <WhyChooseUs />
 
       {/* Frequently Asked Questions */}
-      <section className="faq">
-        <div className="container">
-          <div className="section-heading">
-            <p className="stats-eyebrow">Industry Compliance &amp; SLAs</p>
-            <h2>Industry Vertical Messaging FAQs</h2>
-            <p className="faq-subtext">Answers on 2FA OTP security, bilateral clearing, and regulatory compliance.</p>
-          </div>
-
-          <div className="faq-list">
-            {industryFaqs.map((faq, idx) => {
-              const isOpen = openFaq === idx;
-              return (
-                <div key={idx} className={`faq-item ${isOpen ? "open" : ""}`}>
-                  <button
-                    type="button"
-                    className="faq-question"
-                    onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    aria-expanded={isOpen}
-                  >
-                    <div className="faq-q-text">
-                      <span className="faq-badge">Industry Solutions</span>
-                      <span>{faq.q}</span>
-                    </div>
-                    <span className="faq-toggle">{isOpen ? "−" : "+"}</span>
-                  </button>
-                  <div className="faq-answer" hidden={!isOpen}>
-                      <p>{faq.a}</p>
-                    </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <FaqSection eyebrow={<>Industry Compliance &amp; SLAs</>} title={<>Industry Vertical Messaging FAQs</>} intro={<>Answers on 2FA OTP security, bilateral clearing, and regulatory compliance.</>} items={industryFaqs} badge={<>Industry Solutions</>} />
 
       <CTA onOpenInquiriesModal={onOpenInquiriesModal} defaultProduct="Industry SMS Solutions" />
     </div>

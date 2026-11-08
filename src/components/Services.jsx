@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import GlassCard from "./GlassCard";
 import Button from "./Button";
 import "../styles/components/Services.css";
@@ -87,41 +86,21 @@ export const Services = () => {
   ];
 
   return (
-    <motion.section
+    <section
       id="products"
-      className="services"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.7 }}
-      viewport={{ once: true, amount: 0.1 }}
-    >
+      className="services"    >
       <div className="section-heading">
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="stats-eyebrow"
+        <p          className="stats-eyebrow"
         >
           Enterprise Telecom Stack
-        </motion.p>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
+        </p>
+        <h2        >
           Wholesale Bulk SMS Services &amp; Messaging Gateway
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          viewport={{ once: true }}
-          className="services-subtext"
+        </h2>
+        <p          className="services-subtext"
         >
           High-throughput Web Broadcast Portal, carrier-grade SMPP binds, and developer REST APIs engineered for enterprises, aggregators, and global businesses.
-        </motion.p>
+        </p>
       </div>
 
       <div className="services-grid">
@@ -171,7 +150,7 @@ export const Services = () => {
           </GlassCard>
         ))}
       </div>
-    </motion.section>
+    </section>
   );
 };
 

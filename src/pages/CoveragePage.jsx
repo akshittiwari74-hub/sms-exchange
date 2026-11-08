@@ -4,6 +4,7 @@ import NetworkStatusWidget from "../components/NetworkStatusWidget";
 import CTA from "../components/CTA";
 import "../styles/pages/Subpages.css";
 import EmojiIcon from "../components/EmojiIcon";
+import { PageHeader } from "../components/ui";
 
 export const CoveragePage = ({ onOpenInquiriesModal }) => {
   const regionBreakdown = [
@@ -53,15 +54,7 @@ export const CoveragePage = ({ onOpenInquiriesModal }) => {
 
   return (
     <div className="page-coverage">
-      <div className="page-banner">
-        <div className="container">
-          <p className="stats-eyebrow">Direct SS7 MNO Interconnects &amp; P2P Roaming Hubs</p>
-          <h1>Global Wholesale Bulk SMS &amp; International P2P SMS Routing Matrix</h1>
-          <p>
-            Zero-hop SS7 signaling links, direct operator interconnects, and intelligent LCR SMS routing across 195+ countries and 800+ mobile networks worldwide.
-          </p>
-        </div>
-      </div>
+      <PageHeader path="/coverage" eyebrow={<>Direct SS7 MNO Interconnects &amp; P2P Roaming Hubs</>} title={<>Global Wholesale Bulk SMS &amp; International P2P SMS Routing Matrix</>} intro={<>Zero-hop SS7 signaling links, direct operator interconnects, and intelligent LCR SMS routing across 195+ countries and 800+ mobile networks worldwide.</>} />
 
       {/* Regional Continent Deep Dive */}
       <section className="subpage-info-section">
@@ -92,13 +85,13 @@ export const CoveragePage = ({ onOpenInquiriesModal }) => {
       </section>
 
       {/* Hub and Spoke SEO Interlinking */}
-      <section className="subpage-info-section" style={{ backgroundColor: "rgba(24, 24, 27, 0.4)", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+      <section className="subpage-info-section ui-section--alt">
         <div className="container">
           <div className="section-heading">
             <p className="stats-eyebrow">Local Landing Pages</p>
             <h2>Regional SMPP Gateways &amp; SMS Connectivity</h2>
           </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', marginTop: '2rem' }}>
+          <div className="ui-chip-row ui-chip-row--center">
             <a href="/bulk-sms-uae" className="btn btn-secondary">🇦🇪 UAE Gateway</a>
             <a href="/bulk-sms-uk" className="btn btn-secondary">🇬🇧 UK Gateway</a>
             <a href="/bulk-sms-usa" className="btn btn-secondary">🇺🇸 USA Gateway</a>
