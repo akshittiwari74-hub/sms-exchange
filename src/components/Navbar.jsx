@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import {
   ChevronDown, KeyRound, Cable, MessageCircle, Smartphone, Laptop, Globe, BarChart3,
-  Code2, BookOpen, Library, HelpCircle, Landmark, Menu, X,
+  Code2, BookOpen, Library, HelpCircle, Landmark, Building2, Menu, X,
 } from "lucide-react";
 import "../styles/components/Navbar.css";
 
@@ -40,6 +40,7 @@ const menus = [
       { Icon: Landmark, label: "Industries", desc: "Banking, e-commerce, healthcare", path: "/industries" },
       { Icon: Library, label: "Glossary", desc: "Telecom & SMPP terminology", path: "/glossary" },
       { Icon: HelpCircle, label: "FAQ", desc: "Routing, billing and onboarding", path: "/faq" },
+      { Icon: Building2, label: "About us", desc: "Who we are and how we work", path: "/about" },
     ],
   },
 ];

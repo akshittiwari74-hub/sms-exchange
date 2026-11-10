@@ -9,7 +9,7 @@ export const pages = [
   {
     "path": "/",
     "label": "Home",
-    "title": "NAMX Telecom | Wholesale Bulk SMS Exchange, Direct SS7 & SMPP Gateway [2026]",
+    "title": "NAMX Telecom | Wholesale Bulk SMS, OTP Routes & SMPP Gateway",
     "description": "Direct SS7 MNO bulk SMS interconnects, dedicated SMPP v3.4/v5.0 transceiver binds up to 10,000 TPS, live EUR rate cards & developer REST API across 195+ countries.",
     "keywords": "Wholesale Bulk SMS, SMPP v3.4 Gateway, Direct SS7 Interconnect, A2P SMS Routes, SMS Traffic Exchange"
   },
@@ -51,7 +51,7 @@ export const pages = [
   {
     "path": "/rates",
     "label": "Rates",
-    "title": "Wholesale Bulk SMS Rates [2026] | Live Euro Rate Cards & Pricing | NAMX Telecom",
+    "title": "Wholesale Bulk SMS Rates by Country | EUR Rate Cards | NAMX Telecom",
     "description": "Explore live wholesale Bulk SMS rates and international P2P hubbing pricing for 195+ corridors. Compare Tier-1 Direct SS7 and wholesale pricing in EUR, USDT, or USD.",
     "keywords": "Wholesale Bulk SMS Rates, International SMS Pricing, Euro SMS Rates, Spain SMS Rate, Mexico Wholesale SMS, Direct SS7 SMS Pricing, SMPP Gateway Rates"
   },
@@ -143,6 +143,13 @@ export const pages = [
     "title": "Contact Wholesale SMS Desk | Request Rates & SMPP Test Binds | NAMX Telecom",
     "description": "Connect directly with our 24/7 Global NOC connectivity desk. Request custom wholesale Bulk SMS rates, SMPP v3.4 test binds, or enterprise API credentials.",
     "keywords": "Contact NAMX Telecom, Wholesale Bulk SMS Quote, SMPP Gateway Onboarding, International P2P Interconnect, Global Telecom NOC, Test SMPP Credentials"
+  },
+  {
+    "path": "/about",
+    "label": "About",
+    "title": "About NAMX Telecom | Wholesale SMS & OTP Messaging Carrier",
+    "description": "Who NAMX Telecom is, what we carry and how we work: OTP and A2P SMS on direct operator routes, SMPP and API connectivity, customer verification, sender registration and contact details.",
+    "keywords": "About NAMX Telecom, wholesale SMS provider, OTP SMS carrier, A2P messaging company"
   },
   {
     "path": "/terms",

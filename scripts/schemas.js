@@ -431,12 +431,25 @@ export default {
     },
     "areaServed": "Malaysia"
   },
-  "/": {
+  "/about": {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "@id": "https://www.namxtelecom.site/#organization",
-    "name": "NAMX Telecom",
-    "url": "https://www.namxtelecom.site/"
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.namxtelecom.site/" },
+          { "@type": "ListItem", "position": 2, "name": "About", "item": "https://www.namxtelecom.site/about" }
+        ]
+      },
+      {
+        "@type": "AboutPage",
+        "url": "https://www.namxtelecom.site/about",
+        "name": "About NAMX Telecom",
+        "inLanguage": "en",
+        "about": { "@id": "https://www.namxtelecom.site/#organization" },
+        "mainEntity": { "@id": "https://www.namxtelecom.site/#organization" }
+      }
+    ]
   },
   "/rates": {
     "@context": "https://schema.org",

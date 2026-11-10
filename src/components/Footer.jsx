@@ -53,6 +53,7 @@ export const Footer = ({ navigate }) => {
 
         <div className="footer-column">
           <h4>Support &amp; NOC</h4>
+          <a href="/about" onClick={(e) => handleLinkClick(e, "/about")}>About NAMX Telecom</a>
           <a href="/contact" onClick={(e) => handleLinkClick(e, "/contact")}>Enterprise Sales &amp; Custom Binds</a>
           <a href="https://wa.me/919306529891?text=Hello%20NAMX%20Telecom" target="_blank" rel="noopener noreferrer">WhatsApp: +91 93065 29891</a>
           <a href="https://t.me/namxtelecom" target="_blank" rel="noopener noreferrer">Telegram: @namxtelecom</a>

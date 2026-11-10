@@ -46,6 +46,17 @@ const routes = [
   }),
 ];
 
+// Every reference to NAMX Telecom inside page schema points at the single
+// Organization entity defined in index.html, so Google sees one company.
+const ORG_ID = SITE + "/#organization";
+function linkOrganization(node) {
+  if (Array.isArray(node)) return node.map(linkOrganization);
+  if (!node || typeof node !== "object") return node;
+  if (node["@type"] === "Organization" && /NAMX/i.test(node.name || "") && !node["@context"]) return { "@id": ORG_ID };
+  return Object.fromEntries(Object.entries(node).map(([k, v]) => [k, linkOrganization(v)]));
+}
+for (const r of routes) if (r.schema) r.schema = linkOrganization(r.schema);
+
 const otp = routes.find((r) => r.path === "/otp-sms");
 if (otp) otp.schema = otpSchema(otp);
 
@@ -70,7 +81,7 @@ function articleSchema(post, url) {
         articleSection: post.category,
         image: SITE + "/og-image.png",
         mainEntityOfPage: { "@type": "WebPage", "@id": url },
-        author: { "@type": "Organization", name: post.author, url: SITE + "/" },
+        author: { "@id": SITE + "/#organization" },
         publisher: { "@id": SITE + "/#organization" },
       },
     ],
@@ -193,6 +204,7 @@ const pageSources = {
   "/api": ["src/pages/ApiPage.jsx", "src/components/ApiSnippet.jsx"],
   "/faq": ["src/pages/FaqPage.jsx", "src/components/FAQ.jsx"],
   "/contact": ["src/pages/ContactPage.jsx"],
+  "/about": ["src/pages/AboutPage.jsx"],
   "/glossary": ["src/pages/GlossaryPage.jsx", "src/components/TelecomDictionary.jsx"],
   "/insights": ["src/pages/BlogPage.jsx", "src/data/posts.json"],
   "/terms": ["src/pages/TermsPage.jsx"],
@@ -230,3 +242,27 @@ sitemap += "</urlset>\n";
 fs.writeFileSync(path.join(distDir, "sitemap.xml"), sitemap, "utf-8");
 fs.writeFileSync(path.join(repoRoot, "public/sitemap.xml"), sitemap, "utf-8");
 console.log(`Sitemap: ${routes.length} URLs`);
+
+// ---------------------------------------------------------------------------
+// llms.txt: a plain-text map of the site for AI search assistants
+// (https://llmstxt.org). Generated from the same route data as the sitemap.
+// ---------------------------------------------------------------------------
+{
+  const line = (r) => `- [${r.title.replace(/ \| NAMX Telecom$/, "")}](${r.canonical}): ${r.description}`;
+  const statics = routes.filter((r) => !r.path.startsWith("/insights/"));
+  const guides = routes.filter((r) => r.path.startsWith("/insights/"));
+  const txt = [
+    "# NAMX Telecom",
+    "",
+    "> Wholesale SMS carrier and OTP messaging provider. Direct operator routes for OTP, transactional and marketing SMS, SMPP v3.4/v5.0 and REST API connectivity, plus WhatsApp Business and RCS messaging. Contact: admin@namxtelecom.site",
+    "",
+    "## Pages",
+    ...statics.map(line),
+    "",
+    "## Guides",
+    ...guides.map(line),
+    "",
+  ].join("\n");
+  fs.writeFileSync(path.join(distDir, "llms.txt"), txt, "utf-8");
+  console.log("llms.txt written");
+}

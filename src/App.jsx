@@ -30,6 +30,7 @@ import TermsPage from "./pages/TermsPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import OtpSmsPage from "./pages/OtpSmsPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import AboutPage from "./pages/AboutPage";
 
 import posts from "./data/posts.json";
 import { pageByPath, canonicalFor } from "./data/routes.js";
@@ -120,6 +121,7 @@ export function AppContent() {
           <Route path="/glossary" element={<GlossaryPage {...commonProps} />} />
           <Route path="/faq" element={<FaqPage {...commonProps} />} />
           <Route path="/contact" element={<ContactPage {...commonProps} />} />
+          <Route path="/about" element={<AboutPage {...commonProps} />} />
           <Route path="/terms" element={<TermsPage {...commonProps} />} />
           <Route path="/privacy" element={<PrivacyPage {...commonProps} />} />
           <Route path="*" element={<NotFoundPage {...commonProps} />} />

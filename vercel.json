@@ -12,6 +12,11 @@
       ],
       "destination": "https://www.namxtelecom.site/:path*",
       "permanent": true
+    },
+    {
+      "source": "/bulk-sms-singapore",
+      "destination": "/coverage",
+      "permanent": true
     }
   ],
   "headers": [

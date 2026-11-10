@@ -1,4 +1,24 @@
+# All crawlers may index the whole site.
 User-agent: *
+Allow: /
+
+# AI search and assistant crawlers (listed explicitly so the intent is clear)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://www.namxtelecom.site/sitemap.xml
