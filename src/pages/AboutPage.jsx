@@ -85,18 +85,7 @@ export const AboutPage = ({ onOpenInquiriesModal }) => (
       </div>
     </Section>
 
-    <Section id="compliance" eyebrow="Compliance" title="What we don't carry" narrow>
-      <div className="prose">
-        <p>
-          We don't accept unsolicited marketing, phishing, grey-route bypass traffic or artificially inflated OTP
-          traffic. Sender IDs must belong to the business using them, and every account agrees to our{" "}
-          <Link to="/terms">terms and acceptable-use policy</Link>. How we handle message data is set out in the{" "}
-          <Link to="/privacy">privacy policy</Link>.
-        </p>
-      </div>
-    </Section>
-
-    <Section id="contact-details" eyebrow="Contact" title="How to reach us" alt narrow>
+    <Section id="contact-details" eyebrow="Contact" title="How to reach us" narrow>
       <div className="prose">
         <ul>
           <li>Email: <a href="mailto:admin@namxtelecom.site">admin@namxtelecom.site</a></li>
