@@ -1,4 +1,4 @@
-import posts from "../data/posts.json";
+import posts from "virtual:posts-meta";
 import "../styles/pages/Subpages.css";
 import "../styles/components/HomeKnowledge.css";
 
@@ -234,8 +234,7 @@ export const HomeKnowledge = ({ navigate }) => {
           <div className="home-section-head">
             <p className="stats-eyebrow">Pricing explained</p>
             <h2 id="sms-pricing">What determines the price of wholesale SMS?</h2>
-            <p>
-              See current per-country prices on the <a href="/rates" onClick={(e) => go(e, "/rates")}>wholesale SMS rate cards</a>.
+            <p> Ask us for a quote for your destinations and volume.
             </p>
           </div>
           <dl className="kb-list">

@@ -10,7 +10,7 @@ export const pages = [
     "path": "/",
     "label": "Home",
     "title": "NAMX Telecom | Wholesale Bulk SMS, OTP Routes & SMPP Gateway",
-    "description": "Direct SS7 MNO bulk SMS interconnects, dedicated SMPP v3.4/v5.0 transceiver binds up to 10,000 TPS, live EUR rate cards & developer REST API across 195+ countries.",
+    "description": "Direct SS7 MNO bulk SMS interconnects, dedicated SMPP v3.4/v5.0 transceiver binds up to 10,000 TPS, developer REST API across 195+ countries.",
     "keywords": "Wholesale Bulk SMS, SMPP v3.4 Gateway, Direct SS7 Interconnect, A2P SMS Routes, SMS Traffic Exchange"
   },
   {
@@ -66,7 +66,7 @@ export const pages = [
     "path": "/bulk-sms-usa",
     "label": "USA",
     "title": "Wholesale Bulk SMS Provider USA | Direct 10DLC & SMPP Gateway | NAMX Telecom",
-    "description": "Wholesale Bulk SMS provider & SMPP v3.4 gateway in the USA. Direct AT&T, Verizon, T-Mobile 10DLC termination, TCR brand vetting, sub-second OTP delivery & live EUR/USD rate cards.",
+    "description": "Wholesale Bulk SMS provider & SMPP v3.4 gateway in the USA. Direct AT&T, Verizon, T-Mobile 10DLC termination, TCR brand vetting, fast OTP delivery & custom quotes.",
     "keywords": "Wholesale Bulk SMS USA, 10DLC SMS Gateway, US SMPP Provider, AT&T Direct SMS, Verizon SMS Termination, T-Mobile TCR Vetting",
     "parent": "/coverage"
   },
@@ -82,7 +82,7 @@ export const pages = [
     "path": "/bulk-sms-uae",
     "label": "UAE",
     "title": "Wholesale Bulk SMS Provider UAE | TDRA Direct Routes & SMPP Gateway | NAMX Telecom",
-    "description": "Wholesale Bulk SMS service provider & SMPP gateway in the UAE. Direct e& (Etisalat) and du SS7 interconnects, TDRA sender ID whitelisting, Arabic UCS-2 Unicode & wholesale rates.",
+    "description": "Wholesale Bulk SMS service provider & SMPP gateway in the UAE. Direct e& (Etisalat) and du SS7 interconnects, TDRA sender ID whitelisting, Arabic UCS-2 Unicode & OTP routes.",
     "keywords": "Wholesale Bulk SMS UAE, SMPP Gateway UAE, TDRA SMS Whitelist, Etisalat Bulk SMS, du SMS Gateway, UAE OTP Delivery",
     "parent": "/coverage"
   },
@@ -98,7 +98,7 @@ export const pages = [
     "path": "/bulk-sms-malaysia",
     "label": "Malaysia",
     "title": "Wholesale Bulk SMS Provider Malaysia | Direct MCMC Routes & SMPP Gateway | NAMX Telecom",
-    "description": "Wholesale Bulk SMS provider in Malaysia. Direct CelcomDigi, Maxis, U Mobile SMS gateway, MCMC anti-scam compliance, sub-2s delivery & wholesale rate cards.",
+    "description": "Wholesale Bulk SMS provider in Malaysia. Direct CelcomDigi, Maxis, U Mobile SMS gateway, MCMC anti-scam compliance, fast OTP delivery & custom quotes.",
     "keywords": "Wholesale Bulk SMS Malaysia, CelcomDigi SMS Route, Maxis Wholesale SMS, MCMC Compliant SMS, Malaysia SMPP Gateway",
     "parent": "/coverage"
   },
@@ -140,8 +140,8 @@ export const pages = [
   {
     "path": "/contact",
     "label": "Contact",
-    "title": "Contact Wholesale SMS Desk | Request Rates & SMPP Test Binds | NAMX Telecom",
-    "description": "Connect directly with our 24/7 Global NOC connectivity desk. Request custom wholesale Bulk SMS rates, SMPP v3.4 test binds, or enterprise API credentials.",
+    "title": "Contact Wholesale SMS Desk | Request a Quote & SMPP Test Binds | NAMX Telecom",
+    "description": "Connect directly with our 24/7 Global NOC connectivity desk. Request a custom wholesale Bulk SMS quote, SMPP v3.4 test binds, or enterprise API credentials.",
     "keywords": "Contact NAMX Telecom, Wholesale Bulk SMS Quote, SMPP Gateway Onboarding, International P2P Interconnect, Global Telecom NOC, Test SMPP Credentials"
   },
   {

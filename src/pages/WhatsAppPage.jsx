@@ -51,7 +51,7 @@ export const WhatsAppPage = ({ onOpenInquiriesModal, navigate }) => {
       sender: "NAMX Cloud Exchange",
       time: "04:05 PM",
       icon: "⚡",
-      text: "Exclusive Flash Discount: Enjoy up to 25% lower rates on direct tier-1 routing routes across APAC & Europe this month!",
+      text: "Talk to our team for a quote on WhatsApp, SMS and RCS traffic across APAC & Europe.",
       code: "CODE: ROUTE25",
       actionText: "Claim Route Discount"
     }

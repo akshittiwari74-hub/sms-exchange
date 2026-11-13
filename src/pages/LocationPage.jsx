@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import corridors from "../data/corridors.json";
-import posts from "../data/posts.json";
+import posts from "virtual:posts-meta";
 import CTA from "../components/CTA";
 import "../styles/pages/Subpages.css";
 import EmojiIcon from "../components/EmojiIcon";
@@ -26,12 +26,8 @@ export const LocationPage = ({ onOpenInquiriesModal, forcedLocation, navigate })
     defaultEncoding: "GSM 7-bit & UCS-2 Unicode",
     complianceNotes: "Full compliance with national telecommunications anti-spam legislation and consumer protection frameworks.",
     networks: [
-      { name: "Tier-1 Direct Carrier Interconnect", mcc: "---", mnc: "--", marketShare: "Primary", routeType: "Direct SS7 MNO Link", tps: "5,000 TPS", latency: "1.4s", rateEUR: "0.0220" },
-      { name: "Secondary Redundant Route", mcc: "---", mnc: "--", marketShare: "Secondary", routeType: "Wholesale Carrier Peering", tps: "4,000 TPS", latency: "1.6s", rateEUR: "0.0195" }
-    ],
-    pricingTiers: [
-      { volume: "Standard Tier", rateEUR: "Competitive", rateUSD: "Competitive", features: "Dedicated SMPP bind, real-time DLR webhooks, 24/7 NOC monitoring" },
-      { volume: "Wholesale Tier (500k+)", rateEUR: "Negotiable", rateUSD: "Negotiable", features: "Direct bilateral clearing, custom window sizing, zero-hop routing" }
+      { name: "Tier-1 Direct Carrier Interconnect", mcc: "---", mnc: "--", marketShare: "Primary", routeType: "Direct SS7 MNO Link", tps: "5,000 TPS", latency: "1.4s" },
+      { name: "Secondary Redundant Route", mcc: "---", mnc: "--", marketShare: "Secondary", routeType: "Wholesale Carrier Peering", tps: "4,000 TPS", latency: "1.6s" }
     ],
     faqs: [
       {
@@ -59,7 +55,6 @@ export const LocationPage = ({ onOpenInquiriesModal, forcedLocation, navigate })
     { path: "/bulk-sms-india", name: "🇮🇳 India & DLT" },
     { path: "/bulk-sms-malaysia", name: "🇲🇾 Malaysia & APAC" },
     { path: "/otp-sms", name: "OTP SMS & 2FA delivery" },
-    { path: "/rates", name: "195+ country rate cards" },
     { path: "/coverage", name: "Global coverage" },
   ].filter((l) => l.path !== `/bulk-sms-${rawKey}`);
 
@@ -72,10 +67,10 @@ export const LocationPage = ({ onOpenInquiriesModal, forcedLocation, navigate })
         intro={data.subtitle}
       >
         <button type="button" className="btn btn--primary btn--lg" onClick={onOpenInquiriesModal}>
-          Request {data.country} rate quote
+          Request a {data.country} quote
         </button>
-        <a href="/rates" onClick={(e) => handleNav(e, "/rates")} className="btn btn--secondary btn--lg">
-          View global rate cards
+        <a href="/coverage" onClick={(e) => handleNav(e, "/coverage")} className="btn btn--secondary btn--lg">
+          View global coverage
         </a>
       </PageHeader>
 
@@ -142,14 +137,14 @@ export const LocationPage = ({ onOpenInquiriesModal, forcedLocation, navigate })
         id="operators"
         eyebrow="Operator routes"
         title={`${data.country} mobile network operator routes`}
-        intro="Direct mobile network operator routes with MCC-MNC mapping, throughput benchmarks and termination pricing."
+        intro="Direct mobile network operator routes with MCC-MNC mapping, throughput and latency benchmarks."
       >
         <div className="dlr-table-wrapper">
           <table className="dlr-table">
             <thead>
               <tr>
                 <th>Mobile operator</th><th>MCC / MNC</th><th>Market share</th><th>Route tier</th>
-                <th>Throughput</th><th>Latency</th><th>Rate (EUR)</th>
+                <th>Throughput</th><th>Latency</th>
               </tr>
             </thead>
             <tbody>
@@ -161,32 +156,10 @@ export const LocationPage = ({ onOpenInquiriesModal, forcedLocation, navigate })
                   <td>{net.routeType}</td>
                   <td>{net.tps}</td>
                   <td><span className="text-success">{net.latency}</span></td>
-                  <td><strong>€{net.rateEUR}</strong> / SMS</td>
                 </tr>
               ))}
             </tbody>
           </table>
-        </div>
-      </Section>
-
-      <Section
-        id="pricing"
-        eyebrow="Volume pricing"
-        title={`Volume pricing for ${data.country} SMS termination`}
-        intro="Predictable cost scaling for enterprise applications, aggregators and fintechs."
-        alt
-      >
-        <div className="info-grid-3">
-          {data.pricingTiers.map((tier) => (
-            <div key={tier.volume} className="info-card">
-              <h3>{tier.volume}</h3>
-              <p className="ui-stat">{tier.rateEUR} <small>/ SMS</small></p>
-              <p>{tier.features}</p>
-              <button type="button" className="btn btn--secondary btn--md ui-card-btn" onClick={onOpenInquiriesModal}>
-                Request this tier
-              </button>
-            </div>
-          ))}
         </div>
       </Section>
 

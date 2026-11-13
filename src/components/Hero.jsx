@@ -34,8 +34,8 @@ export const Hero = ({ navigate }) => {
             <Button href="/contact" onClick={(e) => handleNav(e, "/contact")} variant="primary" size="lg" external={false}>
               Request a test route
             </Button>
-            <Button href="/rates" onClick={(e) => handleNav(e, "/rates")} variant="secondary" size="lg" external={false}>
-              View SMS rates
+            <Button href="/otp-sms" onClick={(e) => handleNav(e, "/otp-sms")} variant="secondary" size="lg" external={false}>
+              Explore OTP SMS
             </Button>
           </div>
 

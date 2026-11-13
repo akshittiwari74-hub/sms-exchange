@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import { useState, useEffect, Suspense } from "react";
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation, matchPath } from "react-router-dom";
 
 import "./styles/variables.css";
 import "./App.css";
@@ -11,29 +11,69 @@ import InquiryModal from "./components/InquiryModal";
 import Footer from "./components/Footer";
 import FloatingChatWidget from "./components/FloatingChatWidget";
 
-import HomePage from "./pages/HomePage";
-import RatesPage from "./pages/RatesPage";
-import CoveragePage from "./pages/CoveragePage";
-import ServicesPage from "./pages/ServicesPage";
-import IndustriesPage from "./pages/IndustriesPage";
-import ApiPage from "./pages/ApiPage";
-import FaqPage from "./pages/FaqPage";
-import ContactPage from "./pages/ContactPage";
-import GlossaryPage from "./pages/GlossaryPage";
-import BlogPage from "./pages/BlogPage";
-import BlogPostPage from "./pages/BlogPostPage";
-import LocationPage from "./pages/LocationPage";
-import WhatsAppPage from "./pages/WhatsAppPage";
-import RcsPage from "./pages/RcsPage";
-import ItServicesPage from "./pages/ItServicesPage";
-import TermsPage from "./pages/TermsPage";
-import PrivacyPage from "./pages/PrivacyPage";
-import OtpSmsPage from "./pages/OtpSmsPage";
 import NotFoundPage from "./pages/NotFoundPage";
-import AboutPage from "./pages/AboutPage";
+import { lazyPage } from "./lazyPage";
 
-import posts from "./data/posts.json";
+import posts from "virtual:posts-meta";
 import { pageByPath, canonicalFor } from "./data/routes.js";
+
+const HomePage = lazyPage(() => import("./pages/HomePage"));
+const OtpSmsPage = lazyPage(() => import("./pages/OtpSmsPage"));
+const ServicesPage = lazyPage(() => import("./pages/ServicesPage"));
+const WhatsAppPage = lazyPage(() => import("./pages/WhatsAppPage"));
+const RcsPage = lazyPage(() => import("./pages/RcsPage"));
+const ItServicesPage = lazyPage(() => import("./pages/ItServicesPage"));
+const RatesPage = lazyPage(() => import("./pages/RatesPage"));
+const CoveragePage = lazyPage(() => import("./pages/CoveragePage"));
+const LocationPage = lazyPage(() => import("./pages/LocationPage"));
+const IndustriesPage = lazyPage(() => import("./pages/IndustriesPage"));
+const ApiPage = lazyPage(() => import("./pages/ApiPage"));
+const BlogPage = lazyPage(() => import("./pages/BlogPage"));
+const BlogPostPage = lazyPage(() => import("./pages/BlogPostPage"));
+const GlossaryPage = lazyPage(() => import("./pages/GlossaryPage"));
+const FaqPage = lazyPage(() => import("./pages/FaqPage"));
+const ContactPage = lazyPage(() => import("./pages/ContactPage"));
+const AboutPage = lazyPage(() => import("./pages/AboutPage"));
+const TermsPage = lazyPage(() => import("./pages/TermsPage"));
+const PrivacyPage = lazyPage(() => import("./pages/PrivacyPage"));
+
+// Route table: path -> page component (+ extra props). Rendered as <Route>s below.
+const routeTable = [
+  ["/", HomePage],
+  ["/otp-sms", OtpSmsPage],
+  ["/services", ServicesPage],
+  ["/whatsapp-business", WhatsAppPage],
+  ["/rcs-messaging", RcsPage],
+  ["/it-services", ItServicesPage],
+  ["/rates", RatesPage],
+  ["/coverage", CoveragePage],
+  ["/bulk-sms-usa", LocationPage, { forcedLocation: "usa" }],
+  ["/bulk-sms-uk", LocationPage, { forcedLocation: "uk" }],
+  ["/bulk-sms-uae", LocationPage, { forcedLocation: "uae" }],
+  ["/bulk-sms-india", LocationPage, { forcedLocation: "india" }],
+  ["/bulk-sms-malaysia", LocationPage, { forcedLocation: "malaysia" }],
+  ["/industries", IndustriesPage],
+  ["/api", ApiPage],
+  ["/insights", BlogPage],
+  ["/insights/:slug", BlogPostPage],
+  ["/glossary", GlossaryPage],
+  ["/faq", FaqPage],
+  ["/contact", ContactPage],
+  ["/about", AboutPage],
+  ["/terms", TermsPage],
+  ["/privacy", PrivacyPage],
+];
+
+/** Load the code for the page at `pathname` (call before hydrating). */
+export function preloadPage(pathname) {
+  const hit = routeTable.find(([path]) => matchPath(path, pathname));
+  return hit ? hit[1].load() : Promise.resolve();
+}
+
+/** Load every page (prerendering, and idle prefetch in the browser). */
+export function preloadAllPages() {
+  return Promise.all([...new Set(routeTable.map(([, Page]) => Page))].map((Page) => Page.load()));
+}
 
 // Meta tags for client-side navigation. The prerendered HTML already carries
 // the same values (scripts/prerender.js reads the same data files).
@@ -72,9 +112,15 @@ export function AppContent() {
   // Gentle fade-in of sections as they scroll into view. Only enabled when JS
   // runs and the user hasn't asked for reduced motion; the prerendered HTML is
   // always fully visible.
+  // Pages load asynchronously after navigation, so new sections are picked up
+  // with a MutationObserver rather than once per route change.
   useEffect(() => {
-    if (typeof IntersectionObserver === "undefined") return;
+    if (typeof IntersectionObserver === "undefined" || typeof MutationObserver === "undefined") return;
     if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+    // Sections already on screen stay as painted; only ones below the fold fade in.
+    document
+      .querySelectorAll(".ui-section, .kb-section, .home-products")
+      .forEach((el) => { if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add("is-visible"); });
     document.documentElement.classList.add("js-reveal");
     const io = new IntersectionObserver(
       (entries) => entries.forEach((e) => {
@@ -85,9 +131,25 @@ export function AppContent() {
       }),
       { rootMargin: "0px 0px -8% 0px" },
     );
-    document.querySelectorAll(".ui-section, .kb-section, .home-products").forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, [pathname]);
+    const scan = () => document
+      .querySelectorAll(".ui-section:not(.is-visible), .kb-section:not(.is-visible), .home-products:not(.is-visible)")
+      .forEach((el) => io.observe(el));
+    scan();
+    const content = document.getElementById("content");
+    const mo = new MutationObserver(scan);
+    if (content) mo.observe(content, { childList: true, subtree: true });
+    return () => { io.disconnect(); mo.disconnect(); };
+  }, []);
+
+  // After the page has loaded, fetch the other pages' code in the background
+  // so in-site navigation is instant (skipped when the user saves data).
+  useEffect(() => {
+    if (navigator.connection?.saveData) return;
+    const idle = window.requestIdleCallback || ((cb) => setTimeout(cb, 2000));
+    const start = () => idle(() => preloadAllPages());
+    if (document.readyState === "complete") start();
+    else window.addEventListener("load", start, { once: true });
+  }, []);
 
   const commonProps = {
     navigate: (path) => navigate(path),
@@ -100,32 +162,14 @@ export function AppContent() {
       <Navbar logo={logo} currentPath={pathname} navigate={(path) => navigate(path)} />
 
       <div id="content">
-        <Routes>
-          <Route path="/" element={<HomePage {...commonProps} />} />
-          <Route path="/otp-sms" element={<OtpSmsPage {...commonProps} />} />
-          <Route path="/services" element={<ServicesPage {...commonProps} />} />
-          <Route path="/whatsapp-business" element={<WhatsAppPage {...commonProps} />} />
-          <Route path="/rcs-messaging" element={<RcsPage {...commonProps} />} />
-          <Route path="/it-services" element={<ItServicesPage {...commonProps} />} />
-          <Route path="/rates" element={<RatesPage {...commonProps} />} />
-          <Route path="/coverage" element={<CoveragePage {...commonProps} />} />
-          <Route path="/bulk-sms-usa" element={<LocationPage {...commonProps} forcedLocation="usa" />} />
-          <Route path="/bulk-sms-uk" element={<LocationPage {...commonProps} forcedLocation="uk" />} />
-          <Route path="/bulk-sms-uae" element={<LocationPage {...commonProps} forcedLocation="uae" />} />
-          <Route path="/bulk-sms-india" element={<LocationPage {...commonProps} forcedLocation="india" />} />
-          <Route path="/bulk-sms-malaysia" element={<LocationPage {...commonProps} forcedLocation="malaysia" />} />
-          <Route path="/industries" element={<IndustriesPage {...commonProps} />} />
-          <Route path="/api" element={<ApiPage {...commonProps} />} />
-          <Route path="/insights" element={<BlogPage {...commonProps} />} />
-          <Route path="/insights/:slug" element={<BlogPostPage {...commonProps} />} />
-          <Route path="/glossary" element={<GlossaryPage {...commonProps} />} />
-          <Route path="/faq" element={<FaqPage {...commonProps} />} />
-          <Route path="/contact" element={<ContactPage {...commonProps} />} />
-          <Route path="/about" element={<AboutPage {...commonProps} />} />
-          <Route path="/terms" element={<TermsPage {...commonProps} />} />
-          <Route path="/privacy" element={<PrivacyPage {...commonProps} />} />
-          <Route path="*" element={<NotFoundPage {...commonProps} />} />
-        </Routes>
+        <Suspense fallback={<div className="route-loading" aria-busy="true" />}>
+          <Routes>
+            {routeTable.map(([path, Page, extra]) => (
+              <Route key={path} path={path} element={<Page {...commonProps} {...extra} />} />
+            ))}
+            <Route path="*" element={<NotFoundPage {...commonProps} />} />
+          </Routes>
+        </Suspense>
       </div>
 
       <Footer navigate={(path) => navigate(path)} />

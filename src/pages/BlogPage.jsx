@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import posts from "../data/posts.json";
+import posts from "virtual:posts-meta";
 import CTA from "../components/CTA";
 import { PageHeader, Section } from "../components/ui";
 import "../styles/pages/Subpages.css";

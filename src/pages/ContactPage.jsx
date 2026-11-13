@@ -7,7 +7,7 @@ import { PageHeader } from "../components/ui";
 export const ContactPage = ({ onOpenInquiriesModal }) => {
   return (
     <div className="page-contact">
-      <PageHeader path="/contact" eyebrow={<>Global HQ &amp; Carrier NOC</>} title={<>Enterprise Consultation &amp; Carrier Onboarding</>} intro={<>Connect directly with our 24/7 Global Connectivity Desk to set up custom wholesale rate cards, SMPP v3.4 binds, API tokens, or campaign portal credentials.</>} />
+      <PageHeader path="/contact" eyebrow={<>Global HQ &amp; Carrier NOC</>} title={<>Enterprise Consultation &amp; Carrier Onboarding</>} intro={<>Connect directly with our 24/7 Global Connectivity Desk to request a custom quote, SMPP v3.4 binds, API tokens, or campaign portal credentials.</>} />
 
       {/* Direct NOC Contact Cards */}
       <section className="subpage-info-section">

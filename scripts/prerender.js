@@ -11,7 +11,8 @@ import { fileURLToPath } from "url";
 import { execFileSync } from "child_process";
 import { pages, SITE, canonicalFor } from "../src/data/routes.js";
 import schemas from "./schemas.js";
-import { render } from "../dist/server/entry-server.js";
+import { render, ready } from "../dist/server/entry-server.js";
+await ready; // load every code-split page before rendering
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "..");
@@ -26,6 +27,47 @@ if (!fs.existsSync(templatePath)) {
 const template = fs.readFileSync(templatePath, "utf-8");
 const posts = readJson("src/data/posts.json");
 const otpFaqs = readJson("src/data/otpFaqs.json");
+
+// ---------------------------------------------------------------------------
+// Per-page JavaScript preloads. Pages are code-split (src/lazyPage.jsx); each
+// HTML file gets <link rel="modulepreload"> for its own page chunk so the
+// browser fetches it in parallel with the main bundle instead of after it.
+// Route -> source file is read from the lazyPage()/routeTable in App.jsx.
+// ---------------------------------------------------------------------------
+const manifestPath = path.join(distDir, ".vite/manifest.json");
+const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf-8"));
+const appSource = fs.readFileSync(path.join(repoRoot, "src/App.jsx"), "utf-8");
+const pageFiles = Object.fromEntries(
+  [...appSource.matchAll(/const (\w+) = lazyPage\(\(\) => import\("\.\/(pages\/\w+)"\)\)/g)].map((m) => [m[1], `src/${m[2]}.jsx`]),
+);
+const routeFiles = [...appSource.matchAll(/\["([^"]+)", (\w+)[,\]]/g)].map((m) => [m[1], pageFiles[m[2]]]);
+const entryKey = Object.keys(manifest).find((k) => manifest[k].isEntry);
+// Files the template already loads or preloads
+const entryFiles = new Set([
+  manifest[entryKey].file,
+  ...[...template.matchAll(/(?:src|href)="\/(assets\/[^"]+\.js)"/g)].map((m) => m[1]),
+]);
+
+function chunkFiles(key, seen = new Set()) {
+  const chunk = manifest[key];
+  if (!chunk || seen.has(chunk.file)) return seen;
+  seen.add(chunk.file);
+  for (const dep of chunk.imports || []) chunkFiles(dep, seen);
+  return seen;
+}
+
+function preloadTags(routePath) {
+  const hit = routeFiles.find(([pattern]) =>
+    pattern === routePath || (pattern.endsWith("/:slug") && routePath.startsWith(pattern.slice(0, -5))));
+  if (!hit || !manifest[hit[1]]) {
+    if (routePath !== "/404") console.warn(`No page chunk found for ${routePath}`);
+    return "";
+  }
+  return [...chunkFiles(hit[1])]
+    .filter((f) => !entryFiles.has(f))
+    .map((f) => `  <link rel="modulepreload" crossorigin href="/${f}">\n`)
+    .join("");
+}
 
 // ---------------------------------------------------------------------------
 // Route list
@@ -148,8 +190,10 @@ function buildHtml(route, appHtml) {
   if (route.schema) {
     html = html.replace("</head>", `  <script type="application/ld+json">\n${JSON.stringify(route.schema, null, 2)}\n  </script>\n</head>`);
   }
+  html = html.replace("</head>", `${preloadTags(route.path)}</head>`);
   return html;
 }
+
 
 // ---------------------------------------------------------------------------
 // Render every route
@@ -266,3 +310,6 @@ console.log(`Sitemap: ${routes.length} URLs`);
   fs.writeFileSync(path.join(distDir, "llms.txt"), txt, "utf-8");
   console.log("llms.txt written");
 }
+
+// The build manifest is only needed above; don't publish it.
+fs.rmSync(path.join(distDir, ".vite"), { recursive: true, force: true });

@@ -339,7 +339,7 @@ export const CTA = ({ onOpenInquiriesModal, defaultProduct = "Web Messaging Plat
             /* Consultation Form */
             <form className="cta-card" onSubmit={handleSubmit}>
               <h3>Request a Wholesale Proposal</h3>
-              <p>Fill in your parameters to receive a custom route rate card and technical spec.</p>
+              <p>Fill in your parameters to receive a custom quote and technical spec.</p>
 
               <div className="form-grid">
                 <label htmlFor="form-full-name">

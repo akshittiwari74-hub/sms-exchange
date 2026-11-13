@@ -32,7 +32,7 @@ export const WhyChooseUs = () => {
     { 
       icon: "📊",
       title: "Transparent Billing & CDR Logs", 
-      description: "Clear wholesale rate cards, itemized Call Detail Records (CDR), and real-time delivery reports with zero hidden fees." 
+      description: "Clear quotes, itemized Call Detail Records (CDR), and real-time delivery reports with zero hidden fees." 
     },
   ];
 

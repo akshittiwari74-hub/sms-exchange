@@ -40,8 +40,7 @@ export const AboutPage = ({ onOpenInquiriesModal }) => (
           operator connection a message takes, what happens when a route slows down, and how ported numbers are handled.
         </p>
         <p>
-          Customers connect over <Link to="/api">SMPP or a REST API</Link>, or send campaigns from a web platform. Rates are
-          published per destination on our <Link to="/rates">rates page</Link>, and country rules for sender IDs and
+          Customers connect over <Link to="/api">SMPP or a REST API</Link>, or send campaigns from a web platform. Pricing is quoted per destination and volume, and country rules for sender IDs and
           registration are documented on the <Link to="/coverage">coverage pages</Link>.
         </p>
         <p>
@@ -91,7 +90,7 @@ export const AboutPage = ({ onOpenInquiriesModal }) => (
           <li>Email: <a href="mailto:admin@namxtelecom.site">admin@namxtelecom.site</a></li>
           <li>Telegram: <a href="https://t.me/namxtelecom" target="_blank" rel="noopener noreferrer">@namxtelecom</a></li>
           <li>WhatsApp: <a href="https://wa.me/919306529891" target="_blank" rel="noopener noreferrer">+91 93065 29891</a></li>
-          <li>Or use the <Link to="/contact">contact form</Link> for rate requests and test binds.</li>
+          <li>Or use the <Link to="/contact">contact form</Link> for quotes and test binds.</li>
         </ul>
       </div>
     </Section>

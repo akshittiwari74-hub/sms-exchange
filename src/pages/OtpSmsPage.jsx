@@ -1,5 +1,5 @@
 import otpFaqs from "../data/otpFaqs.json";
-import posts from "../data/posts.json";
+import posts from "virtual:posts-meta";
 import CTA from "../components/CTA";
 import "../styles/pages/Subpages.css";
 import EmojiIcon from "../components/EmojiIcon";
@@ -96,8 +96,8 @@ export const OtpSmsPage = ({ onOpenInquiriesModal, navigate }) => {
         <button type="button" className="btn btn--primary btn--lg" onClick={onOpenInquiriesModal}>
           Request OTP test credits
         </button>
-        <a href="/rates" onClick={(e) => go(e, "/rates")} className="btn btn--secondary btn--lg">
-          View OTP SMS rates
+        <a href="/insights/otp-sms-not-received-delivery-troubleshooting-guide" onClick={(e) => go(e, "/insights/otp-sms-not-received-delivery-troubleshooting-guide")} className="btn btn--secondary btn--lg">
+          OTP delivery guide
         </a>
       </PageHeader>
 

@@ -709,3 +709,8 @@
     transform: none;
   }
 }
+
+/* Placeholder while a page's code loads after in-site navigation */
+.route-loading {
+  min-height: 100vh;
+}

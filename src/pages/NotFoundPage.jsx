@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 const suggestions = [
   { to: "/otp-sms", label: "OTP SMS & verification API" },
-  { to: "/rates", label: "Wholesale SMS rate cards" },
+  { to: "/contact", label: "Request a quote" },
   { to: "/coverage", label: "Country coverage" },
   { to: "/api", label: "API & SMPP documentation" },
   { to: "/insights", label: "Engineering & compliance guides" },

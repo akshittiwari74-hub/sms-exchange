@@ -102,7 +102,9 @@
   border-radius: 50%;
   border: 1.5px solid rgba(37, 211, 102, 0.5);
   pointer-events: none;
-  animation: compact-ring-pulse 2.4s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+  /* A few pulses after the page settles, then still. An endless animation
+     keeps the screen "changing", which inflates Speed Index. */
+  animation: compact-ring-pulse 2.4s cubic-bezier(0.25, 1, 0.5, 1) 6s 3 both;
 }
 
 @keyframes compact-ring-pulse {

@@ -1,5 +1,5 @@
 import {
-  KeyRound, Cable, MessageCircle, Smartphone, BarChart3, Globe, Code2, Landmark, Laptop, Headset, ArrowRight, Check,
+  KeyRound, Cable, MessageCircle, Smartphone, BookOpen, Globe, Code2, Landmark, Laptop, Headset, ArrowRight, Check,
 } from "lucide-react";
 import Hero from "../components/Hero";
 import TrustBar from "../components/TrustBar";
@@ -47,12 +47,12 @@ const products = [
 ];
 
 const destinations = [
-  { Icon: BarChart3, title: "Rate cards", desc: "Per-country wholesale prices in EUR, USD or USDT", path: "/rates" },
+  { Icon: BookOpen, title: "Guides", desc: "SMPP, OTP delivery and compliance articles", path: "/insights" },
   { Icon: Globe, title: "Coverage", desc: "195+ countries and 250+ mobile operators", path: "/coverage" },
   { Icon: Code2, title: "API & SMPP docs", desc: "REST endpoints, SMPP specs and code samples", path: "/api" },
   { Icon: Landmark, title: "Industries", desc: "Banking, fintech, e-commerce and healthcare", path: "/industries" },
   { Icon: Laptop, title: "IT services", desc: "Gateway development, cloud and NOC services", path: "/it-services" },
-  { Icon: Headset, title: "Talk to the NOC", desc: "Custom rates, test binds and onboarding", path: "/contact" },
+  { Icon: Headset, title: "Talk to the NOC", desc: "Quotes, test binds and onboarding", path: "/contact" },
 ];
 
 export const HomePage = ({ navigate }) => {
@@ -123,8 +123,8 @@ export const HomePage = ({ navigate }) => {
               <Button href="/contact" onClick={(e) => go(e, "/contact")} variant="primary" size="lg" external={false}>
                 Request a test route
               </Button>
-              <Button href="/rates" onClick={(e) => go(e, "/rates")} variant="secondary" size="lg" external={false}>
-                View rate cards
+              <Button href="/api" onClick={(e) => go(e, "/api")} variant="secondary" size="lg" external={false}>
+                Read the API docs
               </Button>
             </div>
           </div>
